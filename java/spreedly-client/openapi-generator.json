@@ -1,0 +1,15 @@
+{
+  "groupId": "com.hopper.hts",
+  "artifactId": "spreedly-client",
+  "invokerPackage": "com.hopper.hts.fintech.spreedly",
+  "apiPackage": "com.hopper.hts.fintech.spreedly.api",
+  "modelPackage": "com.hopper.hts.fintech.spreedly.model",
+  "library": "okhttp-gson",
+  "dateLibrary": "java8",
+  "hideGenerationTimestamp": true,
+  "disallowAdditionalPropertiesIfNotPresent": false,
+  "useBeanValidation": false,
+  "performBeanValidation": false,
+  "containerDefaultToNull": true,
+  "openApiNullable": false
+}

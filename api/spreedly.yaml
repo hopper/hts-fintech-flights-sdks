@@ -1,0 +1,144 @@
+openapi: 3.0.3
+info:
+  title: Spreedly API
+  version: v1.1
+servers:
+- url: https://core.spreedly.com/v1/
+tags:
+- description: |-
+    **Hopper Technology Solutions (HTS) Ancillaries for Airlines**
+  name: Analytics
+paths:
+  /payment_methods:
+    post:
+      description: Create a payment method
+      operationId: postPaymentMethod
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_payment_method_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/create_payment_method_response'
+          description: The created payment method
+          headers:
+            Expires:
+              explode: false
+              required: true
+              schema:
+                type: string
+              style: simple
+            Cache-Control:
+              explode: false
+              required: true
+              schema:
+                type: string
+              style: simple
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/unprocessable_entity'
+          description: Semantic errors were encountered while handling the request
+        "500":
+          description: The server encountered an internal error
+      summary: Create a Session
+      tags:
+        - Payment
+      security:
+        - basicAuth: []
+components:
+  schemas:
+    create_payment_method_request:
+      properties:
+        payment_method:
+          $ref: '#/components/schemas/create_payment_method'
+      description: A request to create a payment method
+      required:
+        - payment_method
+      title: create_payment_method_request
+      type: object
+    create_payment_method:
+      properties:
+        credit_card:
+          $ref: '#/components/schemas/create_credit_card'
+        encrypted_fields:
+          type: string
+        encryption_certificate_token:
+          type: string
+      required:
+          - credit_card
+      title: create_payment_method
+      type: object
+    create_payment_method_response:
+      properties:
+        transaction:
+          $ref: '#/components/schemas/transaction'
+      required:
+        - transaction
+      title: create_payment_method_response
+      type: object
+    create_credit_card:
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        number:
+          type: string
+        verification_value:
+          type: string
+        month:
+          type: string
+        year:
+          type: string
+      required:
+        - first_name
+        - last_name
+        - number
+        - verification_value
+        - month
+        - year
+    created_payment_method:
+      properties:
+        token:
+          description: The token for the payment method
+          example: af585dfd-dddf-4726-9ef7-f1bb8909a79a
+          type: string
+      required:
+      - token
+      title: created_payment_method
+      type: object
+    
+    transaction:
+      properties:
+        payment_method:
+          $ref: '#/components/schemas/created_payment_method'
+        token:
+          description: The transaction token
+          type: string
+      required:
+        - token
+        - payment_method
+    unprocessable_entity:
+      properties:
+        error:
+          $ref: '#/components/schemas/error'
+    error:
+      properties:
+        attribute:
+          type: string
+        key:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    basicAuth:
+      description: Basic HTTP Authentication
+      type: http
+      scheme: Basic

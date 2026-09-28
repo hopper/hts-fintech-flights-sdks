@@ -1,0 +1,16 @@
+build.gradle
+build.sbt
+settings.gradle
+gradle.properties
+gradlew
+gradlew.bat
+gradle/**
+pom.xml
+README.md
+.gitignore
+.travis.yml
+git_push.sh
+.github/**
+api/**
+docs/**
+src/test/**

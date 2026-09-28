@@ -1,0 +1,15 @@
+{
+  "groupId": "com.hopper.hts",
+  "artifactId": "flights-cfar-client",
+  "invokerPackage": "com.hopper.hts.fintech.flights.cfar",
+  "apiPackage": "com.hopper.hts.fintech.flights.cfar.api",
+  "modelPackage": "com.hopper.hts.fintech.flights.cfar.model",
+  "library": "okhttp-gson",
+  "dateLibrary": "java8",
+  "hideGenerationTimestamp": true,
+  "disallowAdditionalPropertiesIfNotPresent": false,
+  "useBeanValidation": false,
+  "performBeanValidation": false,
+  "containerDefaultToNull": true,
+  "openApiNullable": false
+}
