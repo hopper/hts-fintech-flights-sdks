@@ -6,6 +6,6 @@ SDKs for the HTS Fintech Flights APIs (Cancel For Any Reason).
 | --- | --- | --- |
 | Java | [`java/`](java/README.md) | `com.hopper.hts:hts-fintech-flights-sdk` on Maven Central |
 
-The API specifications in [`api/`](api) are shared by every language. When HTS publishes a new version of the API, a pull request arrives here with the updated spec and the regenerated clients.
+The API specifications in [`api/`](api) are shared by every language. When HTS publishes a new version of the API, the spec and the generated clients here are updated to match.
 
 Each language is released independently with a prefixed tag, for example `java-v1.2.0`.

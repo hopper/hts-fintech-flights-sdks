@@ -95,11 +95,11 @@ Generation is idempotent: running it twice produces identical sources, so a spec
 
 ## Updating the spec
 
-`../api/flights-cfar-v2.json` is the spec exactly as published on the HTS developer portal. When HTS publishes a new version, a pull request arrives here with the updated spec and the regenerated clients, with CI already run against it. To update by hand, download the spec from the portal into `../api/`, run `./generate.sh`, and commit the result.
+`../api/flights-cfar-v2.json` is the spec exactly as published on the HTS developer portal. When HTS publishes a new version, the spec and regenerated clients are updated here. To update by hand, download the spec from the portal into `../api/`, run `./generate.sh`, and commit the result.
 
 ## Releasing
 
-Pushing a tag of the form `java-vX.Y.Z` runs the release workflow, which builds every module with that version, signs the artifacts, publishes them to Maven Central, and creates a GitHub release with the jars attached. Three artifacts are published under `com.hopper.hts`:
+Releases are tagged `java-vX.Y.Z`. Each release is built with that version, signed, and published to Maven Central. Three artifacts are published under `com.hopper.hts`:
 
 | Artifact | Module |
 | --- | --- |
@@ -107,7 +107,7 @@ Pushing a tag of the form `java-vX.Y.Z` runs the release workflow, which builds 
 | `hts-fintech-flights-cfar-client` | `flights-cfar-client` |
 | `hts-fintech-spreedly-client` | `spreedly-client` |
 
-The workflow expects four repository secrets: `MAVEN_TOKEN_CENTRAL_REPOSITORY_USERNAME`, `MAVEN_TOKEN_CENTRAL_REPOSITORY_PASSWORD`, `GPG_KEY` (ASCII-armored private key), and `GPG_PASSWORD`. Locally, `./gradlew publishToMavenLocal -PsdkVersion=0.0.0-local` publishes unsigned artifacts to `~/.m2` for testing against a consuming project.
+Locally, `./gradlew publishToMavenLocal -PsdkVersion=0.0.0-local` publishes unsigned artifacts to `~/.m2` for testing against a consuming project.
 
 ## Requirements
 
