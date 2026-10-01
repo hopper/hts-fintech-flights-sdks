@@ -14,7 +14,7 @@ val publishedArtifacts = mapOf(
 )
 
 allprojects {
-    group = "com.hopper.hts"
+    group = "com.hopper.cloud"
     version = providers.gradleProperty("sdkVersion").get()
 
     repositories {

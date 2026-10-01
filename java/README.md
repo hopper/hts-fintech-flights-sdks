@@ -99,7 +99,7 @@ Generation is idempotent: running it twice produces identical sources, so a spec
 
 ## Releasing
 
-Releases are tagged `java-vX.Y.Z`. Each release is built with that version, signed, and published to Maven Central. Three artifacts are published under `com.hopper.hts`:
+Releases are tagged `java-vX.Y.Z`. Each release is built with that version, signed, and published to Maven Central. Three artifacts are published under `com.hopper.cloud`:
 
 | Artifact | Module |
 | --- | --- |
