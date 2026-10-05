@@ -1,4 +1,3 @@
-src/main/AndroidManifest.xml
 src/main/java/com/hopper/hts/fintech/flights/cfar/ApiCallback.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/ApiClient.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/ApiException.java
@@ -16,7 +15,6 @@ src/main/java/com/hopper/hts/fintech/flights/cfar/api/AnalyticsApi.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/api/ContractManagementPostPurchaseApi.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/api/HtsSelfServiceExerciseApi.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/api/OfferMerchandisingPrePurchaseApi.java
-src/main/java/com/hopper/hts/fintech/flights/cfar/api/PartnerEndpointsApi.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/api/PartnerManualExerciseApi.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/api/PartnerSelfServiceExerciseApi.java
 src/main/java/com/hopper/hts/fintech/flights/cfar/auth/ApiKeyAuth.java

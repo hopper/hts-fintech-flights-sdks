@@ -26,6 +26,10 @@ src, dst = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
 if src.suffix == ".json":
     spec = json.loads(src.read_text())
     spec.pop("webhooks", None)
+    for path in [p for p, ops in spec.get("paths", {}).items()
+                 if any("Partner Endpoints" in op.get("tags", []) for op in ops.values() if isinstance(op, dict))]:
+        del spec["paths"][path]
+    spec["tags"] = [t for t in spec.get("tags", []) if t.get("name") != "Partner Endpoints"]
     dst.write_text(json.dumps(spec, indent=2) + "\n")
 else:
     dst.write_text(src.read_text())

@@ -5,9 +5,8 @@ info:
 servers:
 - url: https://core.spreedly.com/v1/
 tags:
-- description: |-
-    **Hopper Technology Solutions (HTS) Ancillaries for Airlines**
-  name: Analytics
+- description: Tokenize payment cards with Spreedly so card data never reaches HTS.
+  name: Payment
 paths:
   /payment_methods:
     post:

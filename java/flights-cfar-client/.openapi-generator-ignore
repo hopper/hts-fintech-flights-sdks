@@ -14,3 +14,4 @@ git_push.sh
 api/**
 docs/**
 src/test/**
+src/main/AndroidManifest.xml

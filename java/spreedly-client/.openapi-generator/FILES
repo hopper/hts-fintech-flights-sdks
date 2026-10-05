@@ -1,4 +1,3 @@
-src/main/AndroidManifest.xml
 src/main/java/com/hopper/hts/fintech/spreedly/ApiCallback.java
 src/main/java/com/hopper/hts/fintech/spreedly/ApiClient.java
 src/main/java/com/hopper/hts/fintech/spreedly/ApiException.java

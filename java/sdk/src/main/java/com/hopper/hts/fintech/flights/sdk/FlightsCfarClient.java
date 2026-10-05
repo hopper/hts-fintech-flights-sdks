@@ -5,7 +5,6 @@ import com.hopper.hts.fintech.flights.cfar.api.AnalyticsApi;
 import com.hopper.hts.fintech.flights.cfar.api.ContractManagementPostPurchaseApi;
 import com.hopper.hts.fintech.flights.cfar.api.HtsSelfServiceExerciseApi;
 import com.hopper.hts.fintech.flights.cfar.api.OfferMerchandisingPrePurchaseApi;
-import com.hopper.hts.fintech.flights.cfar.api.PartnerEndpointsApi;
 import com.hopper.hts.fintech.flights.cfar.api.PartnerManualExerciseApi;
 import com.hopper.hts.fintech.flights.cfar.api.PartnerSelfServiceExerciseApi;
 
@@ -51,9 +50,6 @@ public final class FlightsCfarClient {
         return new HtsSelfServiceExerciseApi(apiClient);
     }
 
-    public PartnerEndpointsApi partnerEndpoints() {
-        return new PartnerEndpointsApi(apiClient);
-    }
 
     public AnalyticsApi analytics() {
         return new AnalyticsApi(apiClient);
