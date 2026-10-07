@@ -19,347 +19,326 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hopper.hts.fintech.flights.cfar.model.BookingAlreadyCanceled;
-import com.hopper.hts.fintech.flights.cfar.model.BookingInVoidWindow;
-import com.hopper.hts.fintech.flights.cfar.model.InsufficientFunds;
-import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus4;
+import com.hopper.hts.fintech.flights.cfar.model.PayoutOption;
 import java.io.IOException;
-import java.util.Arrays;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
+/**
+ * CfarExerciseQuote
+ */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class CfarExerciseQuote extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(CfarExerciseQuote.class.getName());
+public class CfarExerciseQuote {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
+  private String id;
 
-    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!CfarExerciseQuote.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'CfarExerciseQuote' and its subtypes
-            }
-            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<BookingAlreadyCanceled> adapterBookingAlreadyCanceled = gson.getDelegateAdapter(this, TypeToken.get(BookingAlreadyCanceled.class));
-            final TypeAdapter<BookingInVoidWindow> adapterBookingInVoidWindow = gson.getDelegateAdapter(this, TypeToken.get(BookingInVoidWindow.class));
-            final TypeAdapter<InsufficientFunds> adapterInsufficientFunds = gson.getDelegateAdapter(this, TypeToken.get(InsufficientFunds.class));
-            final TypeAdapter<InvalidContractStatus4> adapterInvalidContractStatus4 = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus4.class));
+  public static final String SERIALIZED_NAME_PAYOUT_OPTIONS = "payout_options";
+  @SerializedName(SERIALIZED_NAME_PAYOUT_OPTIONS)
+  @javax.annotation.Nonnull
+  private List<PayoutOption> payoutOptions;
 
-            return (TypeAdapter<T>) new TypeAdapter<CfarExerciseQuote>() {
-                @Override
-                public void write(JsonWriter out, CfarExerciseQuote value) throws IOException {
-                    if (value == null || value.getActualInstance() == null) {
-                        elementAdapter.write(out, null);
-                        return;
-                    }
+  public CfarExerciseQuote() {
+  }
 
-                    // check if the actual instance is of the type `BookingAlreadyCanceled`
-                    if (value.getActualInstance() instanceof BookingAlreadyCanceled) {
-                        JsonElement element = adapterBookingAlreadyCanceled.toJsonTree((BookingAlreadyCanceled)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `BookingInVoidWindow`
-                    if (value.getActualInstance() instanceof BookingInVoidWindow) {
-                        JsonElement element = adapterBookingInVoidWindow.toJsonTree((BookingInVoidWindow)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `InsufficientFunds`
-                    if (value.getActualInstance() instanceof InsufficientFunds) {
-                        JsonElement element = adapterInsufficientFunds.toJsonTree((InsufficientFunds)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    // check if the actual instance is of the type `InvalidContractStatus4`
-                    if (value.getActualInstance() instanceof InvalidContractStatus4) {
-                        JsonElement element = adapterInvalidContractStatus4.toJsonTree((InvalidContractStatus4)value.getActualInstance());
-                        elementAdapter.write(out, element);
-                        return;
-                    }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4");
-                }
+  public CfarExerciseQuote id(@javax.annotation.Nonnull String id) {
+    this.id = id;
+    return this;
+  }
 
-                @Override
-                public CfarExerciseQuote read(JsonReader in) throws IOException {
-                    Object deserialized = null;
-                    JsonElement jsonElement = elementAdapter.read(in);
+  /**
+   * Unique ID for an exercise quote.
+   * @return id
+   */
+  @javax.annotation.Nonnull
+  public String getId() {
+    return id;
+  }
 
-                    int match = 0;
-                    ArrayList<String> errorMessages = new ArrayList<>();
-                    TypeAdapter actualAdapter = elementAdapter;
+  public void setId(@javax.annotation.Nonnull String id) {
+    this.id = id;
+  }
 
-                    // deserialize BookingAlreadyCanceled
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        BookingAlreadyCanceled.validateJsonElement(jsonElement);
-                        actualAdapter = adapterBookingAlreadyCanceled;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'BookingAlreadyCanceled'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BookingAlreadyCanceled failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'BookingAlreadyCanceled'", e);
-                    }
-                    // deserialize BookingInVoidWindow
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        BookingInVoidWindow.validateJsonElement(jsonElement);
-                        actualAdapter = adapterBookingInVoidWindow;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'BookingInVoidWindow'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BookingInVoidWindow failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'BookingInVoidWindow'", e);
-                    }
-                    // deserialize InsufficientFunds
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InsufficientFunds.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInsufficientFunds;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InsufficientFunds'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InsufficientFunds failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InsufficientFunds'", e);
-                    }
-                    // deserialize InvalidContractStatus4
-                    try {
-                        // validate the JSON object to see if any exception is thrown
-                        InvalidContractStatus4.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidContractStatus4;
-                        match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus4'");
-                    } catch (Exception e) {
-                        // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidContractStatus4 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus4'", e);
-                    }
 
-                    if (match == 1) {
-                        CfarExerciseQuote ret = new CfarExerciseQuote();
-                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
-                        return ret;
-                    }
+  public CfarExerciseQuote payoutOptions(@javax.annotation.Nonnull List<PayoutOption> payoutOptions) {
+    this.payoutOptions = payoutOptions;
+    return this;
+  }
 
-                    throw new IOException(String.format("Failed deserialization for CfarExerciseQuote: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
-                }
-            }.nullSafe();
+  public CfarExerciseQuote addPayoutOptionsItem(PayoutOption payoutOptionsItem) {
+    if (this.payoutOptions == null) {
+      this.payoutOptions = new ArrayList<>();
+    }
+    this.payoutOptions.add(payoutOptionsItem);
+    return this;
+  }
+
+  /**
+   * Options detailing the different ways a customer may select to be paid out.
+   * @return payoutOptions
+   */
+  @javax.annotation.Nonnull
+  public List<PayoutOption> getPayoutOptions() {
+    return payoutOptions;
+  }
+
+  public void setPayoutOptions(@javax.annotation.Nonnull List<PayoutOption> payoutOptions) {
+    this.payoutOptions = payoutOptions;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the CfarExerciseQuote instance itself
+   */
+  public CfarExerciseQuote putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CfarExerciseQuote cfarExerciseQuote = (CfarExerciseQuote) o;
+    return Objects.equals(this.id, cfarExerciseQuote.id) &&
+        Objects.equals(this.payoutOptions, cfarExerciseQuote.payoutOptions)&&
+        Objects.equals(this.additionalProperties, cfarExerciseQuote.additionalProperties);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, payoutOptions, additionalProperties);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CfarExerciseQuote {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    payoutOptions: ").append(toIndentedString(payoutOptions)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("payout_options");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("payout_options");
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CfarExerciseQuote
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CfarExerciseQuote.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CfarExerciseQuote is not found in the empty JSON string", CfarExerciseQuote.openapiRequiredFields.toString()));
         }
-    }
+      }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
-
-    public CfarExerciseQuote() {
-        super("oneOf", Boolean.FALSE);
-    }
-
-    public CfarExerciseQuote(Object o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("BookingAlreadyCanceled", BookingAlreadyCanceled.class);
-        schemas.put("BookingInVoidWindow", BookingInVoidWindow.class);
-        schemas.put("InsufficientFunds", InsufficientFunds.class);
-        schemas.put("InvalidContractStatus4", InvalidContractStatus4.class);
-    }
-
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return CfarExerciseQuote.schemas;
-    }
-
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (instance instanceof BookingAlreadyCanceled) {
-            super.setActualInstance(instance);
-            return;
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CfarExerciseQuote.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("payout_options").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `payout_options` to be an array in the JSON string but got `%s`", jsonObj.get("payout_options").toString()));
+      }
 
-        if (instance instanceof BookingInVoidWindow) {
-            super.setActualInstance(instance);
-            return;
-        }
+      JsonArray jsonArraypayoutOptions = jsonObj.getAsJsonArray("payout_options");
+      // validate the required field `payout_options` (array)
+      for (int i = 0; i < jsonArraypayoutOptions.size(); i++) {
+        PayoutOption.validateJsonElement(jsonArraypayoutOptions.get(i));
+      };
+  }
 
-        if (instance instanceof InsufficientFunds) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (instance instanceof InvalidContractStatus4) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4");
-    }
-
-    /**
-     * Get the actual instance, which can be the following:
-     * BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4
-     *
-     * @return The actual instance (BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4)
-     */
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CfarExerciseQuote.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CfarExerciseQuote' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CfarExerciseQuote> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CfarExerciseQuote.class));
 
-    /**
-     * Get the actual instance of `BookingAlreadyCanceled`. If the actual instance is not `BookingAlreadyCanceled`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `BookingAlreadyCanceled`
-     * @throws ClassCastException if the instance is not `BookingAlreadyCanceled`
-     */
-    public BookingAlreadyCanceled getBookingAlreadyCanceled() throws ClassCastException {
-        return (BookingAlreadyCanceled)super.getActualInstance();
-    }
+       return (TypeAdapter<T>) new TypeAdapter<CfarExerciseQuote>() {
+           @Override
+           public void write(JsonWriter out, CfarExerciseQuote value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
 
-    /**
-     * Get the actual instance of `BookingInVoidWindow`. If the actual instance is not `BookingInVoidWindow`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `BookingInVoidWindow`
-     * @throws ClassCastException if the instance is not `BookingInVoidWindow`
-     */
-    public BookingInVoidWindow getBookingInVoidWindow() throws ClassCastException {
-        return (BookingInVoidWindow)super.getActualInstance();
-    }
+           @Override
+           public CfarExerciseQuote read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             CfarExerciseQuote instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
 
-    /**
-     * Get the actual instance of `InsufficientFunds`. If the actual instance is not `InsufficientFunds`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InsufficientFunds`
-     * @throws ClassCastException if the instance is not `InsufficientFunds`
-     */
-    public InsufficientFunds getInsufficientFunds() throws ClassCastException {
-        return (InsufficientFunds)super.getActualInstance();
+       }.nullSafe();
     }
+  }
 
-    /**
-     * Get the actual instance of `InvalidContractStatus4`. If the actual instance is not `InvalidContractStatus4`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InvalidContractStatus4`
-     * @throws ClassCastException if the instance is not `InvalidContractStatus4`
-     */
-    public InvalidContractStatus4 getInvalidContractStatus4() throws ClassCastException {
-        return (InvalidContractStatus4)super.getActualInstance();
-    }
+  /**
+   * Create an instance of CfarExerciseQuote given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CfarExerciseQuote
+   * @throws IOException if the JSON string is invalid with respect to CfarExerciseQuote
+   */
+  public static CfarExerciseQuote fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CfarExerciseQuote.class);
+  }
 
-    /**
-     * Validates the JSON Element and throws an exception if issues found
-     *
-     * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to CfarExerciseQuote
-     */
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-        // validate oneOf schemas one by one
-        int validCount = 0;
-        ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with BookingAlreadyCanceled
-        try {
-            BookingAlreadyCanceled.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BookingAlreadyCanceled failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with BookingInVoidWindow
-        try {
-            BookingInVoidWindow.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BookingInVoidWindow failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with InsufficientFunds
-        try {
-            InsufficientFunds.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InsufficientFunds failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        // validate the json string with InvalidContractStatus4
-        try {
-            InvalidContractStatus4.validateJsonElement(jsonElement);
-            validCount++;
-        } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidContractStatus4 failed with `%s`.", e.getMessage()));
-            // continue to the next one
-        }
-        if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarExerciseQuote with oneOf schemas: BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
-        }
-    }
-
-    /**
-     * Create an instance of CfarExerciseQuote given an JSON string
-     *
-     * @param jsonString JSON string
-     * @return An instance of CfarExerciseQuote
-     * @throws IOException if the JSON string is invalid with respect to CfarExerciseQuote
-     */
-    public static CfarExerciseQuote fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, CfarExerciseQuote.class);
-    }
-
-    /**
-     * Convert an instance of CfarExerciseQuote to an JSON string
-     *
-     * @return JSON string
-     */
-    public String toJson() {
-        return JSON.getGson().toJson(this);
-    }
+  /**
+   * Convert an instance of CfarExerciseQuote to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

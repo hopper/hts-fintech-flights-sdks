@@ -1,7 +1,7 @@
 package com.hopper.hts.fintech.flights.examples;
 
 import com.hopper.hts.fintech.flights.cfar.model.CfarContract;
-import com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote1;
+import com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote;
 import com.hopper.hts.fintech.flights.cfar.model.CreateCfarExerciseQuoteRequest;
 import com.hopper.hts.fintech.flights.cfar.model.ExerciseUrl;
 import com.hopper.hts.fintech.flights.cfar.model.FulfillExerciseQuoteRequest;
@@ -30,7 +30,7 @@ public final class ExerciseContract {
         }
 
         String sessionId = UUID.randomUUID().toString();
-        CfarExerciseQuote1 quote = hts.partnerSelfServiceExercise().postContractsIdExerciseQuotes(
+        CfarExerciseQuote quote = hts.partnerSelfServiceExercise().postContractsIdExerciseQuotes(
             contractId, new CreateCfarExerciseQuoteRequest().sessionId(sessionId));
         System.out.printf("Quote %s with %d payout option(s)%n", quote.getId(), quote.getPayoutOptions().size());
 

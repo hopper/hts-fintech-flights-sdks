@@ -62,15 +62,15 @@ import com.google.gson.JsonParseException;
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class Cfar2 extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(Cfar2.class.getName());
+public class CfarExerciseContractError extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(CfarExerciseContractError.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!Cfar2.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'Cfar2' and its subtypes
+            if (!CfarExerciseContractError.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CfarExerciseContractError' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<ContractExpired> adapterContractExpired = gson.getDelegateAdapter(this, TypeToken.get(ContractExpired.class));
@@ -78,9 +78,9 @@ public class Cfar2 extends AbstractOpenApiSchema {
             final TypeAdapter<PassengerAlreadyExercised> adapterPassengerAlreadyExercised = gson.getDelegateAdapter(this, TypeToken.get(PassengerAlreadyExercised.class));
             final TypeAdapter<PassengerNotFound> adapterPassengerNotFound = gson.getDelegateAdapter(this, TypeToken.get(PassengerNotFound.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<Cfar2>() {
+            return (TypeAdapter<T>) new TypeAdapter<CfarExerciseContractError>() {
                 @Override
-                public void write(JsonWriter out, Cfar2 value) throws IOException {
+                public void write(JsonWriter out, CfarExerciseContractError value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
                         return;
@@ -114,7 +114,7 @@ public class Cfar2 extends AbstractOpenApiSchema {
                 }
 
                 @Override
-                public Cfar2 read(JsonReader in) throws IOException {
+                public CfarExerciseContractError read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
@@ -172,12 +172,12 @@ public class Cfar2 extends AbstractOpenApiSchema {
                     }
 
                     if (match == 1) {
-                        Cfar2 ret = new Cfar2();
+                        CfarExerciseContractError ret = new CfarExerciseContractError();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Cfar2: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format("Failed deserialization for CfarExerciseContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -186,11 +186,11 @@ public class Cfar2 extends AbstractOpenApiSchema {
     // store a list of schema names defined in oneOf
     public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
-    public Cfar2() {
+    public CfarExerciseContractError() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public Cfar2(Object o) {
+    public CfarExerciseContractError(Object o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -204,7 +204,7 @@ public class Cfar2 extends AbstractOpenApiSchema {
 
     @Override
     public Map<String, Class<?>> getSchemas() {
-        return Cfar2.schemas;
+        return CfarExerciseContractError.schemas;
     }
 
     /**
@@ -299,7 +299,7 @@ public class Cfar2 extends AbstractOpenApiSchema {
      * Validates the JSON Element and throws an exception if issues found
      *
      * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to Cfar2
+     * @throws IOException if the JSON Element is invalid with respect to CfarExerciseContractError
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         // validate oneOf schemas one by one
@@ -338,23 +338,23 @@ public class Cfar2 extends AbstractOpenApiSchema {
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Cfar2 with oneOf schemas: ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for CfarExerciseContractError with oneOf schemas: ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 
     /**
-     * Create an instance of Cfar2 given an JSON string
+     * Create an instance of CfarExerciseContractError given an JSON string
      *
      * @param jsonString JSON string
-     * @return An instance of Cfar2
-     * @throws IOException if the JSON string is invalid with respect to Cfar2
+     * @return An instance of CfarExerciseContractError
+     * @throws IOException if the JSON string is invalid with respect to CfarExerciseContractError
      */
-    public static Cfar2 fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, Cfar2.class);
+    public static CfarExerciseContractError fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CfarExerciseContractError.class);
     }
 
     /**
-     * Convert an instance of Cfar2 to an JSON string
+     * Convert an instance of CfarExerciseContractError to an JSON string
      *
      * @return JSON string
      */

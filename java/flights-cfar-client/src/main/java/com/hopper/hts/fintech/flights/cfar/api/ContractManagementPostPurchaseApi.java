@@ -28,8 +28,11 @@ import java.io.IOException;
 
 
 import com.hopper.hts.fintech.flights.cfar.model.CancelContractRequest;
-import com.hopper.hts.fintech.flights.cfar.model.Cfar;
+import com.hopper.hts.fintech.flights.cfar.model.CfarCancelContractError;
+import com.hopper.hts.fintech.flights.cfar.model.CfarConfirmContractError;
 import com.hopper.hts.fintech.flights.cfar.model.CfarContract;
+import com.hopper.hts.fintech.flights.cfar.model.CfarCreateDraftContractError;
+import com.hopper.hts.fintech.flights.cfar.model.CfarVoidContractError;
 import com.hopper.hts.fintech.flights.cfar.model.ConfirmContractRequest;
 import com.hopper.hts.fintech.flights.cfar.model.CreateDraftContractRequest;
 import com.hopper.hts.fintech.flights.cfar.model.Error;

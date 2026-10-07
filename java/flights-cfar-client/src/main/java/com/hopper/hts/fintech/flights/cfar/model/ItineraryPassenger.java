@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hopper.hts.fintech.flights.cfar.model.Ancillary;
+import com.hopper.hts.fintech.flights.cfar.model.FareAmountModification;
 import com.hopper.hts.fintech.flights.cfar.model.PassengerType;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,6 +69,11 @@ public class ItineraryPassenger {
   @SerializedName(SERIALIZED_NAME_FARE_AMOUNT)
   @javax.annotation.Nonnull
   private String fareAmount;
+
+  public static final String SERIALIZED_NAME_FARE_AMOUNT_MODIFICATIONS = "fare_amount_modifications";
+  @SerializedName(SERIALIZED_NAME_FARE_AMOUNT_MODIFICATIONS)
+  @javax.annotation.Nullable
+  private List<FareAmountModification> fareAmountModifications;
 
   public ItineraryPassenger() {
   }
@@ -136,6 +142,33 @@ public class ItineraryPassenger {
     this.fareAmount = fareAmount;
   }
 
+
+  public ItineraryPassenger fareAmountModifications(@javax.annotation.Nullable List<FareAmountModification> fareAmountModifications) {
+    this.fareAmountModifications = fareAmountModifications;
+    return this;
+  }
+
+  public ItineraryPassenger addFareAmountModificationsItem(FareAmountModification fareAmountModificationsItem) {
+    if (this.fareAmountModifications == null) {
+      this.fareAmountModifications = new ArrayList<>();
+    }
+    this.fareAmountModifications.add(fareAmountModificationsItem);
+    return this;
+  }
+
+  /**
+   * Modifications to the fare amount, which change how much a customer is charged. Add each fare modification to the fare amount to get the total fare amount the customer will be charged.
+   * @return fareAmountModifications
+   */
+  @javax.annotation.Nullable
+  public List<FareAmountModification> getFareAmountModifications() {
+    return fareAmountModifications;
+  }
+
+  public void setFareAmountModifications(@javax.annotation.Nullable List<FareAmountModification> fareAmountModifications) {
+    this.fareAmountModifications = fareAmountModifications;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -193,13 +226,14 @@ public class ItineraryPassenger {
     ItineraryPassenger itineraryPassenger = (ItineraryPassenger) o;
     return Objects.equals(this.type, itineraryPassenger.type) &&
         Objects.equals(this.ancillaries, itineraryPassenger.ancillaries) &&
-        Objects.equals(this.fareAmount, itineraryPassenger.fareAmount)&&
+        Objects.equals(this.fareAmount, itineraryPassenger.fareAmount) &&
+        Objects.equals(this.fareAmountModifications, itineraryPassenger.fareAmountModifications)&&
         Objects.equals(this.additionalProperties, itineraryPassenger.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, ancillaries, fareAmount, additionalProperties);
+    return Objects.hash(type, ancillaries, fareAmount, fareAmountModifications, additionalProperties);
   }
 
   @Override
@@ -209,6 +243,7 @@ public class ItineraryPassenger {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    ancillaries: ").append(toIndentedString(ancillaries)).append("\n");
     sb.append("    fareAmount: ").append(toIndentedString(fareAmount)).append("\n");
+    sb.append("    fareAmountModifications: ").append(toIndentedString(fareAmountModifications)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -235,6 +270,7 @@ public class ItineraryPassenger {
     openapiFields.add("type");
     openapiFields.add("ancillaries");
     openapiFields.add("fare_amount");
+    openapiFields.add("fare_amount_modifications");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -277,6 +313,20 @@ public class ItineraryPassenger {
       };
       if (!jsonObj.get("fare_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fare_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fare_amount").toString()));
+      }
+      if (jsonObj.get("fare_amount_modifications") != null && !jsonObj.get("fare_amount_modifications").isJsonNull()) {
+        JsonArray jsonArrayfareAmountModifications = jsonObj.getAsJsonArray("fare_amount_modifications");
+        if (jsonArrayfareAmountModifications != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("fare_amount_modifications").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `fare_amount_modifications` to be an array in the JSON string but got `%s`", jsonObj.get("fare_amount_modifications").toString()));
+          }
+
+          // validate the optional field `fare_amount_modifications` (array)
+          for (int i = 0; i < jsonArrayfareAmountModifications.size(); i++) {
+            FareAmountModification.validateJsonElement(jsonArrayfareAmountModifications.get(i));
+          };
+        }
       }
   }
 

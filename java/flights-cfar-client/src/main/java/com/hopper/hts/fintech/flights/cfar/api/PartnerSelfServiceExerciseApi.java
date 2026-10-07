@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hopper.hts.fintech.flights.cfar.model.CfarCreateFlightsExerciseQuoteError;
 import com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote;
-import com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote1;
 import com.hopper.hts.fintech.flights.cfar.model.CreateCfarExerciseQuoteRequest;
 import com.hopper.hts.fintech.flights.cfar.model.Error;
 import com.hopper.hts.fintech.flights.cfar.model.FulfillExerciseQuoteRequest;
@@ -164,7 +164,7 @@ public class PartnerSelfServiceExerciseApi {
      * Create CFAR exercise quote
      * @param id A unique identifier for a contract. (required)
      * @param createCfarExerciseQuoteRequest  (required)
-     * @return CfarExerciseQuote1
+     * @return CfarExerciseQuote
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -180,8 +180,8 @@ public class PartnerSelfServiceExerciseApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public CfarExerciseQuote1 postContractsIdExerciseQuotes(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) throws ApiException {
-        ApiResponse<CfarExerciseQuote1> localVarResp = postContractsIdExerciseQuotesWithHttpInfo(id, createCfarExerciseQuoteRequest);
+    public CfarExerciseQuote postContractsIdExerciseQuotes(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) throws ApiException {
+        ApiResponse<CfarExerciseQuote> localVarResp = postContractsIdExerciseQuotesWithHttpInfo(id, createCfarExerciseQuoteRequest);
         return localVarResp.getData();
     }
 
@@ -190,7 +190,7 @@ public class PartnerSelfServiceExerciseApi {
      * Create CFAR exercise quote
      * @param id A unique identifier for a contract. (required)
      * @param createCfarExerciseQuoteRequest  (required)
-     * @return ApiResponse&lt;CfarExerciseQuote1&gt;
+     * @return ApiResponse&lt;CfarExerciseQuote&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -206,9 +206,9 @@ public class PartnerSelfServiceExerciseApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CfarExerciseQuote1> postContractsIdExerciseQuotesWithHttpInfo(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) throws ApiException {
+    public ApiResponse<CfarExerciseQuote> postContractsIdExerciseQuotesWithHttpInfo(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) throws ApiException {
         okhttp3.Call localVarCall = postContractsIdExerciseQuotesValidateBeforeCall(id, createCfarExerciseQuoteRequest, null);
-        Type localVarReturnType = new TypeToken<CfarExerciseQuote1>(){}.getType();
+        Type localVarReturnType = new TypeToken<CfarExerciseQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -234,10 +234,10 @@ public class PartnerSelfServiceExerciseApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContractsIdExerciseQuotesAsync(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback<CfarExerciseQuote1> _callback) throws ApiException {
+    public okhttp3.Call postContractsIdExerciseQuotesAsync(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback<CfarExerciseQuote> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postContractsIdExerciseQuotesValidateBeforeCall(id, createCfarExerciseQuoteRequest, _callback);
-        Type localVarReturnType = new TypeToken<CfarExerciseQuote1>(){}.getType();
+        Type localVarReturnType = new TypeToken<CfarExerciseQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

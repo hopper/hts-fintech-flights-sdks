@@ -61,24 +61,24 @@ import com.google.gson.JsonParseException;
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class Cfar3 extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(Cfar3.class.getName());
+public class CfarVoidContractError extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(CfarVoidContractError.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!Cfar3.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'Cfar3' and its subtypes
+            if (!CfarVoidContractError.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CfarVoidContractError' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<InvalidContractStatus2> adapterInvalidContractStatus2 = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus2.class));
             final TypeAdapter<OrderNotFound1> adapterOrderNotFound1 = gson.getDelegateAdapter(this, TypeToken.get(OrderNotFound1.class));
             final TypeAdapter<PaymentRefundFailed> adapterPaymentRefundFailed = gson.getDelegateAdapter(this, TypeToken.get(PaymentRefundFailed.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<Cfar3>() {
+            return (TypeAdapter<T>) new TypeAdapter<CfarVoidContractError>() {
                 @Override
-                public void write(JsonWriter out, Cfar3 value) throws IOException {
+                public void write(JsonWriter out, CfarVoidContractError value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
                         return;
@@ -106,7 +106,7 @@ public class Cfar3 extends AbstractOpenApiSchema {
                 }
 
                 @Override
-                public Cfar3 read(JsonReader in) throws IOException {
+                public CfarVoidContractError read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
@@ -152,12 +152,12 @@ public class Cfar3 extends AbstractOpenApiSchema {
                     }
 
                     if (match == 1) {
-                        Cfar3 ret = new Cfar3();
+                        CfarVoidContractError ret = new CfarVoidContractError();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Cfar3: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format("Failed deserialization for CfarVoidContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -166,11 +166,11 @@ public class Cfar3 extends AbstractOpenApiSchema {
     // store a list of schema names defined in oneOf
     public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
-    public Cfar3() {
+    public CfarVoidContractError() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public Cfar3(Object o) {
+    public CfarVoidContractError(Object o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -183,7 +183,7 @@ public class Cfar3 extends AbstractOpenApiSchema {
 
     @Override
     public Map<String, Class<?>> getSchemas() {
-        return Cfar3.schemas;
+        return CfarVoidContractError.schemas;
     }
 
     /**
@@ -262,7 +262,7 @@ public class Cfar3 extends AbstractOpenApiSchema {
      * Validates the JSON Element and throws an exception if issues found
      *
      * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to Cfar3
+     * @throws IOException if the JSON Element is invalid with respect to CfarVoidContractError
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         // validate oneOf schemas one by one
@@ -293,23 +293,23 @@ public class Cfar3 extends AbstractOpenApiSchema {
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Cfar3 with oneOf schemas: InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for CfarVoidContractError with oneOf schemas: InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 
     /**
-     * Create an instance of Cfar3 given an JSON string
+     * Create an instance of CfarVoidContractError given an JSON string
      *
      * @param jsonString JSON string
-     * @return An instance of Cfar3
-     * @throws IOException if the JSON string is invalid with respect to Cfar3
+     * @return An instance of CfarVoidContractError
+     * @throws IOException if the JSON string is invalid with respect to CfarVoidContractError
      */
-    public static Cfar3 fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, Cfar3.class);
+    public static CfarVoidContractError fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CfarVoidContractError.class);
     }
 
     /**
-     * Convert an instance of Cfar3 to an JSON string
+     * Convert an instance of CfarVoidContractError to an JSON string
      *
      * @return JSON string
      */

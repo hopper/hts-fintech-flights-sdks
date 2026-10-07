@@ -68,15 +68,15 @@ import com.google.gson.JsonParseException;
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class Cfar extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(Cfar.class.getName());
+public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(CfarCreateDraftContractError.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!Cfar.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'Cfar' and its subtypes
+            if (!CfarCreateDraftContractError.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CfarCreateDraftContractError' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<BillingInfoRequiredForMerchantOfRecordHts> adapterBillingInfoRequiredForMerchantOfRecordHts = gson.getDelegateAdapter(this, TypeToken.get(BillingInfoRequiredForMerchantOfRecordHts.class));
@@ -90,9 +90,9 @@ public class Cfar extends AbstractOpenApiSchema {
             final TypeAdapter<PaymentAuthorizationFailure> adapterPaymentAuthorizationFailure = gson.getDelegateAdapter(this, TypeToken.get(PaymentAuthorizationFailure.class));
             final TypeAdapter<PaymentCardRequiredForMerchantOfRecordHts> adapterPaymentCardRequiredForMerchantOfRecordHts = gson.getDelegateAdapter(this, TypeToken.get(PaymentCardRequiredForMerchantOfRecordHts.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<Cfar>() {
+            return (TypeAdapter<T>) new TypeAdapter<CfarCreateDraftContractError>() {
                 @Override
-                public void write(JsonWriter out, Cfar value) throws IOException {
+                public void write(JsonWriter out, CfarCreateDraftContractError value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
                         return;
@@ -162,7 +162,7 @@ public class Cfar extends AbstractOpenApiSchema {
                 }
 
                 @Override
-                public Cfar read(JsonReader in) throws IOException {
+                public CfarCreateDraftContractError read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
@@ -292,12 +292,12 @@ public class Cfar extends AbstractOpenApiSchema {
                     }
 
                     if (match == 1) {
-                        Cfar ret = new Cfar();
+                        CfarCreateDraftContractError ret = new CfarCreateDraftContractError();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Cfar: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format("Failed deserialization for CfarCreateDraftContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -306,11 +306,11 @@ public class Cfar extends AbstractOpenApiSchema {
     // store a list of schema names defined in oneOf
     public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
-    public Cfar() {
+    public CfarCreateDraftContractError() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public Cfar(Object o) {
+    public CfarCreateDraftContractError(Object o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -330,7 +330,7 @@ public class Cfar extends AbstractOpenApiSchema {
 
     @Override
     public Map<String, Class<?>> getSchemas() {
-        return Cfar.schemas;
+        return CfarCreateDraftContractError.schemas;
     }
 
     /**
@@ -521,7 +521,7 @@ public class Cfar extends AbstractOpenApiSchema {
      * Validates the JSON Element and throws an exception if issues found
      *
      * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to Cfar
+     * @throws IOException if the JSON Element is invalid with respect to CfarCreateDraftContractError
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         // validate oneOf schemas one by one
@@ -608,23 +608,23 @@ public class Cfar extends AbstractOpenApiSchema {
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Cfar with oneOf schemas: BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for CfarCreateDraftContractError with oneOf schemas: BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 
     /**
-     * Create an instance of Cfar given an JSON string
+     * Create an instance of CfarCreateDraftContractError given an JSON string
      *
      * @param jsonString JSON string
-     * @return An instance of Cfar
-     * @throws IOException if the JSON string is invalid with respect to Cfar
+     * @return An instance of CfarCreateDraftContractError
+     * @throws IOException if the JSON string is invalid with respect to CfarCreateDraftContractError
      */
-    public static Cfar fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, Cfar.class);
+    public static CfarCreateDraftContractError fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CfarCreateDraftContractError.class);
     }
 
     /**
-     * Convert an instance of Cfar to an JSON string
+     * Convert an instance of CfarCreateDraftContractError to an JSON string
      *
      * @return JSON string
      */

@@ -462,7 +462,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/unprocessable_entity_cfar"
+                  "$ref": "#/components/schemas/unprocessable_entity_cfar_create_draft_contract_error"
                 }
               }
             }
@@ -541,7 +541,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/unprocessable_entity_cfar"
+                  "$ref": "#/components/schemas/unprocessable_entity_cfar_confirm_contract_error"
                 }
               }
             }
@@ -748,7 +748,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/unprocessable_entity_cfar"
+                  "$ref": "#/components/schemas/unprocessable_entity_cfar_exercise_contract_error"
                 }
               }
             }
@@ -827,7 +827,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/unprocessable_entity_cfar"
+                  "$ref": "#/components/schemas/unprocessable_entity_cfar_void_contract_error"
                 }
               }
             }
@@ -906,7 +906,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/unprocessable_entity_cfar"
+                  "$ref": "#/components/schemas/unprocessable_entity_cfar_cancel_contract_error"
                 }
               }
             }
@@ -1026,7 +1026,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/cfar_exercise_quote1"
+                  "$ref": "#/components/schemas/cfar_exercise_quote"
                 }
               }
             }
@@ -1058,7 +1058,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/unprocessable_entity_cfar_exercise_quote"
+                  "$ref": "#/components/schemas/unprocessable_entity_cfar_create_flights_exercise_quote_error"
                 }
               }
             }
@@ -2078,58 +2078,30 @@
           }
         }
       },
-      "cfar": {
-        "title": "cfar",
+      "cfar_cancel_contract_error": {
+        "title": "cfar_cancel_contract_error",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/billing_info_required_for_merchant_of_record_hts"
+            "$ref": "#/components/schemas/invalid_contract_status3"
           },
           {
-            "$ref": "#/components/schemas/idempotency_key_reused"
+            "$ref": "#/components/schemas/order_item_not_found"
           },
           {
-            "$ref": "#/components/schemas/invalid_email"
-          },
-          {
-            "$ref": "#/components/schemas/invalid_itinerary_price"
-          },
-          {
-            "$ref": "#/components/schemas/offer_expired"
-          },
-          {
-            "$ref": "#/components/schemas/offer_not_found1"
-          },
-          {
-            "$ref": "#/components/schemas/offer_not_priced"
-          },
-          {
-            "$ref": "#/components/schemas/order_already_exists"
-          },
-          {
-            "$ref": "#/components/schemas/payment_authorization_failure"
-          },
-          {
-            "$ref": "#/components/schemas/payment_card_required_for_merchant_of_record_hts"
+            "$ref": "#/components/schemas/payment_refund_failed1"
           }
         ],
         "discriminator": {
           "propertyName": "code",
           "mapping": {
-            "billing_info_required_for_merchant_of_record_hts": "#/components/schemas/billing_info_required_for_merchant_of_record_hts",
-            "idempotency_key_reused": "#/components/schemas/idempotency_key_reused",
-            "invalid_email": "#/components/schemas/invalid_email",
-            "invalid_itinerary_price": "#/components/schemas/invalid_itinerary_price",
-            "offer_expired": "#/components/schemas/offer_expired",
-            "offer_not_found": "#/components/schemas/offer_not_found1",
-            "offer_not_priced": "#/components/schemas/offer_not_priced",
-            "order_already_exists": "#/components/schemas/order_already_exists",
-            "payment_authorization_failure": "#/components/schemas/payment_authorization_failure",
-            "payment_card_required_for_merchant_of_record_hts": "#/components/schemas/payment_card_required_for_merchant_of_record_hts"
+            "invalid_contract_status": "#/components/schemas/invalid_contract_status3",
+            "order_item_not_found": "#/components/schemas/order_item_not_found",
+            "payment_refund_failed": "#/components/schemas/payment_refund_failed1"
           }
         }
       },
-      "cfar1": {
-        "title": "cfar",
+      "cfar_confirm_contract_error": {
+        "title": "cfar_confirm_contract_error",
         "oneOf": [
           {
             "$ref": "#/components/schemas/invalid_contract_status"
@@ -2151,76 +2123,6 @@
             "order_not_found": "#/components/schemas/order_not_found",
             "payment_capture_failed": "#/components/schemas/payment_capture_failed",
             "pnr_required": "#/components/schemas/pnr_required"
-          }
-        }
-      },
-      "cfar2": {
-        "title": "cfar",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/contract_expired"
-          },
-          {
-            "$ref": "#/components/schemas/invalid_contract_status1"
-          },
-          {
-            "$ref": "#/components/schemas/passenger_already_exercised"
-          },
-          {
-            "$ref": "#/components/schemas/passenger_not_found"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "code",
-          "mapping": {
-            "contract_expired": "#/components/schemas/contract_expired",
-            "invalid_contract_status": "#/components/schemas/invalid_contract_status1",
-            "passenger_already_exercised": "#/components/schemas/passenger_already_exercised",
-            "passenger_not_found": "#/components/schemas/passenger_not_found"
-          }
-        }
-      },
-      "cfar3": {
-        "title": "cfar",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/invalid_contract_status2"
-          },
-          {
-            "$ref": "#/components/schemas/order_not_found1"
-          },
-          {
-            "$ref": "#/components/schemas/payment_refund_failed"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "code",
-          "mapping": {
-            "invalid_contract_status": "#/components/schemas/invalid_contract_status2",
-            "order_not_found": "#/components/schemas/order_not_found1",
-            "payment_refund_failed": "#/components/schemas/payment_refund_failed"
-          }
-        }
-      },
-      "cfar4": {
-        "title": "cfar",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/invalid_contract_status3"
-          },
-          {
-            "$ref": "#/components/schemas/order_item_not_found"
-          },
-          {
-            "$ref": "#/components/schemas/payment_refund_failed1"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "code",
-          "mapping": {
-            "invalid_contract_status": "#/components/schemas/invalid_contract_status3",
-            "order_item_not_found": "#/components/schemas/order_item_not_found",
-            "payment_refund_failed": "#/components/schemas/payment_refund_failed1"
           }
         }
       },
@@ -2320,27 +2222,58 @@
           }
         }
       },
-      "cfar_exercise_payout": {
-        "title": "cfar_exercise_payout",
-        "description": "The method by which the payout will be be delivered to the customer.",
+      "cfar_create_draft_contract_error": {
+        "title": "cfar_create_draft_contract_error",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/future_travel_credit"
+            "$ref": "#/components/schemas/billing_info_required_for_merchant_of_record_hts"
           },
           {
-            "$ref": "#/components/schemas/original_form_of_payment"
+            "$ref": "#/components/schemas/idempotency_key_reused"
+          },
+          {
+            "$ref": "#/components/schemas/invalid_email"
+          },
+          {
+            "$ref": "#/components/schemas/invalid_itinerary_price"
+          },
+          {
+            "$ref": "#/components/schemas/offer_expired"
+          },
+          {
+            "$ref": "#/components/schemas/offer_not_found1"
+          },
+          {
+            "$ref": "#/components/schemas/offer_not_priced"
+          },
+          {
+            "$ref": "#/components/schemas/order_already_exists"
+          },
+          {
+            "$ref": "#/components/schemas/payment_authorization_failure"
+          },
+          {
+            "$ref": "#/components/schemas/payment_card_required_for_merchant_of_record_hts"
           }
         ],
         "discriminator": {
-          "propertyName": "type",
+          "propertyName": "code",
           "mapping": {
-            "future_travel_credit": "#/components/schemas/future_travel_credit",
-            "original_form_of_payment": "#/components/schemas/original_form_of_payment"
+            "billing_info_required_for_merchant_of_record_hts": "#/components/schemas/billing_info_required_for_merchant_of_record_hts",
+            "idempotency_key_reused": "#/components/schemas/idempotency_key_reused",
+            "invalid_email": "#/components/schemas/invalid_email",
+            "invalid_itinerary_price": "#/components/schemas/invalid_itinerary_price",
+            "offer_expired": "#/components/schemas/offer_expired",
+            "offer_not_found": "#/components/schemas/offer_not_found1",
+            "offer_not_priced": "#/components/schemas/offer_not_priced",
+            "order_already_exists": "#/components/schemas/order_already_exists",
+            "payment_authorization_failure": "#/components/schemas/payment_authorization_failure",
+            "payment_card_required_for_merchant_of_record_hts": "#/components/schemas/payment_card_required_for_merchant_of_record_hts"
           }
         }
       },
-      "cfar_exercise_quote": {
-        "title": "cfar_exercise_quote",
+      "cfar_create_flights_exercise_quote_error": {
+        "title": "cfar_create_flights_exercise_quote_error",
         "oneOf": [
           {
             "$ref": "#/components/schemas/booking_already_canceled"
@@ -2365,7 +2298,52 @@
           }
         }
       },
-      "cfar_exercise_quote1": {
+      "cfar_exercise_contract_error": {
+        "title": "cfar_exercise_contract_error",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/contract_expired"
+          },
+          {
+            "$ref": "#/components/schemas/invalid_contract_status1"
+          },
+          {
+            "$ref": "#/components/schemas/passenger_already_exercised"
+          },
+          {
+            "$ref": "#/components/schemas/passenger_not_found"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "code",
+          "mapping": {
+            "contract_expired": "#/components/schemas/contract_expired",
+            "invalid_contract_status": "#/components/schemas/invalid_contract_status1",
+            "passenger_already_exercised": "#/components/schemas/passenger_already_exercised",
+            "passenger_not_found": "#/components/schemas/passenger_not_found"
+          }
+        }
+      },
+      "cfar_exercise_payout": {
+        "title": "cfar_exercise_payout",
+        "description": "The method by which the payout will be be delivered to the customer.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/future_travel_credit"
+          },
+          {
+            "$ref": "#/components/schemas/original_form_of_payment"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "future_travel_credit": "#/components/schemas/future_travel_credit",
+            "original_form_of_payment": "#/components/schemas/original_form_of_payment"
+          }
+        }
+      },
+      "cfar_exercise_quote": {
         "title": "cfar_exercise_quote",
         "type": "object",
         "required": [
@@ -2436,6 +2414,28 @@
           "priced": {
             "description": "Whether this is a priced offer or not. A priced offer is required to create an order.",
             "type": "boolean"
+          }
+        }
+      },
+      "cfar_void_contract_error": {
+        "title": "cfar_void_contract_error",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/invalid_contract_status2"
+          },
+          {
+            "$ref": "#/components/schemas/order_not_found1"
+          },
+          {
+            "$ref": "#/components/schemas/payment_refund_failed"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "code",
+          "mapping": {
+            "invalid_contract_status": "#/components/schemas/invalid_contract_status2",
+            "order_not_found": "#/components/schemas/order_not_found1",
+            "payment_refund_failed": "#/components/schemas/payment_refund_failed"
           }
         }
       },
@@ -3237,6 +3237,32 @@
           }
         }
       },
+      "fare_amount_modification": {
+        "title": "fare_amount_modification",
+        "description": "A single modification to the fare amount.",
+        "type": "object",
+        "required": [
+          "amount",
+          "reason"
+        ],
+        "properties": {
+          "amount": {
+            "description": "Amount of the modification.",
+            "examples": [
+              "10.00"
+            ],
+            "type": "string"
+          },
+          "reason": {
+            "description": "Reason for the modification being applied to the fare amount.",
+            "examples": [
+              "points conversion"
+            ],
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
       "fare_rules": {
         "title": "fare_rules",
         "description": "The fare rules for the slice detailing cancel and change policies with associated penalties and refund methods. Fare rules which are not sent are assumed to be unknown.",
@@ -3932,6 +3958,14 @@
             ],
             "type": "string",
             "minimum": 0
+          },
+          "fare_amount_modifications": {
+            "description": "Modifications to the fare amount, which change how much a customer is charged. Add each fare modification to the fare amount to get the total fare amount the customer will be charged.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/fare_amount_modification"
+            }
           }
         }
       },
@@ -6131,6 +6165,14 @@
             "type": "integer",
             "format": "int32",
             "exclusiveMinimum": 0
+          },
+          "fare_amount_modifications": {
+            "description": "Modifications to the fare amount, which change how much a customer is charged. Add each fare modification to the fare amount to get the total fare amount the customer will be charged.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/fare_amount_modification"
+            }
           }
         }
       },
@@ -6228,20 +6270,52 @@
           }
         }
       },
-      "unprocessable_entity_cfar": {
-        "title": "unprocessable_entity_cfar",
+      "unprocessable_entity_cfar_cancel_contract_error": {
+        "title": "unprocessable_entity_cfar_cancel_contract_error",
         "type": "array",
         "minItems": 1,
         "items": {
-          "$ref": "#/components/schemas/cfar"
+          "$ref": "#/components/schemas/cfar_cancel_contract_error"
         }
       },
-      "unprocessable_entity_cfar_exercise_quote": {
-        "title": "unprocessable_entity_cfar_exercise_quote",
+      "unprocessable_entity_cfar_confirm_contract_error": {
+        "title": "unprocessable_entity_cfar_confirm_contract_error",
         "type": "array",
         "minItems": 1,
         "items": {
-          "$ref": "#/components/schemas/cfar_exercise_quote"
+          "$ref": "#/components/schemas/cfar_confirm_contract_error"
+        }
+      },
+      "unprocessable_entity_cfar_create_draft_contract_error": {
+        "title": "unprocessable_entity_cfar_create_draft_contract_error",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/cfar_create_draft_contract_error"
+        }
+      },
+      "unprocessable_entity_cfar_create_flights_exercise_quote_error": {
+        "title": "unprocessable_entity_cfar_create_flights_exercise_quote_error",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/cfar_create_flights_exercise_quote_error"
+        }
+      },
+      "unprocessable_entity_cfar_exercise_contract_error": {
+        "title": "unprocessable_entity_cfar_exercise_contract_error",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/cfar_exercise_contract_error"
+        }
+      },
+      "unprocessable_entity_cfar_void_contract_error": {
+        "title": "unprocessable_entity_cfar_void_contract_error",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/cfar_void_contract_error"
         }
       },
       "unprocessable_entity_create_offers_error": {

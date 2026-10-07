@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.hopper.hts.fintech.flights.cfar.model.Cfar;
+import com.hopper.hts.fintech.flights.cfar.model.CfarExerciseContractError;
 import com.hopper.hts.fintech.flights.cfar.model.Error;
 import com.hopper.hts.fintech.flights.cfar.model.ExerciseContractRequest;
 

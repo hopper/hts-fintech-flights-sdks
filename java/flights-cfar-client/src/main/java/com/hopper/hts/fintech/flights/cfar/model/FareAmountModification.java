@@ -19,11 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hopper.hts.fintech.flights.cfar.model.PayoutOption;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,66 +46,58 @@ import java.util.Set;
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
 /**
- * CfarExerciseQuote1
+ * A single modification to the fare amount.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
-public class CfarExerciseQuote1 {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+public class FareAmountModification {
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
   @javax.annotation.Nonnull
-  private String id;
+  private String amount;
 
-  public static final String SERIALIZED_NAME_PAYOUT_OPTIONS = "payout_options";
-  @SerializedName(SERIALIZED_NAME_PAYOUT_OPTIONS)
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
   @javax.annotation.Nonnull
-  private List<PayoutOption> payoutOptions;
+  private String reason;
 
-  public CfarExerciseQuote1() {
+  public FareAmountModification() {
   }
 
-  public CfarExerciseQuote1 id(@javax.annotation.Nonnull String id) {
-    this.id = id;
+  public FareAmountModification amount(@javax.annotation.Nonnull String amount) {
+    this.amount = amount;
     return this;
   }
 
   /**
-   * Unique ID for an exercise quote.
-   * @return id
+   * Amount of the modification.
+   * @return amount
    */
   @javax.annotation.Nonnull
-  public String getId() {
-    return id;
+  public String getAmount() {
+    return amount;
   }
 
-  public void setId(@javax.annotation.Nonnull String id) {
-    this.id = id;
+  public void setAmount(@javax.annotation.Nonnull String amount) {
+    this.amount = amount;
   }
 
 
-  public CfarExerciseQuote1 payoutOptions(@javax.annotation.Nonnull List<PayoutOption> payoutOptions) {
-    this.payoutOptions = payoutOptions;
-    return this;
-  }
-
-  public CfarExerciseQuote1 addPayoutOptionsItem(PayoutOption payoutOptionsItem) {
-    if (this.payoutOptions == null) {
-      this.payoutOptions = new ArrayList<>();
-    }
-    this.payoutOptions.add(payoutOptionsItem);
+  public FareAmountModification reason(@javax.annotation.Nonnull String reason) {
+    this.reason = reason;
     return this;
   }
 
   /**
-   * Options detailing the different ways a customer may select to be paid out.
-   * @return payoutOptions
+   * Reason for the modification being applied to the fare amount.
+   * @return reason
    */
   @javax.annotation.Nonnull
-  public List<PayoutOption> getPayoutOptions() {
-    return payoutOptions;
+  public String getReason() {
+    return reason;
   }
 
-  public void setPayoutOptions(@javax.annotation.Nonnull List<PayoutOption> payoutOptions) {
-    this.payoutOptions = payoutOptions;
+  public void setReason(@javax.annotation.Nonnull String reason) {
+    this.reason = reason;
   }
 
   /**
@@ -124,9 +113,9 @@ public class CfarExerciseQuote1 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CfarExerciseQuote1 instance itself
+   * @return the FareAmountModification instance itself
    */
-  public CfarExerciseQuote1 putAdditionalProperty(String key, Object value) {
+  public FareAmountModification putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -165,23 +154,23 @@ public class CfarExerciseQuote1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CfarExerciseQuote1 cfarExerciseQuote1 = (CfarExerciseQuote1) o;
-    return Objects.equals(this.id, cfarExerciseQuote1.id) &&
-        Objects.equals(this.payoutOptions, cfarExerciseQuote1.payoutOptions)&&
-        Objects.equals(this.additionalProperties, cfarExerciseQuote1.additionalProperties);
+    FareAmountModification fareAmountModification = (FareAmountModification) o;
+    return Objects.equals(this.amount, fareAmountModification.amount) &&
+        Objects.equals(this.reason, fareAmountModification.reason)&&
+        Objects.equals(this.additionalProperties, fareAmountModification.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, payoutOptions, additionalProperties);
+    return Objects.hash(amount, reason, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CfarExerciseQuote1 {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    payoutOptions: ").append(toIndentedString(payoutOptions)).append("\n");
+    sb.append("class FareAmountModification {\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -205,64 +194,57 @@ public class CfarExerciseQuote1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("payout_options");
+    openapiFields.add("amount");
+    openapiFields.add("reason");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("payout_options");
+    openapiRequiredFields.add("amount");
+    openapiRequiredFields.add("reason");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CfarExerciseQuote1
+   * @throws IOException if the JSON Element is invalid with respect to FareAmountModification
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CfarExerciseQuote1.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CfarExerciseQuote1 is not found in the empty JSON string", CfarExerciseQuote1.openapiRequiredFields.toString()));
+        if (!FareAmountModification.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FareAmountModification is not found in the empty JSON string", FareAmountModification.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CfarExerciseQuote1.openapiRequiredFields) {
+      for (String requiredField : FareAmountModification.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if (!jsonObj.get("amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("payout_options").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `payout_options` to be an array in the JSON string but got `%s`", jsonObj.get("payout_options").toString()));
+      if (!jsonObj.get("reason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
       }
-
-      JsonArray jsonArraypayoutOptions = jsonObj.getAsJsonArray("payout_options");
-      // validate the required field `payout_options` (array)
-      for (int i = 0; i < jsonArraypayoutOptions.size(); i++) {
-        PayoutOption.validateJsonElement(jsonArraypayoutOptions.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CfarExerciseQuote1.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CfarExerciseQuote1' and its subtypes
+       if (!FareAmountModification.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FareAmountModification' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CfarExerciseQuote1> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CfarExerciseQuote1.class));
+       final TypeAdapter<FareAmountModification> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FareAmountModification.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CfarExerciseQuote1>() {
+       return (TypeAdapter<T>) new TypeAdapter<FareAmountModification>() {
            @Override
-           public void write(JsonWriter out, CfarExerciseQuote1 value) throws IOException {
+           public void write(JsonWriter out, FareAmountModification value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -290,12 +272,12 @@ public class CfarExerciseQuote1 {
            }
 
            @Override
-           public CfarExerciseQuote1 read(JsonReader in) throws IOException {
+           public FareAmountModification read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             CfarExerciseQuote1 instance = thisAdapter.fromJsonTree(jsonObj);
+             FareAmountModification instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -322,18 +304,18 @@ public class CfarExerciseQuote1 {
   }
 
   /**
-   * Create an instance of CfarExerciseQuote1 given an JSON string
+   * Create an instance of FareAmountModification given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CfarExerciseQuote1
-   * @throws IOException if the JSON string is invalid with respect to CfarExerciseQuote1
+   * @return An instance of FareAmountModification
+   * @throws IOException if the JSON string is invalid with respect to FareAmountModification
    */
-  public static CfarExerciseQuote1 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CfarExerciseQuote1.class);
+  public static FareAmountModification fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FareAmountModification.class);
   }
 
   /**
-   * Convert an instance of CfarExerciseQuote1 to an JSON string
+   * Convert an instance of FareAmountModification to an JSON string
    *
    * @return JSON string
    */

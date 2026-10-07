@@ -19,9 +19,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hopper.hts.fintech.flights.cfar.model.FareAmountModification;
 import com.hopper.hts.fintech.flights.cfar.model.PassengerType;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,6 +68,11 @@ public class SyntheticFarePassengers {
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
   private Integer count = 1;
+
+  public static final String SERIALIZED_NAME_FARE_AMOUNT_MODIFICATIONS = "fare_amount_modifications";
+  @SerializedName(SERIALIZED_NAME_FARE_AMOUNT_MODIFICATIONS)
+  @javax.annotation.Nullable
+  private List<FareAmountModification> fareAmountModifications;
 
   public SyntheticFarePassengers() {
   }
@@ -125,6 +133,33 @@ public class SyntheticFarePassengers {
     this.count = count;
   }
 
+
+  public SyntheticFarePassengers fareAmountModifications(@javax.annotation.Nullable List<FareAmountModification> fareAmountModifications) {
+    this.fareAmountModifications = fareAmountModifications;
+    return this;
+  }
+
+  public SyntheticFarePassengers addFareAmountModificationsItem(FareAmountModification fareAmountModificationsItem) {
+    if (this.fareAmountModifications == null) {
+      this.fareAmountModifications = new ArrayList<>();
+    }
+    this.fareAmountModifications.add(fareAmountModificationsItem);
+    return this;
+  }
+
+  /**
+   * Modifications to the fare amount, which change how much a customer is charged. Add each fare modification to the fare amount to get the total fare amount the customer will be charged.
+   * @return fareAmountModifications
+   */
+  @javax.annotation.Nullable
+  public List<FareAmountModification> getFareAmountModifications() {
+    return fareAmountModifications;
+  }
+
+  public void setFareAmountModifications(@javax.annotation.Nullable List<FareAmountModification> fareAmountModifications) {
+    this.fareAmountModifications = fareAmountModifications;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -182,13 +217,14 @@ public class SyntheticFarePassengers {
     SyntheticFarePassengers syntheticFarePassengers = (SyntheticFarePassengers) o;
     return Objects.equals(this.type, syntheticFarePassengers.type) &&
         Objects.equals(this.fareAmount, syntheticFarePassengers.fareAmount) &&
-        Objects.equals(this.count, syntheticFarePassengers.count)&&
+        Objects.equals(this.count, syntheticFarePassengers.count) &&
+        Objects.equals(this.fareAmountModifications, syntheticFarePassengers.fareAmountModifications)&&
         Objects.equals(this.additionalProperties, syntheticFarePassengers.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, fareAmount, count, additionalProperties);
+    return Objects.hash(type, fareAmount, count, fareAmountModifications, additionalProperties);
   }
 
   @Override
@@ -198,6 +234,7 @@ public class SyntheticFarePassengers {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    fareAmount: ").append(toIndentedString(fareAmount)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    fareAmountModifications: ").append(toIndentedString(fareAmountModifications)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -224,6 +261,7 @@ public class SyntheticFarePassengers {
     openapiFields.add("type");
     openapiFields.add("fare_amount");
     openapiFields.add("count");
+    openapiFields.add("fare_amount_modifications");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -255,6 +293,20 @@ public class SyntheticFarePassengers {
       PassengerType.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("fare_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fare_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fare_amount").toString()));
+      }
+      if (jsonObj.get("fare_amount_modifications") != null && !jsonObj.get("fare_amount_modifications").isJsonNull()) {
+        JsonArray jsonArrayfareAmountModifications = jsonObj.getAsJsonArray("fare_amount_modifications");
+        if (jsonArrayfareAmountModifications != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("fare_amount_modifications").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `fare_amount_modifications` to be an array in the JSON string but got `%s`", jsonObj.get("fare_amount_modifications").toString()));
+          }
+
+          // validate the optional field `fare_amount_modifications` (array)
+          for (int i = 0; i < jsonArrayfareAmountModifications.size(); i++) {
+            FareAmountModification.validateJsonElement(jsonArrayfareAmountModifications.get(i));
+          };
+        }
       }
   }
 

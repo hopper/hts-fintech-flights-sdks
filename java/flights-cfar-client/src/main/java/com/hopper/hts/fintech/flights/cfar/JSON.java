@@ -69,9 +69,36 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
-                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.Cfar.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.Cfar>() {
+                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.CfarCancelContractError.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.CfarCancelContractError>() {
                     @Override
-                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.Cfar> getClassForElement(JsonElement readElement) {
+                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.CfarCancelContractError> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus3.class);
+                        classByDiscriminatorValue.put("order_item_not_found", com.hopper.hts.fintech.flights.cfar.model.OrderItemNotFound.class);
+                        classByDiscriminatorValue.put("payment_refund_failed", com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed1.class);
+                        classByDiscriminatorValue.put("invalid_contract_status3", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus3.class);
+                        classByDiscriminatorValue.put("payment_refund_failed1", com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed1.class);
+                        classByDiscriminatorValue.put("cfar_cancel_contract_error", com.hopper.hts.fintech.flights.cfar.model.CfarCancelContractError.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "code"));
+                    }
+          })
+                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.CfarConfirmContractError.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.CfarConfirmContractError>() {
+                    @Override
+                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.CfarConfirmContractError> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus.class);
+                        classByDiscriminatorValue.put("order_not_found", com.hopper.hts.fintech.flights.cfar.model.OrderNotFound.class);
+                        classByDiscriminatorValue.put("payment_capture_failed", com.hopper.hts.fintech.flights.cfar.model.PaymentCaptureFailed.class);
+                        classByDiscriminatorValue.put("pnr_required", com.hopper.hts.fintech.flights.cfar.model.PnrRequired.class);
+                        classByDiscriminatorValue.put("cfar_confirm_contract_error", com.hopper.hts.fintech.flights.cfar.model.CfarConfirmContractError.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "code"));
+                    }
+          })
+                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.CfarCreateDraftContractError.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.CfarCreateDraftContractError>() {
+                    @Override
+                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.CfarCreateDraftContractError> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("billing_info_required_for_merchant_of_record_hts", com.hopper.hts.fintech.flights.cfar.model.BillingInfoRequiredForMerchantOfRecordHts.class);
                         classByDiscriminatorValue.put("idempotency_key_reused", com.hopper.hts.fintech.flights.cfar.model.IdempotencyKeyReused.class);
@@ -84,62 +111,35 @@ public class JSON {
                         classByDiscriminatorValue.put("payment_authorization_failure", com.hopper.hts.fintech.flights.cfar.model.PaymentAuthorizationFailure.class);
                         classByDiscriminatorValue.put("payment_card_required_for_merchant_of_record_hts", com.hopper.hts.fintech.flights.cfar.model.PaymentCardRequiredForMerchantOfRecordHts.class);
                         classByDiscriminatorValue.put("offer_not_found1", com.hopper.hts.fintech.flights.cfar.model.OfferNotFound1.class);
-                        classByDiscriminatorValue.put("cfar", com.hopper.hts.fintech.flights.cfar.model.Cfar.class);
+                        classByDiscriminatorValue.put("cfar_create_draft_contract_error", com.hopper.hts.fintech.flights.cfar.model.CfarCreateDraftContractError.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "code"));
                     }
           })
-                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.Cfar1.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.Cfar1>() {
+                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.CfarCreateFlightsExerciseQuoteError.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.CfarCreateFlightsExerciseQuoteError>() {
                     @Override
-                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.Cfar1> getClassForElement(JsonElement readElement) {
+                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.CfarCreateFlightsExerciseQuoteError> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus.class);
-                        classByDiscriminatorValue.put("order_not_found", com.hopper.hts.fintech.flights.cfar.model.OrderNotFound.class);
-                        classByDiscriminatorValue.put("payment_capture_failed", com.hopper.hts.fintech.flights.cfar.model.PaymentCaptureFailed.class);
-                        classByDiscriminatorValue.put("pnr_required", com.hopper.hts.fintech.flights.cfar.model.PnrRequired.class);
-                        classByDiscriminatorValue.put("cfar1", com.hopper.hts.fintech.flights.cfar.model.Cfar1.class);
+                        classByDiscriminatorValue.put("booking_already_canceled", com.hopper.hts.fintech.flights.cfar.model.BookingAlreadyCanceled.class);
+                        classByDiscriminatorValue.put("booking_in_void_window", com.hopper.hts.fintech.flights.cfar.model.BookingInVoidWindow.class);
+                        classByDiscriminatorValue.put("insufficient_funds", com.hopper.hts.fintech.flights.cfar.model.InsufficientFunds.class);
+                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus4.class);
+                        classByDiscriminatorValue.put("invalid_contract_status4", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus4.class);
+                        classByDiscriminatorValue.put("cfar_create_flights_exercise_quote_error", com.hopper.hts.fintech.flights.cfar.model.CfarCreateFlightsExerciseQuoteError.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "code"));
                     }
           })
-                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.Cfar2.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.Cfar2>() {
+                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.CfarExerciseContractError.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.CfarExerciseContractError>() {
                     @Override
-                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.Cfar2> getClassForElement(JsonElement readElement) {
+                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.CfarExerciseContractError> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("contract_expired", com.hopper.hts.fintech.flights.cfar.model.ContractExpired.class);
                         classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus1.class);
                         classByDiscriminatorValue.put("passenger_already_exercised", com.hopper.hts.fintech.flights.cfar.model.PassengerAlreadyExercised.class);
                         classByDiscriminatorValue.put("passenger_not_found", com.hopper.hts.fintech.flights.cfar.model.PassengerNotFound.class);
                         classByDiscriminatorValue.put("invalid_contract_status1", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus1.class);
-                        classByDiscriminatorValue.put("cfar2", com.hopper.hts.fintech.flights.cfar.model.Cfar2.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "code"));
-                    }
-          })
-                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.Cfar3.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.Cfar3>() {
-                    @Override
-                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.Cfar3> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus2.class);
-                        classByDiscriminatorValue.put("order_not_found", com.hopper.hts.fintech.flights.cfar.model.OrderNotFound1.class);
-                        classByDiscriminatorValue.put("payment_refund_failed", com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed.class);
-                        classByDiscriminatorValue.put("invalid_contract_status2", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus2.class);
-                        classByDiscriminatorValue.put("order_not_found1", com.hopper.hts.fintech.flights.cfar.model.OrderNotFound1.class);
-                        classByDiscriminatorValue.put("cfar3", com.hopper.hts.fintech.flights.cfar.model.Cfar3.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "code"));
-                    }
-          })
-                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.Cfar4.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.Cfar4>() {
-                    @Override
-                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.Cfar4> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus3.class);
-                        classByDiscriminatorValue.put("order_item_not_found", com.hopper.hts.fintech.flights.cfar.model.OrderItemNotFound.class);
-                        classByDiscriminatorValue.put("payment_refund_failed", com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed1.class);
-                        classByDiscriminatorValue.put("invalid_contract_status3", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus3.class);
-                        classByDiscriminatorValue.put("payment_refund_failed1", com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed1.class);
-                        classByDiscriminatorValue.put("cfar4", com.hopper.hts.fintech.flights.cfar.model.Cfar4.class);
+                        classByDiscriminatorValue.put("cfar_exercise_contract_error", com.hopper.hts.fintech.flights.cfar.model.CfarExerciseContractError.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "code"));
                     }
@@ -155,16 +155,16 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
-                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote>() {
+                .registerTypeSelector(com.hopper.hts.fintech.flights.cfar.model.CfarVoidContractError.class, new TypeSelector<com.hopper.hts.fintech.flights.cfar.model.CfarVoidContractError>() {
                     @Override
-                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote> getClassForElement(JsonElement readElement) {
+                    public Class<? extends com.hopper.hts.fintech.flights.cfar.model.CfarVoidContractError> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("booking_already_canceled", com.hopper.hts.fintech.flights.cfar.model.BookingAlreadyCanceled.class);
-                        classByDiscriminatorValue.put("booking_in_void_window", com.hopper.hts.fintech.flights.cfar.model.BookingInVoidWindow.class);
-                        classByDiscriminatorValue.put("insufficient_funds", com.hopper.hts.fintech.flights.cfar.model.InsufficientFunds.class);
-                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus4.class);
-                        classByDiscriminatorValue.put("invalid_contract_status4", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus4.class);
-                        classByDiscriminatorValue.put("cfar_exercise_quote", com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote.class);
+                        classByDiscriminatorValue.put("invalid_contract_status", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus2.class);
+                        classByDiscriminatorValue.put("order_not_found", com.hopper.hts.fintech.flights.cfar.model.OrderNotFound1.class);
+                        classByDiscriminatorValue.put("payment_refund_failed", com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed.class);
+                        classByDiscriminatorValue.put("invalid_contract_status2", com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus2.class);
+                        classByDiscriminatorValue.put("order_not_found1", com.hopper.hts.fintech.flights.cfar.model.OrderNotFound1.class);
+                        classByDiscriminatorValue.put("cfar_void_contract_error", com.hopper.hts.fintech.flights.cfar.model.CfarVoidContractError.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "code"));
                     }
@@ -534,18 +534,18 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.BookingInVoidWindow.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.BookingInformationSource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CancelContractRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Cfar.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Cfar1.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Cfar2.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Cfar3.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Cfar4.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarCancelContractError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarConfirmContractError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarContract.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarContractExercise.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarCreateDraftContractError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarCreateFlightsExerciseQuoteError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarExercise.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarExerciseContractError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarExercisePayout.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarExerciseQuote1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarOffer.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.CfarVoidContractError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Channel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Chargeback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.ComposableFilter.CustomTypeAdapterFactory());
@@ -584,6 +584,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.ExercisePortalLandingLoaded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.ExerciseUrl.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Fare.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.FareAmountModification.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.FareRules.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Fee.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.hts.fintech.flights.cfar.model.Field.CustomTypeAdapterFactory());
