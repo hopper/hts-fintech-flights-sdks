@@ -64,7 +64,10 @@ configure(subprojects.filter { it.name in publishedArtifacts }) {
     apply(plugin = "com.vanniktech.maven.publish")
 
     configure<MavenPublishBaseExtension> {
-        publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
+        publishToMavenCentral(
+            SonatypeHost.CENTRAL_PORTAL,
+            automaticRelease = providers.gradleProperty("mavenCentralAutomaticRelease").getOrElse("true").toBoolean(),
+        )
         if (providers.gradleProperty("signingInMemoryKey").isPresent) {
             signAllPublications()
         }
