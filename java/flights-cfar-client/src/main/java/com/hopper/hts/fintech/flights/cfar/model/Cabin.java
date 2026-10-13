@@ -29,8 +29,6 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(Cabin.Adapter.class)
 public enum Cabin {
   
-  BASIC_ECONOMY("basic_economy"),
-  
   ECONOMY("economy"),
   
   PREMIUM_ECONOMY("premium_economy"),

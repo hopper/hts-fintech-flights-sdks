@@ -2059,7 +2059,6 @@
         "title": "cabin",
         "type": "string",
         "enum": [
-          "basic_economy",
           "economy",
           "premium_economy",
           "business",
