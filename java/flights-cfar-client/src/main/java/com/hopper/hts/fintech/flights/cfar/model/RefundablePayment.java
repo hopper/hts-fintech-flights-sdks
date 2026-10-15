@@ -64,7 +64,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class RefundablePayment extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(RefundablePayment.class.getName());
 
@@ -141,7 +141,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'AlternatePaymentMethod'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for AlternatePaymentMethod failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AlternatePaymentMethod failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'AlternatePaymentMethod'", e);
                     }
                     // deserialize LoyaltyProgram
@@ -153,7 +153,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'LoyaltyProgram'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for LoyaltyProgram failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for LoyaltyProgram failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'LoyaltyProgram'", e);
                     }
                     // deserialize NotProvided
@@ -165,7 +165,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'NotProvided'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for NotProvided failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotProvided failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'NotProvided'", e);
                     }
                     // deserialize PaymentCard
@@ -177,7 +177,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PaymentCard'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PaymentCard failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentCard failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PaymentCard'", e);
                     }
                     // deserialize ResellerControlled
@@ -189,7 +189,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ResellerControlled'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ResellerControlled failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ResellerControlled failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ResellerControlled'", e);
                     }
 
@@ -199,7 +199,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for RefundablePayment: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for RefundablePayment: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -286,6 +286,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
      * @return The actual instance of `AlternatePaymentMethod`
      * @throws ClassCastException if the instance is not `AlternatePaymentMethod`
      */
+    @SuppressWarnings("unchecked")
     public AlternatePaymentMethod getAlternatePaymentMethod() throws ClassCastException {
         return (AlternatePaymentMethod)super.getActualInstance();
     }
@@ -297,6 +298,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
      * @return The actual instance of `LoyaltyProgram`
      * @throws ClassCastException if the instance is not `LoyaltyProgram`
      */
+    @SuppressWarnings("unchecked")
     public LoyaltyProgram getLoyaltyProgram() throws ClassCastException {
         return (LoyaltyProgram)super.getActualInstance();
     }
@@ -308,6 +310,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
      * @return The actual instance of `NotProvided`
      * @throws ClassCastException if the instance is not `NotProvided`
      */
+    @SuppressWarnings("unchecked")
     public NotProvided getNotProvided() throws ClassCastException {
         return (NotProvided)super.getActualInstance();
     }
@@ -319,6 +322,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
      * @return The actual instance of `PaymentCard`
      * @throws ClassCastException if the instance is not `PaymentCard`
      */
+    @SuppressWarnings("unchecked")
     public PaymentCard getPaymentCard() throws ClassCastException {
         return (PaymentCard)super.getActualInstance();
     }
@@ -330,6 +334,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
      * @return The actual instance of `ResellerControlled`
      * @throws ClassCastException if the instance is not `ResellerControlled`
      */
+    @SuppressWarnings("unchecked")
     public ResellerControlled getResellerControlled() throws ClassCastException {
         return (ResellerControlled)super.getActualInstance();
     }
@@ -349,7 +354,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
             AlternatePaymentMethod.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for AlternatePaymentMethod failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AlternatePaymentMethod failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with LoyaltyProgram
@@ -357,7 +362,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
             LoyaltyProgram.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for LoyaltyProgram failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for LoyaltyProgram failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with NotProvided
@@ -365,7 +370,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
             NotProvided.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for NotProvided failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotProvided failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PaymentCard
@@ -373,7 +378,7 @@ public class RefundablePayment extends AbstractOpenApiSchema {
             PaymentCard.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PaymentCard failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentCard failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ResellerControlled
@@ -381,11 +386,11 @@ public class RefundablePayment extends AbstractOpenApiSchema {
             ResellerControlled.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ResellerControlled failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ResellerControlled failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for RefundablePayment with oneOf schemas: AlternatePaymentMethod, LoyaltyProgram, NotProvided, PaymentCard, ResellerControlled. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for RefundablePayment with oneOf schemas: AlternatePaymentMethod, LoyaltyProgram, NotProvided, PaymentCard, ResellerControlled. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarConfirmContractError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CfarConfirmContractError.class.getName());
 
@@ -131,7 +131,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus'", e);
                     }
                     // deserialize OrderNotFound
@@ -143,7 +143,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OrderNotFound'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OrderNotFound failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderNotFound failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OrderNotFound'", e);
                     }
                     // deserialize PaymentCaptureFailed
@@ -155,7 +155,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PaymentCaptureFailed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PaymentCaptureFailed failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentCaptureFailed failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PaymentCaptureFailed'", e);
                     }
                     // deserialize PnrRequired
@@ -167,7 +167,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PnrRequired'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PnrRequired failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PnrRequired failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PnrRequired'", e);
                     }
 
@@ -177,7 +177,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CfarConfirmContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CfarConfirmContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -258,6 +258,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `InvalidContractStatus`
      * @throws ClassCastException if the instance is not `InvalidContractStatus`
      */
+    @SuppressWarnings("unchecked")
     public InvalidContractStatus getInvalidContractStatus() throws ClassCastException {
         return (InvalidContractStatus)super.getActualInstance();
     }
@@ -269,6 +270,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `OrderNotFound`
      * @throws ClassCastException if the instance is not `OrderNotFound`
      */
+    @SuppressWarnings("unchecked")
     public OrderNotFound getOrderNotFound() throws ClassCastException {
         return (OrderNotFound)super.getActualInstance();
     }
@@ -280,6 +282,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `PaymentCaptureFailed`
      * @throws ClassCastException if the instance is not `PaymentCaptureFailed`
      */
+    @SuppressWarnings("unchecked")
     public PaymentCaptureFailed getPaymentCaptureFailed() throws ClassCastException {
         return (PaymentCaptureFailed)super.getActualInstance();
     }
@@ -291,6 +294,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `PnrRequired`
      * @throws ClassCastException if the instance is not `PnrRequired`
      */
+    @SuppressWarnings("unchecked")
     public PnrRequired getPnrRequired() throws ClassCastException {
         return (PnrRequired)super.getActualInstance();
     }
@@ -310,7 +314,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
             InvalidContractStatus.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OrderNotFound
@@ -318,7 +322,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
             OrderNotFound.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OrderNotFound failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderNotFound failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PaymentCaptureFailed
@@ -326,7 +330,7 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
             PaymentCaptureFailed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PaymentCaptureFailed failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentCaptureFailed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PnrRequired
@@ -334,11 +338,11 @@ public class CfarConfirmContractError extends AbstractOpenApiSchema {
             PnrRequired.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PnrRequired failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PnrRequired failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarConfirmContractError with oneOf schemas: InvalidContractStatus, OrderNotFound, PaymentCaptureFailed, PnrRequired. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CfarConfirmContractError with oneOf schemas: InvalidContractStatus, OrderNotFound, PaymentCaptureFailed, PnrRequired. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

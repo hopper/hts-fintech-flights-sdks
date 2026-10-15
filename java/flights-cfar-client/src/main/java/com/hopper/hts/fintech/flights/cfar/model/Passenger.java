@@ -32,6 +32,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -51,7 +52,7 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * A passenger on the booking.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Passenger {
   public static final String SERIALIZED_NAME_PASSENGER_TYPE = "passenger_type";
   @SerializedName(SERIALIZED_NAME_PASSENGER_TYPE)
@@ -244,10 +245,7 @@ public class Passenger {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -256,16 +254,10 @@ public class Passenger {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("passenger_type");
-    openapiFields.add("fare_amount");
-    openapiFields.add("ancillaries");
-    openapiFields.add("id");
+    openapiFields = new HashSet<String>(Arrays.asList("passenger_type", "fare_amount", "ancillaries", "id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("passenger_type");
-    openapiRequiredFields.add("fare_amount");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("passenger_type", "fare_amount"));
   }
 
   /**
@@ -277,29 +269,29 @@ public class Passenger {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Passenger.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Passenger is not found in the empty JSON string", Passenger.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in Passenger is not found in the empty JSON string", Passenger.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Passenger.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("passenger_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passenger_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("passenger_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `passenger_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("passenger_type").toString()));
       }
       if (!jsonObj.get("fare_amount").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fare_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fare_amount").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `fare_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fare_amount").toString()));
       }
       if (jsonObj.get("ancillaries") != null && !jsonObj.get("ancillaries").isJsonNull()) {
         JsonArray jsonArrayancillaries = jsonObj.getAsJsonArray("ancillaries");
         if (jsonArrayancillaries != null) {
           // ensure the json data is an array
           if (!jsonObj.get("ancillaries").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ancillaries` to be an array in the JSON string but got `%s`", jsonObj.get("ancillaries").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ancillaries` to be an array in the JSON string but got `%s`", jsonObj.get("ancillaries").toString()));
           }
 
           // validate the optional field `ancillaries` (array)
@@ -309,7 +301,7 @@ public class Passenger {
         }
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 
@@ -342,7 +334,9 @@ public class Passenger {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -370,7 +364,7 @@ public class Passenger {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

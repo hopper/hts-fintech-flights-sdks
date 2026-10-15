@@ -33,6 +33,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -52,9 +53,10 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * Exercise coverage for every passenger who remains covered on the itinerary.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class FullItineraryExerciseRequest {
   public static final String SERIALIZED_NAME_PAYOUTS = "payouts";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_PAYOUTS)
   @javax.annotation.Nullable
   private List<ProvidedRefundablePayment> payouts;
@@ -132,6 +134,7 @@ public class FullItineraryExerciseRequest {
   public FullItineraryExerciseRequest() {
   }
 
+  @Deprecated
   public FullItineraryExerciseRequest payouts(@javax.annotation.Nullable List<ProvidedRefundablePayment> payouts) {
     this.payouts = payouts;
     return this;
@@ -148,12 +151,15 @@ public class FullItineraryExerciseRequest {
   /**
    * DEPRECATED: Use payout_information instead. The payouts issued to the customer.
    * @return payouts
+   * @deprecated
    */
+  @Deprecated
   @javax.annotation.Nullable
   public List<ProvidedRefundablePayment> getPayouts() {
     return payouts;
   }
 
+  @Deprecated
   public void setPayouts(@javax.annotation.Nullable List<ProvidedRefundablePayment> payouts) {
     this.payouts = payouts;
   }
@@ -321,10 +327,7 @@ public class FullItineraryExerciseRequest {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -333,19 +336,10 @@ public class FullItineraryExerciseRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("payouts");
-    openapiFields.add("payout_information");
-    openapiFields.add("currency");
-    openapiFields.add("reason");
-    openapiFields.add("type");
+    openapiFields = new HashSet<String>(Arrays.asList("payouts", "payout_information", "currency", "reason", "type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("payout_information");
-    openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("reason");
-    openapiRequiredFields.add("type");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("payout_information", "currency", "reason", "type"));
   }
 
   /**
@@ -357,14 +351,14 @@ public class FullItineraryExerciseRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!FullItineraryExerciseRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FullItineraryExerciseRequest is not found in the empty JSON string", FullItineraryExerciseRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in FullItineraryExerciseRequest is not found in the empty JSON string", FullItineraryExerciseRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : FullItineraryExerciseRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -373,7 +367,7 @@ public class FullItineraryExerciseRequest {
         if (jsonArraypayouts != null) {
           // ensure the json data is an array
           if (!jsonObj.get("payouts").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `payouts` to be an array in the JSON string but got `%s`", jsonObj.get("payouts").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `payouts` to be an array in the JSON string but got `%s`", jsonObj.get("payouts").toString()));
           }
 
           // validate the optional field `payouts` (array)
@@ -385,13 +379,13 @@ public class FullItineraryExerciseRequest {
       // validate the required field `payout_information`
       PayoutInformation.validateJsonElement(jsonObj.get("payout_information"));
       if (!jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       if (!jsonObj.get("reason").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the required field `type`
       TypeEnum.validateJsonElement(jsonObj.get("type"));
@@ -426,7 +420,9 @@ public class FullItineraryExerciseRequest {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -454,7 +450,7 @@ public class FullItineraryExerciseRequest {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

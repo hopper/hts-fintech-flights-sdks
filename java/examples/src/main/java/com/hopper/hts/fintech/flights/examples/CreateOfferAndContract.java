@@ -39,7 +39,7 @@ public final class CreateOfferAndContract {
         String sessionId = UUID.randomUUID().toString();
 
         AncillaryItinerary itinerary = sampleItinerary();
-        OffersEligible offers = hts.offers().postOffers(offersRequest(sessionId, itinerary));
+        OffersEligible offers = hts.offers().postOffers(offersRequest(sessionId, itinerary)).execute();
         if (offers == null || offers.getOffers().isEmpty()) {
             System.out.println("No CFAR offer available for this itinerary");
             return;
@@ -52,15 +52,15 @@ public final class CreateOfferAndContract {
             .offerIds(Collections.singletonList(unpriced.getId()))
             .currency(unpriced.getCurrency())
             .itinerary(itinerary)
-            .userId("user-42"));
+            .userId("user-42")).execute();
         CfarOffer offer = priced.getOffers().get(0);
         System.out.printf("Priced offer %s %s, priced=%s%n", offer.getPrice().getTotalAmount(), offer.getCurrency(), offer.getPriced());
 
-        CfarContract draft = hts.contracts().postContracts(UUID.randomUUID(), contractRequest(offer));
+        CfarContract draft = hts.contracts().postContracts(UUID.randomUUID(), contractRequest(offer)).execute();
         System.out.printf("Draft contract %s (%s)%n", draft.getId(), draft.getStatus());
 
-        hts.contracts().putContractsIdConfirm(draft.getId(), new ConfirmContractRequest().bookingReferences(bookingReferences()));
-        CfarContract confirmed = hts.contracts().getContractsId(draft.getId());
+        hts.contracts().putContractsIdConfirm(draft.getId(), new ConfirmContractRequest().bookingReferences(bookingReferences())).execute();
+        CfarContract confirmed = hts.contracts().getContractsId(draft.getId()).execute();
         System.out.printf("Confirmed contract %s (%s)%n", confirmed.getId(), confirmed.getStatus());
     }
 

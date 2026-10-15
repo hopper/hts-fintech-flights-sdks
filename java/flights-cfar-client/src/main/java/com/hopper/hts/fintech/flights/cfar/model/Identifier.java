@@ -59,7 +59,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Identifier extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Identifier.class.getName());
 
@@ -115,7 +115,7 @@ public class Identifier extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Details'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Details failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Details failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Details'", e);
                     }
                     // deserialize Token
@@ -127,7 +127,7 @@ public class Identifier extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Token'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Token failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Token failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Token'", e);
                     }
 
@@ -137,7 +137,7 @@ public class Identifier extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Identifier: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Identifier: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -206,6 +206,7 @@ public class Identifier extends AbstractOpenApiSchema {
      * @return The actual instance of `Details`
      * @throws ClassCastException if the instance is not `Details`
      */
+    @SuppressWarnings("unchecked")
     public Details getDetails() throws ClassCastException {
         return (Details)super.getActualInstance();
     }
@@ -217,6 +218,7 @@ public class Identifier extends AbstractOpenApiSchema {
      * @return The actual instance of `Token`
      * @throws ClassCastException if the instance is not `Token`
      */
+    @SuppressWarnings("unchecked")
     public Token getToken() throws ClassCastException {
         return (Token)super.getActualInstance();
     }
@@ -236,7 +238,7 @@ public class Identifier extends AbstractOpenApiSchema {
             Details.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Details failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Details failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Token
@@ -244,11 +246,11 @@ public class Identifier extends AbstractOpenApiSchema {
             Token.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Token failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Token failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Identifier with oneOf schemas: Details, Token. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Identifier with oneOf schemas: Details, Token. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

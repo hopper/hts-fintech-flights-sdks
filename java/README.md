@@ -19,15 +19,15 @@ The Flights CFAR API is served through Kong and authenticated with an API key is
 ```java
 FlightsCfarClient hts = FlightsCfarClient.create(HtsEnvironment.PRODUCTION, System.getenv("HTS_API_KEY"));
 
-OffersEligible offers = hts.offers().postOffers(createOffersRequest);
-OffersEligible priced = hts.offers().postOffersPrice(priceOffersRequest);
-CfarContract contract = hts.contracts().postContracts(UUID.randomUUID(), createDraftContractRequest);
-hts.contracts().putContractsIdConfirm(contract.getId(), confirmContractRequest);
+OffersEligible offers = hts.offers().postOffers(createOffersRequest).execute();
+OffersEligible priced = hts.offers().postOffersPrice(priceOffersRequest).execute();
+CfarContract contract = hts.contracts().postContracts(UUID.randomUUID(), createDraftContractRequest).execute();
+hts.contracts().putContractsIdConfirm(contract.getId(), confirmContractRequest).execute();
 ```
 
 Each accessor on `FlightsCfarClient` returns one of the generated API classes, grouped the same way as the API documentation. `hts.apiClient()` exposes the underlying generated client for timeouts, debugging, or custom headers.
 
-Offers come back unpriced. Price them with the same itinerary before drafting a contract, or the draft is rejected with `offer_not_priced`. Creating a contract needs an idempotency key, which the generated method takes as its first argument.
+Offers come back unpriced. Price them with the same itinerary before drafting a contract, or the draft is rejected with `offer_not_priced`. Each generated method takes the operation's required parameters and returns a request builder. Optional parameters are set on the builder, and `execute()` sends the request, so adding an optional parameter to the API does not change existing calls. Creating a contract needs an idempotency key, which the generated method takes as its first argument.
 
 ### Paying with a card
 
@@ -82,7 +82,7 @@ The encryption certificate must be one Spreedly generated, so Spreedly holds the
 ./gradlew build
 ```
 
-`generate.sh` runs OpenAPI Generator 7.10.0 against the specs in the repository's top-level `api/` directory and writes the full output into each client module. It uses Docker when available and otherwise downloads the generator jar and runs it with the local Java, so either works; set `GENERATOR_NO_DOCKER=1` to force the jar. Every file under `src/main` in the two client modules is generated and will be overwritten; do not edit them. Files the build owns (Gradle files, README, docs, tests) are excluded through each module's `.openapi-generator-ignore`.
+`generate.sh` runs OpenAPI Generator 7.26.0 against the specs in the repository's top-level `api/` directory and writes the full output into each client module. It uses Docker when available and otherwise downloads the generator jar and runs it with the local Java, so either works; set `GENERATOR_NO_DOCKER=1` to force the jar. Every file under `src/main` in the two client modules is generated and will be overwritten; do not edit them. Files the build owns (Gradle files, README, docs, tests) are excluded through each module's `.openapi-generator-ignore`.
 
 Generation is idempotent: running it twice produces identical sources, so a spec change is the only thing that shows up in a diff.
 

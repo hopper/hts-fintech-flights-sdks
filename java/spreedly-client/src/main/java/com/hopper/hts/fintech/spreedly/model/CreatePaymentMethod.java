@@ -30,6 +30,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -49,7 +50,7 @@ import com.hopper.hts.fintech.spreedly.JSON;
 /**
  * CreatePaymentMethod
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CreatePaymentMethod {
   public static final String SERIALIZED_NAME_CREDIT_CARD = "credit_card";
   @SerializedName(SERIALIZED_NAME_CREDIT_CARD)
@@ -208,10 +209,7 @@ public class CreatePaymentMethod {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -220,14 +218,10 @@ public class CreatePaymentMethod {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("credit_card");
-    openapiFields.add("encrypted_fields");
-    openapiFields.add("encryption_certificate_token");
+    openapiFields = new HashSet<String>(Arrays.asList("credit_card", "encrypted_fields", "encryption_certificate_token"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("credit_card");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("credit_card"));
   }
 
   /**
@@ -239,24 +233,24 @@ public class CreatePaymentMethod {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreatePaymentMethod.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreatePaymentMethod is not found in the empty JSON string", CreatePaymentMethod.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CreatePaymentMethod is not found in the empty JSON string", CreatePaymentMethod.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreatePaymentMethod.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `credit_card`
       CreateCreditCard.validateJsonElement(jsonObj.get("credit_card"));
       if ((jsonObj.get("encrypted_fields") != null && !jsonObj.get("encrypted_fields").isJsonNull()) && !jsonObj.get("encrypted_fields").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `encrypted_fields` to be a primitive type in the JSON string but got `%s`", jsonObj.get("encrypted_fields").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `encrypted_fields` to be a primitive type in the JSON string but got `%s`", jsonObj.get("encrypted_fields").toString()));
       }
       if ((jsonObj.get("encryption_certificate_token") != null && !jsonObj.get("encryption_certificate_token").isJsonNull()) && !jsonObj.get("encryption_certificate_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `encryption_certificate_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("encryption_certificate_token").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `encryption_certificate_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("encryption_certificate_token").toString()));
       }
   }
 
@@ -289,7 +283,9 @@ public class CreatePaymentMethod {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -317,7 +313,7 @@ public class CreatePaymentMethod {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

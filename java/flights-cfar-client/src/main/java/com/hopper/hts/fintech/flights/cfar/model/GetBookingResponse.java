@@ -38,6 +38,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -57,7 +58,7 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * Recommended response structure for the partner get_booking endpoint.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class GetBookingResponse {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -149,7 +150,7 @@ public class GetBookingResponse {
   }
 
   /**
-   * Record locators if PSS, Order ID if OMS, etc. Used to retrieve the flight booking later. It&#39;s a dictionary of key/value pairs. The keys can be anything, but they are referenced in the configuration when retrieving the booking, so those must align.
+   * Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references provided during contract creation.
    * @return bookingReferences
    */
   @javax.annotation.Nonnull
@@ -336,10 +337,7 @@ public class GetBookingResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -348,23 +346,10 @@ public class GetBookingResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("currency");
-    openapiFields.add("itinerary");
-    openapiFields.add("booking_references");
-    openapiFields.add("booking_status");
-    openapiFields.add("void_policy");
-    openapiFields.add("created_at");
-    openapiFields.add("payment_transactions");
+    openapiFields = new HashSet<String>(Arrays.asList("currency", "itinerary", "booking_references", "booking_status", "void_policy", "created_at", "payment_transactions"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("itinerary");
-    openapiRequiredFields.add("booking_references");
-    openapiRequiredFields.add("booking_status");
-    openapiRequiredFields.add("void_policy");
-    openapiRequiredFields.add("created_at");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("currency", "itinerary", "booking_references", "booking_status", "void_policy", "created_at"));
   }
 
   /**
@@ -376,19 +361,19 @@ public class GetBookingResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!GetBookingResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GetBookingResponse is not found in the empty JSON string", GetBookingResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in GetBookingResponse is not found in the empty JSON string", GetBookingResponse.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : GetBookingResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       // validate the required field `itinerary`
       Itinerary.validateJsonElement(jsonObj.get("itinerary"));
@@ -401,7 +386,7 @@ public class GetBookingResponse {
         if (jsonArraypaymentTransactions != null) {
           // ensure the json data is an array
           if (!jsonObj.get("payment_transactions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `payment_transactions` to be an array in the JSON string but got `%s`", jsonObj.get("payment_transactions").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `payment_transactions` to be an array in the JSON string but got `%s`", jsonObj.get("payment_transactions").toString()));
           }
 
           // validate the optional field `payment_transactions` (array)
@@ -441,7 +426,9 @@ public class GetBookingResponse {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -469,7 +456,7 @@ public class GetBookingResponse {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

@@ -19,9 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus3;
+import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus;
 import com.hopper.hts.fintech.flights.cfar.model.OrderItemNotFound;
-import com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed1;
+import com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarCancelContractError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CfarCancelContractError.class.getName());
 
@@ -72,9 +72,9 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'CfarCancelContractError' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<InvalidContractStatus3> adapterInvalidContractStatus3 = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus3.class));
+            final TypeAdapter<InvalidContractStatus> adapterInvalidContractStatus = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus.class));
             final TypeAdapter<OrderItemNotFound> adapterOrderItemNotFound = gson.getDelegateAdapter(this, TypeToken.get(OrderItemNotFound.class));
-            final TypeAdapter<PaymentRefundFailed1> adapterPaymentRefundFailed1 = gson.getDelegateAdapter(this, TypeToken.get(PaymentRefundFailed1.class));
+            final TypeAdapter<PaymentRefundFailed> adapterPaymentRefundFailed = gson.getDelegateAdapter(this, TypeToken.get(PaymentRefundFailed.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CfarCancelContractError>() {
                 @Override
@@ -84,9 +84,9 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `InvalidContractStatus3`
-                    if (value.getActualInstance() instanceof InvalidContractStatus3) {
-                        JsonElement element = adapterInvalidContractStatus3.toJsonTree((InvalidContractStatus3)value.getActualInstance());
+                    // check if the actual instance is of the type `InvalidContractStatus`
+                    if (value.getActualInstance() instanceof InvalidContractStatus) {
+                        JsonElement element = adapterInvalidContractStatus.toJsonTree((InvalidContractStatus)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -96,13 +96,13 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `PaymentRefundFailed1`
-                    if (value.getActualInstance() instanceof PaymentRefundFailed1) {
-                        JsonElement element = adapterPaymentRefundFailed1.toJsonTree((PaymentRefundFailed1)value.getActualInstance());
+                    // check if the actual instance is of the type `PaymentRefundFailed`
+                    if (value.getActualInstance() instanceof PaymentRefundFailed) {
+                        JsonElement element = adapterPaymentRefundFailed.toJsonTree((PaymentRefundFailed)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidContractStatus3, OrderItemNotFound, PaymentRefundFailed1");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidContractStatus, OrderItemNotFound, PaymentRefundFailed");
                 }
 
                 @Override
@@ -114,17 +114,17 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize InvalidContractStatus3
+                    // deserialize InvalidContractStatus
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        InvalidContractStatus3.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidContractStatus3;
+                        InvalidContractStatus.validateJsonElement(jsonElement);
+                        actualAdapter = adapterInvalidContractStatus;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus3'");
+                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidContractStatus3 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus3'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus'", e);
                     }
                     // deserialize OrderItemNotFound
                     try {
@@ -135,20 +135,20 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OrderItemNotFound'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OrderItemNotFound failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderItemNotFound failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OrderItemNotFound'", e);
                     }
-                    // deserialize PaymentRefundFailed1
+                    // deserialize PaymentRefundFailed
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        PaymentRefundFailed1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterPaymentRefundFailed1;
+                        PaymentRefundFailed.validateJsonElement(jsonElement);
+                        actualAdapter = adapterPaymentRefundFailed;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'PaymentRefundFailed1'");
+                        log.log(Level.FINER, "Input data matches schema 'PaymentRefundFailed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PaymentRefundFailed1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'PaymentRefundFailed1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentRefundFailed failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'PaymentRefundFailed'", e);
                     }
 
                     if (match == 1) {
@@ -157,7 +157,7 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CfarCancelContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CfarCancelContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -176,9 +176,9 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("InvalidContractStatus3", InvalidContractStatus3.class);
+        schemas.put("InvalidContractStatus", InvalidContractStatus.class);
         schemas.put("OrderItemNotFound", OrderItemNotFound.class);
-        schemas.put("PaymentRefundFailed1", PaymentRefundFailed1.class);
+        schemas.put("PaymentRefundFailed", PaymentRefundFailed.class);
     }
 
     @Override
@@ -189,13 +189,13 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * InvalidContractStatus3, OrderItemNotFound, PaymentRefundFailed1
+     * InvalidContractStatus, OrderItemNotFound, PaymentRefundFailed
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof InvalidContractStatus3) {
+        if (instance instanceof InvalidContractStatus) {
             super.setActualInstance(instance);
             return;
         }
@@ -205,19 +205,19 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof PaymentRefundFailed1) {
+        if (instance instanceof PaymentRefundFailed) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be InvalidContractStatus3, OrderItemNotFound, PaymentRefundFailed1");
+        throw new RuntimeException("Invalid instance type. Must be InvalidContractStatus, OrderItemNotFound, PaymentRefundFailed");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * InvalidContractStatus3, OrderItemNotFound, PaymentRefundFailed1
+     * InvalidContractStatus, OrderItemNotFound, PaymentRefundFailed
      *
-     * @return The actual instance (InvalidContractStatus3, OrderItemNotFound, PaymentRefundFailed1)
+     * @return The actual instance (InvalidContractStatus, OrderItemNotFound, PaymentRefundFailed)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -226,14 +226,15 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `InvalidContractStatus3`. If the actual instance is not `InvalidContractStatus3`,
+     * Get the actual instance of `InvalidContractStatus`. If the actual instance is not `InvalidContractStatus`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `InvalidContractStatus3`
-     * @throws ClassCastException if the instance is not `InvalidContractStatus3`
+     * @return The actual instance of `InvalidContractStatus`
+     * @throws ClassCastException if the instance is not `InvalidContractStatus`
      */
-    public InvalidContractStatus3 getInvalidContractStatus3() throws ClassCastException {
-        return (InvalidContractStatus3)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public InvalidContractStatus getInvalidContractStatus() throws ClassCastException {
+        return (InvalidContractStatus)super.getActualInstance();
     }
 
     /**
@@ -243,19 +244,21 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `OrderItemNotFound`
      * @throws ClassCastException if the instance is not `OrderItemNotFound`
      */
+    @SuppressWarnings("unchecked")
     public OrderItemNotFound getOrderItemNotFound() throws ClassCastException {
         return (OrderItemNotFound)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `PaymentRefundFailed1`. If the actual instance is not `PaymentRefundFailed1`,
+     * Get the actual instance of `PaymentRefundFailed`. If the actual instance is not `PaymentRefundFailed`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `PaymentRefundFailed1`
-     * @throws ClassCastException if the instance is not `PaymentRefundFailed1`
+     * @return The actual instance of `PaymentRefundFailed`
+     * @throws ClassCastException if the instance is not `PaymentRefundFailed`
      */
-    public PaymentRefundFailed1 getPaymentRefundFailed1() throws ClassCastException {
-        return (PaymentRefundFailed1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public PaymentRefundFailed getPaymentRefundFailed() throws ClassCastException {
+        return (PaymentRefundFailed)super.getActualInstance();
     }
 
     /**
@@ -268,12 +271,12 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
         // validate oneOf schemas one by one
         int validCount = 0;
         ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with InvalidContractStatus3
+        // validate the json string with InvalidContractStatus
         try {
-            InvalidContractStatus3.validateJsonElement(jsonElement);
+            InvalidContractStatus.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidContractStatus3 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OrderItemNotFound
@@ -281,19 +284,19 @@ public class CfarCancelContractError extends AbstractOpenApiSchema {
             OrderItemNotFound.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OrderItemNotFound failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderItemNotFound failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with PaymentRefundFailed1
+        // validate the json string with PaymentRefundFailed
         try {
-            PaymentRefundFailed1.validateJsonElement(jsonElement);
+            PaymentRefundFailed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PaymentRefundFailed1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentRefundFailed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarCancelContractError with oneOf schemas: InvalidContractStatus3, OrderItemNotFound, PaymentRefundFailed1. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CfarCancelContractError with oneOf schemas: InvalidContractStatus, OrderItemNotFound, PaymentRefundFailed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

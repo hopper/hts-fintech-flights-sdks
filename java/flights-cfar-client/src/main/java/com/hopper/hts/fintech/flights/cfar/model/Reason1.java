@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hopper.hts.fintech.flights.cfar.model.Chargeback;
-import com.hopper.hts.fintech.flights.cfar.model.Other2;
+import com.hopper.hts.fintech.flights.cfar.model.Other1;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -59,7 +59,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Reason1 extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Reason1.class.getName());
 
@@ -72,7 +72,7 @@ public class Reason1 extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<Chargeback> adapterChargeback = gson.getDelegateAdapter(this, TypeToken.get(Chargeback.class));
-            final TypeAdapter<Other2> adapterOther2 = gson.getDelegateAdapter(this, TypeToken.get(Other2.class));
+            final TypeAdapter<Other1> adapterOther1 = gson.getDelegateAdapter(this, TypeToken.get(Other1.class));
 
             return (TypeAdapter<T>) new TypeAdapter<Reason1>() {
                 @Override
@@ -88,13 +88,13 @@ public class Reason1 extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `Other2`
-                    if (value.getActualInstance() instanceof Other2) {
-                        JsonElement element = adapterOther2.toJsonTree((Other2)value.getActualInstance());
+                    // check if the actual instance is of the type `Other1`
+                    if (value.getActualInstance() instanceof Other1) {
+                        JsonElement element = adapterOther1.toJsonTree((Other1)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: Chargeback, Other2");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: Chargeback, Other1");
                 }
 
                 @Override
@@ -115,20 +115,20 @@ public class Reason1 extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Chargeback'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Chargeback failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Chargeback failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Chargeback'", e);
                     }
-                    // deserialize Other2
+                    // deserialize Other1
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        Other2.validateJsonElement(jsonElement);
-                        actualAdapter = adapterOther2;
+                        Other1.validateJsonElement(jsonElement);
+                        actualAdapter = adapterOther1;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'Other2'");
+                        log.log(Level.FINER, "Input data matches schema 'Other1'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Other2 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'Other2'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Other1 failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'Other1'", e);
                     }
 
                     if (match == 1) {
@@ -137,7 +137,7 @@ public class Reason1 extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Reason1: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Reason1: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -157,7 +157,7 @@ public class Reason1 extends AbstractOpenApiSchema {
 
     static {
         schemas.put("Chargeback", Chargeback.class);
-        schemas.put("Other2", Other2.class);
+        schemas.put("Other1", Other1.class);
     }
 
     @Override
@@ -168,7 +168,7 @@ public class Reason1 extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * Chargeback, Other2
+     * Chargeback, Other1
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -179,19 +179,19 @@ public class Reason1 extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof Other2) {
+        if (instance instanceof Other1) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be Chargeback, Other2");
+        throw new RuntimeException("Invalid instance type. Must be Chargeback, Other1");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * Chargeback, Other2
+     * Chargeback, Other1
      *
-     * @return The actual instance (Chargeback, Other2)
+     * @return The actual instance (Chargeback, Other1)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -206,19 +206,21 @@ public class Reason1 extends AbstractOpenApiSchema {
      * @return The actual instance of `Chargeback`
      * @throws ClassCastException if the instance is not `Chargeback`
      */
+    @SuppressWarnings("unchecked")
     public Chargeback getChargeback() throws ClassCastException {
         return (Chargeback)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `Other2`. If the actual instance is not `Other2`,
+     * Get the actual instance of `Other1`. If the actual instance is not `Other1`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `Other2`
-     * @throws ClassCastException if the instance is not `Other2`
+     * @return The actual instance of `Other1`
+     * @throws ClassCastException if the instance is not `Other1`
      */
-    public Other2 getOther2() throws ClassCastException {
-        return (Other2)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public Other1 getOther1() throws ClassCastException {
+        return (Other1)super.getActualInstance();
     }
 
     /**
@@ -236,19 +238,19 @@ public class Reason1 extends AbstractOpenApiSchema {
             Chargeback.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Chargeback failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Chargeback failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with Other2
+        // validate the json string with Other1
         try {
-            Other2.validateJsonElement(jsonElement);
+            Other1.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Other2 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Other1 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Reason1 with oneOf schemas: Chargeback, Other2. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Reason1 with oneOf schemas: Chargeback, Other1. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

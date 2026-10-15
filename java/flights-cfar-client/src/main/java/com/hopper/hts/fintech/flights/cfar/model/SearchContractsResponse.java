@@ -32,6 +32,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -51,7 +52,7 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * SearchContractsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class SearchContractsResponse {
   public static final String SERIALIZED_NAME_CONTRACTS = "contracts";
   @SerializedName(SERIALIZED_NAME_CONTRACTS)
@@ -166,10 +167,7 @@ public class SearchContractsResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -178,12 +176,10 @@ public class SearchContractsResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("contracts");
+    openapiFields = new HashSet<String>(Arrays.asList("contracts"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("contracts");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("contracts"));
   }
 
   /**
@@ -195,27 +191,27 @@ public class SearchContractsResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SearchContractsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SearchContractsResponse is not found in the empty JSON string", SearchContractsResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SearchContractsResponse is not found in the empty JSON string", SearchContractsResponse.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SearchContractsResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("contracts").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `contracts` to be an array in the JSON string but got `%s`", jsonObj.get("contracts").toString()));
+      if (jsonObj.get("contracts") != null) {
+        if (!jsonObj.get("contracts").isJsonArray()) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `contracts` to be an array in the JSON string but got `%s`", jsonObj.get("contracts").toString()));
+        }
+        JsonArray jsonArraycontracts = jsonObj.getAsJsonArray("contracts");
+        // validate the required field `contracts` (array)
+        for (int i = 0; i < jsonArraycontracts.size(); i++) {
+          CfarContract.validateJsonElement(jsonArraycontracts.get(i));
+        }
       }
-
-      JsonArray jsonArraycontracts = jsonObj.getAsJsonArray("contracts");
-      // validate the required field `contracts` (array)
-      for (int i = 0; i < jsonArraycontracts.size(); i++) {
-        CfarContract.validateJsonElement(jsonArraycontracts.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -247,7 +243,9 @@ public class SearchContractsResponse {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -275,7 +273,7 @@ public class SearchContractsResponse {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

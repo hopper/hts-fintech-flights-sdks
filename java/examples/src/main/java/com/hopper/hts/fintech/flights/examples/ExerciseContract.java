@@ -20,23 +20,23 @@ public final class ExerciseContract {
         String mode = args.length > 1 ? args[1] : "self-service";
         FlightsCfarClient hts = Env.htsClient();
 
-        CfarContract contract = hts.contracts().getContractsId(contractId);
+        CfarContract contract = hts.contracts().getContractsId(contractId).execute();
         System.out.printf("Contract %s is %s%n", contract.getId(), contract.getStatus());
 
         if (mode.equals("url")) {
-            ExerciseUrl url = hts.htsSelfServiceExercise().postContractsIdExerciseUrl(contractId);
+            ExerciseUrl url = hts.htsSelfServiceExercise().postContractsIdExerciseUrl(contractId).execute();
             System.out.printf("Send the customer to %s%n", url.getExerciseUrl());
             return;
         }
 
         String sessionId = UUID.randomUUID().toString();
         CfarExerciseQuote quote = hts.partnerSelfServiceExercise().postContractsIdExerciseQuotes(
-            contractId, new CreateCfarExerciseQuoteRequest().sessionId(sessionId));
+            contractId, new CreateCfarExerciseQuoteRequest().sessionId(sessionId)).execute();
         System.out.printf("Quote %s with %d payout option(s)%n", quote.getId(), quote.getPayoutOptions().size());
 
         PayoutOption chosen = quote.getPayoutOptions().get(0);
         hts.partnerSelfServiceExercise().putExerciseQuotesIdFulfill(
-            quote.getId(), new FulfillExerciseQuoteRequest().payoutOptionId(chosen.getId()).sessionId(sessionId));
+            quote.getId(), new FulfillExerciseQuoteRequest().payoutOptionId(chosen.getId()).sessionId(sessionId)).execute();
         System.out.printf("Exercised contract %s using payout option %s%n", contractId, chosen.getId());
     }
 }

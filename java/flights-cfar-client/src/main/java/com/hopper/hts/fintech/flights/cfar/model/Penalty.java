@@ -59,7 +59,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Penalty extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Penalty.class.getName());
 
@@ -115,7 +115,7 @@ public class Penalty extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Fee'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Fee failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Fee failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Fee'", e);
                     }
                     // deserialize Percentage
@@ -127,7 +127,7 @@ public class Penalty extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Percentage'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Percentage failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Percentage failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Percentage'", e);
                     }
 
@@ -137,7 +137,7 @@ public class Penalty extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Penalty: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Penalty: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -206,6 +206,7 @@ public class Penalty extends AbstractOpenApiSchema {
      * @return The actual instance of `Fee`
      * @throws ClassCastException if the instance is not `Fee`
      */
+    @SuppressWarnings("unchecked")
     public Fee getFee() throws ClassCastException {
         return (Fee)super.getActualInstance();
     }
@@ -217,6 +218,7 @@ public class Penalty extends AbstractOpenApiSchema {
      * @return The actual instance of `Percentage`
      * @throws ClassCastException if the instance is not `Percentage`
      */
+    @SuppressWarnings("unchecked")
     public Percentage getPercentage() throws ClassCastException {
         return (Percentage)super.getActualInstance();
     }
@@ -236,7 +238,7 @@ public class Penalty extends AbstractOpenApiSchema {
             Fee.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Fee failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Fee failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Percentage
@@ -244,11 +246,11 @@ public class Penalty extends AbstractOpenApiSchema {
             Percentage.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Percentage failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Percentage failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Penalty with oneOf schemas: Fee, Percentage. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Penalty with oneOf schemas: Fee, Percentage. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

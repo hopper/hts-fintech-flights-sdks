@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Policy extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Policy.class.getName());
 
@@ -117,7 +117,7 @@ public class Policy extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'NonRefundable'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for NonRefundable failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NonRefundable failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'NonRefundable'", e);
                     }
                     // deserialize Refundable
@@ -129,7 +129,7 @@ public class Policy extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Refundable'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Refundable failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Refundable failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Refundable'", e);
                     }
 
@@ -139,7 +139,7 @@ public class Policy extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Policy: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Policy: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -208,6 +208,7 @@ public class Policy extends AbstractOpenApiSchema {
      * @return The actual instance of `NonRefundable`
      * @throws ClassCastException if the instance is not `NonRefundable`
      */
+    @SuppressWarnings("unchecked")
     public NonRefundable getNonRefundable() throws ClassCastException {
         return (NonRefundable)super.getActualInstance();
     }
@@ -219,6 +220,7 @@ public class Policy extends AbstractOpenApiSchema {
      * @return The actual instance of `Refundable`
      * @throws ClassCastException if the instance is not `Refundable`
      */
+    @SuppressWarnings("unchecked")
     public Refundable getRefundable() throws ClassCastException {
         return (Refundable)super.getActualInstance();
     }
@@ -238,7 +240,7 @@ public class Policy extends AbstractOpenApiSchema {
             NonRefundable.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for NonRefundable failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NonRefundable failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Refundable
@@ -246,11 +248,11 @@ public class Policy extends AbstractOpenApiSchema {
             Refundable.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Refundable failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Refundable failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Policy with oneOf schemas: NonRefundable, Refundable. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Policy with oneOf schemas: NonRefundable, Refundable. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

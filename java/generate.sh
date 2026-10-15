@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-GENERATOR_VERSION="${GENERATOR_VERSION:-7.10.0}"
+GENERATOR_VERSION="${GENERATOR_VERSION:-7.26.0}"
 WORK_DIR=".gradle/generator"
 mkdir -p "$WORK_DIR"
 

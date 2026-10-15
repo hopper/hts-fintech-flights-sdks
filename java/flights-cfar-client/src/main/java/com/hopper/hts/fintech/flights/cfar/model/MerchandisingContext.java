@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class MerchandisingContext extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(MerchandisingContext.class.getName());
 
@@ -118,7 +118,7 @@ public class MerchandisingContext extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PostBooking'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PostBooking failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PostBooking failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PostBooking'", e);
                     }
                     // deserialize PreBooking
@@ -130,7 +130,7 @@ public class MerchandisingContext extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PreBooking'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PreBooking failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PreBooking failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PreBooking'", e);
                     }
 
@@ -140,7 +140,7 @@ public class MerchandisingContext extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for MerchandisingContext: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for MerchandisingContext: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -209,6 +209,7 @@ public class MerchandisingContext extends AbstractOpenApiSchema {
      * @return The actual instance of `PostBooking`
      * @throws ClassCastException if the instance is not `PostBooking`
      */
+    @SuppressWarnings("unchecked")
     public PostBooking getPostBooking() throws ClassCastException {
         return (PostBooking)super.getActualInstance();
     }
@@ -220,6 +221,7 @@ public class MerchandisingContext extends AbstractOpenApiSchema {
      * @return The actual instance of `PreBooking`
      * @throws ClassCastException if the instance is not `PreBooking`
      */
+    @SuppressWarnings("unchecked")
     public PreBooking getPreBooking() throws ClassCastException {
         return (PreBooking)super.getActualInstance();
     }
@@ -239,7 +241,7 @@ public class MerchandisingContext extends AbstractOpenApiSchema {
             PostBooking.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PostBooking failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PostBooking failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PreBooking
@@ -247,11 +249,11 @@ public class MerchandisingContext extends AbstractOpenApiSchema {
             PreBooking.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PreBooking failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PreBooking failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for MerchandisingContext with oneOf schemas: PostBooking, PreBooking. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for MerchandisingContext with oneOf schemas: PostBooking, PreBooking. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

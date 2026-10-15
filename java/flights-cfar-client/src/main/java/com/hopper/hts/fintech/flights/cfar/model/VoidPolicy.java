@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class VoidPolicy extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(VoidPolicy.class.getName());
 
@@ -132,7 +132,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Allowed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Allowed failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Allowed failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Allowed'", e);
                     }
                     // deserialize AllowedFor
@@ -144,7 +144,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'AllowedFor'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for AllowedFor failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AllowedFor failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'AllowedFor'", e);
                     }
                     // deserialize AllowedUntil
@@ -156,7 +156,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'AllowedUntil'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for AllowedUntil failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AllowedUntil failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'AllowedUntil'", e);
                     }
                     // deserialize NotAllowed
@@ -168,7 +168,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'NotAllowed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for NotAllowed failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotAllowed failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'NotAllowed'", e);
                     }
 
@@ -178,7 +178,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for VoidPolicy: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for VoidPolicy: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -259,6 +259,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
      * @return The actual instance of `Allowed`
      * @throws ClassCastException if the instance is not `Allowed`
      */
+    @SuppressWarnings("unchecked")
     public Allowed getAllowed() throws ClassCastException {
         return (Allowed)super.getActualInstance();
     }
@@ -270,6 +271,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
      * @return The actual instance of `AllowedFor`
      * @throws ClassCastException if the instance is not `AllowedFor`
      */
+    @SuppressWarnings("unchecked")
     public AllowedFor getAllowedFor() throws ClassCastException {
         return (AllowedFor)super.getActualInstance();
     }
@@ -281,6 +283,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
      * @return The actual instance of `AllowedUntil`
      * @throws ClassCastException if the instance is not `AllowedUntil`
      */
+    @SuppressWarnings("unchecked")
     public AllowedUntil getAllowedUntil() throws ClassCastException {
         return (AllowedUntil)super.getActualInstance();
     }
@@ -292,6 +295,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
      * @return The actual instance of `NotAllowed`
      * @throws ClassCastException if the instance is not `NotAllowed`
      */
+    @SuppressWarnings("unchecked")
     public NotAllowed getNotAllowed() throws ClassCastException {
         return (NotAllowed)super.getActualInstance();
     }
@@ -311,7 +315,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
             Allowed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Allowed failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Allowed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with AllowedFor
@@ -319,7 +323,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
             AllowedFor.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for AllowedFor failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AllowedFor failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with AllowedUntil
@@ -327,7 +331,7 @@ public class VoidPolicy extends AbstractOpenApiSchema {
             AllowedUntil.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for AllowedUntil failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AllowedUntil failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with NotAllowed
@@ -335,11 +339,11 @@ public class VoidPolicy extends AbstractOpenApiSchema {
             NotAllowed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for NotAllowed failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotAllowed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for VoidPolicy with oneOf schemas: Allowed, AllowedFor, AllowedUntil, NotAllowed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for VoidPolicy with oneOf schemas: Allowed, AllowedFor, AllowedUntil, NotAllowed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

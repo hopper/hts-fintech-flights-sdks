@@ -73,25 +73,7 @@ public class AnalyticsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for postEvents
-     * @param event  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The event has been successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postEventsCall(Event event, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEventsCall(@javax.annotation.Nonnull Event event, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,7 +119,7 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEventsValidateBeforeCall(Event event, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEventsValidateBeforeCall(@javax.annotation.Nonnull Event event, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'event' is set
         if (event == null) {
             throw new ApiException("Missing the required parameter 'event' when calling postEvents(Async)");
@@ -147,57 +129,114 @@ public class AnalyticsApi {
 
     }
 
-    /**
-     * Create Event
-     * Create a new event for the provided session.
-     * @param event  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The event has been successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public void postEvents(Event event) throws ApiException {
-        postEventsWithHttpInfo(event);
-    }
 
-    /**
-     * Create Event
-     * Create a new event for the provided session.
-     * @param event  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> The event has been successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> postEventsWithHttpInfo(Event event) throws ApiException {
+    private ApiResponse<Void> postEventsWithHttpInfo(@javax.annotation.Nonnull Event event) throws ApiException {
         okhttp3.Call localVarCall = postEventsValidateBeforeCall(event, null);
         return localVarApiClient.execute(localVarCall);
     }
 
+    private okhttp3.Call postEventsAsync(@javax.annotation.Nonnull Event event, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postEventsValidateBeforeCall(event, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
+    public class APIpostEventsRequest {
+        @javax.annotation.Nonnull
+        private final Event event;
+
+        private APIpostEventsRequest(@javax.annotation.Nonnull Event event) {
+            this.event = event;
+        }
+
+        /**
+         * Build call for postEvents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> The event has been successfully created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postEventsCall(event, _callback);
+        }
+
+        /**
+         * Execute postEvents request
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> The event has been successfully created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public void execute() throws ApiException {
+            postEventsWithHttpInfo(event);
+        }
+
+        /**
+         * Execute postEvents request with HTTP info returned
+         * @return ApiResponse&lt;Void&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> The event has been successfully created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
+            return postEventsWithHttpInfo(event);
+        }
+
+        /**
+         * Execute postEvents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td> The event has been successfully created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
+            return postEventsAsync(event, _callback);
+        }
+    }
+
     /**
-     * Create Event (asynchronously)
+     * Create Event
      * Create a new event for the provided session.
      * @param event  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIpostEventsRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
@@ -210,10 +249,7 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEventsAsync(Event event, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postEventsValidateBeforeCall(event, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
+    public APIpostEventsRequest postEvents(@javax.annotation.Nonnull Event event) {
+        return new APIpostEventsRequest(event);
     }
 }

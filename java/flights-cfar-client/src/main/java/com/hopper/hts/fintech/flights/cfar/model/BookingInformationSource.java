@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class BookingInformationSource extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(BookingInformationSource.class.getName());
 
@@ -117,7 +117,7 @@ public class BookingInformationSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'FromBookingReferences'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FromBookingReferences failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FromBookingReferences failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'FromBookingReferences'", e);
                     }
                     // deserialize NotAvailable
@@ -129,7 +129,7 @@ public class BookingInformationSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'NotAvailable'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for NotAvailable failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotAvailable failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'NotAvailable'", e);
                     }
 
@@ -139,7 +139,7 @@ public class BookingInformationSource extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for BookingInformationSource: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for BookingInformationSource: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -208,6 +208,7 @@ public class BookingInformationSource extends AbstractOpenApiSchema {
      * @return The actual instance of `FromBookingReferences`
      * @throws ClassCastException if the instance is not `FromBookingReferences`
      */
+    @SuppressWarnings("unchecked")
     public FromBookingReferences getFromBookingReferences() throws ClassCastException {
         return (FromBookingReferences)super.getActualInstance();
     }
@@ -219,6 +220,7 @@ public class BookingInformationSource extends AbstractOpenApiSchema {
      * @return The actual instance of `NotAvailable`
      * @throws ClassCastException if the instance is not `NotAvailable`
      */
+    @SuppressWarnings("unchecked")
     public NotAvailable getNotAvailable() throws ClassCastException {
         return (NotAvailable)super.getActualInstance();
     }
@@ -238,7 +240,7 @@ public class BookingInformationSource extends AbstractOpenApiSchema {
             FromBookingReferences.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for FromBookingReferences failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FromBookingReferences failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with NotAvailable
@@ -246,11 +248,11 @@ public class BookingInformationSource extends AbstractOpenApiSchema {
             NotAvailable.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for NotAvailable failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotAvailable failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for BookingInformationSource with oneOf schemas: FromBookingReferences, NotAvailable. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for BookingInformationSource with oneOf schemas: FromBookingReferences, NotAvailable. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

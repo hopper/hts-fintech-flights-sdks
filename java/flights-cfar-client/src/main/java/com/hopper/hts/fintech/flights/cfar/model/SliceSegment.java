@@ -30,6 +30,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -49,7 +50,7 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * A single flight segment.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class SliceSegment {
   public static final String SERIALIZED_NAME_ORIGIN_AIRPORT = "origin_airport";
   @SerializedName(SERIALIZED_NAME_ORIGIN_AIRPORT)
@@ -390,10 +391,7 @@ public class SliceSegment {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -402,27 +400,10 @@ public class SliceSegment {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("origin_airport");
-    openapiFields.add("destination_airport");
-    openapiFields.add("departure_date_time");
-    openapiFields.add("arrival_date_time");
-    openapiFields.add("cabin");
-    openapiFields.add("reservation_booking_designator");
-    openapiFields.add("marketing_carrier_code");
-    openapiFields.add("marketing_flight_number");
-    openapiFields.add("operating_carrier_code");
-    openapiFields.add("operating_flight_number");
+    openapiFields = new HashSet<String>(Arrays.asList("origin_airport", "destination_airport", "departure_date_time", "arrival_date_time", "cabin", "reservation_booking_designator", "marketing_carrier_code", "marketing_flight_number", "operating_carrier_code", "operating_flight_number"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("origin_airport");
-    openapiRequiredFields.add("destination_airport");
-    openapiRequiredFields.add("departure_date_time");
-    openapiRequiredFields.add("arrival_date_time");
-    openapiRequiredFields.add("cabin");
-    openapiRequiredFields.add("marketing_carrier_code");
-    openapiRequiredFields.add("marketing_flight_number");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("origin_airport", "destination_airport", "departure_date_time", "arrival_date_time", "cabin", "marketing_carrier_code", "marketing_flight_number"));
   }
 
   /**
@@ -434,45 +415,45 @@ public class SliceSegment {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SliceSegment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SliceSegment is not found in the empty JSON string", SliceSegment.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SliceSegment is not found in the empty JSON string", SliceSegment.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SliceSegment.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("origin_airport").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `origin_airport` to be a primitive type in the JSON string but got `%s`", jsonObj.get("origin_airport").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `origin_airport` to be a primitive type in the JSON string but got `%s`", jsonObj.get("origin_airport").toString()));
       }
       if (!jsonObj.get("destination_airport").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `destination_airport` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_airport").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `destination_airport` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_airport").toString()));
       }
       if (!jsonObj.get("departure_date_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `departure_date_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("departure_date_time").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `departure_date_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("departure_date_time").toString()));
       }
       if (!jsonObj.get("arrival_date_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `arrival_date_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("arrival_date_time").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `arrival_date_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("arrival_date_time").toString()));
       }
       // validate the required field `cabin`
       Cabin.validateJsonElement(jsonObj.get("cabin"));
       if ((jsonObj.get("reservation_booking_designator") != null && !jsonObj.get("reservation_booking_designator").isJsonNull()) && !jsonObj.get("reservation_booking_designator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reservation_booking_designator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reservation_booking_designator").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `reservation_booking_designator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reservation_booking_designator").toString()));
       }
       if (!jsonObj.get("marketing_carrier_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `marketing_carrier_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("marketing_carrier_code").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `marketing_carrier_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("marketing_carrier_code").toString()));
       }
       if (!jsonObj.get("marketing_flight_number").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `marketing_flight_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("marketing_flight_number").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `marketing_flight_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("marketing_flight_number").toString()));
       }
       if ((jsonObj.get("operating_carrier_code") != null && !jsonObj.get("operating_carrier_code").isJsonNull()) && !jsonObj.get("operating_carrier_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operating_carrier_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_carrier_code").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `operating_carrier_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_carrier_code").toString()));
       }
       if ((jsonObj.get("operating_flight_number") != null && !jsonObj.get("operating_flight_number").isJsonNull()) && !jsonObj.get("operating_flight_number").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operating_flight_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_flight_number").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `operating_flight_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_flight_number").toString()));
       }
   }
 
@@ -505,7 +486,9 @@ public class SliceSegment {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -533,7 +516,7 @@ public class SliceSegment {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

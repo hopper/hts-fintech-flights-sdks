@@ -63,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Channel extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Channel.class.getName());
 
@@ -140,7 +140,7 @@ public class Channel extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'AgentReseller'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for AgentReseller failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AgentReseller failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'AgentReseller'", e);
                     }
                     // deserialize Api
@@ -152,7 +152,7 @@ public class Channel extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Api'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Api failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Api failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Api'", e);
                     }
                     // deserialize Direct
@@ -164,7 +164,7 @@ public class Channel extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Direct'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Direct failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Direct failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Direct'", e);
                     }
                     // deserialize OnlineBookingTool
@@ -176,7 +176,7 @@ public class Channel extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OnlineBookingTool'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OnlineBookingTool failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OnlineBookingTool failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OnlineBookingTool'", e);
                     }
                     // deserialize WhiteLabel
@@ -188,7 +188,7 @@ public class Channel extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'WhiteLabel'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for WhiteLabel failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for WhiteLabel failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'WhiteLabel'", e);
                     }
 
@@ -198,7 +198,7 @@ public class Channel extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Channel: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Channel: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -285,6 +285,7 @@ public class Channel extends AbstractOpenApiSchema {
      * @return The actual instance of `AgentReseller`
      * @throws ClassCastException if the instance is not `AgentReseller`
      */
+    @SuppressWarnings("unchecked")
     public AgentReseller getAgentReseller() throws ClassCastException {
         return (AgentReseller)super.getActualInstance();
     }
@@ -296,6 +297,7 @@ public class Channel extends AbstractOpenApiSchema {
      * @return The actual instance of `Api`
      * @throws ClassCastException if the instance is not `Api`
      */
+    @SuppressWarnings("unchecked")
     public Api getApi() throws ClassCastException {
         return (Api)super.getActualInstance();
     }
@@ -307,6 +309,7 @@ public class Channel extends AbstractOpenApiSchema {
      * @return The actual instance of `Direct`
      * @throws ClassCastException if the instance is not `Direct`
      */
+    @SuppressWarnings("unchecked")
     public Direct getDirect() throws ClassCastException {
         return (Direct)super.getActualInstance();
     }
@@ -318,6 +321,7 @@ public class Channel extends AbstractOpenApiSchema {
      * @return The actual instance of `OnlineBookingTool`
      * @throws ClassCastException if the instance is not `OnlineBookingTool`
      */
+    @SuppressWarnings("unchecked")
     public OnlineBookingTool getOnlineBookingTool() throws ClassCastException {
         return (OnlineBookingTool)super.getActualInstance();
     }
@@ -329,6 +333,7 @@ public class Channel extends AbstractOpenApiSchema {
      * @return The actual instance of `WhiteLabel`
      * @throws ClassCastException if the instance is not `WhiteLabel`
      */
+    @SuppressWarnings("unchecked")
     public WhiteLabel getWhiteLabel() throws ClassCastException {
         return (WhiteLabel)super.getActualInstance();
     }
@@ -348,7 +353,7 @@ public class Channel extends AbstractOpenApiSchema {
             AgentReseller.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for AgentReseller failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AgentReseller failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Api
@@ -356,7 +361,7 @@ public class Channel extends AbstractOpenApiSchema {
             Api.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Api failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Api failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Direct
@@ -364,7 +369,7 @@ public class Channel extends AbstractOpenApiSchema {
             Direct.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Direct failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Direct failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OnlineBookingTool
@@ -372,7 +377,7 @@ public class Channel extends AbstractOpenApiSchema {
             OnlineBookingTool.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OnlineBookingTool failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OnlineBookingTool failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with WhiteLabel
@@ -380,11 +385,11 @@ public class Channel extends AbstractOpenApiSchema {
             WhiteLabel.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for WhiteLabel failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for WhiteLabel failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Channel with oneOf schemas: AgentReseller, Api, Direct, OnlineBookingTool, WhiteLabel. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Channel with oneOf schemas: AgentReseller, Api, Direct, OnlineBookingTool, WhiteLabel. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

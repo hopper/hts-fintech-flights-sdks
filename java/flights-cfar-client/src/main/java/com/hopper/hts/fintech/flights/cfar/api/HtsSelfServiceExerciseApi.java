@@ -73,26 +73,7 @@ public class HtsSelfServiceExerciseApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for postContractsIdExerciseUrl
-     * @param id A unique identifier for a contract. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postContractsIdExerciseUrlCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContractsIdExerciseUrlCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -138,7 +119,7 @@ public class HtsSelfServiceExerciseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postContractsIdExerciseUrlValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContractsIdExerciseUrlValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postContractsIdExerciseUrl(Async)");
@@ -148,62 +129,122 @@ public class HtsSelfServiceExerciseApi {
 
     }
 
-    /**
-     * Create an Exercise URL
-     * Create a link to the self serve exercise portal, which provides customers the ability to exercise their product.
-     * @param id A unique identifier for a contract. (required)
-     * @return ExerciseUrl
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ExerciseUrl postContractsIdExerciseUrl(String id) throws ApiException {
-        ApiResponse<ExerciseUrl> localVarResp = postContractsIdExerciseUrlWithHttpInfo(id);
-        return localVarResp.getData();
-    }
 
-    /**
-     * Create an Exercise URL
-     * Create a link to the self serve exercise portal, which provides customers the ability to exercise their product.
-     * @param id A unique identifier for a contract. (required)
-     * @return ApiResponse&lt;ExerciseUrl&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ExerciseUrl> postContractsIdExerciseUrlWithHttpInfo(String id) throws ApiException {
+    private ApiResponse<ExerciseUrl> postContractsIdExerciseUrlWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postContractsIdExerciseUrlValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ExerciseUrl>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call postContractsIdExerciseUrlAsync(@javax.annotation.Nonnull String id, final ApiCallback<ExerciseUrl> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postContractsIdExerciseUrlValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<ExerciseUrl>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpostContractsIdExerciseUrlRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+
+        private APIpostContractsIdExerciseUrlRequest(@javax.annotation.Nonnull String id) {
+            this.id = id;
+        }
+
+        /**
+         * Build call for postContractsIdExerciseUrl
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postContractsIdExerciseUrlCall(id, _callback);
+        }
+
+        /**
+         * Execute postContractsIdExerciseUrl request
+         * @return ExerciseUrl
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ExerciseUrl execute() throws ApiException {
+            ApiResponse<ExerciseUrl> localVarResp = postContractsIdExerciseUrlWithHttpInfo(id);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postContractsIdExerciseUrl request with HTTP info returned
+         * @return ApiResponse&lt;ExerciseUrl&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ExerciseUrl> executeWithHttpInfo() throws ApiException {
+            return postContractsIdExerciseUrlWithHttpInfo(id);
+        }
+
+        /**
+         * Execute postContractsIdExerciseUrl request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ExerciseUrl> _callback) throws ApiException {
+            return postContractsIdExerciseUrlAsync(id, _callback);
+        }
+    }
+
     /**
-     * Create an Exercise URL (asynchronously)
+     * Create an Exercise URL
      * Create a link to the self serve exercise portal, which provides customers the ability to exercise their product.
      * @param id A unique identifier for a contract. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIpostContractsIdExerciseUrlRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
@@ -217,11 +258,7 @@ public class HtsSelfServiceExerciseApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContractsIdExerciseUrlAsync(String id, final ApiCallback<ExerciseUrl> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postContractsIdExerciseUrlValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ExerciseUrl>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIpostContractsIdExerciseUrlRequest postContractsIdExerciseUrl(@javax.annotation.Nonnull String id) {
+        return new APIpostContractsIdExerciseUrlRequest(id);
     }
 }

@@ -83,26 +83,7 @@ public class OfferMerchandisingPrePurchaseApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for getOffersId
-     * @param id A unique identifier for an offer. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getOffersIdCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOffersIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,7 +129,7 @@ public class OfferMerchandisingPrePurchaseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getOffersIdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOffersIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getOffersId(Async)");
@@ -158,103 +139,139 @@ public class OfferMerchandisingPrePurchaseApi {
 
     }
 
-    /**
-     * Get Offer
-     * Get an offer.
-     * @param id A unique identifier for an offer. (required)
-     * @return CfarOffer
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public CfarOffer getOffersId(String id) throws ApiException {
-        ApiResponse<CfarOffer> localVarResp = getOffersIdWithHttpInfo(id);
-        return localVarResp.getData();
-    }
 
-    /**
-     * Get Offer
-     * Get an offer.
-     * @param id A unique identifier for an offer. (required)
-     * @return ApiResponse&lt;CfarOffer&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CfarOffer> getOffersIdWithHttpInfo(String id) throws ApiException {
+    private ApiResponse<CfarOffer> getOffersIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getOffersIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CfarOffer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * Get Offer (asynchronously)
-     * Get an offer.
-     * @param id A unique identifier for an offer. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getOffersIdAsync(String id, final ApiCallback<CfarOffer> _callback) throws ApiException {
+    private okhttp3.Call getOffersIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CfarOffer> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getOffersIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CfarOffer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIgetOffersIdRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+
+        private APIgetOffersIdRequest(@javax.annotation.Nonnull String id) {
+            this.id = id;
+        }
+
+        /**
+         * Build call for getOffersId
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getOffersIdCall(id, _callback);
+        }
+
+        /**
+         * Execute getOffersId request
+         * @return CfarOffer
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public CfarOffer execute() throws ApiException {
+            ApiResponse<CfarOffer> localVarResp = getOffersIdWithHttpInfo(id);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getOffersId request with HTTP info returned
+         * @return ApiResponse&lt;CfarOffer&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CfarOffer> executeWithHttpInfo() throws ApiException {
+            return getOffersIdWithHttpInfo(id);
+        }
+
+        /**
+         * Execute getOffersId request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CfarOffer> _callback) throws ApiException {
+            return getOffersIdAsync(id, _callback);
+        }
+    }
+
     /**
-     * Build call for postOffers
-     * @param createOffersRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * Get Offer
+     * Get an offer.
+     * @param id A unique identifier for an offer. (required)
+     * @return APIgetOffersIdRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The offer </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
         <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postOffersCall(CreateOffersRequest createOffersRequest, final ApiCallback _callback) throws ApiException {
+    public APIgetOffersIdRequest getOffersId(@javax.annotation.Nonnull String id) {
+        return new APIgetOffersIdRequest(id);
+    }
+    private okhttp3.Call postOffersCall(@javax.annotation.Nonnull CreateOffersRequest createOffersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -300,7 +317,7 @@ public class OfferMerchandisingPrePurchaseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postOffersValidateBeforeCall(CreateOffersRequest createOffersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postOffersValidateBeforeCall(@javax.annotation.Nonnull CreateOffersRequest createOffersRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createOffersRequest' is set
         if (createOffersRequest == null) {
             throw new ApiException("Missing the required parameter 'createOffersRequest' when calling postOffers(Async)");
@@ -310,107 +327,144 @@ public class OfferMerchandisingPrePurchaseApi {
 
     }
 
-    /**
-     * Create Offers
-     * Create offers for a customer&#39;s itinerary.
-     * @param createOffersRequest  (required)
-     * @return OffersEligible
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public OffersEligible postOffers(CreateOffersRequest createOffersRequest) throws ApiException {
-        ApiResponse<OffersEligible> localVarResp = postOffersWithHttpInfo(createOffersRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * Create Offers
-     * Create offers for a customer&#39;s itinerary.
-     * @param createOffersRequest  (required)
-     * @return ApiResponse&lt;OffersEligible&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<OffersEligible> postOffersWithHttpInfo(CreateOffersRequest createOffersRequest) throws ApiException {
+    private ApiResponse<OffersEligible> postOffersWithHttpInfo(@javax.annotation.Nonnull CreateOffersRequest createOffersRequest) throws ApiException {
         okhttp3.Call localVarCall = postOffersValidateBeforeCall(createOffersRequest, null);
         Type localVarReturnType = new TypeToken<OffersEligible>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * Create Offers (asynchronously)
-     * Create offers for a customer&#39;s itinerary.
-     * @param createOffersRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postOffersAsync(CreateOffersRequest createOffersRequest, final ApiCallback<OffersEligible> _callback) throws ApiException {
+    private okhttp3.Call postOffersAsync(@javax.annotation.Nonnull CreateOffersRequest createOffersRequest, final ApiCallback<OffersEligible> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postOffersValidateBeforeCall(createOffersRequest, _callback);
         Type localVarReturnType = new TypeToken<OffersEligible>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpostOffersRequest {
+        @javax.annotation.Nonnull
+        private final CreateOffersRequest createOffersRequest;
+
+        private APIpostOffersRequest(@javax.annotation.Nonnull CreateOffersRequest createOffersRequest) {
+            this.createOffersRequest = createOffersRequest;
+        }
+
+        /**
+         * Build call for postOffers
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postOffersCall(createOffersRequest, _callback);
+        }
+
+        /**
+         * Execute postOffers request
+         * @return OffersEligible
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public OffersEligible execute() throws ApiException {
+            ApiResponse<OffersEligible> localVarResp = postOffersWithHttpInfo(createOffersRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postOffers request with HTTP info returned
+         * @return ApiResponse&lt;OffersEligible&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OffersEligible> executeWithHttpInfo() throws ApiException {
+            return postOffersWithHttpInfo(createOffersRequest);
+        }
+
+        /**
+         * Execute postOffers request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OffersEligible> _callback) throws ApiException {
+            return postOffersAsync(createOffersRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for postOffersPrice
-     * @param priceOffersRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * Create Offers
+     * Create offers for a customer&#39;s itinerary.
+     * @param createOffersRequest  (required)
+     * @return APIpostOffersRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Offers generated for a given itinerary. </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postOffersPriceCall(PriceOffersRequest priceOffersRequest, final ApiCallback _callback) throws ApiException {
+    public APIpostOffersRequest postOffers(@javax.annotation.Nonnull CreateOffersRequest createOffersRequest) {
+        return new APIpostOffersRequest(createOffersRequest);
+    }
+    private okhttp3.Call postOffersPriceCall(@javax.annotation.Nonnull PriceOffersRequest priceOffersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -456,7 +510,7 @@ public class OfferMerchandisingPrePurchaseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postOffersPriceValidateBeforeCall(PriceOffersRequest priceOffersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postOffersPriceValidateBeforeCall(@javax.annotation.Nonnull PriceOffersRequest priceOffersRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'priceOffersRequest' is set
         if (priceOffersRequest == null) {
             throw new ApiException("Missing the required parameter 'priceOffersRequest' when calling postOffersPrice(Async)");
@@ -466,109 +520,149 @@ public class OfferMerchandisingPrePurchaseApi {
 
     }
 
-    /**
-     * Price Offers
-     * Price offers for a customer&#39;s itinerary.
-     * @param priceOffersRequest  (required)
-     * @return OffersEligible
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public OffersEligible postOffersPrice(PriceOffersRequest priceOffersRequest) throws ApiException {
-        ApiResponse<OffersEligible> localVarResp = postOffersPriceWithHttpInfo(priceOffersRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * Price Offers
-     * Price offers for a customer&#39;s itinerary.
-     * @param priceOffersRequest  (required)
-     * @return ApiResponse&lt;OffersEligible&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<OffersEligible> postOffersPriceWithHttpInfo(PriceOffersRequest priceOffersRequest) throws ApiException {
+    private ApiResponse<OffersEligible> postOffersPriceWithHttpInfo(@javax.annotation.Nonnull PriceOffersRequest priceOffersRequest) throws ApiException {
         okhttp3.Call localVarCall = postOffersPriceValidateBeforeCall(priceOffersRequest, null);
         Type localVarReturnType = new TypeToken<OffersEligible>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * Price Offers (asynchronously)
-     * Price offers for a customer&#39;s itinerary.
-     * @param priceOffersRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postOffersPriceAsync(PriceOffersRequest priceOffersRequest, final ApiCallback<OffersEligible> _callback) throws ApiException {
+    private okhttp3.Call postOffersPriceAsync(@javax.annotation.Nonnull PriceOffersRequest priceOffersRequest, final ApiCallback<OffersEligible> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postOffersPriceValidateBeforeCall(priceOffersRequest, _callback);
         Type localVarReturnType = new TypeToken<OffersEligible>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpostOffersPriceRequest {
+        @javax.annotation.Nonnull
+        private final PriceOffersRequest priceOffersRequest;
+
+        private APIpostOffersPriceRequest(@javax.annotation.Nonnull PriceOffersRequest priceOffersRequest) {
+            this.priceOffersRequest = priceOffersRequest;
+        }
+
+        /**
+         * Build call for postOffersPrice
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postOffersPriceCall(priceOffersRequest, _callback);
+        }
+
+        /**
+         * Execute postOffersPrice request
+         * @return OffersEligible
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public OffersEligible execute() throws ApiException {
+            ApiResponse<OffersEligible> localVarResp = postOffersPriceWithHttpInfo(priceOffersRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postOffersPrice request with HTTP info returned
+         * @return ApiResponse&lt;OffersEligible&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OffersEligible> executeWithHttpInfo() throws ApiException {
+            return postOffersPriceWithHttpInfo(priceOffersRequest);
+        }
+
+        /**
+         * Execute postOffersPrice request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OffersEligible> _callback) throws ApiException {
+            return postOffersPriceAsync(priceOffersRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for postSyntheticFares
-     * @param createSyntheticFaresRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * Price Offers
+     * Price offers for a customer&#39;s itinerary.
+     * @param priceOffersRequest  (required)
+     * @return APIpostOffersPriceRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Offers priced for a given itinerary. There will be at least one type of offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No offers available for the itinerary </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSyntheticFaresCall(CreateSyntheticFaresRequest createSyntheticFaresRequest, final ApiCallback _callback) throws ApiException {
+    public APIpostOffersPriceRequest postOffersPrice(@javax.annotation.Nonnull PriceOffersRequest priceOffersRequest) {
+        return new APIpostOffersPriceRequest(priceOffersRequest);
+    }
+    private okhttp3.Call postSyntheticFaresCall(@javax.annotation.Nonnull CreateSyntheticFaresRequest createSyntheticFaresRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -614,7 +708,7 @@ public class OfferMerchandisingPrePurchaseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSyntheticFaresValidateBeforeCall(CreateSyntheticFaresRequest createSyntheticFaresRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSyntheticFaresValidateBeforeCall(@javax.annotation.Nonnull CreateSyntheticFaresRequest createSyntheticFaresRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createSyntheticFaresRequest' is set
         if (createSyntheticFaresRequest == null) {
             throw new ApiException("Missing the required parameter 'createSyntheticFaresRequest' when calling postSyntheticFares(Async)");
@@ -624,104 +718,144 @@ public class OfferMerchandisingPrePurchaseApi {
 
     }
 
-    /**
-     * Create Synthetic Fares
-     * Create synthetic fares for a customer&#39;s itinerary.
-     * @param createSyntheticFaresRequest  (required)
-     * @return SyntheticFaresEligible
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public SyntheticFaresEligible postSyntheticFares(CreateSyntheticFaresRequest createSyntheticFaresRequest) throws ApiException {
-        ApiResponse<SyntheticFaresEligible> localVarResp = postSyntheticFaresWithHttpInfo(createSyntheticFaresRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * Create Synthetic Fares
-     * Create synthetic fares for a customer&#39;s itinerary.
-     * @param createSyntheticFaresRequest  (required)
-     * @return ApiResponse&lt;SyntheticFaresEligible&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SyntheticFaresEligible> postSyntheticFaresWithHttpInfo(CreateSyntheticFaresRequest createSyntheticFaresRequest) throws ApiException {
+    private ApiResponse<SyntheticFaresEligible> postSyntheticFaresWithHttpInfo(@javax.annotation.Nonnull CreateSyntheticFaresRequest createSyntheticFaresRequest) throws ApiException {
         okhttp3.Call localVarCall = postSyntheticFaresValidateBeforeCall(createSyntheticFaresRequest, null);
         Type localVarReturnType = new TypeToken<SyntheticFaresEligible>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * Create Synthetic Fares (asynchronously)
-     * Create synthetic fares for a customer&#39;s itinerary.
-     * @param createSyntheticFaresRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postSyntheticFaresAsync(CreateSyntheticFaresRequest createSyntheticFaresRequest, final ApiCallback<SyntheticFaresEligible> _callback) throws ApiException {
+    private okhttp3.Call postSyntheticFaresAsync(@javax.annotation.Nonnull CreateSyntheticFaresRequest createSyntheticFaresRequest, final ApiCallback<SyntheticFaresEligible> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postSyntheticFaresValidateBeforeCall(createSyntheticFaresRequest, _callback);
         Type localVarReturnType = new TypeToken<SyntheticFaresEligible>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpostSyntheticFaresRequest {
+        @javax.annotation.Nonnull
+        private final CreateSyntheticFaresRequest createSyntheticFaresRequest;
+
+        private APIpostSyntheticFaresRequest(@javax.annotation.Nonnull CreateSyntheticFaresRequest createSyntheticFaresRequest) {
+            this.createSyntheticFaresRequest = createSyntheticFaresRequest;
+        }
+
+        /**
+         * Build call for postSyntheticFares
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postSyntheticFaresCall(createSyntheticFaresRequest, _callback);
+        }
+
+        /**
+         * Execute postSyntheticFares request
+         * @return SyntheticFaresEligible
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public SyntheticFaresEligible execute() throws ApiException {
+            ApiResponse<SyntheticFaresEligible> localVarResp = postSyntheticFaresWithHttpInfo(createSyntheticFaresRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postSyntheticFares request with HTTP info returned
+         * @return ApiResponse&lt;SyntheticFaresEligible&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<SyntheticFaresEligible> executeWithHttpInfo() throws ApiException {
+            return postSyntheticFaresWithHttpInfo(createSyntheticFaresRequest);
+        }
+
+        /**
+         * Execute postSyntheticFares request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+            <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<SyntheticFaresEligible> _callback) throws ApiException {
+            return postSyntheticFaresAsync(createSyntheticFaresRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for putMerchandisingContents
-     * @param merchandisingContentsRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * Create Synthetic Fares
+     * Create synthetic fares for a customer&#39;s itinerary.
+     * @param createSyntheticFaresRequest  (required)
+     * @return APIpostSyntheticFaresRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The offer&#39;s merchandising contents </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Synthetic fare offers generated for a list itineraries. There will be at least one synthetic fare offer returned. If no offers are available, a 204 No Content will be returned. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No synthetic fares available for the itineraries </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putMerchandisingContentsCall(MerchandisingContentsRequest merchandisingContentsRequest, final ApiCallback _callback) throws ApiException {
+    public APIpostSyntheticFaresRequest postSyntheticFares(@javax.annotation.Nonnull CreateSyntheticFaresRequest createSyntheticFaresRequest) {
+        return new APIpostSyntheticFaresRequest(createSyntheticFaresRequest);
+    }
+    private okhttp3.Call putMerchandisingContentsCall(@javax.annotation.Nonnull MerchandisingContentsRequest merchandisingContentsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -767,7 +901,7 @@ public class OfferMerchandisingPrePurchaseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putMerchandisingContentsValidateBeforeCall(MerchandisingContentsRequest merchandisingContentsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putMerchandisingContentsValidateBeforeCall(@javax.annotation.Nonnull MerchandisingContentsRequest merchandisingContentsRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'merchandisingContentsRequest' is set
         if (merchandisingContentsRequest == null) {
             throw new ApiException("Missing the required parameter 'merchandisingContentsRequest' when calling putMerchandisingContents(Async)");
@@ -777,60 +911,118 @@ public class OfferMerchandisingPrePurchaseApi {
 
     }
 
-    /**
-     * Create Offer Merchandising Contents
-     * Create the merchandising contents for the given product offer(s). This endpoint should be used when the partner is not embedding the merchandising widget provided by HTS in their booking flow. The response will be a customized set of keys, determined during integration, which map to product copy in the provided locale.
-     * @param merchandisingContentsRequest  (required)
-     * @return MerchandisingContents
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The offer&#39;s merchandising contents </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public MerchandisingContents putMerchandisingContents(MerchandisingContentsRequest merchandisingContentsRequest) throws ApiException {
-        ApiResponse<MerchandisingContents> localVarResp = putMerchandisingContentsWithHttpInfo(merchandisingContentsRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * Create Offer Merchandising Contents
-     * Create the merchandising contents for the given product offer(s). This endpoint should be used when the partner is not embedding the merchandising widget provided by HTS in their booking flow. The response will be a customized set of keys, determined during integration, which map to product copy in the provided locale.
-     * @param merchandisingContentsRequest  (required)
-     * @return ApiResponse&lt;MerchandisingContents&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The offer&#39;s merchandising contents </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<MerchandisingContents> putMerchandisingContentsWithHttpInfo(MerchandisingContentsRequest merchandisingContentsRequest) throws ApiException {
+    private ApiResponse<MerchandisingContents> putMerchandisingContentsWithHttpInfo(@javax.annotation.Nonnull MerchandisingContentsRequest merchandisingContentsRequest) throws ApiException {
         okhttp3.Call localVarCall = putMerchandisingContentsValidateBeforeCall(merchandisingContentsRequest, null);
         Type localVarReturnType = new TypeToken<MerchandisingContents>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call putMerchandisingContentsAsync(@javax.annotation.Nonnull MerchandisingContentsRequest merchandisingContentsRequest, final ApiCallback<MerchandisingContents> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putMerchandisingContentsValidateBeforeCall(merchandisingContentsRequest, _callback);
+        Type localVarReturnType = new TypeToken<MerchandisingContents>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIputMerchandisingContentsRequest {
+        @javax.annotation.Nonnull
+        private final MerchandisingContentsRequest merchandisingContentsRequest;
+
+        private APIputMerchandisingContentsRequest(@javax.annotation.Nonnull MerchandisingContentsRequest merchandisingContentsRequest) {
+            this.merchandisingContentsRequest = merchandisingContentsRequest;
+        }
+
+        /**
+         * Build call for putMerchandisingContents
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The offer&#39;s merchandising contents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return putMerchandisingContentsCall(merchandisingContentsRequest, _callback);
+        }
+
+        /**
+         * Execute putMerchandisingContents request
+         * @return MerchandisingContents
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The offer&#39;s merchandising contents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public MerchandisingContents execute() throws ApiException {
+            ApiResponse<MerchandisingContents> localVarResp = putMerchandisingContentsWithHttpInfo(merchandisingContentsRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute putMerchandisingContents request with HTTP info returned
+         * @return ApiResponse&lt;MerchandisingContents&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The offer&#39;s merchandising contents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<MerchandisingContents> executeWithHttpInfo() throws ApiException {
+            return putMerchandisingContentsWithHttpInfo(merchandisingContentsRequest);
+        }
+
+        /**
+         * Execute putMerchandisingContents request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The offer&#39;s merchandising contents </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<MerchandisingContents> _callback) throws ApiException {
+            return putMerchandisingContentsAsync(merchandisingContentsRequest, _callback);
+        }
+    }
+
     /**
-     * Create Offer Merchandising Contents (asynchronously)
+     * Create Offer Merchandising Contents
      * Create the merchandising contents for the given product offer(s). This endpoint should be used when the partner is not embedding the merchandising widget provided by HTS in their booking flow. The response will be a customized set of keys, determined during integration, which map to product copy in the provided locale.
      * @param merchandisingContentsRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIputMerchandisingContentsRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
@@ -843,11 +1035,7 @@ public class OfferMerchandisingPrePurchaseApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putMerchandisingContentsAsync(MerchandisingContentsRequest merchandisingContentsRequest, final ApiCallback<MerchandisingContents> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putMerchandisingContentsValidateBeforeCall(merchandisingContentsRequest, _callback);
-        Type localVarReturnType = new TypeToken<MerchandisingContents>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIputMerchandisingContentsRequest putMerchandisingContents(@javax.annotation.Nonnull MerchandisingContentsRequest merchandisingContentsRequest) {
+        return new APIputMerchandisingContentsRequest(merchandisingContentsRequest);
     }
 }

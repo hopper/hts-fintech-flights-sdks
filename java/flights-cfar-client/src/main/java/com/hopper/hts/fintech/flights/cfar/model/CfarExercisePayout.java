@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarExercisePayout extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CfarExercisePayout.class.getName());
 
@@ -116,7 +116,7 @@ public class CfarExercisePayout extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'FutureTravelCredit'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FutureTravelCredit failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FutureTravelCredit failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'FutureTravelCredit'", e);
                     }
                     // deserialize OriginalFormOfPayment
@@ -128,7 +128,7 @@ public class CfarExercisePayout extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OriginalFormOfPayment'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OriginalFormOfPayment failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OriginalFormOfPayment failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OriginalFormOfPayment'", e);
                     }
 
@@ -138,7 +138,7 @@ public class CfarExercisePayout extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CfarExercisePayout: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CfarExercisePayout: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -207,6 +207,7 @@ public class CfarExercisePayout extends AbstractOpenApiSchema {
      * @return The actual instance of `FutureTravelCredit`
      * @throws ClassCastException if the instance is not `FutureTravelCredit`
      */
+    @SuppressWarnings("unchecked")
     public FutureTravelCredit getFutureTravelCredit() throws ClassCastException {
         return (FutureTravelCredit)super.getActualInstance();
     }
@@ -218,6 +219,7 @@ public class CfarExercisePayout extends AbstractOpenApiSchema {
      * @return The actual instance of `OriginalFormOfPayment`
      * @throws ClassCastException if the instance is not `OriginalFormOfPayment`
      */
+    @SuppressWarnings("unchecked")
     public OriginalFormOfPayment getOriginalFormOfPayment() throws ClassCastException {
         return (OriginalFormOfPayment)super.getActualInstance();
     }
@@ -237,7 +239,7 @@ public class CfarExercisePayout extends AbstractOpenApiSchema {
             FutureTravelCredit.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for FutureTravelCredit failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FutureTravelCredit failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OriginalFormOfPayment
@@ -245,11 +247,11 @@ public class CfarExercisePayout extends AbstractOpenApiSchema {
             OriginalFormOfPayment.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OriginalFormOfPayment failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OriginalFormOfPayment failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarExercisePayout with oneOf schemas: FutureTravelCredit, OriginalFormOfPayment. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CfarExercisePayout with oneOf schemas: FutureTravelCredit, OriginalFormOfPayment. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

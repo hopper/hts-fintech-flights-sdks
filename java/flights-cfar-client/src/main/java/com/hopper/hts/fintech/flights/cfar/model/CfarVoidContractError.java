@@ -19,8 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus2;
-import com.hopper.hts.fintech.flights.cfar.model.OrderNotFound1;
+import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus;
+import com.hopper.hts.fintech.flights.cfar.model.OrderNotFound;
 import com.hopper.hts.fintech.flights.cfar.model.PaymentRefundFailed;
 import java.io.IOException;
 import java.util.Arrays;
@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarVoidContractError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CfarVoidContractError.class.getName());
 
@@ -72,8 +72,8 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'CfarVoidContractError' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<InvalidContractStatus2> adapterInvalidContractStatus2 = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus2.class));
-            final TypeAdapter<OrderNotFound1> adapterOrderNotFound1 = gson.getDelegateAdapter(this, TypeToken.get(OrderNotFound1.class));
+            final TypeAdapter<InvalidContractStatus> adapterInvalidContractStatus = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus.class));
+            final TypeAdapter<OrderNotFound> adapterOrderNotFound = gson.getDelegateAdapter(this, TypeToken.get(OrderNotFound.class));
             final TypeAdapter<PaymentRefundFailed> adapterPaymentRefundFailed = gson.getDelegateAdapter(this, TypeToken.get(PaymentRefundFailed.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CfarVoidContractError>() {
@@ -84,15 +84,15 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `InvalidContractStatus2`
-                    if (value.getActualInstance() instanceof InvalidContractStatus2) {
-                        JsonElement element = adapterInvalidContractStatus2.toJsonTree((InvalidContractStatus2)value.getActualInstance());
+                    // check if the actual instance is of the type `InvalidContractStatus`
+                    if (value.getActualInstance() instanceof InvalidContractStatus) {
+                        JsonElement element = adapterInvalidContractStatus.toJsonTree((InvalidContractStatus)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `OrderNotFound1`
-                    if (value.getActualInstance() instanceof OrderNotFound1) {
-                        JsonElement element = adapterOrderNotFound1.toJsonTree((OrderNotFound1)value.getActualInstance());
+                    // check if the actual instance is of the type `OrderNotFound`
+                    if (value.getActualInstance() instanceof OrderNotFound) {
+                        JsonElement element = adapterOrderNotFound.toJsonTree((OrderNotFound)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -102,7 +102,7 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidContractStatus, OrderNotFound, PaymentRefundFailed");
                 }
 
                 @Override
@@ -114,29 +114,29 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize InvalidContractStatus2
+                    // deserialize InvalidContractStatus
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        InvalidContractStatus2.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidContractStatus2;
+                        InvalidContractStatus.validateJsonElement(jsonElement);
+                        actualAdapter = adapterInvalidContractStatus;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus2'");
+                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidContractStatus2 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus2'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus'", e);
                     }
-                    // deserialize OrderNotFound1
+                    // deserialize OrderNotFound
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        OrderNotFound1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterOrderNotFound1;
+                        OrderNotFound.validateJsonElement(jsonElement);
+                        actualAdapter = adapterOrderNotFound;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'OrderNotFound1'");
+                        log.log(Level.FINER, "Input data matches schema 'OrderNotFound'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OrderNotFound1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'OrderNotFound1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderNotFound failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'OrderNotFound'", e);
                     }
                     // deserialize PaymentRefundFailed
                     try {
@@ -147,7 +147,7 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PaymentRefundFailed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PaymentRefundFailed failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentRefundFailed failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PaymentRefundFailed'", e);
                     }
 
@@ -157,7 +157,7 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CfarVoidContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CfarVoidContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -176,8 +176,8 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("InvalidContractStatus2", InvalidContractStatus2.class);
-        schemas.put("OrderNotFound1", OrderNotFound1.class);
+        schemas.put("InvalidContractStatus", InvalidContractStatus.class);
+        schemas.put("OrderNotFound", OrderNotFound.class);
         schemas.put("PaymentRefundFailed", PaymentRefundFailed.class);
     }
 
@@ -189,18 +189,18 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed
+     * InvalidContractStatus, OrderNotFound, PaymentRefundFailed
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof InvalidContractStatus2) {
+        if (instance instanceof InvalidContractStatus) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof OrderNotFound1) {
+        if (instance instanceof OrderNotFound) {
             super.setActualInstance(instance);
             return;
         }
@@ -210,14 +210,14 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed");
+        throw new RuntimeException("Invalid instance type. Must be InvalidContractStatus, OrderNotFound, PaymentRefundFailed");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed
+     * InvalidContractStatus, OrderNotFound, PaymentRefundFailed
      *
-     * @return The actual instance (InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed)
+     * @return The actual instance (InvalidContractStatus, OrderNotFound, PaymentRefundFailed)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -226,25 +226,27 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `InvalidContractStatus2`. If the actual instance is not `InvalidContractStatus2`,
+     * Get the actual instance of `InvalidContractStatus`. If the actual instance is not `InvalidContractStatus`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `InvalidContractStatus2`
-     * @throws ClassCastException if the instance is not `InvalidContractStatus2`
+     * @return The actual instance of `InvalidContractStatus`
+     * @throws ClassCastException if the instance is not `InvalidContractStatus`
      */
-    public InvalidContractStatus2 getInvalidContractStatus2() throws ClassCastException {
-        return (InvalidContractStatus2)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public InvalidContractStatus getInvalidContractStatus() throws ClassCastException {
+        return (InvalidContractStatus)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `OrderNotFound1`. If the actual instance is not `OrderNotFound1`,
+     * Get the actual instance of `OrderNotFound`. If the actual instance is not `OrderNotFound`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `OrderNotFound1`
-     * @throws ClassCastException if the instance is not `OrderNotFound1`
+     * @return The actual instance of `OrderNotFound`
+     * @throws ClassCastException if the instance is not `OrderNotFound`
      */
-    public OrderNotFound1 getOrderNotFound1() throws ClassCastException {
-        return (OrderNotFound1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public OrderNotFound getOrderNotFound() throws ClassCastException {
+        return (OrderNotFound)super.getActualInstance();
     }
 
     /**
@@ -254,6 +256,7 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `PaymentRefundFailed`
      * @throws ClassCastException if the instance is not `PaymentRefundFailed`
      */
+    @SuppressWarnings("unchecked")
     public PaymentRefundFailed getPaymentRefundFailed() throws ClassCastException {
         return (PaymentRefundFailed)super.getActualInstance();
     }
@@ -268,20 +271,20 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
         // validate oneOf schemas one by one
         int validCount = 0;
         ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with InvalidContractStatus2
+        // validate the json string with InvalidContractStatus
         try {
-            InvalidContractStatus2.validateJsonElement(jsonElement);
+            InvalidContractStatus.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidContractStatus2 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with OrderNotFound1
+        // validate the json string with OrderNotFound
         try {
-            OrderNotFound1.validateJsonElement(jsonElement);
+            OrderNotFound.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OrderNotFound1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderNotFound failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PaymentRefundFailed
@@ -289,11 +292,11 @@ public class CfarVoidContractError extends AbstractOpenApiSchema {
             PaymentRefundFailed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PaymentRefundFailed failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentRefundFailed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarVoidContractError with oneOf schemas: InvalidContractStatus2, OrderNotFound1, PaymentRefundFailed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CfarVoidContractError with oneOf schemas: InvalidContractStatus, OrderNotFound, PaymentRefundFailed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -33,6 +33,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -52,7 +53,7 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * Details of an exercise completed for this contract.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarContractExercise {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -253,10 +254,7 @@ public class CfarContractExercise {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -265,17 +263,10 @@ public class CfarContractExercise {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("exercised_at");
-    openapiFields.add("payouts");
-    openapiFields.add("passenger_ids");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "exercised_at", "payouts", "passenger_ids"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("exercised_at");
-    openapiRequiredFields.add("payouts");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "exercised_at", "payouts"));
   }
 
   /**
@@ -287,33 +278,33 @@ public class CfarContractExercise {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CfarContractExercise.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CfarContractExercise is not found in the empty JSON string", CfarContractExercise.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CfarContractExercise is not found in the empty JSON string", CfarContractExercise.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CfarContractExercise.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("payouts").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `payouts` to be an array in the JSON string but got `%s`", jsonObj.get("payouts").toString()));
+      if (jsonObj.get("payouts") != null) {
+        if (!jsonObj.get("payouts").isJsonArray()) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `payouts` to be an array in the JSON string but got `%s`", jsonObj.get("payouts").toString()));
+        }
+        JsonArray jsonArraypayouts = jsonObj.getAsJsonArray("payouts");
+        // validate the required field `payouts` (array)
+        for (int i = 0; i < jsonArraypayouts.size(); i++) {
+          CfarExercisePayout.validateJsonElement(jsonArraypayouts.get(i));
+        }
       }
-
-      JsonArray jsonArraypayouts = jsonObj.getAsJsonArray("payouts");
-      // validate the required field `payouts` (array)
-      for (int i = 0; i < jsonArraypayouts.size(); i++) {
-        CfarExercisePayout.validateJsonElement(jsonArraypayouts.get(i));
-      };
       // ensure the optional json data is an array if present
       if (jsonObj.get("passenger_ids") != null && !jsonObj.get("passenger_ids").isJsonNull() && !jsonObj.get("passenger_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passenger_ids` to be an array in the JSON string but got `%s`", jsonObj.get("passenger_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `passenger_ids` to be an array in the JSON string but got `%s`", jsonObj.get("passenger_ids").toString()));
       }
   }
 
@@ -346,7 +337,9 @@ public class CfarContractExercise {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -374,7 +367,7 @@ public class CfarContractExercise {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

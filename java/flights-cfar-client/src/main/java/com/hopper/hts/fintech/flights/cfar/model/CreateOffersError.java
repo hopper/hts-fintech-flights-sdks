@@ -20,8 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hopper.hts.fintech.flights.cfar.model.InvalidInput;
-import com.hopper.hts.fintech.flights.cfar.model.InvalidItinerary1;
-import com.hopper.hts.fintech.flights.cfar.model.InvalidSession1;
+import com.hopper.hts.fintech.flights.cfar.model.InvalidItinerary;
+import com.hopper.hts.fintech.flights.cfar.model.InvalidSession;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CreateOffersError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CreateOffersError.class.getName());
 
@@ -73,8 +73,8 @@ public class CreateOffersError extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<InvalidInput> adapterInvalidInput = gson.getDelegateAdapter(this, TypeToken.get(InvalidInput.class));
-            final TypeAdapter<InvalidItinerary1> adapterInvalidItinerary1 = gson.getDelegateAdapter(this, TypeToken.get(InvalidItinerary1.class));
-            final TypeAdapter<InvalidSession1> adapterInvalidSession1 = gson.getDelegateAdapter(this, TypeToken.get(InvalidSession1.class));
+            final TypeAdapter<InvalidItinerary> adapterInvalidItinerary = gson.getDelegateAdapter(this, TypeToken.get(InvalidItinerary.class));
+            final TypeAdapter<InvalidSession> adapterInvalidSession = gson.getDelegateAdapter(this, TypeToken.get(InvalidSession.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CreateOffersError>() {
                 @Override
@@ -90,19 +90,19 @@ public class CreateOffersError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `InvalidItinerary1`
-                    if (value.getActualInstance() instanceof InvalidItinerary1) {
-                        JsonElement element = adapterInvalidItinerary1.toJsonTree((InvalidItinerary1)value.getActualInstance());
+                    // check if the actual instance is of the type `InvalidItinerary`
+                    if (value.getActualInstance() instanceof InvalidItinerary) {
+                        JsonElement element = adapterInvalidItinerary.toJsonTree((InvalidItinerary)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `InvalidSession1`
-                    if (value.getActualInstance() instanceof InvalidSession1) {
-                        JsonElement element = adapterInvalidSession1.toJsonTree((InvalidSession1)value.getActualInstance());
+                    // check if the actual instance is of the type `InvalidSession`
+                    if (value.getActualInstance() instanceof InvalidSession) {
+                        JsonElement element = adapterInvalidSession.toJsonTree((InvalidSession)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidInput, InvalidItinerary1, InvalidSession1");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: InvalidInput, InvalidItinerary, InvalidSession");
                 }
 
                 @Override
@@ -123,32 +123,32 @@ public class CreateOffersError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InvalidInput'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidInput failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidInput failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InvalidInput'", e);
                     }
-                    // deserialize InvalidItinerary1
+                    // deserialize InvalidItinerary
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        InvalidItinerary1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidItinerary1;
+                        InvalidItinerary.validateJsonElement(jsonElement);
+                        actualAdapter = adapterInvalidItinerary;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidItinerary1'");
+                        log.log(Level.FINER, "Input data matches schema 'InvalidItinerary'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidItinerary1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidItinerary1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidItinerary failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'InvalidItinerary'", e);
                     }
-                    // deserialize InvalidSession1
+                    // deserialize InvalidSession
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        InvalidSession1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidSession1;
+                        InvalidSession.validateJsonElement(jsonElement);
+                        actualAdapter = adapterInvalidSession;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidSession1'");
+                        log.log(Level.FINER, "Input data matches schema 'InvalidSession'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidSession1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidSession1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidSession failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'InvalidSession'", e);
                     }
 
                     if (match == 1) {
@@ -157,7 +157,7 @@ public class CreateOffersError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CreateOffersError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CreateOffersError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -177,8 +177,8 @@ public class CreateOffersError extends AbstractOpenApiSchema {
 
     static {
         schemas.put("InvalidInput", InvalidInput.class);
-        schemas.put("InvalidItinerary1", InvalidItinerary1.class);
-        schemas.put("InvalidSession1", InvalidSession1.class);
+        schemas.put("InvalidItinerary", InvalidItinerary.class);
+        schemas.put("InvalidSession", InvalidSession.class);
     }
 
     @Override
@@ -189,7 +189,7 @@ public class CreateOffersError extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * InvalidInput, InvalidItinerary1, InvalidSession1
+     * InvalidInput, InvalidItinerary, InvalidSession
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -200,24 +200,24 @@ public class CreateOffersError extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof InvalidItinerary1) {
+        if (instance instanceof InvalidItinerary) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof InvalidSession1) {
+        if (instance instanceof InvalidSession) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be InvalidInput, InvalidItinerary1, InvalidSession1");
+        throw new RuntimeException("Invalid instance type. Must be InvalidInput, InvalidItinerary, InvalidSession");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * InvalidInput, InvalidItinerary1, InvalidSession1
+     * InvalidInput, InvalidItinerary, InvalidSession
      *
-     * @return The actual instance (InvalidInput, InvalidItinerary1, InvalidSession1)
+     * @return The actual instance (InvalidInput, InvalidItinerary, InvalidSession)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -232,30 +232,33 @@ public class CreateOffersError extends AbstractOpenApiSchema {
      * @return The actual instance of `InvalidInput`
      * @throws ClassCastException if the instance is not `InvalidInput`
      */
+    @SuppressWarnings("unchecked")
     public InvalidInput getInvalidInput() throws ClassCastException {
         return (InvalidInput)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `InvalidItinerary1`. If the actual instance is not `InvalidItinerary1`,
+     * Get the actual instance of `InvalidItinerary`. If the actual instance is not `InvalidItinerary`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `InvalidItinerary1`
-     * @throws ClassCastException if the instance is not `InvalidItinerary1`
+     * @return The actual instance of `InvalidItinerary`
+     * @throws ClassCastException if the instance is not `InvalidItinerary`
      */
-    public InvalidItinerary1 getInvalidItinerary1() throws ClassCastException {
-        return (InvalidItinerary1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public InvalidItinerary getInvalidItinerary() throws ClassCastException {
+        return (InvalidItinerary)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `InvalidSession1`. If the actual instance is not `InvalidSession1`,
+     * Get the actual instance of `InvalidSession`. If the actual instance is not `InvalidSession`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `InvalidSession1`
-     * @throws ClassCastException if the instance is not `InvalidSession1`
+     * @return The actual instance of `InvalidSession`
+     * @throws ClassCastException if the instance is not `InvalidSession`
      */
-    public InvalidSession1 getInvalidSession1() throws ClassCastException {
-        return (InvalidSession1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public InvalidSession getInvalidSession() throws ClassCastException {
+        return (InvalidSession)super.getActualInstance();
     }
 
     /**
@@ -273,27 +276,27 @@ public class CreateOffersError extends AbstractOpenApiSchema {
             InvalidInput.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidInput failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidInput failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with InvalidItinerary1
+        // validate the json string with InvalidItinerary
         try {
-            InvalidItinerary1.validateJsonElement(jsonElement);
+            InvalidItinerary.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidItinerary1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidItinerary failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with InvalidSession1
+        // validate the json string with InvalidSession
         try {
-            InvalidSession1.validateJsonElement(jsonElement);
+            InvalidSession.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidSession1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidSession failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CreateOffersError with oneOf schemas: InvalidInput, InvalidItinerary1, InvalidSession1. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CreateOffersError with oneOf schemas: InvalidInput, InvalidItinerary, InvalidSession. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

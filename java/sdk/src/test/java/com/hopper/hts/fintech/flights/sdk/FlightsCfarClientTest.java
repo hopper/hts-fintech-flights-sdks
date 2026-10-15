@@ -36,7 +36,7 @@ class FlightsCfarClientTest {
             .apiKey("test-key")
             .build();
 
-        ApiException error = assertThrows(ApiException.class, () -> client.contracts().getContractsId("abc"));
+        ApiException error = assertThrows(ApiException.class, () -> client.contracts().getContractsId("abc").execute());
 
         assertEquals(404, error.getCode());
         RecordedRequest request = server.takeRequest();

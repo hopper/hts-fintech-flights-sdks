@@ -33,6 +33,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -52,7 +53,7 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * SyntheticFareItinerary
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class SyntheticFareItinerary {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -227,10 +228,7 @@ public class SyntheticFareItinerary {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -239,16 +237,10 @@ public class SyntheticFareItinerary {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("slices");
-    openapiFields.add("passengers");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "slices", "passengers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("slices");
-    openapiRequiredFields.add("passengers");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "slices", "passengers"));
   }
 
   /**
@@ -260,40 +252,40 @@ public class SyntheticFareItinerary {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SyntheticFareItinerary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SyntheticFareItinerary is not found in the empty JSON string", SyntheticFareItinerary.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SyntheticFareItinerary is not found in the empty JSON string", SyntheticFareItinerary.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SyntheticFareItinerary.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("slices").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `slices` to be an array in the JSON string but got `%s`", jsonObj.get("slices").toString()));
+      if (jsonObj.get("slices") != null) {
+        if (!jsonObj.get("slices").isJsonArray()) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `slices` to be an array in the JSON string but got `%s`", jsonObj.get("slices").toString()));
+        }
+        JsonArray jsonArrayslices = jsonObj.getAsJsonArray("slices");
+        // validate the required field `slices` (array)
+        for (int i = 0; i < jsonArrayslices.size(); i++) {
+          ItinerarySlice.validateJsonElement(jsonArrayslices.get(i));
+        }
       }
-
-      JsonArray jsonArrayslices = jsonObj.getAsJsonArray("slices");
-      // validate the required field `slices` (array)
-      for (int i = 0; i < jsonArrayslices.size(); i++) {
-        ItinerarySlice.validateJsonElement(jsonArrayslices.get(i));
-      };
-      // ensure the json data is an array
-      if (!jsonObj.get("passengers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passengers` to be an array in the JSON string but got `%s`", jsonObj.get("passengers").toString()));
+      if (jsonObj.get("passengers") != null) {
+        if (!jsonObj.get("passengers").isJsonArray()) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `passengers` to be an array in the JSON string but got `%s`", jsonObj.get("passengers").toString()));
+        }
+        JsonArray jsonArraypassengers = jsonObj.getAsJsonArray("passengers");
+        // validate the required field `passengers` (array)
+        for (int i = 0; i < jsonArraypassengers.size(); i++) {
+          SyntheticFarePassengers.validateJsonElement(jsonArraypassengers.get(i));
+        }
       }
-
-      JsonArray jsonArraypassengers = jsonObj.getAsJsonArray("passengers");
-      // validate the required field `passengers` (array)
-      for (int i = 0; i < jsonArraypassengers.size(); i++) {
-        SyntheticFarePassengers.validateJsonElement(jsonArraypassengers.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -325,7 +317,9 @@ public class SyntheticFareItinerary {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -353,7 +347,7 @@ public class SyntheticFareItinerary {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

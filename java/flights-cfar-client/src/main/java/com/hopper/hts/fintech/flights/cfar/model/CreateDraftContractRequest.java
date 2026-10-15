@@ -36,6 +36,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -55,7 +56,7 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * CreateDraftContractRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CreateDraftContractRequest {
   public static final String SERIALIZED_NAME_OFFER_ID = "offer_id";
   @SerializedName(SERIALIZED_NAME_OFFER_ID)
@@ -73,6 +74,7 @@ public class CreateDraftContractRequest {
   private String locale;
 
   public static final String SERIALIZED_NAME_PAYMENTS = "payments";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_PAYMENTS)
   @javax.annotation.Nullable
   private List<ProvidedPayment> payments;
@@ -162,6 +164,7 @@ public class CreateDraftContractRequest {
   }
 
 
+  @Deprecated
   public CreateDraftContractRequest payments(@javax.annotation.Nullable List<ProvidedPayment> payments) {
     this.payments = payments;
     return this;
@@ -178,12 +181,15 @@ public class CreateDraftContractRequest {
   /**
    * DEPRECATED: Use payment_information instead. List of payment methods used to pay for the booking (includes flights and ancillaries). Payments should equate to the total amount for which a partner is the MoR, e.g. if the partner is collecting the ancillary price, the total of the payments should be inclusive of the price. Must include a tokenized payment card if HTS is merchant of record.
    * @return payments
+   * @deprecated
    */
+  @Deprecated
   @javax.annotation.Nullable
   public List<ProvidedPayment> getPayments() {
     return payments;
   }
 
+  @Deprecated
   public void setPayments(@javax.annotation.Nullable List<ProvidedPayment> payments) {
     this.payments = payments;
   }
@@ -378,10 +384,7 @@ public class CreateDraftContractRequest {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -390,25 +393,10 @@ public class CreateDraftContractRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("offer_id");
-    openapiFields.add("currency");
-    openapiFields.add("locale");
-    openapiFields.add("payments");
-    openapiFields.add("payment_information");
-    openapiFields.add("merchant_of_record");
-    openapiFields.add("contact_info");
-    openapiFields.add("billing_info");
-    openapiFields.add("user_id");
+    openapiFields = new HashSet<String>(Arrays.asList("offer_id", "currency", "locale", "payments", "payment_information", "merchant_of_record", "contact_info", "billing_info", "user_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("offer_id");
-    openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("locale");
-    openapiRequiredFields.add("payment_information");
-    openapiRequiredFields.add("merchant_of_record");
-    openapiRequiredFields.add("contact_info");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("offer_id", "currency", "locale", "payment_information", "merchant_of_record", "contact_info"));
   }
 
   /**
@@ -420,32 +408,32 @@ public class CreateDraftContractRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateDraftContractRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateDraftContractRequest is not found in the empty JSON string", CreateDraftContractRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CreateDraftContractRequest is not found in the empty JSON string", CreateDraftContractRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreateDraftContractRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("offer_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `offer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offer_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `offer_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offer_id").toString()));
       }
       if (!jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       if (!jsonObj.get("locale").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `locale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locale").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `locale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locale").toString()));
       }
       if (jsonObj.get("payments") != null && !jsonObj.get("payments").isJsonNull()) {
         JsonArray jsonArraypayments = jsonObj.getAsJsonArray("payments");
         if (jsonArraypayments != null) {
           // ensure the json data is an array
           if (!jsonObj.get("payments").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `payments` to be an array in the JSON string but got `%s`", jsonObj.get("payments").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `payments` to be an array in the JSON string but got `%s`", jsonObj.get("payments").toString()));
           }
 
           // validate the optional field `payments` (array)
@@ -465,7 +453,7 @@ public class CreateDraftContractRequest {
         BillingInfo.validateJsonElement(jsonObj.get("billing_info"));
       }
       if ((jsonObj.get("user_id") != null && !jsonObj.get("user_id").isJsonNull()) && !jsonObj.get("user_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_id").toString()));
       }
   }
 
@@ -498,7 +486,9 @@ public class CreateDraftContractRequest {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -526,7 +516,7 @@ public class CreateDraftContractRequest {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

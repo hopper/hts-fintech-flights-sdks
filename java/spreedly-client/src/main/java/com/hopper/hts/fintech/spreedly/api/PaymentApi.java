@@ -89,7 +89,7 @@ public class PaymentApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPaymentMethodCall(CreatePaymentMethodRequest createPaymentMethodRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPaymentMethodCall(@javax.annotation.Nonnull CreatePaymentMethodRequest createPaymentMethodRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,7 +135,7 @@ public class PaymentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPaymentMethodValidateBeforeCall(CreatePaymentMethodRequest createPaymentMethodRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPaymentMethodValidateBeforeCall(@javax.annotation.Nonnull CreatePaymentMethodRequest createPaymentMethodRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createPaymentMethodRequest' is set
         if (createPaymentMethodRequest == null) {
             throw new ApiException("Missing the required parameter 'createPaymentMethodRequest' when calling postPaymentMethod(Async)");
@@ -160,7 +160,7 @@ public class PaymentApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public CreatePaymentMethodResponse postPaymentMethod(CreatePaymentMethodRequest createPaymentMethodRequest) throws ApiException {
+    public CreatePaymentMethodResponse postPaymentMethod(@javax.annotation.Nonnull CreatePaymentMethodRequest createPaymentMethodRequest) throws ApiException {
         ApiResponse<CreatePaymentMethodResponse> localVarResp = postPaymentMethodWithHttpInfo(createPaymentMethodRequest);
         return localVarResp.getData();
     }
@@ -180,7 +180,7 @@ public class PaymentApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreatePaymentMethodResponse> postPaymentMethodWithHttpInfo(CreatePaymentMethodRequest createPaymentMethodRequest) throws ApiException {
+    public ApiResponse<CreatePaymentMethodResponse> postPaymentMethodWithHttpInfo(@javax.annotation.Nonnull CreatePaymentMethodRequest createPaymentMethodRequest) throws ApiException {
         okhttp3.Call localVarCall = postPaymentMethodValidateBeforeCall(createPaymentMethodRequest, null);
         Type localVarReturnType = new TypeToken<CreatePaymentMethodResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -202,7 +202,7 @@ public class PaymentApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPaymentMethodAsync(CreatePaymentMethodRequest createPaymentMethodRequest, final ApiCallback<CreatePaymentMethodResponse> _callback) throws ApiException {
+    public okhttp3.Call postPaymentMethodAsync(@javax.annotation.Nonnull CreatePaymentMethodRequest createPaymentMethodRequest, final ApiCallback<CreatePaymentMethodResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postPaymentMethodValidateBeforeCall(createPaymentMethodRequest, _callback);
         Type localVarReturnType = new TypeToken<CreatePaymentMethodResponse>(){}.getType();

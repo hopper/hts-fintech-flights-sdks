@@ -29,9 +29,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(TransactionType.Adapter.class)
 public enum TransactionType {
   
-  CHARGE("user_charge"),
+  USER_CHARGE("user_charge"),
   
-  REFUND("user_refund");
+  USER_REFUND("user_refund");
 
   private String value;
 

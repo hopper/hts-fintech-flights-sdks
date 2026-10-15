@@ -19,9 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hopper.hts.fintech.flights.cfar.model.Allowed1;
+import com.hopper.hts.fintech.flights.cfar.model.Allowed;
 import com.hopper.hts.fintech.flights.cfar.model.AllowedUntil1;
-import com.hopper.hts.fintech.flights.cfar.model.NotAllowed1;
+import com.hopper.hts.fintech.flights.cfar.model.NotAllowed;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class VoidPolicy1 extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(VoidPolicy1.class.getName());
 
@@ -73,9 +73,9 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'VoidPolicy1' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<Allowed1> adapterAllowed1 = gson.getDelegateAdapter(this, TypeToken.get(Allowed1.class));
+            final TypeAdapter<Allowed> adapterAllowed = gson.getDelegateAdapter(this, TypeToken.get(Allowed.class));
             final TypeAdapter<AllowedUntil1> adapterAllowedUntil1 = gson.getDelegateAdapter(this, TypeToken.get(AllowedUntil1.class));
-            final TypeAdapter<NotAllowed1> adapterNotAllowed1 = gson.getDelegateAdapter(this, TypeToken.get(NotAllowed1.class));
+            final TypeAdapter<NotAllowed> adapterNotAllowed = gson.getDelegateAdapter(this, TypeToken.get(NotAllowed.class));
 
             return (TypeAdapter<T>) new TypeAdapter<VoidPolicy1>() {
                 @Override
@@ -85,9 +85,9 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `Allowed1`
-                    if (value.getActualInstance() instanceof Allowed1) {
-                        JsonElement element = adapterAllowed1.toJsonTree((Allowed1)value.getActualInstance());
+                    // check if the actual instance is of the type `Allowed`
+                    if (value.getActualInstance() instanceof Allowed) {
+                        JsonElement element = adapterAllowed.toJsonTree((Allowed)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -97,13 +97,13 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `NotAllowed1`
-                    if (value.getActualInstance() instanceof NotAllowed1) {
-                        JsonElement element = adapterNotAllowed1.toJsonTree((NotAllowed1)value.getActualInstance());
+                    // check if the actual instance is of the type `NotAllowed`
+                    if (value.getActualInstance() instanceof NotAllowed) {
+                        JsonElement element = adapterNotAllowed.toJsonTree((NotAllowed)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: Allowed1, AllowedUntil1, NotAllowed1");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: Allowed, AllowedUntil1, NotAllowed");
                 }
 
                 @Override
@@ -115,17 +115,17 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize Allowed1
+                    // deserialize Allowed
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        Allowed1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterAllowed1;
+                        Allowed.validateJsonElement(jsonElement);
+                        actualAdapter = adapterAllowed;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'Allowed1'");
+                        log.log(Level.FINER, "Input data matches schema 'Allowed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Allowed1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'Allowed1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Allowed failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'Allowed'", e);
                     }
                     // deserialize AllowedUntil1
                     try {
@@ -136,20 +136,20 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'AllowedUntil1'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for AllowedUntil1 failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AllowedUntil1 failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'AllowedUntil1'", e);
                     }
-                    // deserialize NotAllowed1
+                    // deserialize NotAllowed
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        NotAllowed1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterNotAllowed1;
+                        NotAllowed.validateJsonElement(jsonElement);
+                        actualAdapter = adapterNotAllowed;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'NotAllowed1'");
+                        log.log(Level.FINER, "Input data matches schema 'NotAllowed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for NotAllowed1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'NotAllowed1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotAllowed failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'NotAllowed'", e);
                     }
 
                     if (match == 1) {
@@ -158,7 +158,7 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for VoidPolicy1: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for VoidPolicy1: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -177,9 +177,9 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("Allowed1", Allowed1.class);
+        schemas.put("Allowed", Allowed.class);
         schemas.put("AllowedUntil1", AllowedUntil1.class);
-        schemas.put("NotAllowed1", NotAllowed1.class);
+        schemas.put("NotAllowed", NotAllowed.class);
     }
 
     @Override
@@ -190,13 +190,13 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * Allowed1, AllowedUntil1, NotAllowed1
+     * Allowed, AllowedUntil1, NotAllowed
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof Allowed1) {
+        if (instance instanceof Allowed) {
             super.setActualInstance(instance);
             return;
         }
@@ -206,19 +206,19 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof NotAllowed1) {
+        if (instance instanceof NotAllowed) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be Allowed1, AllowedUntil1, NotAllowed1");
+        throw new RuntimeException("Invalid instance type. Must be Allowed, AllowedUntil1, NotAllowed");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * Allowed1, AllowedUntil1, NotAllowed1
+     * Allowed, AllowedUntil1, NotAllowed
      *
-     * @return The actual instance (Allowed1, AllowedUntil1, NotAllowed1)
+     * @return The actual instance (Allowed, AllowedUntil1, NotAllowed)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -227,14 +227,15 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `Allowed1`. If the actual instance is not `Allowed1`,
+     * Get the actual instance of `Allowed`. If the actual instance is not `Allowed`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `Allowed1`
-     * @throws ClassCastException if the instance is not `Allowed1`
+     * @return The actual instance of `Allowed`
+     * @throws ClassCastException if the instance is not `Allowed`
      */
-    public Allowed1 getAllowed1() throws ClassCastException {
-        return (Allowed1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public Allowed getAllowed() throws ClassCastException {
+        return (Allowed)super.getActualInstance();
     }
 
     /**
@@ -244,19 +245,21 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
      * @return The actual instance of `AllowedUntil1`
      * @throws ClassCastException if the instance is not `AllowedUntil1`
      */
+    @SuppressWarnings("unchecked")
     public AllowedUntil1 getAllowedUntil1() throws ClassCastException {
         return (AllowedUntil1)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `NotAllowed1`. If the actual instance is not `NotAllowed1`,
+     * Get the actual instance of `NotAllowed`. If the actual instance is not `NotAllowed`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `NotAllowed1`
-     * @throws ClassCastException if the instance is not `NotAllowed1`
+     * @return The actual instance of `NotAllowed`
+     * @throws ClassCastException if the instance is not `NotAllowed`
      */
-    public NotAllowed1 getNotAllowed1() throws ClassCastException {
-        return (NotAllowed1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public NotAllowed getNotAllowed() throws ClassCastException {
+        return (NotAllowed)super.getActualInstance();
     }
 
     /**
@@ -269,12 +272,12 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
         // validate oneOf schemas one by one
         int validCount = 0;
         ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with Allowed1
+        // validate the json string with Allowed
         try {
-            Allowed1.validateJsonElement(jsonElement);
+            Allowed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Allowed1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Allowed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with AllowedUntil1
@@ -282,19 +285,19 @@ public class VoidPolicy1 extends AbstractOpenApiSchema {
             AllowedUntil1.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for AllowedUntil1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AllowedUntil1 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with NotAllowed1
+        // validate the json string with NotAllowed
         try {
-            NotAllowed1.validateJsonElement(jsonElement);
+            NotAllowed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for NotAllowed1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotAllowed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for VoidPolicy1 with oneOf schemas: Allowed1, AllowedUntil1, NotAllowed1. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for VoidPolicy1 with oneOf schemas: Allowed, AllowedUntil1, NotAllowed. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

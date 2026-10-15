@@ -64,7 +64,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Trip extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Trip.class.getName());
 
@@ -127,7 +127,7 @@ public class Trip extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'MultiCity'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MultiCity failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiCity failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MultiCity'", e);
                     }
                     // deserialize OneWay
@@ -139,7 +139,7 @@ public class Trip extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OneWay'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OneWay failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OneWay failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OneWay'", e);
                     }
                     // deserialize RoundTrip
@@ -151,7 +151,7 @@ public class Trip extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'RoundTrip'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for RoundTrip failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for RoundTrip failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'RoundTrip'", e);
                     }
 
@@ -161,7 +161,7 @@ public class Trip extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Trip: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Trip: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -236,6 +236,7 @@ public class Trip extends AbstractOpenApiSchema {
      * @return The actual instance of `MultiCity`
      * @throws ClassCastException if the instance is not `MultiCity`
      */
+    @SuppressWarnings("unchecked")
     public MultiCity getMultiCity() throws ClassCastException {
         return (MultiCity)super.getActualInstance();
     }
@@ -247,6 +248,7 @@ public class Trip extends AbstractOpenApiSchema {
      * @return The actual instance of `OneWay`
      * @throws ClassCastException if the instance is not `OneWay`
      */
+    @SuppressWarnings("unchecked")
     public OneWay getOneWay() throws ClassCastException {
         return (OneWay)super.getActualInstance();
     }
@@ -258,6 +260,7 @@ public class Trip extends AbstractOpenApiSchema {
      * @return The actual instance of `RoundTrip`
      * @throws ClassCastException if the instance is not `RoundTrip`
      */
+    @SuppressWarnings("unchecked")
     public RoundTrip getRoundTrip() throws ClassCastException {
         return (RoundTrip)super.getActualInstance();
     }
@@ -277,7 +280,7 @@ public class Trip extends AbstractOpenApiSchema {
             MultiCity.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MultiCity failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MultiCity failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OneWay
@@ -285,7 +288,7 @@ public class Trip extends AbstractOpenApiSchema {
             OneWay.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OneWay failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OneWay failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with RoundTrip
@@ -293,11 +296,11 @@ public class Trip extends AbstractOpenApiSchema {
             RoundTrip.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for RoundTrip failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for RoundTrip failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Trip with oneOf schemas: MultiCity, OneWay, RoundTrip. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Trip with oneOf schemas: MultiCity, OneWay, RoundTrip. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -59,7 +59,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CreateSyntheticFaresError.class.getName());
 
@@ -115,7 +115,7 @@ public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InvalidItinerary'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidItinerary failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidItinerary failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InvalidItinerary'", e);
                     }
                     // deserialize InvalidSession
@@ -127,7 +127,7 @@ public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InvalidSession'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidSession failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidSession failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InvalidSession'", e);
                     }
 
@@ -137,7 +137,7 @@ public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CreateSyntheticFaresError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CreateSyntheticFaresError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -206,6 +206,7 @@ public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
      * @return The actual instance of `InvalidItinerary`
      * @throws ClassCastException if the instance is not `InvalidItinerary`
      */
+    @SuppressWarnings("unchecked")
     public InvalidItinerary getInvalidItinerary() throws ClassCastException {
         return (InvalidItinerary)super.getActualInstance();
     }
@@ -217,6 +218,7 @@ public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
      * @return The actual instance of `InvalidSession`
      * @throws ClassCastException if the instance is not `InvalidSession`
      */
+    @SuppressWarnings("unchecked")
     public InvalidSession getInvalidSession() throws ClassCastException {
         return (InvalidSession)super.getActualInstance();
     }
@@ -236,7 +238,7 @@ public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
             InvalidItinerary.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidItinerary failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidItinerary failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with InvalidSession
@@ -244,11 +246,11 @@ public class CreateSyntheticFaresError extends AbstractOpenApiSchema {
             InvalidSession.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidSession failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidSession failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CreateSyntheticFaresError with oneOf schemas: InvalidItinerary, InvalidSession. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CreateSyntheticFaresError with oneOf schemas: InvalidItinerary, InvalidSession. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class EmailAddress extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(EmailAddress.class.getName());
 
@@ -123,7 +123,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Hashed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Hashed failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Hashed failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Hashed'", e);
                     }
                     // deserialize Literal
@@ -135,7 +135,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Literal'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Literal failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Literal failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Literal'", e);
                     }
                     // deserialize NotProvided1
@@ -147,7 +147,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'NotProvided1'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for NotProvided1 failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotProvided1 failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'NotProvided1'", e);
                     }
 
@@ -157,7 +157,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for EmailAddress: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for EmailAddress: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -232,6 +232,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
      * @return The actual instance of `Hashed`
      * @throws ClassCastException if the instance is not `Hashed`
      */
+    @SuppressWarnings("unchecked")
     public Hashed getHashed() throws ClassCastException {
         return (Hashed)super.getActualInstance();
     }
@@ -243,6 +244,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
      * @return The actual instance of `Literal`
      * @throws ClassCastException if the instance is not `Literal`
      */
+    @SuppressWarnings("unchecked")
     public Literal getLiteral() throws ClassCastException {
         return (Literal)super.getActualInstance();
     }
@@ -254,6 +256,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
      * @return The actual instance of `NotProvided1`
      * @throws ClassCastException if the instance is not `NotProvided1`
      */
+    @SuppressWarnings("unchecked")
     public NotProvided1 getNotProvided1() throws ClassCastException {
         return (NotProvided1)super.getActualInstance();
     }
@@ -273,7 +276,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
             Hashed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Hashed failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Hashed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Literal
@@ -281,7 +284,7 @@ public class EmailAddress extends AbstractOpenApiSchema {
             Literal.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Literal failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Literal failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with NotProvided1
@@ -289,11 +292,11 @@ public class EmailAddress extends AbstractOpenApiSchema {
             NotProvided1.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for NotProvided1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotProvided1 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for EmailAddress with oneOf schemas: Hashed, Literal, NotProvided1. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for EmailAddress with oneOf schemas: Hashed, Literal, NotProvided1. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

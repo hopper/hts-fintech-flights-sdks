@@ -11,5 +11,6 @@
   "useBeanValidation": false,
   "performBeanValidation": false,
   "containerDefaultToNull": true,
-  "openApiNullable": false
+  "openApiNullable": false,
+  "useSingleRequestParameter": true
 }

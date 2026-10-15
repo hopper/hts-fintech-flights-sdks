@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hopper.hts.fintech.flights.cfar.model.ContractExpired;
-import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus1;
+import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus;
 import com.hopper.hts.fintech.flights.cfar.model.PassengerAlreadyExercised;
 import com.hopper.hts.fintech.flights.cfar.model.PassengerNotFound;
 import java.io.IOException;
@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarExerciseContractError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CfarExerciseContractError.class.getName());
 
@@ -74,7 +74,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<ContractExpired> adapterContractExpired = gson.getDelegateAdapter(this, TypeToken.get(ContractExpired.class));
-            final TypeAdapter<InvalidContractStatus1> adapterInvalidContractStatus1 = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus1.class));
+            final TypeAdapter<InvalidContractStatus> adapterInvalidContractStatus = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus.class));
             final TypeAdapter<PassengerAlreadyExercised> adapterPassengerAlreadyExercised = gson.getDelegateAdapter(this, TypeToken.get(PassengerAlreadyExercised.class));
             final TypeAdapter<PassengerNotFound> adapterPassengerNotFound = gson.getDelegateAdapter(this, TypeToken.get(PassengerNotFound.class));
 
@@ -92,9 +92,9 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `InvalidContractStatus1`
-                    if (value.getActualInstance() instanceof InvalidContractStatus1) {
-                        JsonElement element = adapterInvalidContractStatus1.toJsonTree((InvalidContractStatus1)value.getActualInstance());
+                    // check if the actual instance is of the type `InvalidContractStatus`
+                    if (value.getActualInstance() instanceof InvalidContractStatus) {
+                        JsonElement element = adapterInvalidContractStatus.toJsonTree((InvalidContractStatus)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -110,7 +110,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ContractExpired, InvalidContractStatus, PassengerAlreadyExercised, PassengerNotFound");
                 }
 
                 @Override
@@ -131,20 +131,20 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ContractExpired'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ContractExpired failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ContractExpired failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ContractExpired'", e);
                     }
-                    // deserialize InvalidContractStatus1
+                    // deserialize InvalidContractStatus
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        InvalidContractStatus1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidContractStatus1;
+                        InvalidContractStatus.validateJsonElement(jsonElement);
+                        actualAdapter = adapterInvalidContractStatus;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus1'");
+                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidContractStatus1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus'", e);
                     }
                     // deserialize PassengerAlreadyExercised
                     try {
@@ -155,7 +155,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PassengerAlreadyExercised'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PassengerAlreadyExercised failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PassengerAlreadyExercised failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PassengerAlreadyExercised'", e);
                     }
                     // deserialize PassengerNotFound
@@ -167,7 +167,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PassengerNotFound'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PassengerNotFound failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PassengerNotFound failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PassengerNotFound'", e);
                     }
 
@@ -177,7 +177,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CfarExerciseContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CfarExerciseContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -197,7 +197,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
 
     static {
         schemas.put("ContractExpired", ContractExpired.class);
-        schemas.put("InvalidContractStatus1", InvalidContractStatus1.class);
+        schemas.put("InvalidContractStatus", InvalidContractStatus.class);
         schemas.put("PassengerAlreadyExercised", PassengerAlreadyExercised.class);
         schemas.put("PassengerNotFound", PassengerNotFound.class);
     }
@@ -210,7 +210,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound
+     * ContractExpired, InvalidContractStatus, PassengerAlreadyExercised, PassengerNotFound
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -221,7 +221,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof InvalidContractStatus1) {
+        if (instance instanceof InvalidContractStatus) {
             super.setActualInstance(instance);
             return;
         }
@@ -236,14 +236,14 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound");
+        throw new RuntimeException("Invalid instance type. Must be ContractExpired, InvalidContractStatus, PassengerAlreadyExercised, PassengerNotFound");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound
+     * ContractExpired, InvalidContractStatus, PassengerAlreadyExercised, PassengerNotFound
      *
-     * @return The actual instance (ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound)
+     * @return The actual instance (ContractExpired, InvalidContractStatus, PassengerAlreadyExercised, PassengerNotFound)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -258,19 +258,21 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `ContractExpired`
      * @throws ClassCastException if the instance is not `ContractExpired`
      */
+    @SuppressWarnings("unchecked")
     public ContractExpired getContractExpired() throws ClassCastException {
         return (ContractExpired)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `InvalidContractStatus1`. If the actual instance is not `InvalidContractStatus1`,
+     * Get the actual instance of `InvalidContractStatus`. If the actual instance is not `InvalidContractStatus`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `InvalidContractStatus1`
-     * @throws ClassCastException if the instance is not `InvalidContractStatus1`
+     * @return The actual instance of `InvalidContractStatus`
+     * @throws ClassCastException if the instance is not `InvalidContractStatus`
      */
-    public InvalidContractStatus1 getInvalidContractStatus1() throws ClassCastException {
-        return (InvalidContractStatus1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public InvalidContractStatus getInvalidContractStatus() throws ClassCastException {
+        return (InvalidContractStatus)super.getActualInstance();
     }
 
     /**
@@ -280,6 +282,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `PassengerAlreadyExercised`
      * @throws ClassCastException if the instance is not `PassengerAlreadyExercised`
      */
+    @SuppressWarnings("unchecked")
     public PassengerAlreadyExercised getPassengerAlreadyExercised() throws ClassCastException {
         return (PassengerAlreadyExercised)super.getActualInstance();
     }
@@ -291,6 +294,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `PassengerNotFound`
      * @throws ClassCastException if the instance is not `PassengerNotFound`
      */
+    @SuppressWarnings("unchecked")
     public PassengerNotFound getPassengerNotFound() throws ClassCastException {
         return (PassengerNotFound)super.getActualInstance();
     }
@@ -310,15 +314,15 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
             ContractExpired.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ContractExpired failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ContractExpired failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with InvalidContractStatus1
+        // validate the json string with InvalidContractStatus
         try {
-            InvalidContractStatus1.validateJsonElement(jsonElement);
+            InvalidContractStatus.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidContractStatus1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PassengerAlreadyExercised
@@ -326,7 +330,7 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
             PassengerAlreadyExercised.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PassengerAlreadyExercised failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PassengerAlreadyExercised failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PassengerNotFound
@@ -334,11 +338,11 @@ public class CfarExerciseContractError extends AbstractOpenApiSchema {
             PassengerNotFound.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PassengerNotFound failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PassengerNotFound failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarExerciseContractError with oneOf schemas: ContractExpired, InvalidContractStatus1, PassengerAlreadyExercised, PassengerNotFound. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CfarExerciseContractError with oneOf schemas: ContractExpired, InvalidContractStatus, PassengerAlreadyExercised, PassengerNotFound. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Reason extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Reason.class.getName());
 
@@ -123,7 +123,7 @@ public class Reason extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'GoodWill'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoodWill failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoodWill failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoodWill'", e);
                     }
                     // deserialize Other1
@@ -135,7 +135,7 @@ public class Reason extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Other1'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Other1 failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Other1 failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Other1'", e);
                     }
                     // deserialize VoidWindow
@@ -147,7 +147,7 @@ public class Reason extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'VoidWindow'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for VoidWindow failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for VoidWindow failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'VoidWindow'", e);
                     }
 
@@ -157,7 +157,7 @@ public class Reason extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Reason: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Reason: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -232,6 +232,7 @@ public class Reason extends AbstractOpenApiSchema {
      * @return The actual instance of `GoodWill`
      * @throws ClassCastException if the instance is not `GoodWill`
      */
+    @SuppressWarnings("unchecked")
     public GoodWill getGoodWill() throws ClassCastException {
         return (GoodWill)super.getActualInstance();
     }
@@ -243,6 +244,7 @@ public class Reason extends AbstractOpenApiSchema {
      * @return The actual instance of `Other1`
      * @throws ClassCastException if the instance is not `Other1`
      */
+    @SuppressWarnings("unchecked")
     public Other1 getOther1() throws ClassCastException {
         return (Other1)super.getActualInstance();
     }
@@ -254,6 +256,7 @@ public class Reason extends AbstractOpenApiSchema {
      * @return The actual instance of `VoidWindow`
      * @throws ClassCastException if the instance is not `VoidWindow`
      */
+    @SuppressWarnings("unchecked")
     public VoidWindow getVoidWindow() throws ClassCastException {
         return (VoidWindow)super.getActualInstance();
     }
@@ -273,7 +276,7 @@ public class Reason extends AbstractOpenApiSchema {
             GoodWill.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoodWill failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoodWill failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Other1
@@ -281,7 +284,7 @@ public class Reason extends AbstractOpenApiSchema {
             Other1.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Other1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Other1 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with VoidWindow
@@ -289,11 +292,11 @@ public class Reason extends AbstractOpenApiSchema {
             VoidWindow.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for VoidWindow failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for VoidWindow failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Reason with oneOf schemas: GoodWill, Other1, VoidWindow. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Reason with oneOf schemas: GoodWill, Other1, VoidWindow. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

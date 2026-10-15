@@ -24,7 +24,7 @@ import com.hopper.hts.fintech.flights.cfar.model.IdempotencyKeyReused;
 import com.hopper.hts.fintech.flights.cfar.model.InvalidEmail;
 import com.hopper.hts.fintech.flights.cfar.model.InvalidItineraryPrice;
 import com.hopper.hts.fintech.flights.cfar.model.OfferExpired;
-import com.hopper.hts.fintech.flights.cfar.model.OfferNotFound1;
+import com.hopper.hts.fintech.flights.cfar.model.OfferNotFound;
 import com.hopper.hts.fintech.flights.cfar.model.OfferNotPriced;
 import com.hopper.hts.fintech.flights.cfar.model.OrderAlreadyExists;
 import com.hopper.hts.fintech.flights.cfar.model.PaymentAuthorizationFailure;
@@ -67,7 +67,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CfarCreateDraftContractError.class.getName());
 
@@ -84,7 +84,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             final TypeAdapter<InvalidEmail> adapterInvalidEmail = gson.getDelegateAdapter(this, TypeToken.get(InvalidEmail.class));
             final TypeAdapter<InvalidItineraryPrice> adapterInvalidItineraryPrice = gson.getDelegateAdapter(this, TypeToken.get(InvalidItineraryPrice.class));
             final TypeAdapter<OfferExpired> adapterOfferExpired = gson.getDelegateAdapter(this, TypeToken.get(OfferExpired.class));
-            final TypeAdapter<OfferNotFound1> adapterOfferNotFound1 = gson.getDelegateAdapter(this, TypeToken.get(OfferNotFound1.class));
+            final TypeAdapter<OfferNotFound> adapterOfferNotFound = gson.getDelegateAdapter(this, TypeToken.get(OfferNotFound.class));
             final TypeAdapter<OfferNotPriced> adapterOfferNotPriced = gson.getDelegateAdapter(this, TypeToken.get(OfferNotPriced.class));
             final TypeAdapter<OrderAlreadyExists> adapterOrderAlreadyExists = gson.getDelegateAdapter(this, TypeToken.get(OrderAlreadyExists.class));
             final TypeAdapter<PaymentAuthorizationFailure> adapterPaymentAuthorizationFailure = gson.getDelegateAdapter(this, TypeToken.get(PaymentAuthorizationFailure.class));
@@ -128,9 +128,9 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `OfferNotFound1`
-                    if (value.getActualInstance() instanceof OfferNotFound1) {
-                        JsonElement element = adapterOfferNotFound1.toJsonTree((OfferNotFound1)value.getActualInstance());
+                    // check if the actual instance is of the type `OfferNotFound`
+                    if (value.getActualInstance() instanceof OfferNotFound) {
+                        JsonElement element = adapterOfferNotFound.toJsonTree((OfferNotFound)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -158,7 +158,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts");
                 }
 
                 @Override
@@ -179,7 +179,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'BillingInfoRequiredForMerchantOfRecordHts'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BillingInfoRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BillingInfoRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'BillingInfoRequiredForMerchantOfRecordHts'", e);
                     }
                     // deserialize IdempotencyKeyReused
@@ -191,7 +191,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'IdempotencyKeyReused'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for IdempotencyKeyReused failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for IdempotencyKeyReused failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'IdempotencyKeyReused'", e);
                     }
                     // deserialize InvalidEmail
@@ -203,7 +203,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InvalidEmail'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidEmail failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidEmail failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InvalidEmail'", e);
                     }
                     // deserialize InvalidItineraryPrice
@@ -215,7 +215,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InvalidItineraryPrice'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidItineraryPrice failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidItineraryPrice failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InvalidItineraryPrice'", e);
                     }
                     // deserialize OfferExpired
@@ -227,20 +227,20 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OfferExpired'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OfferExpired failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferExpired failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OfferExpired'", e);
                     }
-                    // deserialize OfferNotFound1
+                    // deserialize OfferNotFound
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        OfferNotFound1.validateJsonElement(jsonElement);
-                        actualAdapter = adapterOfferNotFound1;
+                        OfferNotFound.validateJsonElement(jsonElement);
+                        actualAdapter = adapterOfferNotFound;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'OfferNotFound1'");
+                        log.log(Level.FINER, "Input data matches schema 'OfferNotFound'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OfferNotFound1 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'OfferNotFound1'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferNotFound failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'OfferNotFound'", e);
                     }
                     // deserialize OfferNotPriced
                     try {
@@ -251,7 +251,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OfferNotPriced'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OfferNotPriced failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferNotPriced failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OfferNotPriced'", e);
                     }
                     // deserialize OrderAlreadyExists
@@ -263,7 +263,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'OrderAlreadyExists'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for OrderAlreadyExists failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderAlreadyExists failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'OrderAlreadyExists'", e);
                     }
                     // deserialize PaymentAuthorizationFailure
@@ -275,7 +275,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PaymentAuthorizationFailure'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PaymentAuthorizationFailure failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentAuthorizationFailure failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PaymentAuthorizationFailure'", e);
                     }
                     // deserialize PaymentCardRequiredForMerchantOfRecordHts
@@ -287,7 +287,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PaymentCardRequiredForMerchantOfRecordHts'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PaymentCardRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentCardRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PaymentCardRequiredForMerchantOfRecordHts'", e);
                     }
 
@@ -297,7 +297,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CfarCreateDraftContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CfarCreateDraftContractError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -321,7 +321,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
         schemas.put("InvalidEmail", InvalidEmail.class);
         schemas.put("InvalidItineraryPrice", InvalidItineraryPrice.class);
         schemas.put("OfferExpired", OfferExpired.class);
-        schemas.put("OfferNotFound1", OfferNotFound1.class);
+        schemas.put("OfferNotFound", OfferNotFound.class);
         schemas.put("OfferNotPriced", OfferNotPriced.class);
         schemas.put("OrderAlreadyExists", OrderAlreadyExists.class);
         schemas.put("PaymentAuthorizationFailure", PaymentAuthorizationFailure.class);
@@ -336,7 +336,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts
+     * BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -367,7 +367,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof OfferNotFound1) {
+        if (instance instanceof OfferNotFound) {
             super.setActualInstance(instance);
             return;
         }
@@ -392,14 +392,14 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts");
+        throw new RuntimeException("Invalid instance type. Must be BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts
+     * BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts
      *
-     * @return The actual instance (BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts)
+     * @return The actual instance (BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -414,6 +414,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `BillingInfoRequiredForMerchantOfRecordHts`
      * @throws ClassCastException if the instance is not `BillingInfoRequiredForMerchantOfRecordHts`
      */
+    @SuppressWarnings("unchecked")
     public BillingInfoRequiredForMerchantOfRecordHts getBillingInfoRequiredForMerchantOfRecordHts() throws ClassCastException {
         return (BillingInfoRequiredForMerchantOfRecordHts)super.getActualInstance();
     }
@@ -425,6 +426,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `IdempotencyKeyReused`
      * @throws ClassCastException if the instance is not `IdempotencyKeyReused`
      */
+    @SuppressWarnings("unchecked")
     public IdempotencyKeyReused getIdempotencyKeyReused() throws ClassCastException {
         return (IdempotencyKeyReused)super.getActualInstance();
     }
@@ -436,6 +438,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `InvalidEmail`
      * @throws ClassCastException if the instance is not `InvalidEmail`
      */
+    @SuppressWarnings("unchecked")
     public InvalidEmail getInvalidEmail() throws ClassCastException {
         return (InvalidEmail)super.getActualInstance();
     }
@@ -447,6 +450,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `InvalidItineraryPrice`
      * @throws ClassCastException if the instance is not `InvalidItineraryPrice`
      */
+    @SuppressWarnings("unchecked")
     public InvalidItineraryPrice getInvalidItineraryPrice() throws ClassCastException {
         return (InvalidItineraryPrice)super.getActualInstance();
     }
@@ -458,19 +462,21 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `OfferExpired`
      * @throws ClassCastException if the instance is not `OfferExpired`
      */
+    @SuppressWarnings("unchecked")
     public OfferExpired getOfferExpired() throws ClassCastException {
         return (OfferExpired)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `OfferNotFound1`. If the actual instance is not `OfferNotFound1`,
+     * Get the actual instance of `OfferNotFound`. If the actual instance is not `OfferNotFound`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `OfferNotFound1`
-     * @throws ClassCastException if the instance is not `OfferNotFound1`
+     * @return The actual instance of `OfferNotFound`
+     * @throws ClassCastException if the instance is not `OfferNotFound`
      */
-    public OfferNotFound1 getOfferNotFound1() throws ClassCastException {
-        return (OfferNotFound1)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public OfferNotFound getOfferNotFound() throws ClassCastException {
+        return (OfferNotFound)super.getActualInstance();
     }
 
     /**
@@ -480,6 +486,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `OfferNotPriced`
      * @throws ClassCastException if the instance is not `OfferNotPriced`
      */
+    @SuppressWarnings("unchecked")
     public OfferNotPriced getOfferNotPriced() throws ClassCastException {
         return (OfferNotPriced)super.getActualInstance();
     }
@@ -491,6 +498,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `OrderAlreadyExists`
      * @throws ClassCastException if the instance is not `OrderAlreadyExists`
      */
+    @SuppressWarnings("unchecked")
     public OrderAlreadyExists getOrderAlreadyExists() throws ClassCastException {
         return (OrderAlreadyExists)super.getActualInstance();
     }
@@ -502,6 +510,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `PaymentAuthorizationFailure`
      * @throws ClassCastException if the instance is not `PaymentAuthorizationFailure`
      */
+    @SuppressWarnings("unchecked")
     public PaymentAuthorizationFailure getPaymentAuthorizationFailure() throws ClassCastException {
         return (PaymentAuthorizationFailure)super.getActualInstance();
     }
@@ -513,6 +522,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
      * @return The actual instance of `PaymentCardRequiredForMerchantOfRecordHts`
      * @throws ClassCastException if the instance is not `PaymentCardRequiredForMerchantOfRecordHts`
      */
+    @SuppressWarnings("unchecked")
     public PaymentCardRequiredForMerchantOfRecordHts getPaymentCardRequiredForMerchantOfRecordHts() throws ClassCastException {
         return (PaymentCardRequiredForMerchantOfRecordHts)super.getActualInstance();
     }
@@ -532,7 +542,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             BillingInfoRequiredForMerchantOfRecordHts.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BillingInfoRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BillingInfoRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with IdempotencyKeyReused
@@ -540,7 +550,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             IdempotencyKeyReused.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for IdempotencyKeyReused failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for IdempotencyKeyReused failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with InvalidEmail
@@ -548,7 +558,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             InvalidEmail.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidEmail failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidEmail failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with InvalidItineraryPrice
@@ -556,7 +566,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             InvalidItineraryPrice.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidItineraryPrice failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidItineraryPrice failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OfferExpired
@@ -564,15 +574,15 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             OfferExpired.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OfferExpired failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferExpired failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with OfferNotFound1
+        // validate the json string with OfferNotFound
         try {
-            OfferNotFound1.validateJsonElement(jsonElement);
+            OfferNotFound.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OfferNotFound1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferNotFound failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OfferNotPriced
@@ -580,7 +590,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             OfferNotPriced.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OfferNotPriced failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferNotPriced failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with OrderAlreadyExists
@@ -588,7 +598,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             OrderAlreadyExists.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for OrderAlreadyExists failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OrderAlreadyExists failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PaymentAuthorizationFailure
@@ -596,7 +606,7 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             PaymentAuthorizationFailure.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PaymentAuthorizationFailure failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentAuthorizationFailure failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PaymentCardRequiredForMerchantOfRecordHts
@@ -604,11 +614,11 @@ public class CfarCreateDraftContractError extends AbstractOpenApiSchema {
             PaymentCardRequiredForMerchantOfRecordHts.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PaymentCardRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PaymentCardRequiredForMerchantOfRecordHts failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarCreateDraftContractError with oneOf schemas: BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound1, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CfarCreateDraftContractError with oneOf schemas: BillingInfoRequiredForMerchantOfRecordHts, IdempotencyKeyReused, InvalidEmail, InvalidItineraryPrice, OfferExpired, OfferNotFound, OfferNotPriced, OrderAlreadyExists, PaymentAuthorizationFailure, PaymentCardRequiredForMerchantOfRecordHts. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

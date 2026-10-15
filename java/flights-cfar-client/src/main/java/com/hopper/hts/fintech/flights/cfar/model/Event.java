@@ -78,7 +78,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Event extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Event.class.getName());
 
@@ -239,7 +239,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'BookingConfirmed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BookingConfirmed failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BookingConfirmed failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'BookingConfirmed'", e);
                     }
                     // deserialize ExercisePortalCompletePageContinueClicked
@@ -251,7 +251,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ExercisePortalCompletePageContinueClicked'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ExercisePortalCompletePageContinueClicked failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalCompletePageContinueClicked failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalCompletePageContinueClicked'", e);
                     }
                     // deserialize ExercisePortalCompletePageLoaded
@@ -263,7 +263,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ExercisePortalCompletePageLoaded'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ExercisePortalCompletePageLoaded failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalCompletePageLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalCompletePageLoaded'", e);
                     }
                     // deserialize ExercisePortalConfirmationPageBackClicked
@@ -275,7 +275,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ExercisePortalConfirmationPageBackClicked'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ExercisePortalConfirmationPageBackClicked failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalConfirmationPageBackClicked failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalConfirmationPageBackClicked'", e);
                     }
                     // deserialize ExercisePortalConfirmationPageConfirmClicked
@@ -287,7 +287,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ExercisePortalConfirmationPageConfirmClicked'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ExercisePortalConfirmationPageConfirmClicked failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalConfirmationPageConfirmClicked failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalConfirmationPageConfirmClicked'", e);
                     }
                     // deserialize ExercisePortalConfirmationPageLoaded
@@ -299,7 +299,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ExercisePortalConfirmationPageLoaded'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ExercisePortalConfirmationPageLoaded failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalConfirmationPageLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalConfirmationPageLoaded'", e);
                     }
                     // deserialize ExercisePortalLandingContinueClicked
@@ -311,7 +311,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ExercisePortalLandingContinueClicked'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ExercisePortalLandingContinueClicked failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalLandingContinueClicked failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalLandingContinueClicked'", e);
                     }
                     // deserialize ExercisePortalLandingLoaded
@@ -323,7 +323,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ExercisePortalLandingLoaded'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ExercisePortalLandingLoaded failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalLandingLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalLandingLoaded'", e);
                     }
                     // deserialize FlightSearchLoaded
@@ -335,7 +335,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'FlightSearchLoaded'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FlightSearchLoaded failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSearchLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'FlightSearchLoaded'", e);
                     }
                     // deserialize FlightSearchSubmitted
@@ -347,7 +347,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'FlightSearchSubmitted'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FlightSearchSubmitted failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSearchSubmitted failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'FlightSearchSubmitted'", e);
                     }
                     // deserialize FlightSelected
@@ -359,7 +359,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'FlightSelected'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FlightSelected failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSelected failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'FlightSelected'", e);
                     }
                     // deserialize FlightSubmittedForOffer
@@ -371,7 +371,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'FlightSubmittedForOffer'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for FlightSubmittedForOffer failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSubmittedForOffer failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'FlightSubmittedForOffer'", e);
                     }
                     // deserialize MerchandisingDisplayed
@@ -383,7 +383,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'MerchandisingDisplayed'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MerchandisingDisplayed failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingDisplayed failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MerchandisingDisplayed'", e);
                     }
                     // deserialize MerchandisingFaqClicked
@@ -395,7 +395,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'MerchandisingFaqClicked'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MerchandisingFaqClicked failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingFaqClicked failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MerchandisingFaqClicked'", e);
                     }
                     // deserialize MerchandisingOfferAttached
@@ -407,7 +407,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'MerchandisingOfferAttached'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MerchandisingOfferAttached failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingOfferAttached failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MerchandisingOfferAttached'", e);
                     }
                     // deserialize MerchandisingOfferDeclined
@@ -419,7 +419,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'MerchandisingOfferDeclined'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MerchandisingOfferDeclined failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingOfferDeclined failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MerchandisingOfferDeclined'", e);
                     }
                     // deserialize MerchandisingSdkLoaded
@@ -431,7 +431,7 @@ public class Event extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'MerchandisingSdkLoaded'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MerchandisingSdkLoaded'", e);
                     }
 
@@ -441,7 +441,7 @@ public class Event extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Event: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Event: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -600,6 +600,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `BookingConfirmed`
      * @throws ClassCastException if the instance is not `BookingConfirmed`
      */
+    @SuppressWarnings("unchecked")
     public BookingConfirmed getBookingConfirmed() throws ClassCastException {
         return (BookingConfirmed)super.getActualInstance();
     }
@@ -611,6 +612,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `ExercisePortalCompletePageContinueClicked`
      * @throws ClassCastException if the instance is not `ExercisePortalCompletePageContinueClicked`
      */
+    @SuppressWarnings("unchecked")
     public ExercisePortalCompletePageContinueClicked getExercisePortalCompletePageContinueClicked() throws ClassCastException {
         return (ExercisePortalCompletePageContinueClicked)super.getActualInstance();
     }
@@ -622,6 +624,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `ExercisePortalCompletePageLoaded`
      * @throws ClassCastException if the instance is not `ExercisePortalCompletePageLoaded`
      */
+    @SuppressWarnings("unchecked")
     public ExercisePortalCompletePageLoaded getExercisePortalCompletePageLoaded() throws ClassCastException {
         return (ExercisePortalCompletePageLoaded)super.getActualInstance();
     }
@@ -633,6 +636,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `ExercisePortalConfirmationPageBackClicked`
      * @throws ClassCastException if the instance is not `ExercisePortalConfirmationPageBackClicked`
      */
+    @SuppressWarnings("unchecked")
     public ExercisePortalConfirmationPageBackClicked getExercisePortalConfirmationPageBackClicked() throws ClassCastException {
         return (ExercisePortalConfirmationPageBackClicked)super.getActualInstance();
     }
@@ -644,6 +648,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `ExercisePortalConfirmationPageConfirmClicked`
      * @throws ClassCastException if the instance is not `ExercisePortalConfirmationPageConfirmClicked`
      */
+    @SuppressWarnings("unchecked")
     public ExercisePortalConfirmationPageConfirmClicked getExercisePortalConfirmationPageConfirmClicked() throws ClassCastException {
         return (ExercisePortalConfirmationPageConfirmClicked)super.getActualInstance();
     }
@@ -655,6 +660,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `ExercisePortalConfirmationPageLoaded`
      * @throws ClassCastException if the instance is not `ExercisePortalConfirmationPageLoaded`
      */
+    @SuppressWarnings("unchecked")
     public ExercisePortalConfirmationPageLoaded getExercisePortalConfirmationPageLoaded() throws ClassCastException {
         return (ExercisePortalConfirmationPageLoaded)super.getActualInstance();
     }
@@ -666,6 +672,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `ExercisePortalLandingContinueClicked`
      * @throws ClassCastException if the instance is not `ExercisePortalLandingContinueClicked`
      */
+    @SuppressWarnings("unchecked")
     public ExercisePortalLandingContinueClicked getExercisePortalLandingContinueClicked() throws ClassCastException {
         return (ExercisePortalLandingContinueClicked)super.getActualInstance();
     }
@@ -677,6 +684,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `ExercisePortalLandingLoaded`
      * @throws ClassCastException if the instance is not `ExercisePortalLandingLoaded`
      */
+    @SuppressWarnings("unchecked")
     public ExercisePortalLandingLoaded getExercisePortalLandingLoaded() throws ClassCastException {
         return (ExercisePortalLandingLoaded)super.getActualInstance();
     }
@@ -688,6 +696,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `FlightSearchLoaded`
      * @throws ClassCastException if the instance is not `FlightSearchLoaded`
      */
+    @SuppressWarnings("unchecked")
     public FlightSearchLoaded getFlightSearchLoaded() throws ClassCastException {
         return (FlightSearchLoaded)super.getActualInstance();
     }
@@ -699,6 +708,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `FlightSearchSubmitted`
      * @throws ClassCastException if the instance is not `FlightSearchSubmitted`
      */
+    @SuppressWarnings("unchecked")
     public FlightSearchSubmitted getFlightSearchSubmitted() throws ClassCastException {
         return (FlightSearchSubmitted)super.getActualInstance();
     }
@@ -710,6 +720,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `FlightSelected`
      * @throws ClassCastException if the instance is not `FlightSelected`
      */
+    @SuppressWarnings("unchecked")
     public FlightSelected getFlightSelected() throws ClassCastException {
         return (FlightSelected)super.getActualInstance();
     }
@@ -721,6 +732,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `FlightSubmittedForOffer`
      * @throws ClassCastException if the instance is not `FlightSubmittedForOffer`
      */
+    @SuppressWarnings("unchecked")
     public FlightSubmittedForOffer getFlightSubmittedForOffer() throws ClassCastException {
         return (FlightSubmittedForOffer)super.getActualInstance();
     }
@@ -732,6 +744,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `MerchandisingDisplayed`
      * @throws ClassCastException if the instance is not `MerchandisingDisplayed`
      */
+    @SuppressWarnings("unchecked")
     public MerchandisingDisplayed getMerchandisingDisplayed() throws ClassCastException {
         return (MerchandisingDisplayed)super.getActualInstance();
     }
@@ -743,6 +756,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `MerchandisingFaqClicked`
      * @throws ClassCastException if the instance is not `MerchandisingFaqClicked`
      */
+    @SuppressWarnings("unchecked")
     public MerchandisingFaqClicked getMerchandisingFaqClicked() throws ClassCastException {
         return (MerchandisingFaqClicked)super.getActualInstance();
     }
@@ -754,6 +768,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `MerchandisingOfferAttached`
      * @throws ClassCastException if the instance is not `MerchandisingOfferAttached`
      */
+    @SuppressWarnings("unchecked")
     public MerchandisingOfferAttached getMerchandisingOfferAttached() throws ClassCastException {
         return (MerchandisingOfferAttached)super.getActualInstance();
     }
@@ -765,6 +780,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `MerchandisingOfferDeclined`
      * @throws ClassCastException if the instance is not `MerchandisingOfferDeclined`
      */
+    @SuppressWarnings("unchecked")
     public MerchandisingOfferDeclined getMerchandisingOfferDeclined() throws ClassCastException {
         return (MerchandisingOfferDeclined)super.getActualInstance();
     }
@@ -776,6 +792,7 @@ public class Event extends AbstractOpenApiSchema {
      * @return The actual instance of `MerchandisingSdkLoaded`
      * @throws ClassCastException if the instance is not `MerchandisingSdkLoaded`
      */
+    @SuppressWarnings("unchecked")
     public MerchandisingSdkLoaded getMerchandisingSdkLoaded() throws ClassCastException {
         return (MerchandisingSdkLoaded)super.getActualInstance();
     }
@@ -795,7 +812,7 @@ public class Event extends AbstractOpenApiSchema {
             BookingConfirmed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BookingConfirmed failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BookingConfirmed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ExercisePortalCompletePageContinueClicked
@@ -803,7 +820,7 @@ public class Event extends AbstractOpenApiSchema {
             ExercisePortalCompletePageContinueClicked.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ExercisePortalCompletePageContinueClicked failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalCompletePageContinueClicked failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ExercisePortalCompletePageLoaded
@@ -811,7 +828,7 @@ public class Event extends AbstractOpenApiSchema {
             ExercisePortalCompletePageLoaded.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ExercisePortalCompletePageLoaded failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalCompletePageLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ExercisePortalConfirmationPageBackClicked
@@ -819,7 +836,7 @@ public class Event extends AbstractOpenApiSchema {
             ExercisePortalConfirmationPageBackClicked.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ExercisePortalConfirmationPageBackClicked failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalConfirmationPageBackClicked failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ExercisePortalConfirmationPageConfirmClicked
@@ -827,7 +844,7 @@ public class Event extends AbstractOpenApiSchema {
             ExercisePortalConfirmationPageConfirmClicked.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ExercisePortalConfirmationPageConfirmClicked failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalConfirmationPageConfirmClicked failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ExercisePortalConfirmationPageLoaded
@@ -835,7 +852,7 @@ public class Event extends AbstractOpenApiSchema {
             ExercisePortalConfirmationPageLoaded.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ExercisePortalConfirmationPageLoaded failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalConfirmationPageLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ExercisePortalLandingContinueClicked
@@ -843,7 +860,7 @@ public class Event extends AbstractOpenApiSchema {
             ExercisePortalLandingContinueClicked.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ExercisePortalLandingContinueClicked failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalLandingContinueClicked failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ExercisePortalLandingLoaded
@@ -851,7 +868,7 @@ public class Event extends AbstractOpenApiSchema {
             ExercisePortalLandingLoaded.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ExercisePortalLandingLoaded failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalLandingLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with FlightSearchLoaded
@@ -859,7 +876,7 @@ public class Event extends AbstractOpenApiSchema {
             FlightSearchLoaded.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for FlightSearchLoaded failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSearchLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with FlightSearchSubmitted
@@ -867,7 +884,7 @@ public class Event extends AbstractOpenApiSchema {
             FlightSearchSubmitted.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for FlightSearchSubmitted failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSearchSubmitted failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with FlightSelected
@@ -875,7 +892,7 @@ public class Event extends AbstractOpenApiSchema {
             FlightSelected.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for FlightSelected failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSelected failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with FlightSubmittedForOffer
@@ -883,7 +900,7 @@ public class Event extends AbstractOpenApiSchema {
             FlightSubmittedForOffer.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for FlightSubmittedForOffer failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for FlightSubmittedForOffer failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MerchandisingDisplayed
@@ -891,7 +908,7 @@ public class Event extends AbstractOpenApiSchema {
             MerchandisingDisplayed.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MerchandisingDisplayed failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingDisplayed failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MerchandisingFaqClicked
@@ -899,7 +916,7 @@ public class Event extends AbstractOpenApiSchema {
             MerchandisingFaqClicked.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MerchandisingFaqClicked failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingFaqClicked failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MerchandisingOfferAttached
@@ -907,7 +924,7 @@ public class Event extends AbstractOpenApiSchema {
             MerchandisingOfferAttached.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MerchandisingOfferAttached failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingOfferAttached failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MerchandisingOfferDeclined
@@ -915,7 +932,7 @@ public class Event extends AbstractOpenApiSchema {
             MerchandisingOfferDeclined.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MerchandisingOfferDeclined failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingOfferDeclined failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MerchandisingSdkLoaded
@@ -923,11 +940,11 @@ public class Event extends AbstractOpenApiSchema {
             MerchandisingSdkLoaded.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Event with oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Event with oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

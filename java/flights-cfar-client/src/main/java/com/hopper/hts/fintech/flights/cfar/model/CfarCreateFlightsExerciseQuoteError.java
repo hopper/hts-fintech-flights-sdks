@@ -22,7 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import com.hopper.hts.fintech.flights.cfar.model.BookingAlreadyCanceled;
 import com.hopper.hts.fintech.flights.cfar.model.BookingInVoidWindow;
 import com.hopper.hts.fintech.flights.cfar.model.InsufficientFunds;
-import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus4;
+import com.hopper.hts.fintech.flights.cfar.model.InvalidContractStatus;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CfarCreateFlightsExerciseQuoteError.class.getName());
 
@@ -76,7 +76,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
             final TypeAdapter<BookingAlreadyCanceled> adapterBookingAlreadyCanceled = gson.getDelegateAdapter(this, TypeToken.get(BookingAlreadyCanceled.class));
             final TypeAdapter<BookingInVoidWindow> adapterBookingInVoidWindow = gson.getDelegateAdapter(this, TypeToken.get(BookingInVoidWindow.class));
             final TypeAdapter<InsufficientFunds> adapterInsufficientFunds = gson.getDelegateAdapter(this, TypeToken.get(InsufficientFunds.class));
-            final TypeAdapter<InvalidContractStatus4> adapterInvalidContractStatus4 = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus4.class));
+            final TypeAdapter<InvalidContractStatus> adapterInvalidContractStatus = gson.getDelegateAdapter(this, TypeToken.get(InvalidContractStatus.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CfarCreateFlightsExerciseQuoteError>() {
                 @Override
@@ -104,13 +104,13 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `InvalidContractStatus4`
-                    if (value.getActualInstance() instanceof InvalidContractStatus4) {
-                        JsonElement element = adapterInvalidContractStatus4.toJsonTree((InvalidContractStatus4)value.getActualInstance());
+                    // check if the actual instance is of the type `InvalidContractStatus`
+                    if (value.getActualInstance() instanceof InvalidContractStatus) {
+                        JsonElement element = adapterInvalidContractStatus.toJsonTree((InvalidContractStatus)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus");
                 }
 
                 @Override
@@ -131,7 +131,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'BookingAlreadyCanceled'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BookingAlreadyCanceled failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BookingAlreadyCanceled failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'BookingAlreadyCanceled'", e);
                     }
                     // deserialize BookingInVoidWindow
@@ -143,7 +143,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'BookingInVoidWindow'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BookingInVoidWindow failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BookingInVoidWindow failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'BookingInVoidWindow'", e);
                     }
                     // deserialize InsufficientFunds
@@ -155,20 +155,20 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'InsufficientFunds'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InsufficientFunds failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InsufficientFunds failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'InsufficientFunds'", e);
                     }
-                    // deserialize InvalidContractStatus4
+                    // deserialize InvalidContractStatus
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        InvalidContractStatus4.validateJsonElement(jsonElement);
-                        actualAdapter = adapterInvalidContractStatus4;
+                        InvalidContractStatus.validateJsonElement(jsonElement);
+                        actualAdapter = adapterInvalidContractStatus;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus4'");
+                        log.log(Level.FINER, "Input data matches schema 'InvalidContractStatus'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for InvalidContractStatus4 failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus4'", e);
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'InvalidContractStatus'", e);
                     }
 
                     if (match == 1) {
@@ -177,7 +177,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CfarCreateFlightsExerciseQuoteError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CfarCreateFlightsExerciseQuoteError: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -199,7 +199,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
         schemas.put("BookingAlreadyCanceled", BookingAlreadyCanceled.class);
         schemas.put("BookingInVoidWindow", BookingInVoidWindow.class);
         schemas.put("InsufficientFunds", InsufficientFunds.class);
-        schemas.put("InvalidContractStatus4", InvalidContractStatus4.class);
+        schemas.put("InvalidContractStatus", InvalidContractStatus.class);
     }
 
     @Override
@@ -210,7 +210,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4
+     * BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -231,19 +231,19 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
             return;
         }
 
-        if (instance instanceof InvalidContractStatus4) {
+        if (instance instanceof InvalidContractStatus) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4");
+        throw new RuntimeException("Invalid instance type. Must be BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4
+     * BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus
      *
-     * @return The actual instance (BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4)
+     * @return The actual instance (BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -258,6 +258,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
      * @return The actual instance of `BookingAlreadyCanceled`
      * @throws ClassCastException if the instance is not `BookingAlreadyCanceled`
      */
+    @SuppressWarnings("unchecked")
     public BookingAlreadyCanceled getBookingAlreadyCanceled() throws ClassCastException {
         return (BookingAlreadyCanceled)super.getActualInstance();
     }
@@ -269,6 +270,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
      * @return The actual instance of `BookingInVoidWindow`
      * @throws ClassCastException if the instance is not `BookingInVoidWindow`
      */
+    @SuppressWarnings("unchecked")
     public BookingInVoidWindow getBookingInVoidWindow() throws ClassCastException {
         return (BookingInVoidWindow)super.getActualInstance();
     }
@@ -280,19 +282,21 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
      * @return The actual instance of `InsufficientFunds`
      * @throws ClassCastException if the instance is not `InsufficientFunds`
      */
+    @SuppressWarnings("unchecked")
     public InsufficientFunds getInsufficientFunds() throws ClassCastException {
         return (InsufficientFunds)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `InvalidContractStatus4`. If the actual instance is not `InvalidContractStatus4`,
+     * Get the actual instance of `InvalidContractStatus`. If the actual instance is not `InvalidContractStatus`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `InvalidContractStatus4`
-     * @throws ClassCastException if the instance is not `InvalidContractStatus4`
+     * @return The actual instance of `InvalidContractStatus`
+     * @throws ClassCastException if the instance is not `InvalidContractStatus`
      */
-    public InvalidContractStatus4 getInvalidContractStatus4() throws ClassCastException {
-        return (InvalidContractStatus4)super.getActualInstance();
+    @SuppressWarnings("unchecked")
+    public InvalidContractStatus getInvalidContractStatus() throws ClassCastException {
+        return (InvalidContractStatus)super.getActualInstance();
     }
 
     /**
@@ -310,7 +314,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
             BookingAlreadyCanceled.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BookingAlreadyCanceled failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BookingAlreadyCanceled failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with BookingInVoidWindow
@@ -318,7 +322,7 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
             BookingInVoidWindow.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BookingInVoidWindow failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BookingInVoidWindow failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with InsufficientFunds
@@ -326,19 +330,19 @@ public class CfarCreateFlightsExerciseQuoteError extends AbstractOpenApiSchema {
             InsufficientFunds.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InsufficientFunds failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InsufficientFunds failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with InvalidContractStatus4
+        // validate the json string with InvalidContractStatus
         try {
-            InvalidContractStatus4.validateJsonElement(jsonElement);
+            InvalidContractStatus.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for InvalidContractStatus4 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for InvalidContractStatus failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CfarCreateFlightsExerciseQuoteError with oneOf schemas: BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus4. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CfarCreateFlightsExerciseQuoteError with oneOf schemas: BookingAlreadyCanceled, BookingInVoidWindow, InsufficientFunds, InvalidContractStatus. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

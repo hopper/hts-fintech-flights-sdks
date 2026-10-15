@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hopper.hts.fintech.flights.cfar.model.ComposableFilter;
+import com.hopper.hts.fintech.flights.cfar.model.Field;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +32,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -51,12 +52,12 @@ import com.hopper.hts.fintech.flights.cfar.JSON;
 /**
  * And
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class And {
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
   @javax.annotation.Nonnull
-  private List<ComposableFilter> filters;
+  private List<Field> filters;
 
   /**
    * Gets or Sets type
@@ -116,12 +117,12 @@ public class And {
   public And() {
   }
 
-  public And filters(@javax.annotation.Nonnull List<ComposableFilter> filters) {
+  public And filters(@javax.annotation.Nonnull List<Field> filters) {
     this.filters = filters;
     return this;
   }
 
-  public And addFiltersItem(ComposableFilter filtersItem) {
+  public And addFiltersItem(Field filtersItem) {
     if (this.filters == null) {
       this.filters = new ArrayList<>();
     }
@@ -134,11 +135,11 @@ public class And {
    * @return filters
    */
   @javax.annotation.Nonnull
-  public List<ComposableFilter> getFilters() {
+  public List<Field> getFilters() {
     return filters;
   }
 
-  public void setFilters(@javax.annotation.Nonnull List<ComposableFilter> filters) {
+  public void setFilters(@javax.annotation.Nonnull List<Field> filters) {
     this.filters = filters;
   }
 
@@ -242,10 +243,7 @@ public class And {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 
@@ -254,14 +252,10 @@ public class And {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("filters");
-    openapiFields.add("type");
+    openapiFields = new HashSet<String>(Arrays.asList("filters", "type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("filters");
-    openapiRequiredFields.add("type");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("filters", "type"));
   }
 
   /**
@@ -273,29 +267,29 @@ public class And {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!And.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in And is not found in the empty JSON string", And.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in And is not found in the empty JSON string", And.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : And.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("filters").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `filters` to be an array in the JSON string but got `%s`", jsonObj.get("filters").toString()));
+      if (jsonObj.get("filters") != null) {
+        if (!jsonObj.get("filters").isJsonArray()) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `filters` to be an array in the JSON string but got `%s`", jsonObj.get("filters").toString()));
+        }
+        JsonArray jsonArrayfilters = jsonObj.getAsJsonArray("filters");
+        // validate the required field `filters` (array)
+        for (int i = 0; i < jsonArrayfilters.size(); i++) {
+          Field.validateJsonElement(jsonArrayfilters.get(i));
+        }
       }
-
-      JsonArray jsonArrayfilters = jsonObj.getAsJsonArray("filters");
-      // validate the required field `filters` (array)
-      for (int i = 0; i < jsonArrayfilters.size(); i++) {
-        ComposableFilter.validateJsonElement(jsonArrayfilters.get(i));
-      };
       if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the required field `type`
       TypeEnum.validateJsonElement(jsonObj.get("type"));
@@ -330,7 +324,9 @@ public class And {
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
                  else {
                    JsonElement jsonElement = gson.toJsonTree(entry.getValue());
-                   if (jsonElement.isJsonArray()) {
+                   if (jsonElement.isJsonNull()) {
+                     obj.add(entry.getKey(), JsonNull.INSTANCE);
+                   } else if (jsonElement.isJsonArray()) {
                      obj.add(entry.getKey(), jsonElement.getAsJsonArray());
                    } else {
                      obj.add(entry.getKey(), jsonElement.getAsJsonObject());
@@ -358,7 +354,7 @@ public class And {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

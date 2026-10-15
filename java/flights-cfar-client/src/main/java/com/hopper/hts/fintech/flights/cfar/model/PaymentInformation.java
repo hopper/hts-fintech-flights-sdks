@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class PaymentInformation extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(PaymentInformation.class.getName());
 
@@ -118,7 +118,7 @@ public class PaymentInformation extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'NotProvided'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for NotProvided failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotProvided failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'NotProvided'", e);
                     }
                     // deserialize Provided
@@ -130,7 +130,7 @@ public class PaymentInformation extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Provided'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Provided failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Provided failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Provided'", e);
                     }
 
@@ -140,7 +140,7 @@ public class PaymentInformation extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for PaymentInformation: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for PaymentInformation: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -209,6 +209,7 @@ public class PaymentInformation extends AbstractOpenApiSchema {
      * @return The actual instance of `NotProvided`
      * @throws ClassCastException if the instance is not `NotProvided`
      */
+    @SuppressWarnings("unchecked")
     public NotProvided getNotProvided() throws ClassCastException {
         return (NotProvided)super.getActualInstance();
     }
@@ -220,6 +221,7 @@ public class PaymentInformation extends AbstractOpenApiSchema {
      * @return The actual instance of `Provided`
      * @throws ClassCastException if the instance is not `Provided`
      */
+    @SuppressWarnings("unchecked")
     public Provided getProvided() throws ClassCastException {
         return (Provided)super.getActualInstance();
     }
@@ -239,7 +241,7 @@ public class PaymentInformation extends AbstractOpenApiSchema {
             NotProvided.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for NotProvided failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotProvided failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Provided
@@ -247,11 +249,11 @@ public class PaymentInformation extends AbstractOpenApiSchema {
             Provided.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Provided failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Provided failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for PaymentInformation with oneOf schemas: NotProvided, Provided. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for PaymentInformation with oneOf schemas: NotProvided, Provided. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -76,28 +76,7 @@ public class PartnerSelfServiceExerciseApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for postContractsIdExerciseQuotes
-     * @param id A unique identifier for a contract. (required)
-     * @param createCfarExerciseQuoteRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postContractsIdExerciseQuotesCall(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContractsIdExerciseQuotesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -144,7 +123,7 @@ public class PartnerSelfServiceExerciseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postContractsIdExerciseQuotesValidateBeforeCall(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContractsIdExerciseQuotesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postContractsIdExerciseQuotes(Async)");
@@ -159,109 +138,148 @@ public class PartnerSelfServiceExerciseApi {
 
     }
 
-    /**
-     * Create CFAR Exercise Quote
-     * Create CFAR exercise quote
-     * @param id A unique identifier for a contract. (required)
-     * @param createCfarExerciseQuoteRequest  (required)
-     * @return CfarExerciseQuote
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public CfarExerciseQuote postContractsIdExerciseQuotes(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) throws ApiException {
-        ApiResponse<CfarExerciseQuote> localVarResp = postContractsIdExerciseQuotesWithHttpInfo(id, createCfarExerciseQuoteRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * Create CFAR Exercise Quote
-     * Create CFAR exercise quote
-     * @param id A unique identifier for a contract. (required)
-     * @param createCfarExerciseQuoteRequest  (required)
-     * @return ApiResponse&lt;CfarExerciseQuote&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CfarExerciseQuote> postContractsIdExerciseQuotesWithHttpInfo(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) throws ApiException {
+    private ApiResponse<CfarExerciseQuote> postContractsIdExerciseQuotesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) throws ApiException {
         okhttp3.Call localVarCall = postContractsIdExerciseQuotesValidateBeforeCall(id, createCfarExerciseQuoteRequest, null);
         Type localVarReturnType = new TypeToken<CfarExerciseQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     * Create CFAR Exercise Quote (asynchronously)
-     * Create CFAR exercise quote
-     * @param id A unique identifier for a contract. (required)
-     * @param createCfarExerciseQuoteRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postContractsIdExerciseQuotesAsync(String id, CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback<CfarExerciseQuote> _callback) throws ApiException {
+    private okhttp3.Call postContractsIdExerciseQuotesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest, final ApiCallback<CfarExerciseQuote> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postContractsIdExerciseQuotesValidateBeforeCall(id, createCfarExerciseQuoteRequest, _callback);
         Type localVarReturnType = new TypeToken<CfarExerciseQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpostContractsIdExerciseQuotesRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+        @javax.annotation.Nonnull
+        private final CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest;
+
+        private APIpostContractsIdExerciseQuotesRequest(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) {
+            this.id = id;
+            this.createCfarExerciseQuoteRequest = createCfarExerciseQuoteRequest;
+        }
+
+        /**
+         * Build call for postContractsIdExerciseQuotes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postContractsIdExerciseQuotesCall(id, createCfarExerciseQuoteRequest, _callback);
+        }
+
+        /**
+         * Execute postContractsIdExerciseQuotes request
+         * @return CfarExerciseQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public CfarExerciseQuote execute() throws ApiException {
+            ApiResponse<CfarExerciseQuote> localVarResp = postContractsIdExerciseQuotesWithHttpInfo(id, createCfarExerciseQuoteRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postContractsIdExerciseQuotes request with HTTP info returned
+         * @return ApiResponse&lt;CfarExerciseQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CfarExerciseQuote> executeWithHttpInfo() throws ApiException {
+            return postContractsIdExerciseQuotesWithHttpInfo(id, createCfarExerciseQuoteRequest);
+        }
+
+        /**
+         * Execute postContractsIdExerciseQuotes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CfarExerciseQuote> _callback) throws ApiException {
+            return postContractsIdExerciseQuotesAsync(id, createCfarExerciseQuoteRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for putExerciseQuotesIdFulfill
-     * @param id A unique identifier for an exercise quote. (required)
-     * @param fulfillExerciseQuoteRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * Create CFAR Exercise Quote
+     * Create CFAR exercise quote
+     * @param id A unique identifier for a contract. (required)
+     * @param createCfarExerciseQuoteRequest  (required)
+     * @return APIpostContractsIdExerciseQuotesRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
         <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putExerciseQuotesIdFulfillCall(String id, FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
+    public APIpostContractsIdExerciseQuotesRequest postContractsIdExerciseQuotes(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateCfarExerciseQuoteRequest createCfarExerciseQuoteRequest) {
+        return new APIpostContractsIdExerciseQuotesRequest(id, createCfarExerciseQuoteRequest);
+    }
+    private okhttp3.Call putExerciseQuotesIdFulfillCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -308,7 +326,7 @@ public class PartnerSelfServiceExerciseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putExerciseQuotesIdFulfillValidateBeforeCall(String id, FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putExerciseQuotesIdFulfillValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putExerciseQuotesIdFulfill(Async)");
@@ -323,62 +341,122 @@ public class PartnerSelfServiceExerciseApi {
 
     }
 
-    /**
-     * Fulfill CFAR Exercise Quote
-     * Fulfill an exercise quote. When applicable, HTS will payout the exercise amount to the user.
-     * @param id A unique identifier for an exercise quote. (required)
-     * @param fulfillExerciseQuoteRequest  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public void putExerciseQuotesIdFulfill(String id, FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest) throws ApiException {
-        putExerciseQuotesIdFulfillWithHttpInfo(id, fulfillExerciseQuoteRequest);
-    }
 
-    /**
-     * Fulfill CFAR Exercise Quote
-     * Fulfill an exercise quote. When applicable, HTS will payout the exercise amount to the user.
-     * @param id A unique identifier for an exercise quote. (required)
-     * @param fulfillExerciseQuoteRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> putExerciseQuotesIdFulfillWithHttpInfo(String id, FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest) throws ApiException {
+    private ApiResponse<Void> putExerciseQuotesIdFulfillWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest) throws ApiException {
         okhttp3.Call localVarCall = putExerciseQuotesIdFulfillValidateBeforeCall(id, fulfillExerciseQuoteRequest, null);
         return localVarApiClient.execute(localVarCall);
     }
 
+    private okhttp3.Call putExerciseQuotesIdFulfillAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putExerciseQuotesIdFulfillValidateBeforeCall(id, fulfillExerciseQuoteRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
+    public class APIputExerciseQuotesIdFulfillRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+        @javax.annotation.Nonnull
+        private final FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest;
+
+        private APIputExerciseQuotesIdFulfillRequest(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest) {
+            this.id = id;
+            this.fulfillExerciseQuoteRequest = fulfillExerciseQuoteRequest;
+        }
+
+        /**
+         * Build call for putExerciseQuotesIdFulfill
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return putExerciseQuotesIdFulfillCall(id, fulfillExerciseQuoteRequest, _callback);
+        }
+
+        /**
+         * Execute putExerciseQuotesIdFulfill request
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public void execute() throws ApiException {
+            putExerciseQuotesIdFulfillWithHttpInfo(id, fulfillExerciseQuoteRequest);
+        }
+
+        /**
+         * Execute putExerciseQuotesIdFulfill request with HTTP info returned
+         * @return ApiResponse&lt;Void&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
+            return putExerciseQuotesIdFulfillWithHttpInfo(id, fulfillExerciseQuoteRequest);
+        }
+
+        /**
+         * Execute putExerciseQuotesIdFulfill request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
+            return putExerciseQuotesIdFulfillAsync(id, fulfillExerciseQuoteRequest, _callback);
+        }
+    }
+
     /**
-     * Fulfill CFAR Exercise Quote (asynchronously)
+     * Fulfill CFAR Exercise Quote
      * Fulfill an exercise quote. When applicable, HTS will payout the exercise amount to the user.
      * @param id A unique identifier for an exercise quote. (required)
      * @param fulfillExerciseQuoteRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIputExerciseQuotesIdFulfillRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
@@ -392,10 +470,7 @@ public class PartnerSelfServiceExerciseApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putExerciseQuotesIdFulfillAsync(String id, FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putExerciseQuotesIdFulfillValidateBeforeCall(id, fulfillExerciseQuoteRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
+    public APIputExerciseQuotesIdFulfillRequest putExerciseQuotesIdFulfill(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull FulfillExerciseQuoteRequest fulfillExerciseQuoteRequest) {
+        return new APIputExerciseQuotesIdFulfillRequest(id, fulfillExerciseQuoteRequest);
     }
 }

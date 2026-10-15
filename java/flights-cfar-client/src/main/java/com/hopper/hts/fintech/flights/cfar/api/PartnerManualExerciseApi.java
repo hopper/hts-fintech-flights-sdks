@@ -74,28 +74,7 @@ public class PartnerManualExerciseApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for putContractsIdExercise
-     * @param id A unique identifier for a contract. (required)
-     * @param exerciseContractRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putContractsIdExerciseCall(String id, ExerciseContractRequest exerciseContractRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putContractsIdExerciseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExerciseContractRequest exerciseContractRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -142,7 +121,7 @@ public class PartnerManualExerciseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putContractsIdExerciseValidateBeforeCall(String id, ExerciseContractRequest exerciseContractRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putContractsIdExerciseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExerciseContractRequest exerciseContractRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putContractsIdExercise(Async)");
@@ -157,64 +136,126 @@ public class PartnerManualExerciseApi {
 
     }
 
-    /**
-     * Exercise a Contract
-     *  Record an exercise for all remaining passengers or only the identified passengers. Full-itinerary exercise uses supplied payouts; passenger exercise records the full covered amount for the selected passengers in the contract&#39;s currency. This should only be used in cases where a customer could not exercise their contract via the standard flow. The partner can perform the exercise and inform HTS of the action. 
-     * @param id A unique identifier for a contract. (required)
-     * @param exerciseContractRequest  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public void putContractsIdExercise(String id, ExerciseContractRequest exerciseContractRequest) throws ApiException {
-        putContractsIdExerciseWithHttpInfo(id, exerciseContractRequest);
-    }
 
-    /**
-     * Exercise a Contract
-     *  Record an exercise for all remaining passengers or only the identified passengers. Full-itinerary exercise uses supplied payouts; passenger exercise records the full covered amount for the selected passengers in the contract&#39;s currency. This should only be used in cases where a customer could not exercise their contract via the standard flow. The partner can perform the exercise and inform HTS of the action. 
-     * @param id A unique identifier for a contract. (required)
-     * @param exerciseContractRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> putContractsIdExerciseWithHttpInfo(String id, ExerciseContractRequest exerciseContractRequest) throws ApiException {
+    private ApiResponse<Void> putContractsIdExerciseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExerciseContractRequest exerciseContractRequest) throws ApiException {
         okhttp3.Call localVarCall = putContractsIdExerciseValidateBeforeCall(id, exerciseContractRequest, null);
         return localVarApiClient.execute(localVarCall);
     }
 
+    private okhttp3.Call putContractsIdExerciseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExerciseContractRequest exerciseContractRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putContractsIdExerciseValidateBeforeCall(id, exerciseContractRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
+    public class APIputContractsIdExerciseRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+        @javax.annotation.Nonnull
+        private final ExerciseContractRequest exerciseContractRequest;
+
+        private APIputContractsIdExerciseRequest(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExerciseContractRequest exerciseContractRequest) {
+            this.id = id;
+            this.exerciseContractRequest = exerciseContractRequest;
+        }
+
+        /**
+         * Build call for putContractsIdExercise
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return putContractsIdExerciseCall(id, exerciseContractRequest, _callback);
+        }
+
+        /**
+         * Execute putContractsIdExercise request
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public void execute() throws ApiException {
+            putContractsIdExerciseWithHttpInfo(id, exerciseContractRequest);
+        }
+
+        /**
+         * Execute putContractsIdExercise request with HTTP info returned
+         * @return ApiResponse&lt;Void&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
+            return putContractsIdExerciseWithHttpInfo(id, exerciseContractRequest);
+        }
+
+        /**
+         * Execute putContractsIdExercise request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 204 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
+            return putContractsIdExerciseAsync(id, exerciseContractRequest, _callback);
+        }
+    }
+
     /**
-     * Exercise a Contract (asynchronously)
+     * Exercise a Contract
      *  Record an exercise for all remaining passengers or only the identified passengers. Full-itinerary exercise uses supplied payouts; passenger exercise records the full covered amount for the selected passengers in the contract&#39;s currency. This should only be used in cases where a customer could not exercise their contract via the standard flow. The partner can perform the exercise and inform HTS of the action. 
      * @param id A unique identifier for a contract. (required)
      * @param exerciseContractRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIputContractsIdExerciseRequest
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
@@ -229,10 +270,7 @@ public class PartnerManualExerciseApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putContractsIdExerciseAsync(String id, ExerciseContractRequest exerciseContractRequest, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putContractsIdExerciseValidateBeforeCall(id, exerciseContractRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
+    public APIputContractsIdExerciseRequest putContractsIdExercise(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExerciseContractRequest exerciseContractRequest) {
+        return new APIputContractsIdExerciseRequest(id, exerciseContractRequest);
     }
 }

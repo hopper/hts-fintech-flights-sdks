@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hopper.hts.fintech.flights.cfar.model.And;
-import com.hopper.hts.fintech.flights.cfar.model.ComposableFilter;
 import com.hopper.hts.fintech.flights.cfar.model.Field;
 import com.hopper.hts.fintech.flights.cfar.model.FilterableField;
 import com.hopper.hts.fintech.flights.cfar.model.Or;
@@ -64,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Filter extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Filter.class.getName());
 
@@ -127,7 +126,7 @@ public class Filter extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'And'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for And failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for And failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'And'", e);
                     }
                     // deserialize Field
@@ -139,7 +138,7 @@ public class Filter extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Field'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Field failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Field failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Field'", e);
                     }
                     // deserialize Or
@@ -151,7 +150,7 @@ public class Filter extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Or'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Or failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Or failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Or'", e);
                     }
 
@@ -161,7 +160,7 @@ public class Filter extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Filter: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Filter: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -236,6 +235,7 @@ public class Filter extends AbstractOpenApiSchema {
      * @return The actual instance of `And`
      * @throws ClassCastException if the instance is not `And`
      */
+    @SuppressWarnings("unchecked")
     public And getAnd() throws ClassCastException {
         return (And)super.getActualInstance();
     }
@@ -247,6 +247,7 @@ public class Filter extends AbstractOpenApiSchema {
      * @return The actual instance of `Field`
      * @throws ClassCastException if the instance is not `Field`
      */
+    @SuppressWarnings("unchecked")
     public Field getField() throws ClassCastException {
         return (Field)super.getActualInstance();
     }
@@ -258,6 +259,7 @@ public class Filter extends AbstractOpenApiSchema {
      * @return The actual instance of `Or`
      * @throws ClassCastException if the instance is not `Or`
      */
+    @SuppressWarnings("unchecked")
     public Or getOr() throws ClassCastException {
         return (Or)super.getActualInstance();
     }
@@ -277,7 +279,7 @@ public class Filter extends AbstractOpenApiSchema {
             And.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for And failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for And failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Field
@@ -285,7 +287,7 @@ public class Filter extends AbstractOpenApiSchema {
             Field.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Field failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Field failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Or
@@ -293,11 +295,11 @@ public class Filter extends AbstractOpenApiSchema {
             Or.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Or failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Or failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Filter with oneOf schemas: And, Field, Or. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Filter with oneOf schemas: And, Field, Or. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

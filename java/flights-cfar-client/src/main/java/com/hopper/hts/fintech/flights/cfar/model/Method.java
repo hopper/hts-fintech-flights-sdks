@@ -61,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.hopper.hts.fintech.flights.cfar.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class Method extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(Method.class.getName());
 
@@ -131,7 +131,7 @@ public class Method extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ApplePay'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ApplePay failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ApplePay failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ApplePay'", e);
                     }
                     // deserialize Other
@@ -143,7 +143,7 @@ public class Method extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Other'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Other failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Other failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Other'", e);
                     }
                     // deserialize Paypal
@@ -155,7 +155,7 @@ public class Method extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Paypal'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Paypal failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Paypal failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Paypal'", e);
                     }
                     // deserialize Venmo
@@ -167,7 +167,7 @@ public class Method extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'Venmo'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Venmo failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Venmo failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'Venmo'", e);
                     }
 
@@ -177,7 +177,7 @@ public class Method extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for Method: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Method: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -258,6 +258,7 @@ public class Method extends AbstractOpenApiSchema {
      * @return The actual instance of `ApplePay`
      * @throws ClassCastException if the instance is not `ApplePay`
      */
+    @SuppressWarnings("unchecked")
     public ApplePay getApplePay() throws ClassCastException {
         return (ApplePay)super.getActualInstance();
     }
@@ -269,6 +270,7 @@ public class Method extends AbstractOpenApiSchema {
      * @return The actual instance of `Other`
      * @throws ClassCastException if the instance is not `Other`
      */
+    @SuppressWarnings("unchecked")
     public Other getOther() throws ClassCastException {
         return (Other)super.getActualInstance();
     }
@@ -280,6 +282,7 @@ public class Method extends AbstractOpenApiSchema {
      * @return The actual instance of `Paypal`
      * @throws ClassCastException if the instance is not `Paypal`
      */
+    @SuppressWarnings("unchecked")
     public Paypal getPaypal() throws ClassCastException {
         return (Paypal)super.getActualInstance();
     }
@@ -291,6 +294,7 @@ public class Method extends AbstractOpenApiSchema {
      * @return The actual instance of `Venmo`
      * @throws ClassCastException if the instance is not `Venmo`
      */
+    @SuppressWarnings("unchecked")
     public Venmo getVenmo() throws ClassCastException {
         return (Venmo)super.getActualInstance();
     }
@@ -310,7 +314,7 @@ public class Method extends AbstractOpenApiSchema {
             ApplePay.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ApplePay failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ApplePay failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Other
@@ -318,7 +322,7 @@ public class Method extends AbstractOpenApiSchema {
             Other.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Other failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Other failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Paypal
@@ -326,7 +330,7 @@ public class Method extends AbstractOpenApiSchema {
             Paypal.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Paypal failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Paypal failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with Venmo
@@ -334,11 +338,11 @@ public class Method extends AbstractOpenApiSchema {
             Venmo.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Venmo failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for Venmo failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for Method with oneOf schemas: ApplePay, Other, Paypal, Venmo. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Method with oneOf schemas: ApplePay, Other, Paypal, Venmo. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 
