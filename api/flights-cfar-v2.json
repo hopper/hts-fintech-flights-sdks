@@ -36,7 +36,12 @@
   ],
   "servers": [
     {
-      "url": "/flights-cfar/v2"
+      "url": "https://fintech.htsapis.com/flights-cfar/v2",
+      "description": "Production"
+    },
+    {
+      "url": "https://fintech.staging.htsapis.com/flights-cfar/v2",
+      "description": "Staging"
     }
   ],
   "paths": {
@@ -1319,7 +1324,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/contract_drafted"
+                "$ref": "#/components/schemas/contract_drafted_webhook"
               }
             }
           },
@@ -1363,7 +1368,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/contract_confirmed"
+                "$ref": "#/components/schemas/contract_confirmed_webhook"
               }
             }
           },
@@ -1407,7 +1412,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/contract_exercised"
+                "$ref": "#/components/schemas/contract_exercised_webhook"
               }
             }
           },
@@ -1451,7 +1456,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/contract_voided"
+                "$ref": "#/components/schemas/contract_voided_webhook"
               }
             }
           },
@@ -1495,7 +1500,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/contract_canceled"
+                "$ref": "#/components/schemas/contract_canceled_webhook"
               }
             }
           },
@@ -2171,7 +2176,8 @@
             "format": "date-time"
           },
           "booking_references": {
-            "$ref": "#/components/schemas/map_string"
+            "$ref": "#/components/schemas/map_string",
+            "description": "Record locators if PSS, Order ID if OMS, etc. Used to retrieve the flight booking later. It's a dictionary of key/value pairs. The keys can be anything, but they are referenced in the configuration when retrieving the booking, so those must align."
           },
           "exercises": {
             "description": "Exercises completed for this contract.",
@@ -2294,6 +2300,34 @@
             "booking_in_void_window": "#/components/schemas/booking_in_void_window",
             "insufficient_funds": "#/components/schemas/insufficient_funds",
             "invalid_contract_status": "#/components/schemas/invalid_contract_status4"
+          }
+        }
+      },
+      "cfar_exercise": {
+        "title": "cfar_exercise",
+        "description": "Details of how the contract was exercised.",
+        "type": "object",
+        "required": [
+          "id",
+          "contract_id",
+          "payouts"
+        ],
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this exercise.",
+            "type": "string"
+          },
+          "contract_id": {
+            "description": "The contract that was exercised.",
+            "type": "string"
+          },
+          "payouts": {
+            "description": "The payouts issued to the customer.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/cfar_exercise_payout"
+            }
           }
         }
       },
@@ -2536,6 +2570,194 @@
           }
         }
       },
+      "contract_canceled_webhook": {
+        "title": "contract_canceled_webhook",
+        "description": "Webhook sent when a CFAR contract is canceled.",
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "occurred_at",
+          "data"
+        ],
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this webhook event.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The webhook event type: `fintech.flights.cfar.contract.canceled`",
+            "type": "string",
+            "enum": [
+              "fintech.flights.cfar.contract.canceled"
+            ]
+          },
+          "occurred_at": {
+            "description": "Timestamp when the event occurred (ISO 8601).",
+            "type": "string",
+            "format": "date-time"
+          },
+          "data": {
+            "$ref": "#/components/schemas/contract_canceled_webhook_data"
+          }
+        }
+      },
+      "contract_canceled_webhook_data": {
+        "title": "contract_canceled_webhook_data",
+        "description": "The webhook payload.",
+        "type": "object",
+        "required": [
+          "contract"
+        ],
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/cfar_contract",
+            "description": "The canceled contract."
+          }
+        }
+      },
+      "contract_confirmed_webhook": {
+        "title": "contract_confirmed_webhook",
+        "description": "Webhook sent when a CFAR contract is successfully purchased and confirmed.",
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "occurred_at",
+          "data"
+        ],
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this webhook event.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The webhook event type: `fintech.flights.cfar.contract.confirmed`",
+            "type": "string",
+            "enum": [
+              "fintech.flights.cfar.contract.confirmed"
+            ]
+          },
+          "occurred_at": {
+            "description": "Timestamp when the event occurred (ISO 8601).",
+            "type": "string",
+            "format": "date-time"
+          },
+          "data": {
+            "$ref": "#/components/schemas/contract_confirmed_webhook_data"
+          }
+        }
+      },
+      "contract_confirmed_webhook_data": {
+        "title": "contract_confirmed_webhook_data",
+        "description": "The webhook payload.",
+        "type": "object",
+        "required": [
+          "contract"
+        ],
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/cfar_contract",
+            "description": "The confirmed contract."
+          }
+        }
+      },
+      "contract_drafted_webhook": {
+        "title": "contract_drafted_webhook",
+        "description": "Webhook sent when a CFAR contract is drafted.",
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "occurred_at",
+          "data"
+        ],
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this webhook event.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The webhook event type: `fintech.flights.cfar.contract.drafted`",
+            "type": "string",
+            "enum": [
+              "fintech.flights.cfar.contract.drafted"
+            ]
+          },
+          "occurred_at": {
+            "description": "Timestamp when the event occurred (ISO 8601).",
+            "type": "string",
+            "format": "date-time"
+          },
+          "data": {
+            "$ref": "#/components/schemas/contract_drafted_webhook_data"
+          }
+        }
+      },
+      "contract_drafted_webhook_data": {
+        "title": "contract_drafted_webhook_data",
+        "description": "The webhook payload.",
+        "type": "object",
+        "required": [
+          "contract"
+        ],
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/cfar_contract",
+            "description": "The drafted contract."
+          }
+        }
+      },
+      "contract_exercised_webhook": {
+        "title": "contract_exercised_webhook",
+        "description": "Webhook sent when a customer has successfully exercised their CFAR contract.",
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "occurred_at",
+          "data"
+        ],
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this webhook event.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The webhook event type: `fintech.flights.cfar.contract.exercised`",
+            "type": "string",
+            "enum": [
+              "fintech.flights.cfar.contract.exercised"
+            ]
+          },
+          "occurred_at": {
+            "description": "Timestamp when the event occurred (ISO 8601).",
+            "type": "string",
+            "format": "date-time"
+          },
+          "data": {
+            "$ref": "#/components/schemas/contract_exercised_webhook_data"
+          }
+        }
+      },
+      "contract_exercised_webhook_data": {
+        "title": "contract_exercised_webhook_data",
+        "description": "The webhook payload.",
+        "type": "object",
+        "required": [
+          "contract",
+          "exercise"
+        ],
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/cfar_contract",
+            "description": "The exercised contract."
+          },
+          "exercise": {
+            "$ref": "#/components/schemas/cfar_exercise"
+          }
+        }
+      },
       "contract_expired": {
         "title": "contract_expired",
         "type": "object",
@@ -2585,6 +2807,52 @@
             "items": {
               "$ref": "#/components/schemas/tax"
             }
+          }
+        }
+      },
+      "contract_voided_webhook": {
+        "title": "contract_voided_webhook",
+        "description": "Webhook sent when a CFAR contract is voided.",
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "occurred_at",
+          "data"
+        ],
+        "properties": {
+          "id": {
+            "description": "Unique identifier for this webhook event.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The webhook event type: `fintech.flights.cfar.contract.voided`",
+            "type": "string",
+            "enum": [
+              "fintech.flights.cfar.contract.voided"
+            ]
+          },
+          "occurred_at": {
+            "description": "Timestamp when the event occurred (ISO 8601).",
+            "type": "string",
+            "format": "date-time"
+          },
+          "data": {
+            "$ref": "#/components/schemas/contract_voided_webhook_data"
+          }
+        }
+      },
+      "contract_voided_webhook_data": {
+        "title": "contract_voided_webhook_data",
+        "description": "The webhook payload.",
+        "type": "object",
+        "required": [
+          "contract"
+        ],
+        "properties": {
+          "contract": {
+            "$ref": "#/components/schemas/cfar_contract",
+            "description": "The voided contract."
           }
         }
       },
@@ -4175,7 +4443,6 @@
       },
       "map_string": {
         "title": "map_string",
-        "description": "Record locators if PSS, Order ID if OMS, etc. Used to retrieve the flight booking later. It's a dictionary of key/value pairs. The keys can be anything, but they are referenced in the configuration when retrieving the booking, so those must align.",
         "type": "object",
         "additionalProperties": {
           "type": "string"
@@ -4541,7 +4808,7 @@
       },
       "not_provided": {
         "title": "not_provided",
-        "description": "\n Used when the partner is Merchant of Record and does not provide payment details.\n Payment information is controlled by the partner and not shared with Hopper.\n ",
+        "description": "\n When partner can not pass any form of payment information.\n Not compatible with HTS as Merchant of Record.\n ",
         "type": "object",
         "required": [
           "amount",
@@ -4549,15 +4816,16 @@
         ],
         "properties": {
           "amount": {
+            "description": "Total amount of the transaction.",
             "examples": [
-              "173.24"
+              "200.00"
             ],
             "type": "string",
             "exclusiveMinimum": 0
           },
           "type": {
             "examples": [
-              "alternate_payment_method"
+              "provided"
             ],
             "type": "string",
             "const": "not_provided"
@@ -5781,7 +6049,7 @@
             "$ref": "#/components/schemas/loyalty_program"
           },
           {
-            "$ref": "#/components/schemas/not_provided"
+            "$ref": "#/components/schemas/not_provided2"
           },
           {
             "$ref": "#/components/schemas/payment_card"
@@ -5795,7 +6063,7 @@
           "mapping": {
             "alternate_payment_method": "#/components/schemas/alternate_payment_method",
             "loyalty_program": "#/components/schemas/loyalty_program",
-            "not_provided": "#/components/schemas/not_provided",
+            "not_provided": "#/components/schemas/not_provided2",
             "payment_card": "#/components/schemas/payment_card",
             "reseller_controlled": "#/components/schemas/reseller_controlled"
           }
@@ -6460,273 +6728,6 @@
           "type": {
             "type": "string",
             "const": "white_label"
-          }
-        }
-      },
-      "cfar_exercise": {
-        "title": "cfar_exercise",
-        "description": "Details of how the contract was exercised.",
-        "type": "object",
-        "required": [
-          "id",
-          "contract_id",
-          "payouts"
-        ],
-        "properties": {
-          "id": {
-            "description": "Unique identifier for this exercise.",
-            "type": "string"
-          },
-          "contract_id": {
-            "description": "The contract that was exercised.",
-            "type": "string"
-          },
-          "payouts": {
-            "description": "The payouts issued to the customer.",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "$ref": "#/components/schemas/cfar_exercise_payout"
-            }
-          }
-        }
-      },
-      "contract_canceled": {
-        "title": "contract_canceled",
-        "description": "Webhook sent when a CFAR contract is canceled.",
-        "type": "object",
-        "required": [
-          "id",
-          "type",
-          "occurred_at",
-          "data"
-        ],
-        "properties": {
-          "id": {
-            "description": "Unique identifier for this webhook event.",
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/contract_canceled1"
-          },
-          "occurred_at": {
-            "description": "Timestamp when the event occurred (ISO 8601).",
-            "type": "string",
-            "format": "date-time"
-          },
-          "data": {
-            "$ref": "#/components/schemas/data4"
-          }
-        }
-      },
-      "contract_canceled1": {
-        "title": "contract_canceled",
-        "description": "The webhook event type: `fintech.flights.cfar.contract.canceled`",
-        "type": "object"
-      },
-      "contract_confirmed": {
-        "title": "contract_confirmed",
-        "description": "Webhook sent when a CFAR contract is successfully purchased and confirmed.",
-        "type": "object",
-        "required": [
-          "id",
-          "type",
-          "occurred_at",
-          "data"
-        ],
-        "properties": {
-          "id": {
-            "description": "Unique identifier for this webhook event.",
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/contract_confirmed1"
-          },
-          "occurred_at": {
-            "description": "Timestamp when the event occurred (ISO 8601).",
-            "type": "string",
-            "format": "date-time"
-          },
-          "data": {
-            "$ref": "#/components/schemas/data1"
-          }
-        }
-      },
-      "contract_confirmed1": {
-        "title": "contract_confirmed",
-        "description": "The webhook event type: `fintech.flights.cfar.contract.confirmed`",
-        "type": "object"
-      },
-      "contract_drafted": {
-        "title": "contract_drafted",
-        "description": "Webhook sent when a CFAR contract is drafted.",
-        "type": "object",
-        "required": [
-          "id",
-          "type",
-          "occurred_at",
-          "data"
-        ],
-        "properties": {
-          "id": {
-            "description": "Unique identifier for this webhook event.",
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/contract_drafted1"
-          },
-          "occurred_at": {
-            "description": "Timestamp when the event occurred (ISO 8601).",
-            "type": "string",
-            "format": "date-time"
-          },
-          "data": {
-            "$ref": "#/components/schemas/data"
-          }
-        }
-      },
-      "contract_drafted1": {
-        "title": "contract_drafted",
-        "description": "The webhook event type: `fintech.flights.cfar.contract.drafted`",
-        "type": "object"
-      },
-      "contract_exercised": {
-        "title": "contract_exercised",
-        "description": "Webhook sent when a customer has successfully exercised their CFAR contract.",
-        "type": "object",
-        "required": [
-          "id",
-          "type",
-          "occurred_at",
-          "data"
-        ],
-        "properties": {
-          "id": {
-            "description": "Unique identifier for this webhook event.",
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/contract_exercised1"
-          },
-          "occurred_at": {
-            "description": "Timestamp when the event occurred (ISO 8601).",
-            "type": "string",
-            "format": "date-time"
-          },
-          "data": {
-            "$ref": "#/components/schemas/data2"
-          }
-        }
-      },
-      "contract_exercised1": {
-        "title": "contract_exercised",
-        "description": "The webhook event type: `fintech.flights.cfar.contract.exercised`",
-        "type": "object"
-      },
-      "contract_voided": {
-        "title": "contract_voided",
-        "description": "Webhook sent when a CFAR contract is voided.",
-        "type": "object",
-        "required": [
-          "id",
-          "type",
-          "occurred_at",
-          "data"
-        ],
-        "properties": {
-          "id": {
-            "description": "Unique identifier for this webhook event.",
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/contract_voided1"
-          },
-          "occurred_at": {
-            "description": "Timestamp when the event occurred (ISO 8601).",
-            "type": "string",
-            "format": "date-time"
-          },
-          "data": {
-            "$ref": "#/components/schemas/data3"
-          }
-        }
-      },
-      "contract_voided1": {
-        "title": "contract_voided",
-        "description": "The webhook event type: `fintech.flights.cfar.contract.voided`",
-        "type": "object"
-      },
-      "data": {
-        "title": "data",
-        "description": "The webhook payload.",
-        "type": "object",
-        "required": [
-          "contract"
-        ],
-        "properties": {
-          "contract": {
-            "$ref": "#/components/schemas/cfar_contract",
-            "description": "The drafted contract."
-          }
-        }
-      },
-      "data1": {
-        "title": "data",
-        "description": "The webhook payload.",
-        "type": "object",
-        "required": [
-          "contract"
-        ],
-        "properties": {
-          "contract": {
-            "$ref": "#/components/schemas/cfar_contract",
-            "description": "The confirmed contract."
-          }
-        }
-      },
-      "data2": {
-        "title": "data",
-        "description": "The webhook payload.",
-        "type": "object",
-        "required": [
-          "contract",
-          "exercise"
-        ],
-        "properties": {
-          "contract": {
-            "$ref": "#/components/schemas/cfar_contract",
-            "description": "The exercised contract."
-          },
-          "exercise": {
-            "$ref": "#/components/schemas/cfar_exercise"
-          }
-        }
-      },
-      "data3": {
-        "title": "data",
-        "description": "The webhook payload.",
-        "type": "object",
-        "required": [
-          "contract"
-        ],
-        "properties": {
-          "contract": {
-            "$ref": "#/components/schemas/cfar_contract",
-            "description": "The voided contract."
-          }
-        }
-      },
-      "data4": {
-        "title": "data",
-        "description": "The webhook payload.",
-        "type": "object",
-        "required": [
-          "contract"
-        ],
-        "properties": {
-          "contract": {
-            "$ref": "#/components/schemas/cfar_contract",
-            "description": "The canceled contract."
           }
         }
       }

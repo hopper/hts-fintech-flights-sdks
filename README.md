@@ -1,6 +1,6 @@
 # hts-fintech-flights-sdks
 
-SDKs for the HTS Fintech Flights APIs (Cancel For Any Reason).
+SDKs for the HTS Fintech Flights APIs: Cancel For Any Reason (CFAR) and Disruption Guarantee (DG).
 
 | Language | Directory | Package |
 | --- | --- | --- |

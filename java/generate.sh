@@ -48,4 +48,5 @@ generate() {
 }
 
 generate ../api/flights-cfar-v2.json flights-cfar-client
+generate ../api/flights-dafar-v2.json flights-dafar-client
 generate ../api/spreedly.yaml spreedly-client

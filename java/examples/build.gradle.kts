@@ -5,9 +5,11 @@ dependencies {
 }
 
 val examples = mapOf(
-    "runCreateContract" to "com.hopper.hts.fintech.flights.examples.CreateOfferAndContract",
-    "runExerciseContract" to "com.hopper.hts.fintech.flights.examples.ExerciseContract",
-    "runTokenizeCard" to "com.hopper.hts.fintech.flights.examples.TokenizeCard",
+    "runCreateCfarContract" to "com.hopper.fintech.flights.examples.CreateCfarContract",
+    "runExerciseCfarContract" to "com.hopper.fintech.flights.examples.ExerciseCfarContract",
+    "runCreateDgContract" to "com.hopper.fintech.flights.examples.CreateDgContract",
+    "runExerciseDgContract" to "com.hopper.fintech.flights.examples.ExerciseDgContract",
+    "runTokenizeCard" to "com.hopper.fintech.flights.examples.TokenizeCard",
 )
 
 examples.forEach { (taskName, mainClassName) ->

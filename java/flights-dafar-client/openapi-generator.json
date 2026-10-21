@@ -1,0 +1,16 @@
+{
+  "groupId": "com.hopper.fintech",
+  "artifactId": "flights-dafar-client",
+  "invokerPackage": "com.hopper.fintech.flights.dafar",
+  "apiPackage": "com.hopper.fintech.flights.dafar.api",
+  "modelPackage": "com.hopper.fintech.flights.dafar.model",
+  "library": "okhttp-gson",
+  "dateLibrary": "java8",
+  "hideGenerationTimestamp": true,
+  "disallowAdditionalPropertiesIfNotPresent": false,
+  "useBeanValidation": false,
+  "performBeanValidation": false,
+  "containerDefaultToNull": true,
+  "openApiNullable": false,
+  "useSingleRequestParameter": true
+}

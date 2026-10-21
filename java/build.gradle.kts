@@ -9,6 +9,7 @@ val repositoryUrl = "https://github.com/hopper/hts-fintech-flights-sdks"
 
 val publishedArtifacts = mapOf(
     "flights-cfar-client" to "hts-fintech-flights-cfar-client",
+    "flights-dafar-client" to "hts-fintech-flights-dafar-client",
     "spreedly-client" to "hts-fintech-spreedly-client",
     "sdk" to "hts-fintech-flights-sdk",
 )
