@@ -1,8 +1,10 @@
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.SonatypeHost
+import me.champeau.gradle.japicmp.JapicmpTask
 
 plugins {
     id("com.vanniktech.maven.publish") version "0.33.0" apply false
+    id("me.champeau.gradle.japicmp") version "0.4.6" apply false
 }
 
 val repositoryUrl = "https://github.com/hopper/hts-fintech-flights-sdks"
@@ -98,6 +100,28 @@ configure(subprojects.filter { it.name in publishedArtifacts }) {
                 connection.set("scm:git:git://github.com/hopper/hts-fintech-flights-sdks.git")
                 developerConnection.set("scm:git:ssh://git@github.com/hopper/hts-fintech-flights-sdks.git")
             }
+        }
+    }
+}
+
+val baselineVersion = providers.gradleProperty("baselineVersion")
+
+configure(subprojects.filter { it.name in publishedArtifacts }) {
+    if (baselineVersion.isPresent) {
+        val baseline = configurations.create("apiBaseline") {
+            isTransitive = false
+        }
+        dependencies.add(baseline.name, "${project.group}:${publishedArtifacts.getValue(project.name)}:${baselineVersion.get()}")
+        val baselineJars = baseline.incoming.artifactView { lenient(true) }.files
+
+        tasks.register<JapicmpTask>("apiCompatibility") {
+            onlyIf("the module was published in the baseline release") { !baselineJars.isEmpty }
+            oldClasspath.from(baselineJars)
+            newClasspath.from(tasks.named("jar"))
+            ignoreMissingClasses.set(true)
+            onlyModified.set(true)
+            txtOutputFile.set(layout.buildDirectory.file("japicmp/report.txt"))
+            semverOutputFile.set(layout.buildDirectory.file("japicmp/semver.txt"))
         }
     }
 }

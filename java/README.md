@@ -110,7 +110,16 @@ Generation is idempotent: running it twice produces identical sources, so a spec
 
 ## Releasing
 
-Releases are tagged `java-vX.Y.Z`. Each release is built with that version, signed, and published to Maven Central. Four artifacts are published under `com.hopper.cloud`:
+Releases are tagged `java-vX.Y.Z`. Each release is built with that version, signed, and published to Maven Central.
+
+Releases that don't break anything happen on their own. After every merge to `main` that touches `java/` or `api/`, CI compares the public Java API with the last release:
+
+- **Nothing breaks** (new classes, methods or fields, or internal changes): CI bumps the patch version and publishes it.
+- **Something breaks** (a removed or renamed class, method or field, or a changed signature): CI doesn't release. The run summary lists the breaking changes. To release anyway, run the "Auto-release Java SDK" workflow by hand with `allow_breaking` checked. While the SDK is below 1.0, that bumps the minor version; from 1.0 on, it bumps the major version.
+
+To check a change locally before merging, run `./gradlew apiCompatibility -PbaselineVersion=<last release>` and read `*/build/japicmp/report.txt`.
+
+Four artifacts are published under `com.hopper.cloud`:
 
 | Artifact | Module |
 | --- | --- |
