@@ -1,0 +1,35 @@
+{
+  "packageName": "Hopper.Fintech.Flights.Cfar",
+  "library": "generichost",
+  "packageVersion": "0.1.0",
+  "modelNameMappings": {
+    "api": "ApiChannel"
+  },
+  "sdkEnvironments": [
+    { "name": "Staging", "host": "https://fintech.staging.htsapis.com" },
+    { "name": "Production", "host": "https://fintech.htsapis.com" }
+  ],
+  "sdkAccessors": {
+    "Offer & Merchandising (Pre-Purchase)": "Offers",
+    "Contract Management (Post-Purchase)": "Contracts",
+    "Partner Self-Service Exercise": "PartnerSelfServiceExercise",
+    "Partner Manual Exercise": "PartnerManualExercise",
+    "HTS Self-Service Exercise": "HtsSelfServiceExercise",
+    "Analytics": "Analytics"
+  },
+  "files": {
+    "Package.csproj.mustache": { "templateType": "SupportingFiles", "destinationFilename": "Hopper.Fintech.Flights.csproj" },
+    "FlightsCfarClient.mustache": { "templateType": "SupportingFiles", "destinationFilename": "FlightsCfarClient.cs" },
+    "FlightsCfarClientBuilder.mustache": { "templateType": "SupportingFiles", "destinationFilename": "FlightsCfarClientBuilder.cs" },
+    "HtsEnvironment.mustache": { "templateType": "SupportingFiles", "destinationFilename": "HtsEnvironment.cs" },
+    "SdkVersion.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SdkVersion.cs" },
+    "StaticApiKeyProvider.mustache": { "templateType": "SupportingFiles", "destinationFilename": "StaticApiKeyProvider.cs" },
+    "StaticBasicTokenProvider.mustache": { "templateType": "SupportingFiles", "destinationFilename": "StaticBasicTokenProvider.cs" },
+    "CardDetails.mustache": { "templateType": "SupportingFiles", "destinationFilename": "CardDetails.cs" },
+    "Payments.mustache": { "templateType": "SupportingFiles", "destinationFilename": "Payments.cs" },
+    "RsaEncryption.mustache": { "templateType": "SupportingFiles", "destinationFilename": "RsaEncryption.cs" },
+    "SpreedlyTokenizer.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SpreedlyTokenizer.cs" },
+    "SpreedlyTokenizerBuilder.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SpreedlyTokenizerBuilder.cs" },
+    "SpreedlyException.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SpreedlyException.cs" }
+  }
+}

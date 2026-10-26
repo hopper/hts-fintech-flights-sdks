@@ -1,0 +1,12 @@
+{
+  "packageName": "Hopper.Fintech.Flights.Cfar",
+  "library": "generichost",
+  "targetFramework": "net10.0",
+  "nullableReferenceTypes": true,
+  "validatable": false,
+  "disallowAdditionalPropertiesIfNotPresent": false,
+  "hideGenerationTimestamp": true,
+  "modelNameMappings": {
+    "api": "ApiChannel"
+  }
+}

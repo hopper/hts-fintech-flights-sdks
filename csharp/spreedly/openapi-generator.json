@@ -1,0 +1,10 @@
+{
+  "packageName": "Hopper.Fintech.Flights.Spreedly",
+  "library": "generichost",
+  "targetFramework": "net10.0",
+  "nullableReferenceTypes": true,
+  "validatable": false,
+  "disallowAdditionalPropertiesIfNotPresent": false,
+  "hideGenerationTimestamp": true,
+  "nonPublicApi": true
+}

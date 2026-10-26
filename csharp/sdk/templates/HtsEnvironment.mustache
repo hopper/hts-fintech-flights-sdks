@@ -1,0 +1,17 @@
+namespace Hopper.Fintech.Flights;
+
+public sealed class HtsEnvironment
+{
+{{#sdkEnvironments}}
+    public static readonly HtsEnvironment {{name}} = new("{{{host}}}");
+{{/sdkEnvironments}}
+
+    private HtsEnvironment(string host)
+    {
+        Host = host;
+    }
+
+    public string Host { get; }
+
+    public Uri FlightsCfarBaseUrl => new(Host + "{{{contextPath}}}");
+}
