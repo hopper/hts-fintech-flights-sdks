@@ -308,6 +308,8 @@ namespace Hopper.Fintech.Flights.Cfar.Client
                 return NotProvided1.TypeEnumToJsonValue(notProvided1TypeEnum);
             if (obj is NotProvided2.TypeEnum notProvided2TypeEnum)
                 return NotProvided2.TypeEnumToJsonValue(notProvided2TypeEnum);
+            if (obj is NotPurchased.TypeEnum notPurchasedTypeEnum)
+                return NotPurchased.TypeEnumToJsonValue(notPurchasedTypeEnum);
             if (obj is OfferExpired.CodeEnum offerExpiredCodeEnum)
                 return OfferExpired.CodeEnumToJsonValue(offerExpiredCodeEnum);
             if (obj is OfferNotFound.CodeEnum offerNotFoundCodeEnum)

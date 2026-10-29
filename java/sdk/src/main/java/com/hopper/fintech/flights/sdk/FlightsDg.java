@@ -2,10 +2,10 @@ package com.hopper.fintech.flights.sdk;
 
 import com.hopper.fintech.flights.dafar.ApiClient;
 import com.hopper.fintech.flights.dafar.api.AnalyticsApi;
-import com.hopper.fintech.flights.dafar.api.ContractManagementPostPurchaseApi;
+import com.hopper.fintech.flights.dafar.api.ContractManagementApi;
 import com.hopper.fintech.flights.dafar.api.FlightStatusUpdatesApi;
 import com.hopper.fintech.flights.dafar.api.HtsSelfServiceExerciseApi;
-import com.hopper.fintech.flights.dafar.api.OfferMerchandisingPrePurchaseApi;
+import com.hopper.fintech.flights.dafar.api.OfferMerchandisingApi;
 import com.hopper.fintech.flights.dafar.api.PartnerManualExerciseApi;
 import com.hopper.fintech.flights.dafar.api.PartnerSelfServiceExerciseApi;
 import okhttp3.OkHttpClient;
@@ -29,12 +29,12 @@ public final class FlightsDg {
         return apiClient;
     }
 
-    public OfferMerchandisingPrePurchaseApi offers() {
-        return new OfferMerchandisingPrePurchaseApi(apiClient);
+    public OfferMerchandisingApi offers() {
+        return new OfferMerchandisingApi(apiClient);
     }
 
-    public ContractManagementPostPurchaseApi contracts() {
-        return new ContractManagementPostPurchaseApi(apiClient);
+    public ContractManagementApi contracts() {
+        return new ContractManagementApi(apiClient);
     }
 
     public PartnerSelfServiceExerciseApi partnerSelfServiceExercise() {

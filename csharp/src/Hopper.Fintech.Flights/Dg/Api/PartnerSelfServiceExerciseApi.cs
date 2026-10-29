@@ -39,6 +39,31 @@ namespace Hopper.Fintech.Flights.Dg.Api
         PartnerSelfServiceExerciseApiEvents Events { get; }
 
         /// <summary>
+        /// Get Fare Details
+        /// </summary>
+        /// <remarks>
+        /// Get detailed fare information for an itinerary from the contract&#39;s flight shop.
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdItinerariesItineraryIdApiResponse"/>&gt;</returns>
+        Task<IGetContractsIdItinerariesItineraryIdApiResponse> GetContractsIdItinerariesItineraryIdAsync(string id, string itineraryId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get Fare Details
+        /// </summary>
+        /// <remarks>
+        /// Get detailed fare information for an itinerary from the contract&#39;s flight shop.
+        /// </remarks>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdItinerariesItineraryIdApiResponse"/>?&gt;</returns>
+        Task<IGetContractsIdItinerariesItineraryIdApiResponse?> GetContractsIdItinerariesItineraryIdOrDefaultAsync(string id, string itineraryId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Get Rebook Eligibility
         /// </summary>
         /// <remarks>
@@ -83,29 +108,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetFlightBookingsIdApiResponse"/>?&gt;</returns>
         Task<IGetFlightBookingsIdApiResponse?> GetFlightBookingsIdOrDefaultAsync(string id, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Get Fare Details
-        /// </summary>
-        /// <remarks>
-        /// Get detailed fare information for a shopped itinerary.
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetItinerariesItineraryIdApiResponse"/>&gt;</returns>
-        Task<IGetItinerariesItineraryIdApiResponse> GetItinerariesItineraryIdAsync(string itineraryId, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Get Fare Details
-        /// </summary>
-        /// <remarks>
-        /// Get detailed fare information for a shopped itinerary.
-        /// </remarks>
-        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetItinerariesItineraryIdApiResponse"/>?&gt;</returns>
-        Task<IGetItinerariesItineraryIdApiResponse?> GetItinerariesItineraryIdOrDefaultAsync(string itineraryId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create DAFAR Exercise Quote
@@ -226,6 +228,54 @@ namespace Hopper.Fintech.Flights.Dg.Api
     }
 
     /// <summary>
+    /// The <see cref="IGetContractsIdItinerariesItineraryIdApiResponse"/>
+    /// </summary>
+    public interface IGetContractsIdItinerariesItineraryIdApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, IOk<Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse?>, IBadRequest<List<Error>?>
+    {
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 499 CustomHttpStatusCode499
+        /// </summary>
+        /// <returns></returns>
+        bool IsCustomHttpStatusCode499 { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+    }
+
+    /// <summary>
     /// The <see cref="IGetContractsIdRebookEligibilityApiResponse"/>
     /// </summary>
     public interface IGetContractsIdRebookEligibilityApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, IOk<Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse?>, IBadRequest<List<Error>?>, IUnprocessableContent<List<DafarRebookEligibilityError>?>
@@ -283,54 +333,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// The <see cref="IGetFlightBookingsIdApiResponse"/>
     /// </summary>
     public interface IGetFlightBookingsIdApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, IOk<Hopper.Fintech.Flights.Dg.Model.FlightBooking?>, IBadRequest<List<Error>?>
-    {
-        /// <summary>
-        /// Returns true if the response is 200 Ok
-        /// </summary>
-        /// <returns></returns>
-        bool IsOk { get; }
-
-        /// <summary>
-        /// Returns true if the response is 400 BadRequest
-        /// </summary>
-        /// <returns></returns>
-        bool IsBadRequest { get; }
-
-        /// <summary>
-        /// Returns true if the response is 401 Unauthorized
-        /// </summary>
-        /// <returns></returns>
-        bool IsUnauthorized { get; }
-
-        /// <summary>
-        /// Returns true if the response is 403 Forbidden
-        /// </summary>
-        /// <returns></returns>
-        bool IsForbidden { get; }
-
-        /// <summary>
-        /// Returns true if the response is 404 NotFound
-        /// </summary>
-        /// <returns></returns>
-        bool IsNotFound { get; }
-
-        /// <summary>
-        /// Returns true if the response is 499 CustomHttpStatusCode499
-        /// </summary>
-        /// <returns></returns>
-        bool IsCustomHttpStatusCode499 { get; }
-
-        /// <summary>
-        /// Returns true if the response is 500 InternalServerError
-        /// </summary>
-        /// <returns></returns>
-        bool IsInternalServerError { get; }
-    }
-
-    /// <summary>
-    /// The <see cref="IGetItinerariesItineraryIdApiResponse"/>
-    /// </summary>
-    public interface IGetItinerariesItineraryIdApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, IOk<Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse?>, IBadRequest<List<Error>?>
     {
         /// <summary>
         /// Returns true if the response is 200 Ok
@@ -641,6 +643,26 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetContractsIdItinerariesItineraryId;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetContractsIdItinerariesItineraryId;
+
+        internal void ExecuteOnGetContractsIdItinerariesItineraryId(PartnerSelfServiceExerciseApi.GetContractsIdItinerariesItineraryIdApiResponse apiResponse)
+        {
+            OnGetContractsIdItinerariesItineraryId?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetContractsIdItinerariesItineraryId(Exception exception)
+        {
+            OnErrorGetContractsIdItinerariesItineraryId?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
         public event EventHandler<ApiResponseEventArgs>? OnGetContractsIdRebookEligibility;
 
         /// <summary>
@@ -676,26 +698,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
         internal void ExecuteOnErrorGetFlightBookingsId(Exception exception)
         {
             OnErrorGetFlightBookingsId?.Invoke(this, new ExceptionEventArgs(exception));
-        }
-
-        /// <summary>
-        /// The event raised after the server response
-        /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnGetItinerariesItineraryId;
-
-        /// <summary>
-        /// The event raised after an error querying the server
-        /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorGetItinerariesItineraryId;
-
-        internal void ExecuteOnGetItinerariesItineraryId(PartnerSelfServiceExerciseApi.GetItinerariesItineraryIdApiResponse apiResponse)
-        {
-            OnGetItinerariesItineraryId?.Invoke(this, new ApiResponseEventArgs(apiResponse));
-        }
-
-        internal void ExecuteOnErrorGetItinerariesItineraryId(Exception exception)
-        {
-            OnErrorGetItinerariesItineraryId?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -838,6 +840,359 @@ namespace Hopper.Fintech.Flights.Dg.Api
             HttpClient = httpClient;
             Events = partnerSelfServiceExerciseApiEvents;
             ApiKeyProvider = apiKeyProvider;
+        }
+
+        partial void FormatGetContractsIdItinerariesItineraryId(ref string id, ref string itineraryId);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="itineraryId"></param>
+        /// <returns></returns>
+        private void ValidateGetContractsIdItinerariesItineraryId(string id, string itineraryId)
+        {
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
+
+            if (itineraryId == null)
+                throw new ArgumentNullException(nameof(itineraryId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="itineraryId"></param>
+        private void AfterGetContractsIdItinerariesItineraryIdDefaultImplementation(IGetContractsIdItinerariesItineraryIdApiResponse apiResponseLocalVar, string id, string itineraryId)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetContractsIdItinerariesItineraryId(ref suppressDefaultLog, apiResponseLocalVar, id, itineraryId);
+            if (!suppressDefaultLog)
+                Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="itineraryId"></param>
+        partial void AfterGetContractsIdItinerariesItineraryId(ref bool suppressDefaultLog, IGetContractsIdItinerariesItineraryIdApiResponse apiResponseLocalVar, string id, string itineraryId);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="itineraryId"></param>
+        private void OnErrorGetContractsIdItinerariesItineraryIdDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id, string itineraryId)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetContractsIdItinerariesItineraryId(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, id, itineraryId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="itineraryId"></param>
+        partial void OnErrorGetContractsIdItinerariesItineraryId(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id, string itineraryId);
+
+        /// <summary>
+        /// Get Fare Details Get detailed fare information for an itinerary from the contract&#39;s flight shop.
+        /// </summary>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdItinerariesItineraryIdApiResponse"/>&gt;</returns>
+        public async Task<IGetContractsIdItinerariesItineraryIdApiResponse?> GetContractsIdItinerariesItineraryIdOrDefaultAsync(string id, string itineraryId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetContractsIdItinerariesItineraryIdAsync(id, itineraryId, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get Fare Details Get detailed fare information for an itinerary from the contract&#39;s flight shop.
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdItinerariesItineraryIdApiResponse"/>&gt;</returns>
+        public async Task<IGetContractsIdItinerariesItineraryIdApiResponse> GetContractsIdItinerariesItineraryIdAsync(string id, string itineraryId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetContractsIdItinerariesItineraryId(id, itineraryId);
+
+                FormatGetContractsIdItinerariesItineraryId(ref id, ref itineraryId);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/contracts/{id}/itineraries/{itinerary_id}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/contracts/{id}/itineraries/{itinerary_id}");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bitinerary_id%7D", Uri.EscapeDataString(itineraryId.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
+                    tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
+                    apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
+
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        GetContractsIdItinerariesItineraryIdApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/contracts/{id}/itineraries/{itinerary_id}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetContractsIdItinerariesItineraryIdDefaultImplementation(apiResponseLocalVar, id, itineraryId);
+
+                        Events.ExecuteOnGetContractsIdItinerariesItineraryId(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetContractsIdItinerariesItineraryIdDefaultImplementation(e, "/contracts/{id}/itineraries/{itinerary_id}", uriBuilderLocalVar.Path, id, itineraryId);
+                Events.ExecuteOnErrorGetContractsIdItinerariesItineraryId(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetContractsIdItinerariesItineraryIdApiResponse"/>
+        /// </summary>
+        public partial class GetContractsIdItinerariesItineraryIdApiResponse : Hopper.Fintech.Flights.Dg.Client.ApiResponse, IGetContractsIdItinerariesItineraryIdApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<PartnerSelfServiceExerciseApi> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetContractsIdItinerariesItineraryIdApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetContractsIdItinerariesItineraryIdApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetContractsIdItinerariesItineraryIdApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetContractsIdItinerariesItineraryIdApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? Ok()
+            {
+                bool suppressDefault = false;
+                Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? result = null;
+                OnOk(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultOk();
+                return result;
+            }
+
+            private Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? DefaultOk()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnOk(ref bool suppressDefault, ref Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? result);
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public List<Error>? BadRequest()
+            {
+                bool suppressDefault = false;
+                List<Error>? result = null;
+                OnBadRequest(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultBadRequest();
+                return result;
+            }
+
+            private List<Error>? DefaultBadRequest()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<Error>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnBadRequest(ref bool suppressDefault, ref List<Error>? result);
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out List<Error>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 499 CustomHttpStatusCode499
+            /// </summary>
+            /// <returns></returns>
+            public bool IsCustomHttpStatusCode499 => 499 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(RestLogEvents.ApiDeserializationFailed, exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
         partial void FormatGetContractsIdRebookEligibility(ref string id);
@@ -1469,348 +1824,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryOk([NotNullWhen(true)]out Hopper.Fintech.Flights.Dg.Model.FlightBooking? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Ok();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public bool IsBadRequest => 400 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public List<Error>? BadRequest()
-            {
-                bool suppressDefault = false;
-                List<Error>? result = null;
-                OnBadRequest(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultBadRequest();
-                return result;
-            }
-
-            private List<Error>? DefaultBadRequest()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsBadRequest
-                    ? System.Text.Json.JsonSerializer.Deserialize<List<Error>>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnBadRequest(ref bool suppressDefault, ref List<Error>? result);
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryBadRequest([NotNullWhen(true)]out List<Error>? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = BadRequest();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 401 Unauthorized
-            /// </summary>
-            /// <returns></returns>
-            public bool IsUnauthorized => 401 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 403 Forbidden
-            /// </summary>
-            /// <returns></returns>
-            public bool IsForbidden => 403 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 404 NotFound
-            /// </summary>
-            /// <returns></returns>
-            public bool IsNotFound => 404 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 499 CustomHttpStatusCode499
-            /// </summary>
-            /// <returns></returns>
-            public bool IsCustomHttpStatusCode499 => 499 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 500 InternalServerError
-            /// </summary>
-            /// <returns></returns>
-            public bool IsInternalServerError => 500 == (int)StatusCode;
-
-            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
-            {
-                bool suppressDefaultLog = false;
-                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
-                if (!suppressDefaultLog)
-                    Logger.LogError(RestLogEvents.ApiDeserializationFailed, exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
-            }
-
-            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
-        }
-
-        partial void FormatGetItinerariesItineraryId(ref string itineraryId);
-
-        /// <summary>
-        /// Validates the request parameters
-        /// </summary>
-        /// <param name="itineraryId"></param>
-        /// <returns></returns>
-        private void ValidateGetItinerariesItineraryId(string itineraryId)
-        {
-            if (itineraryId == null)
-                throw new ArgumentNullException(nameof(itineraryId));
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="itineraryId"></param>
-        private void AfterGetItinerariesItineraryIdDefaultImplementation(IGetItinerariesItineraryIdApiResponse apiResponseLocalVar, string itineraryId)
-        {
-            bool suppressDefaultLog = false;
-            AfterGetItinerariesItineraryId(ref suppressDefaultLog, apiResponseLocalVar, itineraryId);
-            if (!suppressDefaultLog)
-                Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="itineraryId"></param>
-        partial void AfterGetItinerariesItineraryId(ref bool suppressDefaultLog, IGetItinerariesItineraryIdApiResponse apiResponseLocalVar, string itineraryId);
-
-        /// <summary>
-        /// Logs exceptions that occur while retrieving the server response
-        /// </summary>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="itineraryId"></param>
-        private void OnErrorGetItinerariesItineraryIdDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string itineraryId)
-        {
-            bool suppressDefaultLogLocalVar = false;
-            OnErrorGetItinerariesItineraryId(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, itineraryId);
-            if (!suppressDefaultLogLocalVar)
-                Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
-        }
-
-        /// <summary>
-        /// A partial method that gives developers a way to provide customized exception handling
-        /// </summary>
-        /// <param name="suppressDefaultLogLocalVar"></param>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="itineraryId"></param>
-        partial void OnErrorGetItinerariesItineraryId(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string itineraryId);
-
-        /// <summary>
-        /// Get Fare Details Get detailed fare information for a shopped itinerary.
-        /// </summary>
-        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetItinerariesItineraryIdApiResponse"/>&gt;</returns>
-        public async Task<IGetItinerariesItineraryIdApiResponse?> GetItinerariesItineraryIdOrDefaultAsync(string itineraryId, System.Threading.CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await GetItinerariesItineraryIdAsync(itineraryId, cancellationToken).ConfigureAwait(false);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Get Fare Details Get detailed fare information for a shopped itinerary.
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="itineraryId">A unique identifier for an itinerary.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetItinerariesItineraryIdApiResponse"/>&gt;</returns>
-        public async Task<IGetItinerariesItineraryIdApiResponse> GetItinerariesItineraryIdAsync(string itineraryId, System.Threading.CancellationToken cancellationToken = default)
-        {
-            UriBuilder uriBuilderLocalVar = new UriBuilder();
-
-            try
-            {
-                ValidateGetItinerariesItineraryId(itineraryId);
-
-                FormatGetItinerariesItineraryId(ref itineraryId);
-
-                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
-                {
-                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
-                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
-                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/itineraries/{itinerary_id}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/itineraries/{itinerary_id}");
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bitinerary_id%7D", Uri.EscapeDataString(itineraryId.ToString()));
-
-                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
-                    tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
-                    apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
-
-                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
-
-                    string[] acceptLocalVars = new string[] {
-                        "application/json"
-                    };
-
-                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
-
-                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
-
-                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
-
-                    DateTime requestedAtLocalVar = DateTime.UtcNow;
-
-                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
-                    {
-                        GetItinerariesItineraryIdApiResponse apiResponseLocalVar;
-
-                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
-                            default: {
-                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/itineraries/{itinerary_id}", requestedAtLocalVar, _jsonSerializerOptions);
-
-                                break;
-                            }
-                        }
-
-                        AfterGetItinerariesItineraryIdDefaultImplementation(apiResponseLocalVar, itineraryId);
-
-                        Events.ExecuteOnGetItinerariesItineraryId(apiResponseLocalVar);
-
-                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
-                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
-                                tokenBaseLocalVar.BeginRateLimit();
-
-                        return apiResponseLocalVar;
-                    }
-                }
-            }
-            catch(Exception e)
-            {
-                OnErrorGetItinerariesItineraryIdDefaultImplementation(e, "/itineraries/{itinerary_id}", uriBuilderLocalVar.Path, itineraryId);
-                Events.ExecuteOnErrorGetItinerariesItineraryId(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="GetItinerariesItineraryIdApiResponse"/>
-        /// </summary>
-        public partial class GetItinerariesItineraryIdApiResponse : Hopper.Fintech.Flights.Dg.Client.ApiResponse, IGetItinerariesItineraryIdApiResponse
-        {
-            /// <summary>
-            /// The logger
-            /// </summary>
-            public ILogger<PartnerSelfServiceExerciseApi> Logger { get; }
-
-            /// <summary>
-            /// The <see cref="GetItinerariesItineraryIdApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="rawContent"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public GetItinerariesItineraryIdApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            /// <summary>
-            /// The <see cref="GetItinerariesItineraryIdApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="contentStream"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public GetItinerariesItineraryIdApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
-
-            /// <summary>
-            /// Returns true if the response is 200 Ok
-            /// </summary>
-            /// <returns></returns>
-            public bool IsOk => 200 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 200 Ok
-            /// </summary>
-            /// <returns></returns>
-            public Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? Ok()
-            {
-                bool suppressDefault = false;
-                Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? result = null;
-                OnOk(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultOk();
-                return result;
-            }
-
-            private Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? DefaultOk()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnOk(ref bool suppressDefault, ref Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? result);
-
-            /// <summary>
-            /// Returns true if the response is 200 Ok and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)]out Hopper.Fintech.Flights.Dg.Model.FareDetailsResponse? result)
             {
                 result = null;
 

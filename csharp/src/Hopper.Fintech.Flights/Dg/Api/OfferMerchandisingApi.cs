@@ -31,12 +31,12 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// Represents a collection of functions to interact with the API endpoints
     /// This class is registered as transient.
     /// </summary>
-    public interface IOfferMerchandisingPrePurchaseApi : IApi
+    public interface IOfferMerchandisingApi : IApi
     {
         /// <summary>
         /// The class containing the events
         /// </summary>
-        OfferMerchandisingPrePurchaseApiEvents Events { get; }
+        OfferMerchandisingApiEvents Events { get; }
 
         /// <summary>
         /// Get Offer
@@ -338,7 +338,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class OfferMerchandisingPrePurchaseApiEvents
+    public class OfferMerchandisingApiEvents
     {
         /// <summary>
         /// The event raised after the server response
@@ -350,7 +350,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorGetOffersId;
 
-        internal void ExecuteOnGetOffersId(OfferMerchandisingPrePurchaseApi.GetOffersIdApiResponse apiResponse)
+        internal void ExecuteOnGetOffersId(OfferMerchandisingApi.GetOffersIdApiResponse apiResponse)
         {
             OnGetOffersId?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -370,7 +370,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPostOffers;
 
-        internal void ExecuteOnPostOffers(OfferMerchandisingPrePurchaseApi.PostOffersApiResponse apiResponse)
+        internal void ExecuteOnPostOffers(OfferMerchandisingApi.PostOffersApiResponse apiResponse)
         {
             OnPostOffers?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -390,7 +390,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPostOffersPrice;
 
-        internal void ExecuteOnPostOffersPrice(OfferMerchandisingPrePurchaseApi.PostOffersPriceApiResponse apiResponse)
+        internal void ExecuteOnPostOffersPrice(OfferMerchandisingApi.PostOffersPriceApiResponse apiResponse)
         {
             OnPostOffersPrice?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -410,7 +410,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPutMerchandisingContents;
 
-        internal void ExecuteOnPutMerchandisingContents(OfferMerchandisingPrePurchaseApi.PutMerchandisingContentsApiResponse apiResponse)
+        internal void ExecuteOnPutMerchandisingContents(OfferMerchandisingApi.PutMerchandisingContentsApiResponse apiResponse)
         {
             OnPutMerchandisingContents?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -424,14 +424,14 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public sealed partial class OfferMerchandisingPrePurchaseApi : IOfferMerchandisingPrePurchaseApi
+    public sealed partial class OfferMerchandisingApi : IOfferMerchandisingApi
     {
         private JsonSerializerOptions _jsonSerializerOptions;
 
         /// <summary>
         /// The logger
         /// </summary>
-        public ILogger<OfferMerchandisingPrePurchaseApi> Logger { get; }
+        public ILogger<OfferMerchandisingApi> Logger { get; }
 
         /// <summary>
         /// The HttpClient
@@ -441,7 +441,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <summary>
         /// The class containing the events
         /// </summary>
-        public OfferMerchandisingPrePurchaseApiEvents Events { get; }
+        public OfferMerchandisingApiEvents Events { get; }
 
         /// <summary>
         /// A token provider of type <see cref="ApiKeyProvider"/>
@@ -449,16 +449,16 @@ namespace Hopper.Fintech.Flights.Dg.Api
         public TokenProvider<ApiKeyToken> ApiKeyProvider { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OfferMerchandisingPrePurchaseApi"/> class.
+        /// Initializes a new instance of the <see cref="OfferMerchandisingApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public OfferMerchandisingPrePurchaseApi(ILogger<OfferMerchandisingPrePurchaseApi> logger, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, OfferMerchandisingPrePurchaseApiEvents offerMerchandisingPrePurchaseApiEvents,
+        public OfferMerchandisingApi(ILogger<OfferMerchandisingApi> logger, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, OfferMerchandisingApiEvents offerMerchandisingApiEvents,
             TokenProvider<ApiKeyToken> apiKeyProvider)
         {
             _jsonSerializerOptions = jsonSerializerOptionsProvider.Options;
             Logger = logger;
             HttpClient = httpClient;
-            Events = offerMerchandisingPrePurchaseApiEvents;
+            Events = offerMerchandisingApiEvents;
             ApiKeyProvider = apiKeyProvider;
         }
 
@@ -627,7 +627,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<OfferMerchandisingPrePurchaseApi> Logger { get; }
+            public ILogger<OfferMerchandisingApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="GetOffersIdApiResponse"/>
@@ -639,7 +639,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetOffersIdApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public GetOffersIdApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -655,7 +655,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetOffersIdApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public GetOffersIdApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -981,7 +981,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<OfferMerchandisingPrePurchaseApi> Logger { get; }
+            public ILogger<OfferMerchandisingApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PostOffersApiResponse"/>
@@ -993,7 +993,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostOffersApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PostOffersApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1009,7 +1009,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostOffersApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PostOffersApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1385,7 +1385,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<OfferMerchandisingPrePurchaseApi> Logger { get; }
+            public ILogger<OfferMerchandisingApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PostOffersPriceApiResponse"/>
@@ -1397,7 +1397,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostOffersPriceApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PostOffersPriceApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1413,7 +1413,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostOffersPriceApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PostOffersPriceApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1795,7 +1795,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<OfferMerchandisingPrePurchaseApi> Logger { get; }
+            public ILogger<OfferMerchandisingApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PutMerchandisingContentsApiResponse"/>
@@ -1807,7 +1807,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutMerchandisingContentsApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PutMerchandisingContentsApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1823,7 +1823,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutMerchandisingContentsApiResponse(ILogger<OfferMerchandisingPrePurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PutMerchandisingContentsApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

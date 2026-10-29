@@ -43,16 +43,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OfferMerchandisingPrePurchaseApi {
+public class OfferMerchandisingApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public OfferMerchandisingPrePurchaseApi() {
+    public OfferMerchandisingApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public OfferMerchandisingPrePurchaseApi(ApiClient apiClient) {
+    public OfferMerchandisingApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 

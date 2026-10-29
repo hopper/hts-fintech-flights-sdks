@@ -282,7 +282,7 @@ public class ShoppedSegment {
   }
 
   /**
-   * Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;). Pass the code exactly as it appears on the ticket/PNR.
+   * Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;, &#x60;E1&#x60;). Pass the code exactly as it appears on the ticket/PNR.
    * @return reservationBookingDesignator
    */
   @javax.annotation.Nullable

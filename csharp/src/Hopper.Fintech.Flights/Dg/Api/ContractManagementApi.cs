@@ -31,12 +31,12 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// Represents a collection of functions to interact with the API endpoints
     /// This class is registered as transient.
     /// </summary>
-    public interface IContractManagementPostPurchaseApi : IApi
+    public interface IContractManagementApi : IApi
     {
         /// <summary>
         /// The class containing the events
         /// </summary>
-        ContractManagementPostPurchaseApiEvents Events { get; }
+        ContractManagementApiEvents Events { get; }
 
         /// <summary>
         /// Get Contract
@@ -638,7 +638,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class ContractManagementPostPurchaseApiEvents
+    public class ContractManagementApiEvents
     {
         /// <summary>
         /// The event raised after the server response
@@ -650,7 +650,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorGetContractsId;
 
-        internal void ExecuteOnGetContractsId(ContractManagementPostPurchaseApi.GetContractsIdApiResponse apiResponse)
+        internal void ExecuteOnGetContractsId(ContractManagementApi.GetContractsIdApiResponse apiResponse)
         {
             OnGetContractsId?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -670,7 +670,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorGetContractsIdStatusHistory;
 
-        internal void ExecuteOnGetContractsIdStatusHistory(ContractManagementPostPurchaseApi.GetContractsIdStatusHistoryApiResponse apiResponse)
+        internal void ExecuteOnGetContractsIdStatusHistory(ContractManagementApi.GetContractsIdStatusHistoryApiResponse apiResponse)
         {
             OnGetContractsIdStatusHistory?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -690,7 +690,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPostContracts;
 
-        internal void ExecuteOnPostContracts(ContractManagementPostPurchaseApi.PostContractsApiResponse apiResponse)
+        internal void ExecuteOnPostContracts(ContractManagementApi.PostContractsApiResponse apiResponse)
         {
             OnPostContracts?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -710,7 +710,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPostContractsSearch;
 
-        internal void ExecuteOnPostContractsSearch(ContractManagementPostPurchaseApi.PostContractsSearchApiResponse apiResponse)
+        internal void ExecuteOnPostContractsSearch(ContractManagementApi.PostContractsSearchApiResponse apiResponse)
         {
             OnPostContractsSearch?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -730,7 +730,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPutContractsIdCancel;
 
-        internal void ExecuteOnPutContractsIdCancel(ContractManagementPostPurchaseApi.PutContractsIdCancelApiResponse apiResponse)
+        internal void ExecuteOnPutContractsIdCancel(ContractManagementApi.PutContractsIdCancelApiResponse apiResponse)
         {
             OnPutContractsIdCancel?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -750,7 +750,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPutContractsIdConfirm;
 
-        internal void ExecuteOnPutContractsIdConfirm(ContractManagementPostPurchaseApi.PutContractsIdConfirmApiResponse apiResponse)
+        internal void ExecuteOnPutContractsIdConfirm(ContractManagementApi.PutContractsIdConfirmApiResponse apiResponse)
         {
             OnPutContractsIdConfirm?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -770,7 +770,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPutContractsIdContactInfo;
 
-        internal void ExecuteOnPutContractsIdContactInfo(ContractManagementPostPurchaseApi.PutContractsIdContactInfoApiResponse apiResponse)
+        internal void ExecuteOnPutContractsIdContactInfo(ContractManagementApi.PutContractsIdContactInfoApiResponse apiResponse)
         {
             OnPutContractsIdContactInfo?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -790,7 +790,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         public event EventHandler<ExceptionEventArgs>? OnErrorPutContractsIdVoid;
 
-        internal void ExecuteOnPutContractsIdVoid(ContractManagementPostPurchaseApi.PutContractsIdVoidApiResponse apiResponse)
+        internal void ExecuteOnPutContractsIdVoid(ContractManagementApi.PutContractsIdVoidApiResponse apiResponse)
         {
             OnPutContractsIdVoid?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
@@ -804,14 +804,14 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public sealed partial class ContractManagementPostPurchaseApi : IContractManagementPostPurchaseApi
+    public sealed partial class ContractManagementApi : IContractManagementApi
     {
         private JsonSerializerOptions _jsonSerializerOptions;
 
         /// <summary>
         /// The logger
         /// </summary>
-        public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+        public ILogger<ContractManagementApi> Logger { get; }
 
         /// <summary>
         /// The HttpClient
@@ -821,7 +821,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <summary>
         /// The class containing the events
         /// </summary>
-        public ContractManagementPostPurchaseApiEvents Events { get; }
+        public ContractManagementApiEvents Events { get; }
 
         /// <summary>
         /// A token provider of type <see cref="ApiKeyProvider"/>
@@ -829,16 +829,16 @@ namespace Hopper.Fintech.Flights.Dg.Api
         public TokenProvider<ApiKeyToken> ApiKeyProvider { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContractManagementPostPurchaseApi"/> class.
+        /// Initializes a new instance of the <see cref="ContractManagementApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public ContractManagementPostPurchaseApi(ILogger<ContractManagementPostPurchaseApi> logger, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, ContractManagementPostPurchaseApiEvents contractManagementPostPurchaseApiEvents,
+        public ContractManagementApi(ILogger<ContractManagementApi> logger, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, ContractManagementApiEvents contractManagementApiEvents,
             TokenProvider<ApiKeyToken> apiKeyProvider)
         {
             _jsonSerializerOptions = jsonSerializerOptionsProvider.Options;
             Logger = logger;
             HttpClient = httpClient;
-            Events = contractManagementPostPurchaseApiEvents;
+            Events = contractManagementApiEvents;
             ApiKeyProvider = apiKeyProvider;
         }
 
@@ -1007,7 +1007,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="GetContractsIdApiResponse"/>
@@ -1019,7 +1019,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetContractsIdApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public GetContractsIdApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1035,7 +1035,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetContractsIdApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public GetContractsIdApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1349,7 +1349,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="GetContractsIdStatusHistoryApiResponse"/>
@@ -1361,7 +1361,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetContractsIdStatusHistoryApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public GetContractsIdStatusHistoryApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1377,7 +1377,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetContractsIdStatusHistoryApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public GetContractsIdStatusHistoryApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1719,7 +1719,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PostContractsApiResponse"/>
@@ -1731,7 +1731,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostContractsApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PostContractsApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1747,7 +1747,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostContractsApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PostContractsApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2117,7 +2117,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PostContractsSearchApiResponse"/>
@@ -2129,7 +2129,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostContractsSearchApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PostContractsSearchApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2145,7 +2145,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PostContractsSearchApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PostContractsSearchApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2479,7 +2479,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PutContractsIdCancelApiResponse"/>
@@ -2491,7 +2491,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdCancelApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdCancelApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2507,7 +2507,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdCancelApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdCancelApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2850,7 +2850,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PutContractsIdConfirmApiResponse"/>
@@ -2862,7 +2862,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdConfirmApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdConfirmApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2878,7 +2878,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdConfirmApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdConfirmApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3221,7 +3221,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PutContractsIdContactInfoApiResponse"/>
@@ -3233,7 +3233,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdContactInfoApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdContactInfoApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3249,7 +3249,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdContactInfoApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdContactInfoApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3595,7 +3595,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ContractManagementPostPurchaseApi> Logger { get; }
+            public ILogger<ContractManagementApi> Logger { get; }
 
             /// <summary>
             /// The <see cref="PutContractsIdVoidApiResponse"/>
@@ -3607,7 +3607,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdVoidApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdVoidApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3623,7 +3623,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public PutContractsIdVoidApiResponse(ILogger<ContractManagementPostPurchaseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public PutContractsIdVoidApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

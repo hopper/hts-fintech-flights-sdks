@@ -47,16 +47,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ContractManagementPostPurchaseApi {
+public class ContractManagementApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public ContractManagementPostPurchaseApi() {
+    public ContractManagementApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public ContractManagementPostPurchaseApi(ApiClient apiClient) {
+    public ContractManagementApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 

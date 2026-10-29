@@ -86,6 +86,204 @@ public class PartnerSelfServiceExerciseApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call getContractsIdItinerariesItineraryIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String itineraryId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/contracts/{id}/itineraries/{itinerary_id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "itinerary_id" + "}", localVarApiClient.escapeString(itineraryId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PartnerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getContractsIdItinerariesItineraryIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String itineraryId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getContractsIdItinerariesItineraryId(Async)");
+        }
+
+        // verify the required parameter 'itineraryId' is set
+        if (itineraryId == null) {
+            throw new ApiException("Missing the required parameter 'itineraryId' when calling getContractsIdItinerariesItineraryId(Async)");
+        }
+
+        return getContractsIdItinerariesItineraryIdCall(id, itineraryId, _callback);
+
+    }
+
+
+    private ApiResponse<FareDetailsResponse> getContractsIdItinerariesItineraryIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String itineraryId) throws ApiException {
+        okhttp3.Call localVarCall = getContractsIdItinerariesItineraryIdValidateBeforeCall(id, itineraryId, null);
+        Type localVarReturnType = new TypeToken<FareDetailsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getContractsIdItinerariesItineraryIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String itineraryId, final ApiCallback<FareDetailsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getContractsIdItinerariesItineraryIdValidateBeforeCall(id, itineraryId, _callback);
+        Type localVarReturnType = new TypeToken<FareDetailsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetContractsIdItinerariesItineraryIdRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+        @javax.annotation.Nonnull
+        private final String itineraryId;
+
+        private APIgetContractsIdItinerariesItineraryIdRequest(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String itineraryId) {
+            this.id = id;
+            this.itineraryId = itineraryId;
+        }
+
+        /**
+         * Build call for getContractsIdItinerariesItineraryId
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getContractsIdItinerariesItineraryIdCall(id, itineraryId, _callback);
+        }
+
+        /**
+         * Execute getContractsIdItinerariesItineraryId request
+         * @return FareDetailsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public FareDetailsResponse execute() throws ApiException {
+            ApiResponse<FareDetailsResponse> localVarResp = getContractsIdItinerariesItineraryIdWithHttpInfo(id, itineraryId);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getContractsIdItinerariesItineraryId request with HTTP info returned
+         * @return ApiResponse&lt;FareDetailsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FareDetailsResponse> executeWithHttpInfo() throws ApiException {
+            return getContractsIdItinerariesItineraryIdWithHttpInfo(id, itineraryId);
+        }
+
+        /**
+         * Execute getContractsIdItinerariesItineraryId request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FareDetailsResponse> _callback) throws ApiException {
+            return getContractsIdItinerariesItineraryIdAsync(id, itineraryId, _callback);
+        }
+    }
+
+    /**
+     * Get Fare Details
+     * Get detailed fare information for an itinerary from the contract&#39;s flight shop.
+     * @param id A unique identifier for a contract. (required)
+     * @param itineraryId A unique identifier for an itinerary. (required)
+     * @return APIgetContractsIdItinerariesItineraryIdRequest
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetContractsIdItinerariesItineraryIdRequest getContractsIdItinerariesItineraryId(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String itineraryId) {
+        return new APIgetContractsIdItinerariesItineraryIdRequest(id, itineraryId);
+    }
     private okhttp3.Call getContractsIdRebookEligibilityCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -466,194 +664,6 @@ public class PartnerSelfServiceExerciseApi {
      */
     public APIgetFlightBookingsIdRequest getFlightBookingsId(@javax.annotation.Nonnull String id) {
         return new APIgetFlightBookingsIdRequest(id);
-    }
-    private okhttp3.Call getItinerariesItineraryIdCall(@javax.annotation.Nonnull String itineraryId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/itineraries/{itinerary_id}"
-            .replace("{" + "itinerary_id" + "}", localVarApiClient.escapeString(itineraryId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "PartnerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getItinerariesItineraryIdValidateBeforeCall(@javax.annotation.Nonnull String itineraryId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'itineraryId' is set
-        if (itineraryId == null) {
-            throw new ApiException("Missing the required parameter 'itineraryId' when calling getItinerariesItineraryId(Async)");
-        }
-
-        return getItinerariesItineraryIdCall(itineraryId, _callback);
-
-    }
-
-
-    private ApiResponse<FareDetailsResponse> getItinerariesItineraryIdWithHttpInfo(@javax.annotation.Nonnull String itineraryId) throws ApiException {
-        okhttp3.Call localVarCall = getItinerariesItineraryIdValidateBeforeCall(itineraryId, null);
-        Type localVarReturnType = new TypeToken<FareDetailsResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call getItinerariesItineraryIdAsync(@javax.annotation.Nonnull String itineraryId, final ApiCallback<FareDetailsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getItinerariesItineraryIdValidateBeforeCall(itineraryId, _callback);
-        Type localVarReturnType = new TypeToken<FareDetailsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIgetItinerariesItineraryIdRequest {
-        @javax.annotation.Nonnull
-        private final String itineraryId;
-
-        private APIgetItinerariesItineraryIdRequest(@javax.annotation.Nonnull String itineraryId) {
-            this.itineraryId = itineraryId;
-        }
-
-        /**
-         * Build call for getItinerariesItineraryId
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getItinerariesItineraryIdCall(itineraryId, _callback);
-        }
-
-        /**
-         * Execute getItinerariesItineraryId request
-         * @return FareDetailsResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public FareDetailsResponse execute() throws ApiException {
-            ApiResponse<FareDetailsResponse> localVarResp = getItinerariesItineraryIdWithHttpInfo(itineraryId);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute getItinerariesItineraryId request with HTTP info returned
-         * @return ApiResponse&lt;FareDetailsResponse&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<FareDetailsResponse> executeWithHttpInfo() throws ApiException {
-            return getItinerariesItineraryIdWithHttpInfo(itineraryId);
-        }
-
-        /**
-         * Execute getItinerariesItineraryId request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<FareDetailsResponse> _callback) throws ApiException {
-            return getItinerariesItineraryIdAsync(itineraryId, _callback);
-        }
-    }
-
-    /**
-     * Get Fare Details
-     * Get detailed fare information for a shopped itinerary.
-     * @param itineraryId A unique identifier for an itinerary. (required)
-     * @return APIgetItinerariesItineraryIdRequest
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The fare details </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIgetItinerariesItineraryIdRequest getItinerariesItineraryId(@javax.annotation.Nonnull String itineraryId) {
-        return new APIgetItinerariesItineraryIdRequest(itineraryId);
     }
     private okhttp3.Call postContractsIdExerciseQuotesCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;

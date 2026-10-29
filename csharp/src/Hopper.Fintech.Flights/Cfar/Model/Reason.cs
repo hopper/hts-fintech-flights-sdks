@@ -42,6 +42,16 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Reason" /> class.
         /// </summary>
+        /// <param name="notPurchased"></param>
+        public Reason(NotPurchased notPurchased)
+        {
+            NotPurchased = notPurchased;
+            OnCreated();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Reason" /> class.
+        /// </summary>
         /// <param name="other1"></param>
         public Reason(Other1 other1)
         {
@@ -72,14 +82,19 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             GoodWill = 1,
 
             /// <summary>
+            /// Enum NotPurchased for value: not_purchased
+            /// </summary>
+            NotPurchased = 2,
+
+            /// <summary>
             /// Enum Other for value: other
             /// </summary>
-            Other = 2,
+            Other = 3,
 
             /// <summary>
             /// Enum VoidWindow for value: void_window
             /// </summary>
-            VoidWindow = 3
+            VoidWindow = 4
         }
 
         /// <summary>
@@ -92,6 +107,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         {
             if (value.Equals("good_will"))
                 return TypeEnum.GoodWill;
+
+            if (value.Equals("not_purchased"))
+                return TypeEnum.NotPurchased;
 
             if (value.Equals("other"))
                 return TypeEnum.Other;
@@ -111,6 +129,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         {
             if (value.Equals("good_will"))
                 return TypeEnum.GoodWill;
+
+            if (value.Equals("not_purchased"))
+                return TypeEnum.NotPurchased;
 
             if (value.Equals("other"))
                 return TypeEnum.Other;
@@ -132,6 +153,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             if (value == TypeEnum.GoodWill)
                 return "good_will";
 
+            if (value == TypeEnum.NotPurchased)
+                return "not_purchased";
+
             if (value == TypeEnum.Other)
                 return "other";
 
@@ -145,6 +169,11 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         /// Gets or Sets GoodWill
         /// </summary>
         public GoodWill? GoodWill { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NotPurchased
+        /// </summary>
+        public NotPurchased? NotPurchased { get; set; }
 
         /// <summary>
         /// Gets or Sets Other1
@@ -211,6 +240,7 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             Option<Reason.TypeEnum?> type = default;
 
             GoodWill? goodWill = null;
+            NotPurchased? notPurchased = null;
             Other1? other1 = null;
             VoidWindow? voidWindow = null;
 
@@ -234,6 +264,11 @@ namespace Hopper.Fintech.Flights.Cfar.Model
                         {
                             Utf8JsonReader utf8JsonReaderGoodWill = utf8JsonReader;
                             goodWill = JsonSerializer.Deserialize<GoodWill>(ref utf8JsonReaderGoodWill, jsonSerializerOptions);
+                        }
+                        if (discriminator?.Equals("not_purchased") ?? false)
+                        {
+                            Utf8JsonReader utf8JsonReaderNotPurchased = utf8JsonReader;
+                            notPurchased = JsonSerializer.Deserialize<NotPurchased>(ref utf8JsonReaderNotPurchased, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("other") ?? false)
                         {
@@ -289,6 +324,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             if (goodWill != null)
                 return new Reason(goodWill);
 
+            if (notPurchased != null)
+                return new Reason(notPurchased);
+
             if (other1 != null)
                 return new Reason(other1);
 
@@ -312,6 +350,12 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             {
                 GoodWillJsonConverter goodWillJsonConverter = (GoodWillJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(reason.GoodWill.GetType()));
                 goodWillJsonConverter.WriteProperties(writer, reason.GoodWill, jsonSerializerOptions);
+            }
+
+            if (reason.NotPurchased != null)
+            {
+                NotPurchasedJsonConverter notPurchasedJsonConverter = (NotPurchasedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(reason.NotPurchased.GetType()));
+                notPurchasedJsonConverter.WriteProperties(writer, reason.NotPurchased, jsonSerializerOptions);
             }
 
             if (reason.Other1 != null)

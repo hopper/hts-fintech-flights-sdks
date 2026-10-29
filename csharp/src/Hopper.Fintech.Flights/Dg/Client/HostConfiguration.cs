@@ -214,6 +214,7 @@ namespace Hopper.Fintech.Flights.Dg.Client
             _jsonOptions.Converters.Add(new NotProvidedJsonConverter());
             _jsonOptions.Converters.Add(new NotProvided1JsonConverter());
             _jsonOptions.Converters.Add(new NotProvided2JsonConverter());
+            _jsonOptions.Converters.Add(new NotPurchasedJsonConverter());
             _jsonOptions.Converters.Add(new NotificationPreferencesJsonConverter());
             _jsonOptions.Converters.Add(new OfferNotFoundJsonConverter());
             _jsonOptions.Converters.Add(new OfferPriceJsonConverter());
@@ -311,10 +312,10 @@ namespace Hopper.Fintech.Flights.Dg.Client
             _services.AddSingleton(jsonSerializerOptionsProvider);
             _services.AddSingleton<IApiFactory, ApiFactory>();
             _services.AddSingleton<AnalyticsApiEvents>();
-            _services.AddSingleton<ContractManagementPostPurchaseApiEvents>();
+            _services.AddSingleton<ContractManagementApiEvents>();
             _services.AddSingleton<FlightStatusUpdatesApiEvents>();
             _services.AddSingleton<HTSSelfServiceExerciseApiEvents>();
-            _services.AddSingleton<OfferMerchandisingPrePurchaseApiEvents>();
+            _services.AddSingleton<OfferMerchandisingApiEvents>();
             _services.AddSingleton<PartnerManualExerciseApiEvents>();
             _services.AddSingleton<PartnerSelfServiceExerciseApiEvents>();
             OnHostConfigurationCreated();
@@ -363,10 +364,10 @@ namespace Hopper.Fintech.Flights.Dg.Client
             List<IHttpClientBuilder> builders = new List<IHttpClientBuilder>();
 
             builders.Add(_services.AddHttpClient<IAnalyticsApi, AnalyticsApi>("Hopper.Fintech.Flights.Dg.Api.IAnalyticsApi", client));
-            builders.Add(_services.AddHttpClient<IContractManagementPostPurchaseApi, ContractManagementPostPurchaseApi>("Hopper.Fintech.Flights.Dg.Api.IContractManagementPostPurchaseApi", client));
+            builders.Add(_services.AddHttpClient<IContractManagementApi, ContractManagementApi>("Hopper.Fintech.Flights.Dg.Api.IContractManagementApi", client));
             builders.Add(_services.AddHttpClient<IFlightStatusUpdatesApi, FlightStatusUpdatesApi>("Hopper.Fintech.Flights.Dg.Api.IFlightStatusUpdatesApi", client));
             builders.Add(_services.AddHttpClient<IHTSSelfServiceExerciseApi, HTSSelfServiceExerciseApi>("Hopper.Fintech.Flights.Dg.Api.IHTSSelfServiceExerciseApi", client));
-            builders.Add(_services.AddHttpClient<IOfferMerchandisingPrePurchaseApi, OfferMerchandisingPrePurchaseApi>("Hopper.Fintech.Flights.Dg.Api.IOfferMerchandisingPrePurchaseApi", client));
+            builders.Add(_services.AddHttpClient<IOfferMerchandisingApi, OfferMerchandisingApi>("Hopper.Fintech.Flights.Dg.Api.IOfferMerchandisingApi", client));
             builders.Add(_services.AddHttpClient<IPartnerManualExerciseApi, PartnerManualExerciseApi>("Hopper.Fintech.Flights.Dg.Api.IPartnerManualExerciseApi", client));
             builders.Add(_services.AddHttpClient<IPartnerSelfServiceExerciseApi, PartnerSelfServiceExerciseApi>("Hopper.Fintech.Flights.Dg.Api.IPartnerSelfServiceExerciseApi", client));
 

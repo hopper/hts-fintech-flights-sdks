@@ -6,11 +6,11 @@
   },
   "tags": [
     {
-      "name": "Offer & Merchandising (Pre-Purchase)",
+      "name": "Offer & Merchandising",
       "description": "Endpoints for creating, pricing, and retrieving offers for a customer's itinerary, as well as generating merchandising content for those offers.\n\n## Merchandising SDK Integration\n\nHTS merchandising SDKs are lightweight, embeddable components that display product offers on your website. The SDKs are built with SolidJS and delivered as web components that render in Shadow DOM with isolated styling.\n\n### Integration Flow\n\n```\n1. Obtain SDK URL from create offer API \u2192 2. Embed SDK in partner purchase flow \u2192 3. Customer selects option \u2192 4. Process selection event\n```\n\n### Custom Element\n\n| Element Name                             |\n| ---------------------------------------- |\n| `<hts-flights-disruption-merchandising>` |\n\n### Basic Integration\n\n```html\n<!-- Preconnect for faster DNS resolution -->\n<link rel=\"preconnect\" href=\"https://hts.hopper.com\" />\n\n<!-- SDK Script (merchandising_url from create offer API response) -->\n<script src=\"{{MERCHANDISING_URL}}\" type=\"module\" async></script>\n\n<!-- SDK Component -->\n<hts-flights-disruption-merchandising></hts-flights-disruption-merchandising>\n```\n\n### Dynamic Integration (JavaScript)\n\n```javascript\n// merchandising_url is provided in the create offer API response\nconst sdkUrl = merchandisingUrl;\n\n// Create and insert script\nconst script = document.createElement('script');\nscript.src = sdkUrl;\nscript.type = 'module';\nscript.async = true;\ndocument.head.appendChild(script);\n\n// Create and insert component\nconst component = document.createElement('hts-flights-disruption-merchandising');\ndocument.body.appendChild(component);\n```\n\n## Handling SDK Events\n\nThe SDK communicates with your page using the `postMessage` API.\n\n### Event Types\n\n| Event Type                  | Description                  | When Fired                                               |\n| --------------------------- | ---------------------------- | -------------------------------------------------------- |\n| `hts-initialized`           | SDK loaded and ready         | On component mount                                       |\n| `hts-option-selected`       | User selected an option      | When selection changes                                   |\n| `hts-invalid-params`        | Invalid parameters detected  | On parameter validation failure                          |\n| `hts-data-loaded`           | Offer data loaded            | After successful data parsing                            |\n| `hts-dimension`             | Component dimensions changed | When size changes                                        |\n| `hts-view-terms`            | User viewing terms           | When terms link is clicked                               |\n| `hts-link-clicked`          | User clicked a link          | When FAQ or T&C links are clicked                        |\n| `hts-initialization-failed` | Initialization blocked       | When the app cannot initialize (e.g. unsupported locale) |\n| `hts-validated`             | Checkout readiness changed   | On each `hts-validate`, and on change once enabled (or immediately with `validate`)                |\n\n### Listening to Events\n\n```javascript\nwindow.addEventListener('message', (event) => {\n  // Verify origin for security\n  if (event.origin !== 'https://hts.hopper.com') return;\n\n  const { type, product, data } = event.data;\n\n  switch (type) {\n    case 'hts-initialized':\n      console.log(`${product} SDK initialized`);\n      break;\n    case 'hts-option-selected':\n      if (data.attached && data.offer) {\n        // User selected coverage\n        console.log(`Offer selected, premium: ${data.offer.premium} ${data.offer.currency}`);\n      } else {\n        // User declined coverage\n      }\n      break;\n    case 'hts-invalid-params':\n      console.error('SDK validation failed:', data.error);\n      break;\n    case 'hts-dimension':\n      // Adjust iframe height if using iframe integration\n      break;\n    case 'hts-link-clicked':\n      // contextType is \"faq\" or \"termsAndConditions\"\n      break;\n    case 'hts-initialization-failed':\n      // Widget will not render \u2014 hide container and do not require selection\n      console.warn('SDK initialization failed:', data.type);\n      break;\n    case 'hts-validated':\n      // Enable/disable your proceed control based on data.isValid\n      setProceedEnabled(data.isValid);\n      break;\n  }\n});\n```\n\n### Key Event Payloads\n\n#### `hts-option-selected`\n\n```json\n{\n  \"type\": \"hts-option-selected\",\n  \"product\": \"flights-disruption\",\n  \"data\": {\n    \"attached\": true,\n    \"selected\": \"0018868d-652f-4134-b094-a37ebb651f1a\",\n    \"offer\": {\n      \"offerId\": \"0018868d-652f-4134-b094-a37ebb651f1a\",\n      \"premium\": \"48.00\",\n      \"currency\": \"USD\",\n      \"coveragePercentage\": \"100\"\n    }\n  }\n}\n```\n\nWhen `attached` is `false`, the user declined the offer.\n\n#### `hts-initialization-failed`\n\n```json\n{\n  \"type\": \"hts-initialization-failed\",\n  \"product\": \"flights-disruption\",\n  \"data\": {\n    \"type\": \"unsupported_locale\",\n    \"locale\": \"ja\"\n  }\n}\n```\n\nFired when the app cannot initialize due to a precondition failure. The widget will not render. Currently the only failure type is `unsupported_locale`, indicating the tenant is configured to reject unsupported locales rather than falling back to English.\n\n#### `hts-validated`\n\nTells you whether it is safe to proceed to checkout. Use it to enable/disable your proceed/checkout control.\n\n**When it fires.** `hts-validated` is not emitted on load \u2014 this event stays quiet until you opt in (other widget events still fire as normal). It starts emitting the first time either you send an `hts-validate` ingress event (e.g. when the customer attempts to proceed), or you set the `validate` attribute/parameter on the component (see the Component Attributes / Iframe Parameters tables below). From then on it emits the **current** `isValid` whenever the value changes (this automatic stream is de-duplicated). In addition, **every `hts-validate` you send always responds with a fresh `hts-validated`** carrying the current validity \u2014 even when it hasn't changed \u2014 so you can re-query readiness at any time; that ingress also re-shows the in-widget \"selection required\" prompt.\n\n```json\n{\n  \"type\": \"hts-validated\",\n  \"product\": \"flights-disruption\",\n  \"data\": { \"isValid\": false }\n}\n```\n\n**How to interpret `isValid`:** Treat `isValid: false` as \"disable proceed,\" **not** \"show an error.\" If you want a checkout-readiness signal at load without any customer action, set `validate`; the first `hts-validated` then reflects the offer's selection mode (a forced-choice widget starts `isValid: false`; one that permits no selection starts `isValid: true`). Otherwise drive validation from the proceed attempt: send `hts-validate` and read the resulting `hts-validated`. Surface validation messaging only at the proceed attempt (`hts-validate` and/or your own copy).\n\n## Component Attributes\n\nWhen using the web component, customizations are set as **kebab-case** attributes on the custom element.\n\n| Attribute            | Type   | Description                                              |\n| -------------------- | ------ | ------------------------------------------------------- |\n| `selected`           | string | Pre-select an option (`none`, or an offer id)           |\n| `validate`      | boolean | Emit `hts-validated` (current validity) as soon as this attribute is set \u2014 on load or later \u2014 instead of staying silent until the first `hts-validate`. Default `false`. |\n| `rewards-type`       | string | Override rewards type                                   |\n| `rewards-conversion` | string | Override rewards conversion                             |\n| `entry-point`        | string | The placement the widget is shown in; adjusts UI & copy |\n\n```html\n<hts-flights-disruption-merchandising\n  selected=\"none\"\n  rewards-type=\"miles\"\n  rewards-conversion=\"100\"\n  entry-point=\"postbooking\"\n></hts-flights-disruption-merchandising>\n\n<!-- Pre-select a specific offer -->\n<hts-flights-disruption-merchandising selected=\"0018868d-...\"></hts-flights-disruption-merchandising>\n```\n\n## Iframe Parameters\n\nWhen using iframe integration, the same customizations are supplied as **camelCase** query parameters on the merchandising URL. See the _Iframe Integration (Alternative)_ section below for the embed snippet.\n\n| Parameter           | Type   | Description                                              |\n| ------------------- | ------ | ------------------------------------------------------- |\n| `selected`          | string | Pre-select an option (`none`, or an offer id)           |\n| `validate`      | boolean | Emit `hts-validated` (current validity) from load instead of staying silent until the first `hts-validate`. Default `false`. |\n| `rewardsType`       | string | Override rewards type                                   |\n| `rewardsConversion` | string | Override rewards conversion                             |\n| `entryPoint`        | string | The placement the widget is shown in; adjusts UI & copy |\n\n## Iframe Integration (Alternative)\n\nFor partners who prefer iframe-based integration, use the `merchandising_url` from the create offer response:\n\n```html\n<iframe\n  src=\"{{MERCHANDISING_URL}}\"\n  style=\"width: 100%; border: none; height: 400px;\">\n</iframe>\n```\n\nUse the `hts-dimension` event to adjust iframe height dynamically.\n\n## Loading Tolerance\n\nIf the `hts-initialized` event is not received within a reasonable tolerance period after embedding the SDK, the hosting application should hide the widget and not require forced selection. This prevents user experience degradation if the SDK fails to load.\n\n## Styling and Theming\n\nThe SDK renders in Shadow DOM with partner-specific themes applied automatically based on your `partnerId`. Internal component styling cannot be overridden due to Shadow DOM encapsulation. Contact HTS if you need theme customization.\n\n## Security Considerations\n\n- **Origin Verification**: Always verify `event.origin` when handling postMessage events\n- **HTTPS Only**: Always use HTTPS URLs in production\n- **CSP Headers**: Ensure your Content Security Policy allows loading scripts from `hts.hopper.com`\n\n## Alternative: Merchandising Contents API\n\nPartners who cannot embed the widget can use the **Create Offer Merchandising Contents** endpoint to retrieve product copy and messaging as JSON. This approach requires the partner to build their own UI while using HTS-provided content.\n"
     },
     {
-      "name": "Contract Management (Post-Purchase)",
+      "name": "Contract Management",
       "description": "Endpoints for managing the lifecycle of contracts after purchase, including creation, confirmation, retrieval, search, and cancellation."
     },
     {
@@ -52,7 +52,7 @@
     "/offers": {
       "post": {
         "tags": [
-          "Offer & Merchandising (Pre-Purchase)"
+          "Offer & Merchandising"
         ],
         "summary": "Create Offers",
         "description": "Create offers for a customer's itinerary.",
@@ -127,7 +127,7 @@
     "/offers/price": {
       "post": {
         "tags": [
-          "Offer & Merchandising (Pre-Purchase)"
+          "Offer & Merchandising"
         ],
         "summary": "Price Offers",
         "description": "Price offers for a customer's itinerary.",
@@ -205,7 +205,7 @@
     "/offers/{id}": {
       "get": {
         "tags": [
-          "Offer & Merchandising (Pre-Purchase)"
+          "Offer & Merchandising"
         ],
         "summary": "Get Offer",
         "description": "Get an offer.",
@@ -271,7 +271,7 @@
     "/merchandising_contents": {
       "put": {
         "tags": [
-          "Offer & Merchandising (Pre-Purchase)"
+          "Offer & Merchandising"
         ],
         "summary": "Create Offer Merchandising Contents",
         "description": "Create the merchandising contents for the given product offer(s). This endpoint should be used when the partner is not embedding the merchandising widget provided by HTS in their booking flow. The response will be a customized set of keys, determined during integration, which map to product copy in the provided locale.",
@@ -333,7 +333,7 @@
     "/contracts": {
       "post": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Create Draft Contract",
         "description": "Create a draft contract for a customer's chosen offer.\n\nHTS uses an external payment gateway to tokenize payment cards as well as process payments and payouts.\nWhen HTS is the Merchant of Record (MOR) for the purchase of the order or remitting any product payout to a customer's credit card, HTS requires a tokenized credit card to be present in the `payments` array in the request below.\n\n<details>\n<summary>Expand this section for instructions about testing and Spreedly integration.</summary>\n\nThe returned payment method token **MxyYEhDK12CUAA18bJDkAq0ab3y** (from the sample response below) should be passed in the `payment_card` type with a `token` identifier as a part of the `payments` array in the request below.\n\nWhen using the staging environment, make sure to use one of [Adyen's test credit card numbers](https://docs.adyen.com/development-resources/testing/test-card-numbers).\n\n**Tokenization URL**: `https://core.spreedly.com/v1/payment_methods.json`\n\n- Documentation: [Spreedly API docs](https://developer.spreedly.com/reference/create-payment-method)\n\n**Example Tokenization Request**:\n\n```\ncurl --request POST --url https://core.spreedly.com/v1/payment_methods.json --header 'content-type: application/json' -u  \"login:password\" --data '{\n\t\"payment_method\": {\n\t\t\"email\": \"aaa@bbb.com\",\n\t\t\"credit_card\": {\n\t\t\t\"number\": \"4000020000000000\",\n\t\t\t\"month\": \"03\",\n\t\t\t\"year\": \"2030\",\n\t\t\t\"first_name\": \"John\",\n\t\t\t\"last_name\": \"Smith\",\n\t\t\t\"address1\": \"123 12th St\",\n\t\t\t\"address2\": \"Building B\",\n\t\t\t\"city\": \"Boston\",\n\t\t\t\"state\": \"MA\",\n\t\t\t\"zip\": \"02121\",\n\t\t\t\"country\": \"US\",\n\t\t\t\"verification_value\": \"737\"\n\t\t}\n\t}\n}'\n```\n**Example Tokenization Response**:\n```\n{\n\t\"transaction\": {\n\t\t\"token\": \"KtToV20m9qT1Yi8pbTeLNz0Ypns\",\n\t\t\"created_at\": \"2023-11-29T13:31:56Z\",\n\t\t\"updated_at\": \"2023-11-29T13:31:56Z\",\n\t\t\"succeeded\": true,\n\t\t\"transaction_type\": \"AddPaymentMethod\",\n\t\t\"retained\": false,\n\t\t\"state\": \"succeeded\",\n\t\t\"message_key\": \"messages.transaction_succeeded\",\n\t\t\"message\": \"Succeeded!\",\n\t\t\"payment_method\": {\n\t\t\t\"token\": \"MxyYEhDK12CUAA18bJDkAq0ab3y\",\n\t\t\t\"created_at\": \"2023-11-29T13:31:56Z\",\n\t\t\t\"updated_at\": \"2023-11-29T13:31:56Z\",\n\t\t\t\"email\": \"aaa@bbb.com\",\n\t\t\t\"data\": null,\n\t\t\t\"storage_state\": \"cached\",\n\t\t\t\"test\": true,\n\t\t\t\"metadata\": null,\n\t\t\t\"callback_url\": null,\n            \"last_four_digits\": \"0000\",\n            \"first_six_digits\": \"400002\",\n\t\t\t\"card_type\": \"visa\",\n\t\t\t\"first_name\": \"John\",\n\t\t\t\"last_name\": \"Smith\",\n\t\t\t\"month\": 3,\n\t\t\t\"year\": 2030,\n\t\t\t\"address1\": \"123 12th St\",\n\t\t\t\"address2\": \"Building B\",\n            \"city\": \"Boston\",\n            \"state\": \"MA\",\n            \"zip\": \"02121\",\n            \"country\": \"US\",\n\t\t\t\"phone_number\": null,\n\t\t\t\"company\": null,\n\t\t\t\"full_name\": \"John Smith\",\n\t\t\t\"eligible_for_card_updater\": true,\n\t\t\t\"shipping_address1\": null,\n\t\t\t\"shipping_address2\": null,\n\t\t\t\"shipping_city\": null,\n\t\t\t\"shipping_state\": null,\n\t\t\t\"shipping_zip\": null,\n\t\t\t\"shipping_country\": null,\n\t\t\t\"shipping_phone_number\": null,\n\t\t\t\"issuer_identification_number\": \"40000200\",\n\t\t\t\"click_to_pay\": false,\n\t\t\t\"managed\": true,\n\t\t\t\"payment_method_type\": \"credit_card\",\n\t\t\t\"errors\": [],\n\t\t\t\"bin_metadata\": {\n\t\t\t\t\"message\": \"BIN Metadata is available only to Advanced Vault enrolled customers and payment methods. Reach out to your account representative for more details.\"\n\t\t\t},\n\t\t\t\"fingerprint\": \"7ccffcf38900f224fc946cf2a9c8e260072b\",\n\t\t\t\"verification_value\": \"XXX\",\n\t\t\t\"number\": \"XXXX-XXXX-XXXX-0000\"\n\t\t}\n\t}\n}\n```\n</details>\n",
@@ -418,7 +418,7 @@
     "/contracts/{id}/confirm": {
       "put": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Confirm Contract",
         "description": "Confirm a contract. If HTS is merchant of record, the price is first captured before confirming.",
@@ -497,7 +497,7 @@
     "/contracts/{id}": {
       "get": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Get Contract",
         "description": "Get a contract.",
@@ -563,7 +563,7 @@
     "/contracts/{id}/status_history": {
       "get": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Get Contract Status History",
         "description": "Get the history of status events for a contract.",
@@ -629,7 +629,7 @@
     "/contracts/search": {
       "post": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Search Contracts",
         "description": "Search contracts.",
@@ -770,7 +770,7 @@
     "/contracts/{id}/void": {
       "put": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Void Contract",
         "description": "Voiding a contract results in the customer being refunded the total price of the product. This should be used when the itinerary associated with the contracts is canceled within the void window.",
@@ -849,7 +849,7 @@
     "/contracts/{id}/cancel": {
       "put": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Cancel Contract",
         "description": "Canceling a contract *does not* result in the customer being refunded the total price of the product. This should be used when the itinerary associated with the contracts is canceled outside of the void window.",
@@ -928,7 +928,7 @@
     "/contracts/{id}/contact_info": {
       "put": {
         "tags": [
-          "Contract Management (Post-Purchase)"
+          "Contract Management"
         ],
         "summary": "Update Contact Info",
         "description": "Replace the customer contact info (email, phone number, additional email-only notification recipients, and the primary booker's SMS/push notification preferences) on an existing contract. Send the full contact info; it replaces the stored set. This endpoint never sends notifications \u2014 recording SMS/push consent does not trigger delivery, and a request that enables SMS without a phone number is rejected as invalid; verifying the change is the partner's responsibility. The email address is validated the same way as during contract creation; an invalid address returns InvalidEmail. Allowed once the contract is confirmed, including fully-redeemed contracts; rejected for unconfirmed drafts and for voided or concluded contracts, which return InvalidContractStatus.",
@@ -1449,15 +1449,24 @@
         ]
       }
     },
-    "/itineraries/{itinerary_id}": {
+    "/contracts/{id}/itineraries/{itinerary_id}": {
       "get": {
         "tags": [
           "Partner Self-Service Exercise"
         ],
         "summary": "Get Fare Details",
-        "description": "Get detailed fare information for a shopped itinerary.",
-        "operationId": "getItinerariesItinerary_id",
+        "description": "Get detailed fare information for an itinerary from the contract's flight shop.",
+        "operationId": "getContractsIdItinerariesItinerary_id",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique identifier for a contract.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "itinerary_id",
             "in": "path",
@@ -4317,12 +4326,12 @@
             "description": "Cabin of the segment."
           },
           "reservation_booking_designator": {
-            "description": "Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`). Pass the code exactly as it appears on the ticket/PNR.",
+            "description": "Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`, `E1`). Pass the code exactly as it appears on the ticket/PNR.",
             "examples": [
               "Y"
             ],
             "type": "string",
-            "pattern": "^[A-Z]{1,2}$"
+            "pattern": "^[A-Z][A-Z0-9]?$"
           },
           "marketing_carrier_code": {
             "description": "IATA airline code of the marketing carrier for this segment.",
@@ -5983,12 +5992,12 @@
             "description": "Cabin of the segment."
           },
           "reservation_booking_designator": {
-            "description": "Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`). Pass the code exactly as it appears on the ticket/PNR.",
+            "description": "Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`, `E1`). Pass the code exactly as it appears on the ticket/PNR.",
             "examples": [
               "Y"
             ],
             "type": "string",
-            "pattern": "^[A-Z]{1,2}$"
+            "pattern": "^[A-Z][A-Z0-9]?$"
           },
           "marketing_carrier_code": {
             "description": "IATA airline code of the marketing carrier for this segment.",
@@ -6640,6 +6649,20 @@
             ],
             "type": "string",
             "const": "not_provided"
+          }
+        }
+      },
+      "not_purchased": {
+        "title": "not_purchased",
+        "description": "The booking was not purchased.",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "not_purchased"
           }
         }
       },
@@ -7694,6 +7717,9 @@
             "$ref": "#/components/schemas/good_will"
           },
           {
+            "$ref": "#/components/schemas/not_purchased"
+          },
+          {
             "$ref": "#/components/schemas/other1"
           },
           {
@@ -7704,6 +7730,7 @@
           "propertyName": "type",
           "mapping": {
             "good_will": "#/components/schemas/good_will",
+            "not_purchased": "#/components/schemas/not_purchased",
             "other": "#/components/schemas/other1",
             "void_window": "#/components/schemas/void_window"
           }
@@ -8130,12 +8157,12 @@
             ]
           },
           "reservation_booking_designator": {
-            "description": "Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`). Pass the code exactly as it appears on the ticket/PNR.",
+            "description": "Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`, `E1`). Pass the code exactly as it appears on the ticket/PNR.",
             "examples": [
               "J"
             ],
             "type": "string",
-            "pattern": "^[A-Z]{1,2}$"
+            "pattern": "^[A-Z][A-Z0-9]?$"
           },
           "rebook_eligibility": {
             "$ref": "#/components/schemas/rebook_eligibility"
@@ -8336,12 +8363,12 @@
             ]
           },
           "reservation_booking_designator": {
-            "description": "Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`). Pass the code exactly as it appears on the ticket/PNR.",
+            "description": "Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`, `E1`). Pass the code exactly as it appears on the ticket/PNR.",
             "examples": [
               "F"
             ],
             "type": "string",
-            "pattern": "^[A-Z]{1,2}$"
+            "pattern": "^[A-Z][A-Z0-9]?$"
           }
         }
       },
@@ -8478,12 +8505,12 @@
             ]
           },
           "reservation_booking_designator": {
-            "description": "Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`). Pass the code exactly as it appears on the ticket/PNR.",
+            "description": "Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`, `E1`). Pass the code exactly as it appears on the ticket/PNR.",
             "examples": [
               "N"
             ],
             "type": "string",
-            "pattern": "^[A-Z]{1,2}$"
+            "pattern": "^[A-Z][A-Z0-9]?$"
           },
           "marketing_carrier_code": {
             "description": "IATA marketing carrier code.",
@@ -8940,8 +8967,8 @@
     {
       "name": "Product API",
       "tags": [
-        "Offer & Merchandising (Pre-Purchase)",
-        "Contract Management (Post-Purchase)",
+        "Offer & Merchandising",
+        "Contract Management",
         "Partner Manual Exercise",
         "HTS Self-Service Exercise",
         "Partner Self-Service Exercise",

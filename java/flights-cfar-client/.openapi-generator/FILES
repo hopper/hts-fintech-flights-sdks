@@ -12,9 +12,9 @@ src/main/java/com/hopper/fintech/flights/cfar/ServerConfiguration.java
 src/main/java/com/hopper/fintech/flights/cfar/ServerVariable.java
 src/main/java/com/hopper/fintech/flights/cfar/StringUtil.java
 src/main/java/com/hopper/fintech/flights/cfar/api/AnalyticsApi.java
-src/main/java/com/hopper/fintech/flights/cfar/api/ContractManagementPostPurchaseApi.java
+src/main/java/com/hopper/fintech/flights/cfar/api/ContractManagementApi.java
 src/main/java/com/hopper/fintech/flights/cfar/api/HtsSelfServiceExerciseApi.java
-src/main/java/com/hopper/fintech/flights/cfar/api/OfferMerchandisingPrePurchaseApi.java
+src/main/java/com/hopper/fintech/flights/cfar/api/OfferMerchandisingApi.java
 src/main/java/com/hopper/fintech/flights/cfar/api/PartnerManualExerciseApi.java
 src/main/java/com/hopper/fintech/flights/cfar/api/PartnerSelfServiceExerciseApi.java
 src/main/java/com/hopper/fintech/flights/cfar/auth/ApiKeyAuth.java
@@ -146,6 +146,7 @@ src/main/java/com/hopper/fintech/flights/cfar/model/NotAvailable.java
 src/main/java/com/hopper/fintech/flights/cfar/model/NotProvided.java
 src/main/java/com/hopper/fintech/flights/cfar/model/NotProvided1.java
 src/main/java/com/hopper/fintech/flights/cfar/model/NotProvided2.java
+src/main/java/com/hopper/fintech/flights/cfar/model/NotPurchased.java
 src/main/java/com/hopper/fintech/flights/cfar/model/NotificationPreferences.java
 src/main/java/com/hopper/fintech/flights/cfar/model/OfferExpired.java
 src/main/java/com/hopper/fintech/flights/cfar/model/OfferNotFound.java

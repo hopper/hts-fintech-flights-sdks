@@ -490,6 +490,7 @@ public class JSON {
                     public Class<? extends com.hopper.fintech.flights.dafar.model.Reason> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("good_will", com.hopper.fintech.flights.dafar.model.GoodWill.class);
+                        classByDiscriminatorValue.put("not_purchased", com.hopper.fintech.flights.dafar.model.NotPurchased.class);
                         classByDiscriminatorValue.put("other", com.hopper.fintech.flights.dafar.model.Other1.class);
                         classByDiscriminatorValue.put("void_window", com.hopper.fintech.flights.dafar.model.VoidWindow.class);
                         classByDiscriminatorValue.put("reason", com.hopper.fintech.flights.dafar.model.Reason.class);
@@ -780,6 +781,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotProvided.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotProvided1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotProvided2.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotPurchased.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotificationPreferences.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.OfferNotFound.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.OfferPrice.CustomTypeAdapterFactory());

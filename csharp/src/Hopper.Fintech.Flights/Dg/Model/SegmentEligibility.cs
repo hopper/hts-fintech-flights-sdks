@@ -41,7 +41,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// <param name="marketingFlightNumber">Marketing flight number.</param>
         /// <param name="cabin">Cabin class.</param>
         /// <param name="rebookEligibility">rebookEligibility</param>
-        /// <param name="reservationBookingDesignator">Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;). Pass the code exactly as it appears on the ticket/PNR.</param>
+        /// <param name="reservationBookingDesignator">Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;, &#x60;E1&#x60;). Pass the code exactly as it appears on the ticket/PNR.</param>
         /// <param name="disruption">disruption</param>
         [JsonConstructor]
         public SegmentEligibility(string id, string originAirport, string destinationAirport, string departureDateTime, string arrivalDateTime, string marketingCarrierCode, string marketingFlightNumber, Cabin cabin, RebookEligibility rebookEligibility, Option<string?> reservationBookingDesignator = default, Option<DisruptionReason?> disruption = default)
@@ -132,9 +132,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public Option<string?> ReservationBookingDesignatorOption { get; private set; }
 
         /// <summary>
-        /// Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;). Pass the code exactly as it appears on the ticket/PNR.
+        /// Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;, &#x60;E1&#x60;). Pass the code exactly as it appears on the ticket/PNR.
         /// </summary>
-        /// <value>Reservation Booking Designator (RBD) for this segment: the one- or two-letter booking code the airline sold the seat under. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;). Pass the code exactly as it appears on the ticket/PNR.</value>
+        /// <value>Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. &#x60;Y&#x60;, &#x60;B&#x60;, &#x60;M&#x60;, &#x60;Q&#x60;, &#x60;N&#x60;, &#x60;J&#x60;, &#x60;F&#x60;, &#x60;E1&#x60;). Pass the code exactly as it appears on the ticket/PNR.</value>
         [JsonPropertyName("reservation_booking_designator")]
         public string? ReservationBookingDesignator { get { return this.ReservationBookingDesignatorOption.Value; } set { this.ReservationBookingDesignatorOption = new(value); } }
 

@@ -66,8 +66,8 @@
       "name": "Cfar",
       "spec": "flights-cfar-v2.json",
       "accessors": {
-        "Offer & Merchandising (Pre-Purchase)": "Offers",
-        "Contract Management (Post-Purchase)": "Contracts",
+        "Offer & Merchandising": "Offers",
+        "Contract Management": "Contracts",
         "Partner Self-Service Exercise": "PartnerSelfServiceExercise",
         "Partner Manual Exercise": "PartnerManualExercise",
         "HTS Self-Service Exercise": "HtsSelfServiceExercise",
@@ -78,8 +78,8 @@
       "name": "Dg",
       "spec": "flights-dafar-v2.json",
       "accessors": {
-        "Offer & Merchandising (Pre-Purchase)": "Offers",
-        "Contract Management (Post-Purchase)": "Contracts",
+        "Offer & Merchandising": "Offers",
+        "Contract Management": "Contracts",
         "Partner Self-Service Exercise": "PartnerSelfServiceExercise",
         "Partner Manual Exercise": "PartnerManualExercise",
         "HTS Self-Service Exercise": "HtsSelfServiceExercise",

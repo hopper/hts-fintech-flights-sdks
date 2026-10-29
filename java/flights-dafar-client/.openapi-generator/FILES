@@ -12,10 +12,10 @@ src/main/java/com/hopper/fintech/flights/dafar/ServerConfiguration.java
 src/main/java/com/hopper/fintech/flights/dafar/ServerVariable.java
 src/main/java/com/hopper/fintech/flights/dafar/StringUtil.java
 src/main/java/com/hopper/fintech/flights/dafar/api/AnalyticsApi.java
-src/main/java/com/hopper/fintech/flights/dafar/api/ContractManagementPostPurchaseApi.java
+src/main/java/com/hopper/fintech/flights/dafar/api/ContractManagementApi.java
 src/main/java/com/hopper/fintech/flights/dafar/api/FlightStatusUpdatesApi.java
 src/main/java/com/hopper/fintech/flights/dafar/api/HtsSelfServiceExerciseApi.java
-src/main/java/com/hopper/fintech/flights/dafar/api/OfferMerchandisingPrePurchaseApi.java
+src/main/java/com/hopper/fintech/flights/dafar/api/OfferMerchandisingApi.java
 src/main/java/com/hopper/fintech/flights/dafar/api/PartnerManualExerciseApi.java
 src/main/java/com/hopper/fintech/flights/dafar/api/PartnerSelfServiceExerciseApi.java
 src/main/java/com/hopper/fintech/flights/dafar/auth/ApiKeyAuth.java
@@ -190,6 +190,7 @@ src/main/java/com/hopper/fintech/flights/dafar/model/NotAvailable.java
 src/main/java/com/hopper/fintech/flights/dafar/model/NotProvided.java
 src/main/java/com/hopper/fintech/flights/dafar/model/NotProvided1.java
 src/main/java/com/hopper/fintech/flights/dafar/model/NotProvided2.java
+src/main/java/com/hopper/fintech/flights/dafar/model/NotPurchased.java
 src/main/java/com/hopper/fintech/flights/dafar/model/NotificationPreferences.java
 src/main/java/com/hopper/fintech/flights/dafar/model/OfferNotFound.java
 src/main/java/com/hopper/fintech/flights/dafar/model/OfferPrice.java

@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hopper.fintech.flights.cfar.model.GoodWill;
+import com.hopper.fintech.flights.cfar.model.NotPurchased;
 import com.hopper.fintech.flights.cfar.model.Other1;
 import com.hopper.fintech.flights.cfar.model.VoidWindow;
 import java.io.IOException;
@@ -73,6 +74,7 @@ public class Reason extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<GoodWill> adapterGoodWill = gson.getDelegateAdapter(this, TypeToken.get(GoodWill.class));
+            final TypeAdapter<NotPurchased> adapterNotPurchased = gson.getDelegateAdapter(this, TypeToken.get(NotPurchased.class));
             final TypeAdapter<Other1> adapterOther1 = gson.getDelegateAdapter(this, TypeToken.get(Other1.class));
             final TypeAdapter<VoidWindow> adapterVoidWindow = gson.getDelegateAdapter(this, TypeToken.get(VoidWindow.class));
 
@@ -90,6 +92,12 @@ public class Reason extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
+                    // check if the actual instance is of the type `NotPurchased`
+                    if (value.getActualInstance() instanceof NotPurchased) {
+                        JsonElement element = adapterNotPurchased.toJsonTree((NotPurchased)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
                     // check if the actual instance is of the type `Other1`
                     if (value.getActualInstance() instanceof Other1) {
                         JsonElement element = adapterOther1.toJsonTree((Other1)value.getActualInstance());
@@ -102,7 +110,7 @@ public class Reason extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: GoodWill, Other1, VoidWindow");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: GoodWill, NotPurchased, Other1, VoidWindow");
                 }
 
                 @Override
@@ -125,6 +133,18 @@ public class Reason extends AbstractOpenApiSchema {
                         // deserialization failed, continue
                         errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoodWill failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoodWill'", e);
+                    }
+                    // deserialize NotPurchased
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        NotPurchased.validateJsonElement(jsonElement);
+                        actualAdapter = adapterNotPurchased;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'NotPurchased'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotPurchased failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'NotPurchased'", e);
                     }
                     // deserialize Other1
                     try {
@@ -177,6 +197,7 @@ public class Reason extends AbstractOpenApiSchema {
 
     static {
         schemas.put("GoodWill", GoodWill.class);
+        schemas.put("NotPurchased", NotPurchased.class);
         schemas.put("Other1", Other1.class);
         schemas.put("VoidWindow", VoidWindow.class);
     }
@@ -189,13 +210,18 @@ public class Reason extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * GoodWill, Other1, VoidWindow
+     * GoodWill, NotPurchased, Other1, VoidWindow
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
         if (instance instanceof GoodWill) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof NotPurchased) {
             super.setActualInstance(instance);
             return;
         }
@@ -210,14 +236,14 @@ public class Reason extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be GoodWill, Other1, VoidWindow");
+        throw new RuntimeException("Invalid instance type. Must be GoodWill, NotPurchased, Other1, VoidWindow");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * GoodWill, Other1, VoidWindow
+     * GoodWill, NotPurchased, Other1, VoidWindow
      *
-     * @return The actual instance (GoodWill, Other1, VoidWindow)
+     * @return The actual instance (GoodWill, NotPurchased, Other1, VoidWindow)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -235,6 +261,18 @@ public class Reason extends AbstractOpenApiSchema {
     @SuppressWarnings("unchecked")
     public GoodWill getGoodWill() throws ClassCastException {
         return (GoodWill)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `NotPurchased`. If the actual instance is not `NotPurchased`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `NotPurchased`
+     * @throws ClassCastException if the instance is not `NotPurchased`
+     */
+    @SuppressWarnings("unchecked")
+    public NotPurchased getNotPurchased() throws ClassCastException {
+        return (NotPurchased)super.getActualInstance();
     }
 
     /**
@@ -279,6 +317,14 @@ public class Reason extends AbstractOpenApiSchema {
             errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoodWill failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with NotPurchased
+        try {
+            NotPurchased.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for NotPurchased failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         // validate the json string with Other1
         try {
             Other1.validateJsonElement(jsonElement);
@@ -296,7 +342,7 @@ public class Reason extends AbstractOpenApiSchema {
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Reason with oneOf schemas: GoodWill, Other1, VoidWindow. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Reason with oneOf schemas: GoodWill, NotPurchased, Other1, VoidWindow. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -18,11 +18,11 @@ public sealed class FlightsCfar : IDisposable
 
     public IAnalyticsApi Analytics => _services.GetRequiredService<IAnalyticsApi>();
 
-    public IContractManagementPostPurchaseApi Contracts => _services.GetRequiredService<IContractManagementPostPurchaseApi>();
+    public IContractManagementApi Contracts => _services.GetRequiredService<IContractManagementApi>();
 
     public IHTSSelfServiceExerciseApi HtsSelfServiceExercise => _services.GetRequiredService<IHTSSelfServiceExerciseApi>();
 
-    public IOfferMerchandisingPrePurchaseApi Offers => _services.GetRequiredService<IOfferMerchandisingPrePurchaseApi>();
+    public IOfferMerchandisingApi Offers => _services.GetRequiredService<IOfferMerchandisingApi>();
 
     public IPartnerManualExerciseApi PartnerManualExercise => _services.GetRequiredService<IPartnerManualExerciseApi>();
 
