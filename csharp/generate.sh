@@ -34,24 +34,34 @@ PY
   echo "$out"
 }
 
-with_sdk_accessors() {
-  local spec="$1" out="${WORK_DIR}/sdk-$(basename "$1")"
-  python3 - "$spec" "$out" sdk/openapi-generator.json <<'PY'
+sdk_configs() {
+  python3 - sdk/openapi-generator.json "$WORK_DIR" <<'PY'
 import json, re, sys, pathlib
-src, dst, config = (pathlib.Path(a) for a in sys.argv[1:4])
-spec = json.loads(src.read_text())
-names = json.loads(config.read_text()).get("sdkAccessors", {})
+config_path, work = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+config = json.loads(config_path.read_text())
+products = config.pop("sdkProducts")
+product_files = config.pop("sdkProductFiles")
 
-def accessor(tag):
+def accessor(names, tag):
     return names.get(tag) or "".join(w[:1].upper() + w[1:].lower() for w in re.findall(r"[A-Za-z0-9]+", tag))
 
-for ops in spec.get("paths", {}).values():
-    for op in ops.values():
-        if isinstance(op, dict) and op.get("tags"):
-            op["x-sdk-accessor"] = accessor(op["tags"][0])
-dst.write_text(json.dumps(spec, indent=2) + "\n")
+for product in products:
+    name = product["name"]
+    spec = json.loads((work / product["spec"]).read_text())
+    product["path"] = re.sub(r"^https?://[^/]+", "", spec["servers"][0]["url"])
+    product["field"] = name[:1].lower() + name[1:]
+    for ops in spec.get("paths", {}).values():
+        for op in ops.values():
+            if isinstance(op, dict) and op.get("tags"):
+                op["x-sdk-accessor"] = accessor(product["accessors"], op["tags"][0])
+    (work / f"sdk-{name}.spec.json").write_text(json.dumps(spec, indent=2) + "\n")
+    files = {t: dict(f, destinationFilename=f["destinationFilename"].format(product=name)) for t, f in product_files.items()}
+    (work / f"sdk-{name}.json").write_text(json.dumps(dict(config, sdkProduct=name, files=files), indent=2) + "\n")
+
+shared = dict(config, sdkProducts=[{k: p[k] for k in ("name", "field", "path")} for p in products])
+(work / "sdk-shared.json").write_text(json.dumps(shared, indent=2) + "\n")
+print(" ".join(p["name"] for p in products))
 PY
-  echo "$out"
 }
 
 clean() {
@@ -71,24 +81,11 @@ generate_client() {
   rm -f "$dest"/Extensions/IHost*Extensions.cs "$dest"/Extensions/IHttpClientBuilderExtensions.cs
 }
 
-SPEC="$(partner_api_only ../api/flights-cfar-v2.json)"
-PACKAGE_DIR="src/Hopper.Fintech.Flights"
-
-clean "$PACKAGE_DIR"
-generate_client "$SPEC" cfar/openapi-generator.json "$PACKAGE_DIR/Cfar"
-generate_client ../api/spreedly.yaml spreedly/openapi-generator.json "$PACKAGE_DIR/Spreedly"
-
-SDK_OUT="${WORK_DIR}/sdk"
-clean "$SDK_OUT"
-run_generator generate \
-  -i "$(with_sdk_accessors "$SPEC")" \
-  -g csharp \
-  -o "$SDK_OUT" \
-  -t sdk/templates \
-  --config sdk/openapi-generator.json \
-  --skip-validate-spec
-
-python3 - sdk/openapi-generator.json "$SDK_OUT" "$PACKAGE_DIR" <<'PY'
+generate_sdk() {
+  local spec="$1" config="$2" out="${WORK_DIR}/sdk"
+  clean "$out"
+  run_generator generate -i "$spec" -g csharp -o "$out" -t sdk/templates --config "$config" --skip-validate-spec
+  python3 - "$config" "$out" "$PACKAGE_DIR" <<'PY'
 import json, shutil, sys, pathlib
 config, out, dest = (pathlib.Path(a) for a in sys.argv[1:4])
 for spec in json.loads(config.read_text())["files"].values():
@@ -96,3 +93,17 @@ for spec in json.loads(config.read_text())["files"].values():
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(out / spec["destinationFilename"], target)
 PY
+}
+
+PACKAGE_DIR="src/Hopper.Fintech.Flights"
+
+clean "$PACKAGE_DIR"
+generate_client "$(partner_api_only ../api/flights-cfar-v2.json)" cfar/openapi-generator.json "$PACKAGE_DIR/Cfar"
+generate_client "$(partner_api_only ../api/flights-dafar-v2.json)" dg/openapi-generator.json "$PACKAGE_DIR/Dg"
+generate_client ../api/spreedly.yaml spreedly/openapi-generator.json "$PACKAGE_DIR/Spreedly"
+
+PRODUCTS="$(sdk_configs)"
+for product in $PRODUCTS; do
+  generate_sdk "${WORK_DIR}/sdk-${product}.spec.json" "${WORK_DIR}/sdk-${product}.json"
+done
+generate_sdk "${WORK_DIR}/sdk-${PRODUCTS%% *}.spec.json" "${WORK_DIR}/sdk-shared.json"

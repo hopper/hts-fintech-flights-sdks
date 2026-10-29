@@ -12,6 +12,8 @@ public sealed class HtsEnvironment
     }
 
     public string Host { get; }
+{{#sdkProducts}}
 
-    public Uri FlightsCfarBaseUrl => new(Host + "{{{contextPath}}}");
+    public Uri Flights{{name}}BaseUrl => new(Host + "{{{path}}}");
+{{/sdkProducts}}
 }

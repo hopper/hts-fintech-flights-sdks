@@ -2,13 +2,14 @@ using Hopper.Fintech.Flights;
 
 internal static class Env
 {
-    public static FlightsCfarClient HtsClient()
+    public static HtsFlightsClient HtsClient()
     {
-        var builder = FlightsCfarClient.Builder().ApiKey(Optional("HTS_API_KEY", "unused"));
-        var baseUrl = Optional("HTS_BASE_URL", "");
-        if (baseUrl.Length > 0)
+        var builder = HtsFlightsClient.Builder().ApiKey(Optional("HTS_API_KEY", "unused"));
+        var cfarBaseUrl = Optional("HTS_CFAR_BASE_URL", "");
+        var dgBaseUrl = Optional("HTS_DG_BASE_URL", "");
+        if (cfarBaseUrl.Length > 0 && dgBaseUrl.Length > 0)
         {
-            builder.BaseUrl(new Uri(baseUrl));
+            builder.CfarBaseUrl(new Uri(cfarBaseUrl)).DgBaseUrl(new Uri(dgBaseUrl));
         }
         else
         {

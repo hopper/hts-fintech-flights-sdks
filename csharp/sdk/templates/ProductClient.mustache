@@ -1,0 +1,66 @@
+using Hopper.Fintech.Flights.{{sdkProduct}}.Api;
+using Hopper.Fintech.Flights.{{sdkProduct}}.Client;
+using Hopper.Fintech.Flights.{{sdkProduct}}.Extensions;
+using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace Hopper.Fintech.Flights;
+
+public sealed class Flights{{sdkProduct}} : IDisposable
+{
+    private readonly ServiceProvider _services;
+
+    private Flights{{sdkProduct}}(ServiceProvider services)
+    {
+        _services = services;
+    }
+
+{{#apiInfo}}{{#apis}}{{#operations}}    public {{interfacePrefix}}{{classname}} {{#operation}}{{#-first}}{{{vendorExtensions.x-sdk-accessor}}}{{/-first}}{{/operation}} => _services.GetRequiredService<{{interfacePrefix}}{{classname}}>();
+
+{{/operations}}{{/apis}}{{/apiInfo}}    public JsonSerializerOptions JsonSerializerOptions => _services.GetRequiredService<JsonSerializerOptionsProvider>().Options;
+
+    public void Dispose() => _services.Dispose();
+
+    internal static Flights{{sdkProduct}} Build(
+        Uri baseUrl,
+        string apiKey,
+        TimeSpan timeout,
+        ILoggerFactory? loggerFactory,
+        IReadOnlyDictionary<string, string> defaultHeaders,
+        Func<HttpMessageHandler>? handlerFactory)
+    {
+        var services = new ServiceCollection();
+        services.AddLogging();
+        if (loggerFactory != null)
+        {
+            services.AddSingleton(loggerFactory);
+        }
+
+        services.AddApi(options =>
+        {
+            options.AddTokens(new ApiKeyToken(apiKey, ClientUtils.ApiKeyHeader.X_Api_Key, prefix: string.Empty));
+            options.UseProvider<{{sdkProduct}}ApiKeyProvider, ApiKeyToken>();
+            options.AddApiHttpClients(
+                client =>
+                {
+                    client.BaseAddress = baseUrl;
+                    client.Timeout = timeout;
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd(SdkVersion.UserAgent);
+                    foreach (var header in defaultHeaders)
+                    {
+                        client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+                    }
+                },
+                builder =>
+                {
+                    if (handlerFactory != null)
+                    {
+                        builder.ConfigurePrimaryHttpMessageHandler(handlerFactory);
+                    }
+                });
+        });
+
+        return new Flights{{sdkProduct}}(services.BuildServiceProvider());
+    }
+}

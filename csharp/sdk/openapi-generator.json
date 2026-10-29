@@ -6,30 +6,100 @@
     "api": "ApiChannel"
   },
   "sdkEnvironments": [
-    { "name": "Staging", "host": "https://fintech.staging.htsapis.com" },
-    { "name": "Production", "host": "https://fintech.htsapis.com" }
+    {
+      "name": "Staging",
+      "host": "https://fintech.staging.htsapis.com"
+    },
+    {
+      "name": "Production",
+      "host": "https://fintech.htsapis.com"
+    }
   ],
-  "sdkAccessors": {
-    "Offer & Merchandising (Pre-Purchase)": "Offers",
-    "Contract Management (Post-Purchase)": "Contracts",
-    "Partner Self-Service Exercise": "PartnerSelfServiceExercise",
-    "Partner Manual Exercise": "PartnerManualExercise",
-    "HTS Self-Service Exercise": "HtsSelfServiceExercise",
-    "Analytics": "Analytics"
-  },
   "files": {
-    "Package.csproj.mustache": { "templateType": "SupportingFiles", "destinationFilename": "Hopper.Fintech.Flights.csproj" },
-    "FlightsCfarClient.mustache": { "templateType": "SupportingFiles", "destinationFilename": "FlightsCfarClient.cs" },
-    "FlightsCfarClientBuilder.mustache": { "templateType": "SupportingFiles", "destinationFilename": "FlightsCfarClientBuilder.cs" },
-    "HtsEnvironment.mustache": { "templateType": "SupportingFiles", "destinationFilename": "HtsEnvironment.cs" },
-    "SdkVersion.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SdkVersion.cs" },
-    "StaticApiKeyProvider.mustache": { "templateType": "SupportingFiles", "destinationFilename": "StaticApiKeyProvider.cs" },
-    "StaticBasicTokenProvider.mustache": { "templateType": "SupportingFiles", "destinationFilename": "StaticBasicTokenProvider.cs" },
-    "CardDetails.mustache": { "templateType": "SupportingFiles", "destinationFilename": "CardDetails.cs" },
-    "Payments.mustache": { "templateType": "SupportingFiles", "destinationFilename": "Payments.cs" },
-    "RsaEncryption.mustache": { "templateType": "SupportingFiles", "destinationFilename": "RsaEncryption.cs" },
-    "SpreedlyTokenizer.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SpreedlyTokenizer.cs" },
-    "SpreedlyTokenizerBuilder.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SpreedlyTokenizerBuilder.cs" },
-    "SpreedlyException.mustache": { "templateType": "SupportingFiles", "destinationFilename": "SpreedlyException.cs" }
+    "Package.csproj.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "Hopper.Fintech.Flights.csproj"
+    },
+    "HtsFlightsClient.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "HtsFlightsClient.cs"
+    },
+    "HtsFlightsClientBuilder.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "HtsFlightsClientBuilder.cs"
+    },
+    "HtsEnvironment.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "HtsEnvironment.cs"
+    },
+    "SdkVersion.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "SdkVersion.cs"
+    },
+    "StaticBasicTokenProvider.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "StaticBasicTokenProvider.cs"
+    },
+    "CardDetails.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "CardDetails.cs"
+    },
+    "RsaEncryption.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "RsaEncryption.cs"
+    },
+    "SpreedlyTokenizer.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "SpreedlyTokenizer.cs"
+    },
+    "SpreedlyTokenizerBuilder.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "SpreedlyTokenizerBuilder.cs"
+    },
+    "SpreedlyException.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "SpreedlyException.cs"
+    }
+  },
+  "sdkProducts": [
+    {
+      "name": "Cfar",
+      "spec": "flights-cfar-v2.json",
+      "accessors": {
+        "Offer & Merchandising (Pre-Purchase)": "Offers",
+        "Contract Management (Post-Purchase)": "Contracts",
+        "Partner Self-Service Exercise": "PartnerSelfServiceExercise",
+        "Partner Manual Exercise": "PartnerManualExercise",
+        "HTS Self-Service Exercise": "HtsSelfServiceExercise",
+        "Analytics": "Analytics"
+      }
+    },
+    {
+      "name": "Dg",
+      "spec": "flights-dafar-v2.json",
+      "accessors": {
+        "Offer & Merchandising (Pre-Purchase)": "Offers",
+        "Contract Management (Post-Purchase)": "Contracts",
+        "Partner Self-Service Exercise": "PartnerSelfServiceExercise",
+        "Partner Manual Exercise": "PartnerManualExercise",
+        "HTS Self-Service Exercise": "HtsSelfServiceExercise",
+        "Flight Status Updates": "FlightStatusUpdates",
+        "Analytics": "Analytics"
+      }
+    }
+  ],
+  "sdkProductFiles": {
+    "ProductClient.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "Flights{product}.cs"
+    },
+    "ProductPayments.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "{product}Payments.cs"
+    },
+    "ProductApiKeyProvider.mustache": {
+      "templateType": "SupportingFiles",
+      "destinationFilename": "{product}ApiKeyProvider.cs"
+    }
   }
 }

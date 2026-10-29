@@ -1,0 +1,24 @@
+namespace Hopper.Fintech.Flights;
+
+public sealed class HtsFlightsClient : IDisposable
+{
+    internal HtsFlightsClient()
+    {
+    }
+
+    public static HtsFlightsClient Create(HtsEnvironment environment, string apiKey) =>
+        Builder().Environment(environment).ApiKey(apiKey).Build();
+
+    public static HtsFlightsClientBuilder Builder() => new();
+{{#sdkProducts}}
+
+    public Flights{{name}} {{name}} { get; internal init; } = null!;
+{{/sdkProducts}}
+
+    public void Dispose()
+    {
+{{#sdkProducts}}
+        {{name}}.Dispose();
+{{/sdkProducts}}
+    }
+}

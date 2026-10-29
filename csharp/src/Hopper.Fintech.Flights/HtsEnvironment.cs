@@ -13,4 +13,6 @@ public sealed class HtsEnvironment
     public string Host { get; }
 
     public Uri FlightsCfarBaseUrl => new(Host + "/flights-cfar/v2");
+
+    public Uri FlightsDgBaseUrl => new(Host + "/flights-dafar/v2");
 }

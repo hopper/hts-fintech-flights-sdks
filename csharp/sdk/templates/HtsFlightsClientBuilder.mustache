@@ -1,0 +1,82 @@
+using Microsoft.Extensions.Logging;
+
+namespace Hopper.Fintech.Flights;
+
+public sealed class HtsFlightsClientBuilder
+{
+    private readonly Dictionary<string, string> _defaultHeaders = new(StringComparer.OrdinalIgnoreCase);
+    private HtsEnvironment? _environment;
+{{#sdkProducts}}
+    private Uri? _{{field}}BaseUrl;
+{{/sdkProducts}}
+    private string? _apiKey;
+    private TimeSpan _timeout = TimeSpan.FromSeconds(60);
+    private ILoggerFactory? _loggerFactory;
+    private Func<HttpMessageHandler>? _handlerFactory;
+
+    internal HtsFlightsClientBuilder()
+    {
+    }
+
+    public HtsFlightsClientBuilder Environment(HtsEnvironment environment)
+    {
+        _environment = environment;
+        return this;
+    }
+{{#sdkProducts}}
+
+    public HtsFlightsClientBuilder {{name}}BaseUrl(Uri baseUrl)
+    {
+        _{{field}}BaseUrl = baseUrl;
+        return this;
+    }
+{{/sdkProducts}}
+
+    public HtsFlightsClientBuilder ApiKey(string apiKey)
+    {
+        _apiKey = apiKey;
+        return this;
+    }
+
+    public HtsFlightsClientBuilder Timeout(TimeSpan timeout)
+    {
+        _timeout = timeout;
+        return this;
+    }
+
+    public HtsFlightsClientBuilder LoggerFactory(ILoggerFactory loggerFactory)
+    {
+        _loggerFactory = loggerFactory;
+        return this;
+    }
+
+    public HtsFlightsClientBuilder DefaultHeader(string name, string value)
+    {
+        _defaultHeaders[name] = value;
+        return this;
+    }
+
+    public HtsFlightsClientBuilder HttpMessageHandler(Func<HttpMessageHandler> handlerFactory)
+    {
+        _handlerFactory = handlerFactory;
+        return this;
+    }
+
+    public HtsFlightsClient Build()
+    {
+        if (string.IsNullOrEmpty(_apiKey))
+        {
+            throw new InvalidOperationException("ApiKey is required");
+        }
+{{#sdkProducts}}
+        var {{field}}BaseUrl = _{{field}}BaseUrl ?? _environment?.Flights{{name}}BaseUrl
+            ?? throw new InvalidOperationException("Environment or {{name}}BaseUrl is required");
+{{/sdkProducts}}
+        return new HtsFlightsClient
+        {
+{{#sdkProducts}}
+            {{name}} = Flights{{name}}.Build({{field}}BaseUrl, _apiKey, _timeout, _loggerFactory, _defaultHeaders, _handlerFactory),
+{{/sdkProducts}}
+        };
+    }
+}
