@@ -61,7 +61,8 @@ internal static class DgFlow
         using var tokenizer = Env.SpreedlyTokenizerOrNull();
         if (tokenizer == null)
         {
-            return (MerchantOfRecord.Partner, DgPayments.NotProvided(amount));
+            var card = new PaymentCard(amount, new Identifier(new Details("1111", "12", "2030", Details.TypeEnum.Details)), PaymentCard.TypeEnum.PaymentCard);
+            return (MerchantOfRecord.Partner, DgPayments.Provided(new ProvidedPayment(card)));
         }
         var token = await tokenizer.TokenizeAsync(new CardDetails("Ada", "Lovelace", "4111111111111111", "12", "2030", "123"));
         Console.WriteLine($"Tokenized card with Spreedly: {token}");

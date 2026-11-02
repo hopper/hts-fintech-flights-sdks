@@ -102,7 +102,7 @@ Generation is idempotent: running it twice produces identical sources, so a spec
 - `disallowAdditionalPropertiesIfNotPresent=false` stops the generated models from rejecting fields they do not know about. Older SDK versions keep working when the API adds a field. Required-field and type checks are kept.
 - `hideGenerationTimestamp=true` keeps regeneration diffs limited to real changes.
 - The spec's webhooks are events HTS sends to the partner, but the generator would emit them as outbound API calls. `generate.sh` feeds the generator a copy of the spec without the `webhooks` section; the event models (`ContractConfirmed`, `ContractExercised`, and so on) are still generated from the schemas so partners can parse incoming webhooks.
-- The generator never deletes files. If an endpoint or model is removed from the spec, its generated file lingers and has to be removed by hand.
+- The generator never deletes files on its own, so `generate.sh` first removes everything listed in each module's `.openapi-generator/FILES` from the last run. A file for an endpoint or model that was removed or renamed in the spec therefore disappears on the next regeneration.
 
 ## Updating the spec
 

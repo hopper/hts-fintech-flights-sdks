@@ -39,6 +39,9 @@ EOF
 
 generate() {
   local spec="$1" module="$2"
+  if [ -f "${module}/.openapi-generator/FILES" ]; then
+    (cd "$module" && xargs rm -f < .openapi-generator/FILES)
+  fi
   run_generator generate \
     -i "$(without_webhooks "$spec")" \
     -g java \

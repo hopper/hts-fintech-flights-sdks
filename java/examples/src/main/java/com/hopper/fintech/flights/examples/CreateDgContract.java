@@ -6,12 +6,14 @@ import com.hopper.fintech.flights.dafar.model.BillingInfo;
 import com.hopper.fintech.flights.dafar.model.Cabin;
 import com.hopper.fintech.flights.dafar.model.DafarContract;
 import com.hopper.fintech.flights.dafar.model.DafarOffer;
+import com.hopper.fintech.flights.dafar.model.Details;
 import com.hopper.fintech.flights.dafar.model.Channel;
 import com.hopper.fintech.flights.dafar.model.ConfirmContractRequest;
 import com.hopper.fintech.flights.dafar.model.ContactInfo;
 import com.hopper.fintech.flights.dafar.model.CreateDraftContractRequest;
 import com.hopper.fintech.flights.dafar.model.CreateOffersRequest;
 import com.hopper.fintech.flights.dafar.model.EmailAddress;
+import com.hopper.fintech.flights.dafar.model.Identifier;
 import com.hopper.fintech.flights.dafar.model.ItineraryPassenger;
 import com.hopper.fintech.flights.dafar.model.ItinerarySlice;
 import com.hopper.fintech.flights.dafar.model.ItinerarySliceSegment;
@@ -20,9 +22,11 @@ import com.hopper.fintech.flights.dafar.model.MerchandisingContext;
 import com.hopper.fintech.flights.dafar.model.MerchantOfRecord;
 import com.hopper.fintech.flights.dafar.model.OffersEligible;
 import com.hopper.fintech.flights.dafar.model.PassengerType;
+import com.hopper.fintech.flights.dafar.model.PaymentCard;
 import com.hopper.fintech.flights.dafar.model.PaymentInformation;
 import com.hopper.fintech.flights.dafar.model.PreBooking;
 import com.hopper.fintech.flights.dafar.model.PriceOffersRequest;
+import com.hopper.fintech.flights.dafar.model.ProvidedPayment;
 import com.hopper.fintech.flights.sdk.FlightsDg;
 import com.hopper.fintech.flights.sdk.payments.CardDetails;
 import com.hopper.fintech.flights.sdk.payments.DgPayments;
@@ -118,7 +122,14 @@ public final class CreateDgContract {
             paymentInformation = DgPayments.provided(DgPayments.tokenizedCard(amount, presetToken));
         } else if (tokenizer == null) {
             merchantOfRecord = MerchantOfRecord.PARTNER;
-            paymentInformation = DgPayments.notProvided(amount);
+            paymentInformation = DgPayments.provided(new ProvidedPayment(new PaymentCard()
+                .type(PaymentCard.TypeEnum.PAYMENT_CARD)
+                .amount(amount)
+                .identifier(new Identifier(new Details()
+                    .type(Details.TypeEnum.DETAILS)
+                    .lastFourDigits("1111")
+                    .expirationMonth("12")
+                    .expirationYear("2030")))));
         } else {
             merchantOfRecord = MerchantOfRecord.HTS;
             String token = tokenizer.tokenize(CardDetails.builder()
