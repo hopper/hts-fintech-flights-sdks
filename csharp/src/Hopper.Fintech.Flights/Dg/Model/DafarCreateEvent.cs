@@ -27,175 +27,205 @@ namespace Hopper.Fintech.Flights.Dg.Model
     /// <summary>
     /// A type of event to be recorded.
     /// </summary>
-    public partial class Event
+    public partial class DafarCreateEvent
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="bookingConfirmed"></param>
-        public Event(BookingConfirmed bookingConfirmed)
+        public DafarCreateEvent(BookingConfirmed bookingConfirmed)
         {
             BookingConfirmed = bookingConfirmed;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="exercisePortalCompletePageContinueClicked"></param>
-        public Event(ExercisePortalCompletePageContinueClicked exercisePortalCompletePageContinueClicked)
+        public DafarCreateEvent(ExercisePortalCompletePageContinueClicked exercisePortalCompletePageContinueClicked)
         {
             ExercisePortalCompletePageContinueClicked = exercisePortalCompletePageContinueClicked;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="exercisePortalCompletePageLoaded"></param>
-        public Event(ExercisePortalCompletePageLoaded exercisePortalCompletePageLoaded)
+        public DafarCreateEvent(ExercisePortalCompletePageLoaded exercisePortalCompletePageLoaded)
         {
             ExercisePortalCompletePageLoaded = exercisePortalCompletePageLoaded;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="exercisePortalConfirmationPageBackClicked"></param>
-        public Event(ExercisePortalConfirmationPageBackClicked exercisePortalConfirmationPageBackClicked)
+        public DafarCreateEvent(ExercisePortalConfirmationPageBackClicked exercisePortalConfirmationPageBackClicked)
         {
             ExercisePortalConfirmationPageBackClicked = exercisePortalConfirmationPageBackClicked;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="exercisePortalConfirmationPageConfirmClicked"></param>
-        public Event(ExercisePortalConfirmationPageConfirmClicked exercisePortalConfirmationPageConfirmClicked)
+        public DafarCreateEvent(ExercisePortalConfirmationPageConfirmClicked exercisePortalConfirmationPageConfirmClicked)
         {
             ExercisePortalConfirmationPageConfirmClicked = exercisePortalConfirmationPageConfirmClicked;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="exercisePortalConfirmationPageLoaded"></param>
-        public Event(ExercisePortalConfirmationPageLoaded exercisePortalConfirmationPageLoaded)
+        public DafarCreateEvent(ExercisePortalConfirmationPageLoaded exercisePortalConfirmationPageLoaded)
         {
             ExercisePortalConfirmationPageLoaded = exercisePortalConfirmationPageLoaded;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="exercisePortalLandingContinueClicked"></param>
-        public Event(ExercisePortalLandingContinueClicked exercisePortalLandingContinueClicked)
+        public DafarCreateEvent(ExercisePortalLandingContinueClicked exercisePortalLandingContinueClicked)
         {
             ExercisePortalLandingContinueClicked = exercisePortalLandingContinueClicked;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="exercisePortalLandingLoaded"></param>
-        public Event(ExercisePortalLandingLoaded exercisePortalLandingLoaded)
+        public DafarCreateEvent(ExercisePortalLandingLoaded exercisePortalLandingLoaded)
         {
             ExercisePortalLandingLoaded = exercisePortalLandingLoaded;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
+        /// </summary>
+        /// <param name="exercisePortalRebookingFlightChoiceContinueClicked"></param>
+        public DafarCreateEvent(ExercisePortalRebookingFlightChoiceContinueClicked exercisePortalRebookingFlightChoiceContinueClicked)
+        {
+            ExercisePortalRebookingFlightChoiceContinueClicked = exercisePortalRebookingFlightChoiceContinueClicked;
+            OnCreated();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
+        /// </summary>
+        /// <param name="exercisePortalRebookingShopPageLoaded"></param>
+        public DafarCreateEvent(ExercisePortalRebookingShopPageLoaded exercisePortalRebookingShopPageLoaded)
+        {
+            ExercisePortalRebookingShopPageLoaded = exercisePortalRebookingShopPageLoaded;
+            OnCreated();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="flightSearchLoaded"></param>
-        public Event(FlightSearchLoaded flightSearchLoaded)
+        public DafarCreateEvent(FlightSearchLoaded flightSearchLoaded)
         {
             FlightSearchLoaded = flightSearchLoaded;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="flightSearchSubmitted"></param>
-        public Event(FlightSearchSubmitted flightSearchSubmitted)
+        public DafarCreateEvent(FlightSearchSubmitted flightSearchSubmitted)
         {
             FlightSearchSubmitted = flightSearchSubmitted;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="flightSelected"></param>
-        public Event(FlightSelected flightSelected)
+        public DafarCreateEvent(FlightSelected flightSelected)
         {
             FlightSelected = flightSelected;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="flightSubmittedForOffer"></param>
-        public Event(FlightSubmittedForOffer flightSubmittedForOffer)
+        public DafarCreateEvent(FlightSubmittedForOffer flightSubmittedForOffer)
         {
             FlightSubmittedForOffer = flightSubmittedForOffer;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="merchandisingDisplayed"></param>
-        public Event(MerchandisingDisplayed merchandisingDisplayed)
+        public DafarCreateEvent(MerchandisingDisplayed merchandisingDisplayed)
         {
             MerchandisingDisplayed = merchandisingDisplayed;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="merchandisingFaqClicked"></param>
-        public Event(MerchandisingFaqClicked merchandisingFaqClicked)
+        public DafarCreateEvent(MerchandisingFaqClicked merchandisingFaqClicked)
         {
             MerchandisingFaqClicked = merchandisingFaqClicked;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="merchandisingOfferAttached"></param>
-        public Event(MerchandisingOfferAttached merchandisingOfferAttached)
+        public DafarCreateEvent(MerchandisingOfferAttached merchandisingOfferAttached)
         {
             MerchandisingOfferAttached = merchandisingOfferAttached;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="merchandisingOfferDeclined"></param>
-        public Event(MerchandisingOfferDeclined merchandisingOfferDeclined)
+        public DafarCreateEvent(MerchandisingOfferDeclined merchandisingOfferDeclined)
         {
             MerchandisingOfferDeclined = merchandisingOfferDeclined;
             OnCreated();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
         /// </summary>
         /// <param name="merchandisingSdkLoaded"></param>
-        public Event(MerchandisingSdkLoaded merchandisingSdkLoaded)
+        public DafarCreateEvent(MerchandisingSdkLoaded merchandisingSdkLoaded)
         {
             MerchandisingSdkLoaded = merchandisingSdkLoaded;
+            OnCreated();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DafarCreateEvent" /> class.
+        /// </summary>
+        /// <param name="offerDisplayRequested"></param>
+        public DafarCreateEvent(OfferDisplayRequested offerDisplayRequested)
+        {
+            OfferDisplayRequested = offerDisplayRequested;
             OnCreated();
         }
 
@@ -247,49 +277,64 @@ namespace Hopper.Fintech.Flights.Dg.Model
             ExercisePortalLandingLoaded = 8,
 
             /// <summary>
+            /// Enum ExercisePortalRebookingFlightChoiceContinueClicked for value: exercise_portal_rebooking_flight_choice_continue_clicked
+            /// </summary>
+            ExercisePortalRebookingFlightChoiceContinueClicked = 9,
+
+            /// <summary>
+            /// Enum ExercisePortalRebookingShopPageLoaded for value: exercise_portal_rebooking_shop_page_loaded
+            /// </summary>
+            ExercisePortalRebookingShopPageLoaded = 10,
+
+            /// <summary>
             /// Enum FlightSearchLoaded for value: flight_search_loaded
             /// </summary>
-            FlightSearchLoaded = 9,
+            FlightSearchLoaded = 11,
 
             /// <summary>
             /// Enum FlightSearchSubmitted for value: flight_search_submitted
             /// </summary>
-            FlightSearchSubmitted = 10,
+            FlightSearchSubmitted = 12,
 
             /// <summary>
             /// Enum FlightSelected for value: flight_selected
             /// </summary>
-            FlightSelected = 11,
+            FlightSelected = 13,
 
             /// <summary>
             /// Enum FlightSubmittedForOffer for value: flight_submitted_for_offer
             /// </summary>
-            FlightSubmittedForOffer = 12,
+            FlightSubmittedForOffer = 14,
 
             /// <summary>
             /// Enum MerchandisingDisplayed for value: merchandising_displayed
             /// </summary>
-            MerchandisingDisplayed = 13,
+            MerchandisingDisplayed = 15,
 
             /// <summary>
             /// Enum MerchandisingFaqClicked for value: merchandising_faq_clicked
             /// </summary>
-            MerchandisingFaqClicked = 14,
+            MerchandisingFaqClicked = 16,
 
             /// <summary>
             /// Enum MerchandisingOfferAttached for value: merchandising_offer_attached
             /// </summary>
-            MerchandisingOfferAttached = 15,
+            MerchandisingOfferAttached = 17,
 
             /// <summary>
             /// Enum MerchandisingOfferDeclined for value: merchandising_offer_declined
             /// </summary>
-            MerchandisingOfferDeclined = 16,
+            MerchandisingOfferDeclined = 18,
 
             /// <summary>
             /// Enum MerchandisingSdkLoaded for value: merchandising_sdk_loaded
             /// </summary>
-            MerchandisingSdkLoaded = 17
+            MerchandisingSdkLoaded = 19,
+
+            /// <summary>
+            /// Enum OfferDisplayRequested for value: offer_display_requested
+            /// </summary>
+            OfferDisplayRequested = 20
         }
 
         /// <summary>
@@ -324,6 +369,12 @@ namespace Hopper.Fintech.Flights.Dg.Model
             if (value.Equals("exercise_portal_landing_loaded"))
                 return TypeEnum.ExercisePortalLandingLoaded;
 
+            if (value.Equals("exercise_portal_rebooking_flight_choice_continue_clicked"))
+                return TypeEnum.ExercisePortalRebookingFlightChoiceContinueClicked;
+
+            if (value.Equals("exercise_portal_rebooking_shop_page_loaded"))
+                return TypeEnum.ExercisePortalRebookingShopPageLoaded;
+
             if (value.Equals("flight_search_loaded"))
                 return TypeEnum.FlightSearchLoaded;
 
@@ -350,6 +401,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
             if (value.Equals("merchandising_sdk_loaded"))
                 return TypeEnum.MerchandisingSdkLoaded;
+
+            if (value.Equals("offer_display_requested"))
+                return TypeEnum.OfferDisplayRequested;
 
             throw new NotImplementedException($"Could not convert value to type TypeEnum: '{value}'");
         }
@@ -385,6 +439,12 @@ namespace Hopper.Fintech.Flights.Dg.Model
             if (value.Equals("exercise_portal_landing_loaded"))
                 return TypeEnum.ExercisePortalLandingLoaded;
 
+            if (value.Equals("exercise_portal_rebooking_flight_choice_continue_clicked"))
+                return TypeEnum.ExercisePortalRebookingFlightChoiceContinueClicked;
+
+            if (value.Equals("exercise_portal_rebooking_shop_page_loaded"))
+                return TypeEnum.ExercisePortalRebookingShopPageLoaded;
+
             if (value.Equals("flight_search_loaded"))
                 return TypeEnum.FlightSearchLoaded;
 
@@ -411,6 +471,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
             if (value.Equals("merchandising_sdk_loaded"))
                 return TypeEnum.MerchandisingSdkLoaded;
+
+            if (value.Equals("offer_display_requested"))
+                return TypeEnum.OfferDisplayRequested;
 
             return null;
         }
@@ -447,6 +510,12 @@ namespace Hopper.Fintech.Flights.Dg.Model
             if (value == TypeEnum.ExercisePortalLandingLoaded)
                 return "exercise_portal_landing_loaded";
 
+            if (value == TypeEnum.ExercisePortalRebookingFlightChoiceContinueClicked)
+                return "exercise_portal_rebooking_flight_choice_continue_clicked";
+
+            if (value == TypeEnum.ExercisePortalRebookingShopPageLoaded)
+                return "exercise_portal_rebooking_shop_page_loaded";
+
             if (value == TypeEnum.FlightSearchLoaded)
                 return "flight_search_loaded";
 
@@ -473,6 +542,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
             if (value == TypeEnum.MerchandisingSdkLoaded)
                 return "merchandising_sdk_loaded";
+
+            if (value == TypeEnum.OfferDisplayRequested)
+                return "offer_display_requested";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }
@@ -516,6 +588,16 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// Gets or Sets ExercisePortalLandingLoaded
         /// </summary>
         public ExercisePortalLandingLoaded? ExercisePortalLandingLoaded { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExercisePortalRebookingFlightChoiceContinueClicked
+        /// </summary>
+        public ExercisePortalRebookingFlightChoiceContinueClicked? ExercisePortalRebookingFlightChoiceContinueClicked { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExercisePortalRebookingShopPageLoaded
+        /// </summary>
+        public ExercisePortalRebookingShopPageLoaded? ExercisePortalRebookingShopPageLoaded { get; set; }
 
         /// <summary>
         /// Gets or Sets FlightSearchLoaded
@@ -563,6 +645,11 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public MerchandisingSdkLoaded? MerchandisingSdkLoaded { get; set; }
 
         /// <summary>
+        /// Gets or Sets OfferDisplayRequested
+        /// </summary>
+        public OfferDisplayRequested? OfferDisplayRequested { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -575,7 +662,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Event {\n");
+            sb.Append("class DafarCreateEvent {\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -583,29 +670,29 @@ namespace Hopper.Fintech.Flights.Dg.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="Event" />
+    /// A Json converter for type <see cref="DafarCreateEvent" />
     /// </summary>
-    public partial class EventJsonConverter : JsonConverter<Event>
+    public partial class DafarCreateEventJsonConverter : JsonConverter<DafarCreateEvent>
     {
         partial void OnCreated();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventJsonConverter" /> class.
+        /// Initializes a new instance of the <see cref="DafarCreateEventJsonConverter" /> class.
         /// </summary>
-        public EventJsonConverter()
+        public DafarCreateEventJsonConverter()
         {
             OnCreated();
         }
 
         /// <summary>
-        /// Deserializes json to <see cref="Event" />
+        /// Deserializes json to <see cref="DafarCreateEvent" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override Event Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override DafarCreateEvent Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -614,7 +701,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<Event.TypeEnum?> type = default;
+            Option<DafarCreateEvent.TypeEnum?> type = default;
 
             BookingConfirmed? bookingConfirmed = null;
             ExercisePortalCompletePageContinueClicked? exercisePortalCompletePageContinueClicked = null;
@@ -624,6 +711,8 @@ namespace Hopper.Fintech.Flights.Dg.Model
             ExercisePortalConfirmationPageLoaded? exercisePortalConfirmationPageLoaded = null;
             ExercisePortalLandingContinueClicked? exercisePortalLandingContinueClicked = null;
             ExercisePortalLandingLoaded? exercisePortalLandingLoaded = null;
+            ExercisePortalRebookingFlightChoiceContinueClicked? exercisePortalRebookingFlightChoiceContinueClicked = null;
+            ExercisePortalRebookingShopPageLoaded? exercisePortalRebookingShopPageLoaded = null;
             FlightSearchLoaded? flightSearchLoaded = null;
             FlightSearchSubmitted? flightSearchSubmitted = null;
             FlightSelected? flightSelected = null;
@@ -633,6 +722,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
             MerchandisingOfferAttached? merchandisingOfferAttached = null;
             MerchandisingOfferDeclined? merchandisingOfferDeclined = null;
             MerchandisingSdkLoaded? merchandisingSdkLoaded = null;
+            OfferDisplayRequested? offerDisplayRequested = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -690,6 +780,16 @@ namespace Hopper.Fintech.Flights.Dg.Model
                             Utf8JsonReader utf8JsonReaderExercisePortalLandingLoaded = utf8JsonReader;
                             exercisePortalLandingLoaded = JsonSerializer.Deserialize<ExercisePortalLandingLoaded>(ref utf8JsonReaderExercisePortalLandingLoaded, jsonSerializerOptions);
                         }
+                        if (discriminator?.Equals("exercise_portal_rebooking_flight_choice_continue_clicked") ?? false)
+                        {
+                            Utf8JsonReader utf8JsonReaderExercisePortalRebookingFlightChoiceContinueClicked = utf8JsonReader;
+                            exercisePortalRebookingFlightChoiceContinueClicked = JsonSerializer.Deserialize<ExercisePortalRebookingFlightChoiceContinueClicked>(ref utf8JsonReaderExercisePortalRebookingFlightChoiceContinueClicked, jsonSerializerOptions);
+                        }
+                        if (discriminator?.Equals("exercise_portal_rebooking_shop_page_loaded") ?? false)
+                        {
+                            Utf8JsonReader utf8JsonReaderExercisePortalRebookingShopPageLoaded = utf8JsonReader;
+                            exercisePortalRebookingShopPageLoaded = JsonSerializer.Deserialize<ExercisePortalRebookingShopPageLoaded>(ref utf8JsonReaderExercisePortalRebookingShopPageLoaded, jsonSerializerOptions);
+                        }
                         if (discriminator?.Equals("flight_search_loaded") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderFlightSearchLoaded = utf8JsonReader;
@@ -735,6 +835,11 @@ namespace Hopper.Fintech.Flights.Dg.Model
                             Utf8JsonReader utf8JsonReaderMerchandisingSdkLoaded = utf8JsonReader;
                             merchandisingSdkLoaded = JsonSerializer.Deserialize<MerchandisingSdkLoaded>(ref utf8JsonReaderMerchandisingSdkLoaded, jsonSerializerOptions);
                         }
+                        if (discriminator?.Equals("offer_display_requested") ?? false)
+                        {
+                            Utf8JsonReader utf8JsonReaderOfferDisplayRequested = utf8JsonReader;
+                            offerDisplayRequested = JsonSerializer.Deserialize<OfferDisplayRequested>(ref utf8JsonReaderOfferDisplayRequested, jsonSerializerOptions);
+                        }
                     }
                 }
             }
@@ -758,10 +863,10 @@ namespace Hopper.Fintech.Flights.Dg.Model
                             string? typeRawValue = utf8JsonReader.GetString();
                             if (typeRawValue != null)
                             {
-                                Event.TypeEnum? typeValue = Event.TypeEnumFromStringOrDefault(typeRawValue);
+                                DafarCreateEvent.TypeEnum? typeValue = DafarCreateEvent.TypeEnumFromStringOrDefault(typeRawValue);
                                 if (typeValue == null)
                                     throw new JsonException();
-                                type = new Option<Event.TypeEnum?>(typeValue);
+                                type = new Option<DafarCreateEvent.TypeEnum?>(typeValue);
                             }
                             break;
                         default:
@@ -771,188 +876,215 @@ namespace Hopper.Fintech.Flights.Dg.Model
             }
 
             if (!type.IsSet)
-                throw new JsonException("Property is required for class Event: type.");
+                throw new JsonException("Property is required for class DafarCreateEvent: type.");
 
             if (type.IsSet && type.Value == null)
-                throw new JsonException("Property is not nullable for class Event: type.");
+                throw new JsonException("Property is not nullable for class DafarCreateEvent: type.");
 
             if (bookingConfirmed != null)
-                return new Event(bookingConfirmed);
+                return new DafarCreateEvent(bookingConfirmed);
 
             if (exercisePortalCompletePageContinueClicked != null)
-                return new Event(exercisePortalCompletePageContinueClicked);
+                return new DafarCreateEvent(exercisePortalCompletePageContinueClicked);
 
             if (exercisePortalCompletePageLoaded != null)
-                return new Event(exercisePortalCompletePageLoaded);
+                return new DafarCreateEvent(exercisePortalCompletePageLoaded);
 
             if (exercisePortalConfirmationPageBackClicked != null)
-                return new Event(exercisePortalConfirmationPageBackClicked);
+                return new DafarCreateEvent(exercisePortalConfirmationPageBackClicked);
 
             if (exercisePortalConfirmationPageConfirmClicked != null)
-                return new Event(exercisePortalConfirmationPageConfirmClicked);
+                return new DafarCreateEvent(exercisePortalConfirmationPageConfirmClicked);
 
             if (exercisePortalConfirmationPageLoaded != null)
-                return new Event(exercisePortalConfirmationPageLoaded);
+                return new DafarCreateEvent(exercisePortalConfirmationPageLoaded);
 
             if (exercisePortalLandingContinueClicked != null)
-                return new Event(exercisePortalLandingContinueClicked);
+                return new DafarCreateEvent(exercisePortalLandingContinueClicked);
 
             if (exercisePortalLandingLoaded != null)
-                return new Event(exercisePortalLandingLoaded);
+                return new DafarCreateEvent(exercisePortalLandingLoaded);
+
+            if (exercisePortalRebookingFlightChoiceContinueClicked != null)
+                return new DafarCreateEvent(exercisePortalRebookingFlightChoiceContinueClicked);
+
+            if (exercisePortalRebookingShopPageLoaded != null)
+                return new DafarCreateEvent(exercisePortalRebookingShopPageLoaded);
 
             if (flightSearchLoaded != null)
-                return new Event(flightSearchLoaded);
+                return new DafarCreateEvent(flightSearchLoaded);
 
             if (flightSearchSubmitted != null)
-                return new Event(flightSearchSubmitted);
+                return new DafarCreateEvent(flightSearchSubmitted);
 
             if (flightSelected != null)
-                return new Event(flightSelected);
+                return new DafarCreateEvent(flightSelected);
 
             if (flightSubmittedForOffer != null)
-                return new Event(flightSubmittedForOffer);
+                return new DafarCreateEvent(flightSubmittedForOffer);
 
             if (merchandisingDisplayed != null)
-                return new Event(merchandisingDisplayed);
+                return new DafarCreateEvent(merchandisingDisplayed);
 
             if (merchandisingFaqClicked != null)
-                return new Event(merchandisingFaqClicked);
+                return new DafarCreateEvent(merchandisingFaqClicked);
 
             if (merchandisingOfferAttached != null)
-                return new Event(merchandisingOfferAttached);
+                return new DafarCreateEvent(merchandisingOfferAttached);
 
             if (merchandisingOfferDeclined != null)
-                return new Event(merchandisingOfferDeclined);
+                return new DafarCreateEvent(merchandisingOfferDeclined);
 
             if (merchandisingSdkLoaded != null)
-                return new Event(merchandisingSdkLoaded);
+                return new DafarCreateEvent(merchandisingSdkLoaded);
+
+            if (offerDisplayRequested != null)
+                return new DafarCreateEvent(offerDisplayRequested);
 
             throw new JsonException();
         }
 
         /// <summary>
-        /// Serializes a <see cref="Event" />
+        /// Serializes a <see cref="DafarCreateEvent" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="varEvent"></param>
+        /// <param name="dafarCreateEvent"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public override void Write(Utf8JsonWriter writer, Event varEvent, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, DafarCreateEvent dafarCreateEvent, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            if (varEvent.BookingConfirmed != null)
+            if (dafarCreateEvent.BookingConfirmed != null)
             {
-                BookingConfirmedJsonConverter bookingConfirmedJsonConverter = (BookingConfirmedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.BookingConfirmed.GetType()));
-                bookingConfirmedJsonConverter.WriteProperties(writer, varEvent.BookingConfirmed, jsonSerializerOptions);
+                BookingConfirmedJsonConverter bookingConfirmedJsonConverter = (BookingConfirmedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.BookingConfirmed.GetType()));
+                bookingConfirmedJsonConverter.WriteProperties(writer, dafarCreateEvent.BookingConfirmed, jsonSerializerOptions);
             }
 
-            if (varEvent.ExercisePortalCompletePageContinueClicked != null)
+            if (dafarCreateEvent.ExercisePortalCompletePageContinueClicked != null)
             {
-                ExercisePortalCompletePageContinueClickedJsonConverter exercisePortalCompletePageContinueClickedJsonConverter = (ExercisePortalCompletePageContinueClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.ExercisePortalCompletePageContinueClicked.GetType()));
-                exercisePortalCompletePageContinueClickedJsonConverter.WriteProperties(writer, varEvent.ExercisePortalCompletePageContinueClicked, jsonSerializerOptions);
+                ExercisePortalCompletePageContinueClickedJsonConverter exercisePortalCompletePageContinueClickedJsonConverter = (ExercisePortalCompletePageContinueClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalCompletePageContinueClicked.GetType()));
+                exercisePortalCompletePageContinueClickedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalCompletePageContinueClicked, jsonSerializerOptions);
             }
 
-            if (varEvent.ExercisePortalCompletePageLoaded != null)
+            if (dafarCreateEvent.ExercisePortalCompletePageLoaded != null)
             {
-                ExercisePortalCompletePageLoadedJsonConverter exercisePortalCompletePageLoadedJsonConverter = (ExercisePortalCompletePageLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.ExercisePortalCompletePageLoaded.GetType()));
-                exercisePortalCompletePageLoadedJsonConverter.WriteProperties(writer, varEvent.ExercisePortalCompletePageLoaded, jsonSerializerOptions);
+                ExercisePortalCompletePageLoadedJsonConverter exercisePortalCompletePageLoadedJsonConverter = (ExercisePortalCompletePageLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalCompletePageLoaded.GetType()));
+                exercisePortalCompletePageLoadedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalCompletePageLoaded, jsonSerializerOptions);
             }
 
-            if (varEvent.ExercisePortalConfirmationPageBackClicked != null)
+            if (dafarCreateEvent.ExercisePortalConfirmationPageBackClicked != null)
             {
-                ExercisePortalConfirmationPageBackClickedJsonConverter exercisePortalConfirmationPageBackClickedJsonConverter = (ExercisePortalConfirmationPageBackClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.ExercisePortalConfirmationPageBackClicked.GetType()));
-                exercisePortalConfirmationPageBackClickedJsonConverter.WriteProperties(writer, varEvent.ExercisePortalConfirmationPageBackClicked, jsonSerializerOptions);
+                ExercisePortalConfirmationPageBackClickedJsonConverter exercisePortalConfirmationPageBackClickedJsonConverter = (ExercisePortalConfirmationPageBackClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalConfirmationPageBackClicked.GetType()));
+                exercisePortalConfirmationPageBackClickedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalConfirmationPageBackClicked, jsonSerializerOptions);
             }
 
-            if (varEvent.ExercisePortalConfirmationPageConfirmClicked != null)
+            if (dafarCreateEvent.ExercisePortalConfirmationPageConfirmClicked != null)
             {
-                ExercisePortalConfirmationPageConfirmClickedJsonConverter exercisePortalConfirmationPageConfirmClickedJsonConverter = (ExercisePortalConfirmationPageConfirmClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.ExercisePortalConfirmationPageConfirmClicked.GetType()));
-                exercisePortalConfirmationPageConfirmClickedJsonConverter.WriteProperties(writer, varEvent.ExercisePortalConfirmationPageConfirmClicked, jsonSerializerOptions);
+                ExercisePortalConfirmationPageConfirmClickedJsonConverter exercisePortalConfirmationPageConfirmClickedJsonConverter = (ExercisePortalConfirmationPageConfirmClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalConfirmationPageConfirmClicked.GetType()));
+                exercisePortalConfirmationPageConfirmClickedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalConfirmationPageConfirmClicked, jsonSerializerOptions);
             }
 
-            if (varEvent.ExercisePortalConfirmationPageLoaded != null)
+            if (dafarCreateEvent.ExercisePortalConfirmationPageLoaded != null)
             {
-                ExercisePortalConfirmationPageLoadedJsonConverter exercisePortalConfirmationPageLoadedJsonConverter = (ExercisePortalConfirmationPageLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.ExercisePortalConfirmationPageLoaded.GetType()));
-                exercisePortalConfirmationPageLoadedJsonConverter.WriteProperties(writer, varEvent.ExercisePortalConfirmationPageLoaded, jsonSerializerOptions);
+                ExercisePortalConfirmationPageLoadedJsonConverter exercisePortalConfirmationPageLoadedJsonConverter = (ExercisePortalConfirmationPageLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalConfirmationPageLoaded.GetType()));
+                exercisePortalConfirmationPageLoadedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalConfirmationPageLoaded, jsonSerializerOptions);
             }
 
-            if (varEvent.ExercisePortalLandingContinueClicked != null)
+            if (dafarCreateEvent.ExercisePortalLandingContinueClicked != null)
             {
-                ExercisePortalLandingContinueClickedJsonConverter exercisePortalLandingContinueClickedJsonConverter = (ExercisePortalLandingContinueClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.ExercisePortalLandingContinueClicked.GetType()));
-                exercisePortalLandingContinueClickedJsonConverter.WriteProperties(writer, varEvent.ExercisePortalLandingContinueClicked, jsonSerializerOptions);
+                ExercisePortalLandingContinueClickedJsonConverter exercisePortalLandingContinueClickedJsonConverter = (ExercisePortalLandingContinueClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalLandingContinueClicked.GetType()));
+                exercisePortalLandingContinueClickedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalLandingContinueClicked, jsonSerializerOptions);
             }
 
-            if (varEvent.ExercisePortalLandingLoaded != null)
+            if (dafarCreateEvent.ExercisePortalLandingLoaded != null)
             {
-                ExercisePortalLandingLoadedJsonConverter exercisePortalLandingLoadedJsonConverter = (ExercisePortalLandingLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.ExercisePortalLandingLoaded.GetType()));
-                exercisePortalLandingLoadedJsonConverter.WriteProperties(writer, varEvent.ExercisePortalLandingLoaded, jsonSerializerOptions);
+                ExercisePortalLandingLoadedJsonConverter exercisePortalLandingLoadedJsonConverter = (ExercisePortalLandingLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalLandingLoaded.GetType()));
+                exercisePortalLandingLoadedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalLandingLoaded, jsonSerializerOptions);
             }
 
-            if (varEvent.FlightSearchLoaded != null)
+            if (dafarCreateEvent.ExercisePortalRebookingFlightChoiceContinueClicked != null)
             {
-                FlightSearchLoadedJsonConverter flightSearchLoadedJsonConverter = (FlightSearchLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.FlightSearchLoaded.GetType()));
-                flightSearchLoadedJsonConverter.WriteProperties(writer, varEvent.FlightSearchLoaded, jsonSerializerOptions);
+                ExercisePortalRebookingFlightChoiceContinueClickedJsonConverter exercisePortalRebookingFlightChoiceContinueClickedJsonConverter = (ExercisePortalRebookingFlightChoiceContinueClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalRebookingFlightChoiceContinueClicked.GetType()));
+                exercisePortalRebookingFlightChoiceContinueClickedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalRebookingFlightChoiceContinueClicked, jsonSerializerOptions);
             }
 
-            if (varEvent.FlightSearchSubmitted != null)
+            if (dafarCreateEvent.ExercisePortalRebookingShopPageLoaded != null)
             {
-                FlightSearchSubmittedJsonConverter flightSearchSubmittedJsonConverter = (FlightSearchSubmittedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.FlightSearchSubmitted.GetType()));
-                flightSearchSubmittedJsonConverter.WriteProperties(writer, varEvent.FlightSearchSubmitted, jsonSerializerOptions);
+                ExercisePortalRebookingShopPageLoadedJsonConverter exercisePortalRebookingShopPageLoadedJsonConverter = (ExercisePortalRebookingShopPageLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.ExercisePortalRebookingShopPageLoaded.GetType()));
+                exercisePortalRebookingShopPageLoadedJsonConverter.WriteProperties(writer, dafarCreateEvent.ExercisePortalRebookingShopPageLoaded, jsonSerializerOptions);
             }
 
-            if (varEvent.FlightSelected != null)
+            if (dafarCreateEvent.FlightSearchLoaded != null)
             {
-                FlightSelectedJsonConverter flightSelectedJsonConverter = (FlightSelectedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.FlightSelected.GetType()));
-                flightSelectedJsonConverter.WriteProperties(writer, varEvent.FlightSelected, jsonSerializerOptions);
+                FlightSearchLoadedJsonConverter flightSearchLoadedJsonConverter = (FlightSearchLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.FlightSearchLoaded.GetType()));
+                flightSearchLoadedJsonConverter.WriteProperties(writer, dafarCreateEvent.FlightSearchLoaded, jsonSerializerOptions);
             }
 
-            if (varEvent.FlightSubmittedForOffer != null)
+            if (dafarCreateEvent.FlightSearchSubmitted != null)
             {
-                FlightSubmittedForOfferJsonConverter flightSubmittedForOfferJsonConverter = (FlightSubmittedForOfferJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.FlightSubmittedForOffer.GetType()));
-                flightSubmittedForOfferJsonConverter.WriteProperties(writer, varEvent.FlightSubmittedForOffer, jsonSerializerOptions);
+                FlightSearchSubmittedJsonConverter flightSearchSubmittedJsonConverter = (FlightSearchSubmittedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.FlightSearchSubmitted.GetType()));
+                flightSearchSubmittedJsonConverter.WriteProperties(writer, dafarCreateEvent.FlightSearchSubmitted, jsonSerializerOptions);
             }
 
-            if (varEvent.MerchandisingDisplayed != null)
+            if (dafarCreateEvent.FlightSelected != null)
             {
-                MerchandisingDisplayedJsonConverter merchandisingDisplayedJsonConverter = (MerchandisingDisplayedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.MerchandisingDisplayed.GetType()));
-                merchandisingDisplayedJsonConverter.WriteProperties(writer, varEvent.MerchandisingDisplayed, jsonSerializerOptions);
+                FlightSelectedJsonConverter flightSelectedJsonConverter = (FlightSelectedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.FlightSelected.GetType()));
+                flightSelectedJsonConverter.WriteProperties(writer, dafarCreateEvent.FlightSelected, jsonSerializerOptions);
             }
 
-            if (varEvent.MerchandisingFaqClicked != null)
+            if (dafarCreateEvent.FlightSubmittedForOffer != null)
             {
-                MerchandisingFaqClickedJsonConverter merchandisingFaqClickedJsonConverter = (MerchandisingFaqClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.MerchandisingFaqClicked.GetType()));
-                merchandisingFaqClickedJsonConverter.WriteProperties(writer, varEvent.MerchandisingFaqClicked, jsonSerializerOptions);
+                FlightSubmittedForOfferJsonConverter flightSubmittedForOfferJsonConverter = (FlightSubmittedForOfferJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.FlightSubmittedForOffer.GetType()));
+                flightSubmittedForOfferJsonConverter.WriteProperties(writer, dafarCreateEvent.FlightSubmittedForOffer, jsonSerializerOptions);
             }
 
-            if (varEvent.MerchandisingOfferAttached != null)
+            if (dafarCreateEvent.MerchandisingDisplayed != null)
             {
-                MerchandisingOfferAttachedJsonConverter merchandisingOfferAttachedJsonConverter = (MerchandisingOfferAttachedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.MerchandisingOfferAttached.GetType()));
-                merchandisingOfferAttachedJsonConverter.WriteProperties(writer, varEvent.MerchandisingOfferAttached, jsonSerializerOptions);
+                MerchandisingDisplayedJsonConverter merchandisingDisplayedJsonConverter = (MerchandisingDisplayedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.MerchandisingDisplayed.GetType()));
+                merchandisingDisplayedJsonConverter.WriteProperties(writer, dafarCreateEvent.MerchandisingDisplayed, jsonSerializerOptions);
             }
 
-            if (varEvent.MerchandisingOfferDeclined != null)
+            if (dafarCreateEvent.MerchandisingFaqClicked != null)
             {
-                MerchandisingOfferDeclinedJsonConverter merchandisingOfferDeclinedJsonConverter = (MerchandisingOfferDeclinedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.MerchandisingOfferDeclined.GetType()));
-                merchandisingOfferDeclinedJsonConverter.WriteProperties(writer, varEvent.MerchandisingOfferDeclined, jsonSerializerOptions);
+                MerchandisingFaqClickedJsonConverter merchandisingFaqClickedJsonConverter = (MerchandisingFaqClickedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.MerchandisingFaqClicked.GetType()));
+                merchandisingFaqClickedJsonConverter.WriteProperties(writer, dafarCreateEvent.MerchandisingFaqClicked, jsonSerializerOptions);
             }
 
-            if (varEvent.MerchandisingSdkLoaded != null)
+            if (dafarCreateEvent.MerchandisingOfferAttached != null)
             {
-                MerchandisingSdkLoadedJsonConverter merchandisingSdkLoadedJsonConverter = (MerchandisingSdkLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.MerchandisingSdkLoaded.GetType()));
-                merchandisingSdkLoadedJsonConverter.WriteProperties(writer, varEvent.MerchandisingSdkLoaded, jsonSerializerOptions);
+                MerchandisingOfferAttachedJsonConverter merchandisingOfferAttachedJsonConverter = (MerchandisingOfferAttachedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.MerchandisingOfferAttached.GetType()));
+                merchandisingOfferAttachedJsonConverter.WriteProperties(writer, dafarCreateEvent.MerchandisingOfferAttached, jsonSerializerOptions);
             }
 
-            WriteProperties(writer, varEvent, jsonSerializerOptions);
+            if (dafarCreateEvent.MerchandisingOfferDeclined != null)
+            {
+                MerchandisingOfferDeclinedJsonConverter merchandisingOfferDeclinedJsonConverter = (MerchandisingOfferDeclinedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.MerchandisingOfferDeclined.GetType()));
+                merchandisingOfferDeclinedJsonConverter.WriteProperties(writer, dafarCreateEvent.MerchandisingOfferDeclined, jsonSerializerOptions);
+            }
+
+            if (dafarCreateEvent.MerchandisingSdkLoaded != null)
+            {
+                MerchandisingSdkLoadedJsonConverter merchandisingSdkLoadedJsonConverter = (MerchandisingSdkLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.MerchandisingSdkLoaded.GetType()));
+                merchandisingSdkLoadedJsonConverter.WriteProperties(writer, dafarCreateEvent.MerchandisingSdkLoaded, jsonSerializerOptions);
+            }
+
+            if (dafarCreateEvent.OfferDisplayRequested != null)
+            {
+                OfferDisplayRequestedJsonConverter offerDisplayRequestedJsonConverter = (OfferDisplayRequestedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(dafarCreateEvent.OfferDisplayRequested.GetType()));
+                offerDisplayRequestedJsonConverter.WriteProperties(writer, dafarCreateEvent.OfferDisplayRequested, jsonSerializerOptions);
+            }
+
+            WriteProperties(writer, dafarCreateEvent, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="Event" />
+        /// Serializes the properties of <see cref="DafarCreateEvent" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="varEvent"></param>
+        /// <param name="dafarCreateEvent"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public void WriteProperties(Utf8JsonWriter writer, Event varEvent, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, DafarCreateEvent dafarCreateEvent, JsonSerializerOptions jsonSerializerOptions)
         {
 
         }

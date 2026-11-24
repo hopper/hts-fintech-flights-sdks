@@ -36,12 +36,10 @@ import com.hopper.fintech.flights.dafar.model.DafarExerciseQuote;
 import com.hopper.fintech.flights.dafar.model.DafarFlightBookingError;
 import com.hopper.fintech.flights.dafar.model.DafarFlightPriceQuoteError;
 import com.hopper.fintech.flights.dafar.model.DafarFlightShopError;
-import com.hopper.fintech.flights.dafar.model.DafarRebookEligibilityError;
 import com.hopper.fintech.flights.dafar.model.Error;
 import com.hopper.fintech.flights.dafar.model.FareDetailsResponse;
 import com.hopper.fintech.flights.dafar.model.FlightBooking;
 import com.hopper.fintech.flights.dafar.model.FlightPriceQuote;
-import com.hopper.fintech.flights.dafar.model.RebookEligibilityResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -283,199 +281,6 @@ public class PartnerSelfServiceExerciseApi {
      */
     public APIgetContractsIdItinerariesItineraryIdRequest getContractsIdItinerariesItineraryId(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String itineraryId) {
         return new APIgetContractsIdItinerariesItineraryIdRequest(id, itineraryId);
-    }
-    private okhttp3.Call getContractsIdRebookEligibilityCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/contracts/{id}/rebook_eligibility"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "PartnerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getContractsIdRebookEligibilityValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getContractsIdRebookEligibility(Async)");
-        }
-
-        return getContractsIdRebookEligibilityCall(id, _callback);
-
-    }
-
-
-    private ApiResponse<RebookEligibilityResponse> getContractsIdRebookEligibilityWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getContractsIdRebookEligibilityValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<RebookEligibilityResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call getContractsIdRebookEligibilityAsync(@javax.annotation.Nonnull String id, final ApiCallback<RebookEligibilityResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getContractsIdRebookEligibilityValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<RebookEligibilityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIgetContractsIdRebookEligibilityRequest {
-        @javax.annotation.Nonnull
-        private final String id;
-
-        private APIgetContractsIdRebookEligibilityRequest(@javax.annotation.Nonnull String id) {
-            this.id = id;
-        }
-
-        /**
-         * Build call for getContractsIdRebookEligibility
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The rebook eligibility details for the contract </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getContractsIdRebookEligibilityCall(id, _callback);
-        }
-
-        /**
-         * Execute getContractsIdRebookEligibility request
-         * @return RebookEligibilityResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The rebook eligibility details for the contract </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public RebookEligibilityResponse execute() throws ApiException {
-            ApiResponse<RebookEligibilityResponse> localVarResp = getContractsIdRebookEligibilityWithHttpInfo(id);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute getContractsIdRebookEligibility request with HTTP info returned
-         * @return ApiResponse&lt;RebookEligibilityResponse&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The rebook eligibility details for the contract </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<RebookEligibilityResponse> executeWithHttpInfo() throws ApiException {
-            return getContractsIdRebookEligibilityWithHttpInfo(id);
-        }
-
-        /**
-         * Execute getContractsIdRebookEligibility request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The rebook eligibility details for the contract </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<RebookEligibilityResponse> _callback) throws ApiException {
-            return getContractsIdRebookEligibilityAsync(id, _callback);
-        }
-    }
-
-    /**
-     * Get Rebook Eligibility
-     * Check whether a contract&#39;s segments are eligible for rebook due to a disruption. Each rebook-eligible segment&#39;s rebook_eligibility carries search_criteria (nearby airports and the departure date window), so partners sourcing their own inventory can match HTS&#39;s search.
-     * @param id A unique identifier for a contract. (required)
-     * @return APIgetContractsIdRebookEligibilityRequest
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The rebook eligibility details for the contract </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIgetContractsIdRebookEligibilityRequest getContractsIdRebookEligibility(@javax.annotation.Nonnull String id) {
-        return new APIgetContractsIdRebookEligibilityRequest(id);
     }
     private okhttp3.Call getFlightBookingsIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -857,6 +662,209 @@ public class PartnerSelfServiceExerciseApi {
      */
     public APIpostContractsIdExerciseQuotesRequest postContractsIdExerciseQuotes(@javax.annotation.Nonnull String id) {
         return new APIpostContractsIdExerciseQuotesRequest(id);
+    }
+    private okhttp3.Call postContractsIdFlightPriceQuotesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createFlightPriceQuoteRequest;
+
+        // create path and map variables
+        String localVarPath = "/contracts/{id}/flight_price_quotes"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PartnerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postContractsIdFlightPriceQuotesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postContractsIdFlightPriceQuotes(Async)");
+        }
+
+        // verify the required parameter 'createFlightPriceQuoteRequest' is set
+        if (createFlightPriceQuoteRequest == null) {
+            throw new ApiException("Missing the required parameter 'createFlightPriceQuoteRequest' when calling postContractsIdFlightPriceQuotes(Async)");
+        }
+
+        return postContractsIdFlightPriceQuotesCall(id, createFlightPriceQuoteRequest, _callback);
+
+    }
+
+
+    private ApiResponse<FlightPriceQuote> postContractsIdFlightPriceQuotesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest) throws ApiException {
+        okhttp3.Call localVarCall = postContractsIdFlightPriceQuotesValidateBeforeCall(id, createFlightPriceQuoteRequest, null);
+        Type localVarReturnType = new TypeToken<FlightPriceQuote>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call postContractsIdFlightPriceQuotesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, final ApiCallback<FlightPriceQuote> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postContractsIdFlightPriceQuotesValidateBeforeCall(id, createFlightPriceQuoteRequest, _callback);
+        Type localVarReturnType = new TypeToken<FlightPriceQuote>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpostContractsIdFlightPriceQuotesRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+        @javax.annotation.Nonnull
+        private final CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest;
+
+        private APIpostContractsIdFlightPriceQuotesRequest(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest) {
+            this.id = id;
+            this.createFlightPriceQuoteRequest = createFlightPriceQuoteRequest;
+        }
+
+        /**
+         * Build call for postContractsIdFlightPriceQuotes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postContractsIdFlightPriceQuotesCall(id, createFlightPriceQuoteRequest, _callback);
+        }
+
+        /**
+         * Execute postContractsIdFlightPriceQuotes request
+         * @return FlightPriceQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public FlightPriceQuote execute() throws ApiException {
+            ApiResponse<FlightPriceQuote> localVarResp = postContractsIdFlightPriceQuotesWithHttpInfo(id, createFlightPriceQuoteRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postContractsIdFlightPriceQuotes request with HTTP info returned
+         * @return ApiResponse&lt;FlightPriceQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FlightPriceQuote> executeWithHttpInfo() throws ApiException {
+            return postContractsIdFlightPriceQuotesWithHttpInfo(id, createFlightPriceQuoteRequest);
+        }
+
+        /**
+         * Execute postContractsIdFlightPriceQuotes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FlightPriceQuote> _callback) throws ApiException {
+            return postContractsIdFlightPriceQuotesAsync(id, createFlightPriceQuoteRequest, _callback);
+        }
+    }
+
+    /**
+     * Create Flight Price Quote
+     * Create a price quote for a selected rebook itinerary from the contract&#39;s flight shop.
+     * @param id A unique identifier for a contract. (required)
+     * @param createFlightPriceQuoteRequest  (required)
+     * @return APIpostContractsIdFlightPriceQuotesRequest
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpostContractsIdFlightPriceQuotesRequest postContractsIdFlightPriceQuotes(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest) {
+        return new APIpostContractsIdFlightPriceQuotesRequest(id, createFlightPriceQuoteRequest);
     }
     private okhttp3.Call postContractsIdFlightShopsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateFlightShopRequest createFlightShopRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1253,194 +1261,6 @@ public class PartnerSelfServiceExerciseApi {
      */
     public APIpostFlightBookingsRequest postFlightBookings(@javax.annotation.Nonnull CreateFlightBookingRequest createFlightBookingRequest) {
         return new APIpostFlightBookingsRequest(createFlightBookingRequest);
-    }
-    private okhttp3.Call postFlightPriceQuotesCall(@javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createFlightPriceQuoteRequest;
-
-        // create path and map variables
-        String localVarPath = "/flight_price_quotes";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "PartnerAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFlightPriceQuotesValidateBeforeCall(@javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createFlightPriceQuoteRequest' is set
-        if (createFlightPriceQuoteRequest == null) {
-            throw new ApiException("Missing the required parameter 'createFlightPriceQuoteRequest' when calling postFlightPriceQuotes(Async)");
-        }
-
-        return postFlightPriceQuotesCall(createFlightPriceQuoteRequest, _callback);
-
-    }
-
-
-    private ApiResponse<FlightPriceQuote> postFlightPriceQuotesWithHttpInfo(@javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest) throws ApiException {
-        okhttp3.Call localVarCall = postFlightPriceQuotesValidateBeforeCall(createFlightPriceQuoteRequest, null);
-        Type localVarReturnType = new TypeToken<FlightPriceQuote>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call postFlightPriceQuotesAsync(@javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, final ApiCallback<FlightPriceQuote> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postFlightPriceQuotesValidateBeforeCall(createFlightPriceQuoteRequest, _callback);
-        Type localVarReturnType = new TypeToken<FlightPriceQuote>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIpostFlightPriceQuotesRequest {
-        @javax.annotation.Nonnull
-        private final CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest;
-
-        private APIpostFlightPriceQuotesRequest(@javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest) {
-            this.createFlightPriceQuoteRequest = createFlightPriceQuoteRequest;
-        }
-
-        /**
-         * Build call for postFlightPriceQuotes
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return postFlightPriceQuotesCall(createFlightPriceQuoteRequest, _callback);
-        }
-
-        /**
-         * Execute postFlightPriceQuotes request
-         * @return FlightPriceQuote
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public FlightPriceQuote execute() throws ApiException {
-            ApiResponse<FlightPriceQuote> localVarResp = postFlightPriceQuotesWithHttpInfo(createFlightPriceQuoteRequest);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute postFlightPriceQuotes request with HTTP info returned
-         * @return ApiResponse&lt;FlightPriceQuote&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<FlightPriceQuote> executeWithHttpInfo() throws ApiException {
-            return postFlightPriceQuotesWithHttpInfo(createFlightPriceQuoteRequest);
-        }
-
-        /**
-         * Execute postFlightPriceQuotes request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table border="1">
-       <caption>Response Details</caption>
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<FlightPriceQuote> _callback) throws ApiException {
-            return postFlightPriceQuotesAsync(createFlightPriceQuoteRequest, _callback);
-        }
-    }
-
-    /**
-     * Create Flight Price Quote
-     * Create a price quote for a selected rebook itinerary.
-     * @param createFlightPriceQuoteRequest  (required)
-     * @return APIpostFlightPriceQuotesRequest
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The created price quote </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
-        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIpostFlightPriceQuotesRequest postFlightPriceQuotes(@javax.annotation.Nonnull CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest) {
-        return new APIpostFlightPriceQuotesRequest(createFlightPriceQuoteRequest);
     }
     private okhttp3.Call putExerciseQuotesIdFulfillCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;

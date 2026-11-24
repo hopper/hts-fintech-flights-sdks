@@ -89,7 +89,7 @@ public class Ancillary {
   }
 
   /**
-   * Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the ancillary is covered or not, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating the payout amount of a CFAR or DAFAR contract.
+   * Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the product applies to the ancillary, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating a CFAR or DAFAR refund amount.
    * @return code
    */
   @javax.annotation.Nonnull

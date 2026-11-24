@@ -15,7 +15,7 @@
     },
     {
       "name": "Partner Manual Exercise",
-      "description": "For cases where self-service tooling is not functioning properly, either due to a disruption that was not automatically identified by HTS, or an exercise that needs to occur outside of our tooling (like a payout to a different payment method than used for purchase, or a rebooking that was done directly with the GDS)."
+      "description": "For cases where self-service tooling is not functioning properly, either due to a disruption that was not automatically identified by HTS, or an exercise that needs to occur outside of our tooling (like a refund to a different payment method than used for purchase, or a rebooking that was done directly with the GDS)."
     },
     {
       "name": "HTS Self-Service Exercise",
@@ -315,6 +315,78 @@
           },
           "403": {
             "description": "The authenticated client does not have permission to call this endpoint"
+          },
+          "499": {
+            "description": "The client cancelled the request"
+          },
+          "500": {
+            "description": "The server encountered an internal error"
+          }
+        },
+        "security": [
+          {
+            "PartnerAuth": []
+          }
+        ]
+      }
+    },
+    "/merchandising_urls": {
+      "post": {
+        "tags": [
+          "Offer & Merchandising"
+        ],
+        "summary": "Create Merchandising URL",
+        "description": "Create a merchandising URL for offers a partner already has. The offer ids must come from one Create Offers or Price Offers response.",
+        "operationId": "postMerchandising_urls",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_merchandising_url_request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The merchandising URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/create_merchandising_url_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Syntactic errors were encountered while handling the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The client could not be authenticated"
+          },
+          "403": {
+            "description": "The authenticated client does not have permission to call this endpoint"
+          },
+          "422": {
+            "description": "Semantic errors were encountered while handling the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/unprocessable_entity_create_merchandising_url_error"
+                }
+              }
+            }
           },
           "499": {
             "description": "The client cancelled the request"
@@ -1284,82 +1356,6 @@
         ]
       }
     },
-    "/contracts/{id}/rebook_eligibility": {
-      "get": {
-        "tags": [
-          "Partner Self-Service Exercise"
-        ],
-        "summary": "Get Rebook Eligibility",
-        "description": "Check whether a contract's segments are eligible for rebook due to a disruption. Each rebook-eligible segment's rebook_eligibility carries search_criteria (nearby airports and the departure date window), so partners sourcing their own inventory can match HTS's search.",
-        "operationId": "getContractsIdRebook_eligibility",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique identifier for a contract.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The rebook eligibility details for the contract",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/rebook_eligibility_response"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Syntactic errors were encountered while handling the request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/error"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "The client could not be authenticated"
-          },
-          "403": {
-            "description": "The authenticated client does not have permission to call this endpoint"
-          },
-          "404": {
-            "description": "The requested resource could not be found"
-          },
-          "422": {
-            "description": "Semantic errors were encountered while handling the request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/unprocessable_entity_dafar_rebook_eligibility_error"
-                }
-              }
-            }
-          },
-          "499": {
-            "description": "The client cancelled the request"
-          },
-          "500": {
-            "description": "The server encountered an internal error"
-          }
-        },
-        "security": [
-          {
-            "PartnerAuth": []
-          }
-        ]
-      }
-    },
     "/contracts/{id}/flight_shops": {
       "post": {
         "tags": [
@@ -1524,14 +1520,25 @@
         ]
       }
     },
-    "/flight_price_quotes": {
+    "/contracts/{id}/flight_price_quotes": {
       "post": {
         "tags": [
           "Partner Self-Service Exercise"
         ],
         "summary": "Create Flight Price Quote",
-        "description": "Create a price quote for a selected rebook itinerary.",
-        "operationId": "postFlight_price_quotes",
+        "description": "Create a price quote for a selected rebook itinerary from the contract's flight shop.",
+        "operationId": "postContractsIdFlight_price_quotes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique identifier for a contract.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1571,6 +1578,9 @@
           },
           "403": {
             "description": "The authenticated client does not have permission to call this endpoint"
+          },
+          "404": {
+            "description": "The requested resource could not be found"
           },
           "422": {
             "description": "Semantic errors were encountered while handling the request",
@@ -1811,7 +1821,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/event"
+                "$ref": "#/components/schemas/dafar_create_event"
               }
             }
           },
@@ -1860,7 +1870,7 @@
           "Partner Endpoints"
         ],
         "summary": "Get Booking",
-        "description": "Called by HTS to retrieve the current state of a flight booking from the partner system.\n\nHTS provides the booking references stored on the contract as query parameters. These references\nare partner-defined key/value pairs (e.g. record locator, order ID) established during contract creation.\n\nThe recommended response includes:\n- **Booking status** \u2014 the current status of the booking (e.g. confirmed, cancelled, voided, pending, checked_in, no_show). Partners may use their own status values; HTS will accept and translate them.\n- **Itinerary** \u2014 flight slices with segments (origin, destination, departure/arrival times, carrier, flight number, cabin), fare brand, passengers with per-passenger fare amounts, and ancillaries\n- **Currency** \u2014 ISO 4217 currency code for all monetary amounts\n- **Booking references** \u2014 the same key/value pairs used to identify the booking\n- **Void eligibility** \u2014 whether the booking can still be voided (allowed, not_allowed, or allowed_until with an ISO 8601 timestamp)\n- **Payment transactions** \u2014 amounts, timestamps, transaction types (credit/debit), and payment methods\n- **Created at** \u2014 ISO 8601 timestamp of when the booking was originally created\n\nPartner implementations may vary in structure and fields returned. HTS is designed to handle\nthese variations gracefully.",
+        "description": "Called by HTS to retrieve the current state of a flight booking from the partner system.\n\nHTS provides the booking references stored on the contract as query parameters. These references\nare partner-defined key/value pairs (e.g. record locator, order ID) established during contract creation.\n\nThe recommended response includes:\n- **Booking status** \u2014 the current status of the booking (e.g. confirmed, cancelled, voided, pending, checked_in, no_show). Partners may use their own status values; HTS will accept and translate them.\n- **Itinerary** \u2014 flight slices with segments (origin, destination, departure/arrival times, carrier, flight number, cabin), fare brand, passengers with per-passenger fare amounts, and ancillaries\n- **Currency** \u2014 ISO 4217 currency code for all monetary amounts\n- **Booking references** \u2014 the same key/value pairs used to identify the booking\n- **Void eligibility** \u2014 whether the booking can still be voided (allowed, not_allowed, or allowed_until with an ISO 8601 timestamp)\n- **Payment transactions** \u2014 amounts, timestamps, transaction types (`user_charge`/`user_refund`), and payment methods\n- **Created at** \u2014 ISO 8601 timestamp of when the booking was originally created\n\nPartner implementations may vary in structure and fields returned. HTS is designed to handle\nthese variations gracefully.",
         "operationId": "get_booking",
         "responses": {
           "200": {
@@ -2179,7 +2189,7 @@
     "schemas": {
       "additional_contact_info": {
         "title": "additional_contact_info",
-        "description": "An additional recipient to notify about this contract, such as flight disruption alerts, reminders, and exercise confirmations. Additional recipients receive notifications only; they are never used for sign-in, one-time passcodes, or receipts.",
+        "description": "An additional recipient to notify about this purchase, such as flight disruption alerts, reminders, and exercise confirmations. Additional recipients receive notifications only; they are never used for sign-in, one-time passcodes, or receipts.",
         "type": "object",
         "properties": {
           "email_address": {
@@ -2387,7 +2397,7 @@
             "exclusiveMinimum": 0
           },
           "code": {
-            "description": "Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code => ancillary type, and whether the ancillary is covered or not, is configured on the HTS side. It's important to use the same value as in the PNR/Order since it's used by HTS for various flow, e.g. validating and updating the payout amount of a CFAR or DAFAR contract.",
+            "description": "Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code => ancillary type, and whether the product applies to the ancillary, is configured on the HTS side. It's important to use the same value as in the PNR/Order since it's used by HTS for various flow, e.g. validating and updating a CFAR or DAFAR refund amount.",
             "type": "string",
             "minLength": 1
           }
@@ -2435,7 +2445,7 @@
             }
           },
           "ancillaries": {
-            "description": "Ancillaries attached to the itinerary which will be covered by the product and their prices. In the case of a split itinerary the payout amount of these ancillaries will be evenly distributed amongst the passengers.",
+            "description": "Ancillaries attached to the itinerary that the product applies to, and their prices. In the case of a split itinerary the refund amount of these ancillaries will be evenly distributed amongst the passengers.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ancillary"
@@ -2948,24 +2958,6 @@
           }
         }
       },
-      "contract_already_exercised1": {
-        "title": "contract_already_exercised",
-        "type": "object",
-        "required": [
-          "message",
-          "code"
-        ],
-        "properties": {
-          "message": {
-            "description": "A human-readable message describing the error",
-            "type": "string"
-          },
-          "code": {
-            "type": "string",
-            "const": "contract_already_exercised"
-          }
-        }
-      },
       "contract_canceled_webhook": {
         "title": "contract_canceled_webhook",
         "description": "Webhook sent when a DAFAR contract is canceled.",
@@ -3203,24 +3195,6 @@
           }
         }
       },
-      "contract_expired1": {
-        "title": "contract_expired",
-        "type": "object",
-        "required": [
-          "message",
-          "code"
-        ],
-        "properties": {
-          "message": {
-            "description": "A human-readable message describing the error",
-            "type": "string"
-          },
-          "code": {
-            "type": "string",
-            "const": "contract_expired"
-          }
-        }
-      },
       "contract_expired_webhook": {
         "title": "contract_expired_webhook",
         "description": "Webhook sent when a DAFAR contract expires without being exercised.",
@@ -3267,6 +3241,161 @@
           }
         }
       },
+      "contract_itinerary": {
+        "title": "contract_itinerary",
+        "description": "The trip as purchased, with each slice's exercise eligibility and each segment's rebook eligibility and disruption. It doesn't change after a rebook; the rebooked flights are in that rebook's exercise. Populated on Get Contract and the contract webhooks; absent on Create Contract.",
+        "type": "object",
+        "required": [
+          "slices"
+        ],
+        "properties": {
+          "slices": {
+            "description": "The slices of the trip as purchased, in purchase order.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/contract_itinerary_slice"
+            }
+          }
+        }
+      },
+      "contract_itinerary_segment": {
+        "title": "contract_itinerary_segment",
+        "type": "object",
+        "required": [
+          "id",
+          "origin_airport",
+          "destination_airport",
+          "departure_date_time",
+          "arrival_date_time",
+          "cabin",
+          "marketing_carrier_code",
+          "marketing_flight_number",
+          "rebook_eligibility"
+        ],
+        "properties": {
+          "id": {
+            "description": "Base64-encoded string of \"<slice_index>:<segment_index>\", both zero-based. The encoding is padded, so some ids end in `=`; treat the id as an opaque string.",
+            "examples": [
+              "MDow"
+            ],
+            "type": "string"
+          },
+          "origin_airport": {
+            "description": "IATA airport code of origin.",
+            "examples": [
+              "YUL"
+            ],
+            "type": "string",
+            "pattern": "[A-Z]{3}"
+          },
+          "destination_airport": {
+            "description": "IATA airport code of destination.",
+            "examples": [
+              "SFO"
+            ],
+            "type": "string",
+            "pattern": "[A-Z]{3}"
+          },
+          "departure_date_time": {
+            "description": "Local date and time of departure, in ISO 8601 format.",
+            "examples": [
+              "2026-11-15T08:00"
+            ],
+            "type": "string"
+          },
+          "arrival_date_time": {
+            "description": "Local date and time of arrival, in ISO 8601 format.",
+            "examples": [
+              "2026-11-15T11:15"
+            ],
+            "type": "string"
+          },
+          "cabin": {
+            "$ref": "#/components/schemas/cabin",
+            "description": "Cabin of the segment.",
+            "examples": [
+              "Economy"
+            ]
+          },
+          "reservation_booking_designator": {
+            "description": "Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`, `E1`). Pass the code exactly as it appears on the ticket/PNR.",
+            "examples": [
+              "Y"
+            ],
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]?$"
+          },
+          "marketing_carrier_code": {
+            "description": "IATA airline code of the marketing carrier for this segment.",
+            "examples": [
+              "AC"
+            ],
+            "type": "string",
+            "pattern": "[A-Z0-9]{2}"
+          },
+          "marketing_flight_number": {
+            "description": "Flight number for the marketing carrier.",
+            "examples": [
+              "759"
+            ],
+            "type": "string",
+            "pattern": "[0-9]{1,4}"
+          },
+          "operating_carrier_code": {
+            "description": "IATA airline code of the operating carrier for this segment. Assumed to be the same as marketing_carrier_code if not set.",
+            "examples": [
+              "AC"
+            ],
+            "type": "string",
+            "pattern": "[A-Z0-9]{2}"
+          },
+          "operating_flight_number": {
+            "description": "Flight number for the operating carrier. Assumed to be the same as marketing_flight_number if not set.",
+            "examples": [
+              "759"
+            ],
+            "type": "string",
+            "pattern": "[0-9]{1,4}"
+          },
+          "rebook_eligibility": {
+            "$ref": "#/components/schemas/rebook_eligibility"
+          },
+          "disruption": {
+            "$ref": "#/components/schemas/disruption_reason"
+          }
+        }
+      },
+      "contract_itinerary_slice": {
+        "title": "contract_itinerary_slice",
+        "type": "object",
+        "required": [
+          "segments",
+          "fare_brand",
+          "exercise_eligibility"
+        ],
+        "properties": {
+          "segments": {
+            "description": "The ordered list of segments that make up this slice.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/contract_itinerary_segment"
+            }
+          },
+          "fare_brand": {
+            "description": "Name of the brand for the fare of the slice.",
+            "examples": [
+              "Standard"
+            ],
+            "type": "string",
+            "minLength": 1
+          },
+          "exercise_eligibility": {
+            "$ref": "#/components/schemas/exercise_eligibility"
+          }
+        }
+      },
       "contract_not_confirmed": {
         "title": "contract_not_confirmed",
         "type": "object",
@@ -3285,43 +3414,7 @@
           }
         }
       },
-      "contract_not_confirmed1": {
-        "title": "contract_not_confirmed",
-        "type": "object",
-        "required": [
-          "message",
-          "code"
-        ],
-        "properties": {
-          "message": {
-            "description": "A human-readable message describing the error",
-            "type": "string"
-          },
-          "code": {
-            "type": "string",
-            "const": "contract_not_confirmed"
-          }
-        }
-      },
       "contract_not_found": {
-        "title": "contract_not_found",
-        "type": "object",
-        "required": [
-          "message",
-          "code"
-        ],
-        "properties": {
-          "message": {
-            "description": "A human-readable message describing the error",
-            "type": "string"
-          },
-          "code": {
-            "type": "string",
-            "const": "contract_not_found"
-          }
-        }
-      },
-      "contract_not_found1": {
         "title": "contract_not_found",
         "type": "object",
         "required": [
@@ -3370,24 +3463,6 @@
             "items": {
               "$ref": "#/components/schemas/tax"
             }
-          }
-        }
-      },
-      "contract_voided": {
-        "title": "contract_voided",
-        "type": "object",
-        "required": [
-          "message",
-          "code"
-        ],
-        "properties": {
-          "message": {
-            "description": "A human-readable message describing the error",
-            "type": "string"
-          },
-          "code": {
-            "type": "string",
-            "const": "contract_voided"
           }
         }
       },
@@ -3542,9 +3617,9 @@
         ],
         "properties": {
           "segment_id": {
-            "description": "The segment to rebook, identified by the id returned in the rebook eligibility response (slices[].segments[].id). Must reference a rebook-eligible segment on this contract; HTS derives the search origin/destination and date window from that segment.",
+            "description": "The segment to rebook, identified by its id in Get Contract's itinerary (itinerary.slices[].segments[].id). Must reference a rebook-eligible segment of this purchase; HTS derives the search origin/destination and date window from that segment.",
             "examples": [
-              "seg_1"
+              "MDow"
             ],
             "type": "string"
           },
@@ -3557,6 +3632,60 @@
           },
           "inventory_source": {
             "$ref": "#/components/schemas/inventory_source"
+          }
+        }
+      },
+      "create_merchandising_url_error": {
+        "title": "create_merchandising_url_error",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/not_merchandisable"
+          },
+          {
+            "$ref": "#/components/schemas/offer_expired"
+          },
+          {
+            "$ref": "#/components/schemas/offer_not_found1"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "code",
+          "mapping": {
+            "not_merchandisable": "#/components/schemas/not_merchandisable",
+            "offer_expired": "#/components/schemas/offer_expired",
+            "offer_not_found": "#/components/schemas/offer_not_found1"
+          }
+        }
+      },
+      "create_merchandising_url_request": {
+        "title": "create_merchandising_url_request",
+        "type": "object",
+        "required": [
+          "offer_ids"
+        ],
+        "properties": {
+          "offer_ids": {
+            "description": "Offer ids from one Create Offers or Price Offers response.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "description": "Unique identifier for an offer.",
+              "type": "string"
+            }
+          }
+        }
+      },
+      "create_merchandising_url_response": {
+        "title": "create_merchandising_url_response",
+        "description": "Response containing a merchandising URL for the given offers.",
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "description": "A merchandising URL for those offers.",
+            "type": "string"
           }
         }
       },
@@ -3756,6 +3885,9 @@
             "$ref": "#/components/schemas/map_string",
             "description": "Record locators if PSS, Order ID if OMS, etc. Used to retrieve the flight booking later. It's a dictionary of key/value pairs. The keys can be anything, but they are referenced in the configuration when retrieving the booking, so those must align."
           },
+          "itinerary": {
+            "$ref": "#/components/schemas/contract_itinerary"
+          },
           "exercises": {
             "description": "Details of how this contract was exercised (payout and/or rebook). Always present as a list. Populated when exercised, empty otherwise.",
             "type": "array",
@@ -3826,7 +3958,7 @@
             "$ref": "#/components/schemas/invalid_email"
           },
           {
-            "$ref": "#/components/schemas/offer_not_found1"
+            "$ref": "#/components/schemas/offer_not_found2"
           },
           {
             "$ref": "#/components/schemas/order_already_exists"
@@ -3843,10 +3975,101 @@
           "mapping": {
             "idempotency_key_reused": "#/components/schemas/idempotency_key_reused",
             "invalid_email": "#/components/schemas/invalid_email",
-            "offer_not_found": "#/components/schemas/offer_not_found1",
+            "offer_not_found": "#/components/schemas/offer_not_found2",
             "order_already_exists": "#/components/schemas/order_already_exists",
             "payment_authorization_failure": "#/components/schemas/payment_authorization_failure",
             "unsupported_trip_type": "#/components/schemas/unsupported_trip_type"
+          }
+        }
+      },
+      "dafar_create_event": {
+        "title": "dafar_create_event",
+        "description": "A type of event to be recorded.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/booking_confirmed"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_complete_page_continue_clicked"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_complete_page_loaded"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_confirmation_page_back_clicked"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_confirmation_page_confirm_clicked"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_confirmation_page_loaded"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_landing_continue_clicked"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_landing_loaded"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_rebooking_flight_choice_continue_clicked"
+          },
+          {
+            "$ref": "#/components/schemas/exercise_portal_rebooking_shop_page_loaded"
+          },
+          {
+            "$ref": "#/components/schemas/flight_search_loaded"
+          },
+          {
+            "$ref": "#/components/schemas/flight_search_submitted"
+          },
+          {
+            "$ref": "#/components/schemas/flight_selected"
+          },
+          {
+            "$ref": "#/components/schemas/flight_submitted_for_offer"
+          },
+          {
+            "$ref": "#/components/schemas/merchandising_displayed"
+          },
+          {
+            "$ref": "#/components/schemas/merchandising_faq_clicked"
+          },
+          {
+            "$ref": "#/components/schemas/merchandising_offer_attached"
+          },
+          {
+            "$ref": "#/components/schemas/merchandising_offer_declined"
+          },
+          {
+            "$ref": "#/components/schemas/merchandising_sdk_loaded"
+          },
+          {
+            "$ref": "#/components/schemas/offer_display_requested"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "booking_confirmed": "#/components/schemas/booking_confirmed",
+            "exercise_portal_complete_page_continue_clicked": "#/components/schemas/exercise_portal_complete_page_continue_clicked",
+            "exercise_portal_complete_page_loaded": "#/components/schemas/exercise_portal_complete_page_loaded",
+            "exercise_portal_confirmation_page_back_clicked": "#/components/schemas/exercise_portal_confirmation_page_back_clicked",
+            "exercise_portal_confirmation_page_confirm_clicked": "#/components/schemas/exercise_portal_confirmation_page_confirm_clicked",
+            "exercise_portal_confirmation_page_loaded": "#/components/schemas/exercise_portal_confirmation_page_loaded",
+            "exercise_portal_landing_continue_clicked": "#/components/schemas/exercise_portal_landing_continue_clicked",
+            "exercise_portal_landing_loaded": "#/components/schemas/exercise_portal_landing_loaded",
+            "exercise_portal_rebooking_flight_choice_continue_clicked": "#/components/schemas/exercise_portal_rebooking_flight_choice_continue_clicked",
+            "exercise_portal_rebooking_shop_page_loaded": "#/components/schemas/exercise_portal_rebooking_shop_page_loaded",
+            "flight_search_loaded": "#/components/schemas/flight_search_loaded",
+            "flight_search_submitted": "#/components/schemas/flight_search_submitted",
+            "flight_selected": "#/components/schemas/flight_selected",
+            "flight_submitted_for_offer": "#/components/schemas/flight_submitted_for_offer",
+            "merchandising_displayed": "#/components/schemas/merchandising_displayed",
+            "merchandising_faq_clicked": "#/components/schemas/merchandising_faq_clicked",
+            "merchandising_offer_attached": "#/components/schemas/merchandising_offer_attached",
+            "merchandising_offer_declined": "#/components/schemas/merchandising_offer_declined",
+            "merchandising_sdk_loaded": "#/components/schemas/merchandising_sdk_loaded",
+            "offer_display_requested": "#/components/schemas/offer_display_requested"
           }
         }
       },
@@ -3970,16 +4193,16 @@
         "title": "dafar_flight_shop_error",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/contract_already_exercised1"
+            "$ref": "#/components/schemas/contract_already_exercised"
           },
           {
-            "$ref": "#/components/schemas/contract_expired1"
+            "$ref": "#/components/schemas/contract_expired"
           },
           {
-            "$ref": "#/components/schemas/contract_not_confirmed1"
+            "$ref": "#/components/schemas/contract_not_confirmed"
           },
           {
-            "$ref": "#/components/schemas/contract_not_found1"
+            "$ref": "#/components/schemas/contract_not_found"
           },
           {
             "$ref": "#/components/schemas/partner_inventory_not_enabled"
@@ -3991,10 +4214,10 @@
         "discriminator": {
           "propertyName": "code",
           "mapping": {
-            "contract_already_exercised": "#/components/schemas/contract_already_exercised1",
-            "contract_expired": "#/components/schemas/contract_expired1",
-            "contract_not_confirmed": "#/components/schemas/contract_not_confirmed1",
-            "contract_not_found": "#/components/schemas/contract_not_found1",
+            "contract_already_exercised": "#/components/schemas/contract_already_exercised",
+            "contract_expired": "#/components/schemas/contract_expired",
+            "contract_not_confirmed": "#/components/schemas/contract_not_confirmed",
+            "contract_not_found": "#/components/schemas/contract_not_found",
             "partner_inventory_not_enabled": "#/components/schemas/partner_inventory_not_enabled",
             "segment_not_in_contract": "#/components/schemas/segment_not_in_contract"
           }
@@ -4075,36 +4298,6 @@
           "entry_point": {
             "description": "The entry point from which the disruption offer was presented to the user.",
             "type": "string"
-          }
-        }
-      },
-      "dafar_rebook_eligibility_error": {
-        "title": "dafar_rebook_eligibility_error",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/contract_already_exercised"
-          },
-          {
-            "$ref": "#/components/schemas/contract_expired"
-          },
-          {
-            "$ref": "#/components/schemas/contract_not_confirmed"
-          },
-          {
-            "$ref": "#/components/schemas/contract_not_found"
-          },
-          {
-            "$ref": "#/components/schemas/contract_voided"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "code",
-          "mapping": {
-            "contract_already_exercised": "#/components/schemas/contract_already_exercised",
-            "contract_expired": "#/components/schemas/contract_expired",
-            "contract_not_confirmed": "#/components/schemas/contract_not_confirmed",
-            "contract_not_found": "#/components/schemas/contract_not_found",
-            "contract_voided": "#/components/schemas/contract_voided"
           }
         }
       },
@@ -4396,7 +4589,7 @@
       },
       "disruption_reason": {
         "title": "disruption_reason",
-        "description": "The disruption experienced by the segment, if any has occurred.",
+        "description": "The disruption on this segment. Absent when the segment has not been disrupted.",
         "oneOf": [
           {
             "$ref": "#/components/schemas/canceled"
@@ -4432,6 +4625,29 @@
             "minItems": 1,
             "items": {
               "$ref": "#/components/schemas/search_criteria"
+            }
+          },
+          "type": {
+            "type": "string",
+            "const": "eligible"
+          }
+        }
+      },
+      "eligible1": {
+        "title": "eligible",
+        "description": "The slice can be exercised.",
+        "type": "object",
+        "required": [
+          "exercise_options",
+          "type"
+        ],
+        "properties": {
+          "exercise_options": {
+            "description": "The ways the slice can be exercised.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/exercise_option"
             }
           },
           "type": {
@@ -4531,85 +4747,6 @@
           }
         }
       },
-      "event": {
-        "title": "event",
-        "description": "A type of event to be recorded.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/booking_confirmed"
-          },
-          {
-            "$ref": "#/components/schemas/exercise_portal_complete_page_continue_clicked"
-          },
-          {
-            "$ref": "#/components/schemas/exercise_portal_complete_page_loaded"
-          },
-          {
-            "$ref": "#/components/schemas/exercise_portal_confirmation_page_back_clicked"
-          },
-          {
-            "$ref": "#/components/schemas/exercise_portal_confirmation_page_confirm_clicked"
-          },
-          {
-            "$ref": "#/components/schemas/exercise_portal_confirmation_page_loaded"
-          },
-          {
-            "$ref": "#/components/schemas/exercise_portal_landing_continue_clicked"
-          },
-          {
-            "$ref": "#/components/schemas/exercise_portal_landing_loaded"
-          },
-          {
-            "$ref": "#/components/schemas/flight_search_loaded"
-          },
-          {
-            "$ref": "#/components/schemas/flight_search_submitted"
-          },
-          {
-            "$ref": "#/components/schemas/flight_selected"
-          },
-          {
-            "$ref": "#/components/schemas/flight_submitted_for_offer"
-          },
-          {
-            "$ref": "#/components/schemas/merchandising_displayed"
-          },
-          {
-            "$ref": "#/components/schemas/merchandising_faq_clicked"
-          },
-          {
-            "$ref": "#/components/schemas/merchandising_offer_attached"
-          },
-          {
-            "$ref": "#/components/schemas/merchandising_offer_declined"
-          },
-          {
-            "$ref": "#/components/schemas/merchandising_sdk_loaded"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "booking_confirmed": "#/components/schemas/booking_confirmed",
-            "exercise_portal_complete_page_continue_clicked": "#/components/schemas/exercise_portal_complete_page_continue_clicked",
-            "exercise_portal_complete_page_loaded": "#/components/schemas/exercise_portal_complete_page_loaded",
-            "exercise_portal_confirmation_page_back_clicked": "#/components/schemas/exercise_portal_confirmation_page_back_clicked",
-            "exercise_portal_confirmation_page_confirm_clicked": "#/components/schemas/exercise_portal_confirmation_page_confirm_clicked",
-            "exercise_portal_confirmation_page_loaded": "#/components/schemas/exercise_portal_confirmation_page_loaded",
-            "exercise_portal_landing_continue_clicked": "#/components/schemas/exercise_portal_landing_continue_clicked",
-            "exercise_portal_landing_loaded": "#/components/schemas/exercise_portal_landing_loaded",
-            "flight_search_loaded": "#/components/schemas/flight_search_loaded",
-            "flight_search_submitted": "#/components/schemas/flight_search_submitted",
-            "flight_selected": "#/components/schemas/flight_selected",
-            "flight_submitted_for_offer": "#/components/schemas/flight_submitted_for_offer",
-            "merchandising_displayed": "#/components/schemas/merchandising_displayed",
-            "merchandising_faq_clicked": "#/components/schemas/merchandising_faq_clicked",
-            "merchandising_offer_attached": "#/components/schemas/merchandising_offer_attached",
-            "merchandising_offer_declined": "#/components/schemas/merchandising_offer_declined",
-            "merchandising_sdk_loaded": "#/components/schemas/merchandising_sdk_loaded"
-          }
-        }
-      },
       "exercise_contract_request": {
         "title": "exercise_contract_request",
         "oneOf": [
@@ -4627,6 +4764,33 @@
             "rebooking": "#/components/schemas/rebooking"
           }
         }
+      },
+      "exercise_eligibility": {
+        "title": "exercise_eligibility",
+        "description": "Whether this slice can be exercised, and how.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/eligible1"
+          },
+          {
+            "$ref": "#/components/schemas/ineligible1"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "eligible": "#/components/schemas/eligible1",
+            "ineligible": "#/components/schemas/ineligible1"
+          }
+        }
+      },
+      "exercise_option": {
+        "title": "exercise_option",
+        "type": "string",
+        "enum": [
+          "payout",
+          "rebook"
+        ]
       },
       "exercise_payout": {
         "title": "exercise_payout",
@@ -4678,7 +4842,8 @@
           "session_id",
           "occurred_at",
           "contract_id",
-          "type"
+          "type",
+          "exercise_type"
         ],
         "properties": {
           "session_id": {
@@ -4691,6 +4856,9 @@
           },
           "contract_id": {
             "type": "string"
+          },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
           },
           "type": {
             "type": "string",
@@ -4706,7 +4874,8 @@
           "session_id",
           "occurred_at",
           "contract_id",
-          "type"
+          "type",
+          "exercise_type"
         ],
         "properties": {
           "session_id": {
@@ -4719,6 +4888,9 @@
           },
           "contract_id": {
             "type": "string"
+          },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
           },
           "type": {
             "type": "string",
@@ -4734,7 +4906,8 @@
           "session_id",
           "occurred_at",
           "contract_id",
-          "type"
+          "type",
+          "exercise_type"
         ],
         "properties": {
           "session_id": {
@@ -4747,6 +4920,9 @@
           },
           "contract_id": {
             "type": "string"
+          },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
           },
           "type": {
             "type": "string",
@@ -4762,7 +4938,8 @@
           "session_id",
           "occurred_at",
           "contract_id",
-          "type"
+          "type",
+          "exercise_type"
         ],
         "properties": {
           "session_id": {
@@ -4775,6 +4952,9 @@
           },
           "contract_id": {
             "type": "string"
+          },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
           },
           "type": {
             "type": "string",
@@ -4790,7 +4970,8 @@
           "session_id",
           "occurred_at",
           "contract_id",
-          "type"
+          "type",
+          "exercise_type"
         ],
         "properties": {
           "session_id": {
@@ -4803,6 +4984,9 @@
           },
           "contract_id": {
             "type": "string"
+          },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
           },
           "type": {
             "type": "string",
@@ -4837,6 +5021,70 @@
             "const": "exercise_portal_landing_loaded"
           }
         }
+      },
+      "exercise_portal_rebooking_flight_choice_continue_clicked": {
+        "title": "exercise_portal_rebooking_flight_choice_continue_clicked",
+        "description": "Triggered when a customer selects a fare and continues to the review page.",
+        "type": "object",
+        "required": [
+          "session_id",
+          "occurred_at",
+          "contract_id",
+          "type"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "description": "Date and time at which the event occurred, as a UTC RFC3339 formatted datetime.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "contract_id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "const": "exercise_portal_rebooking_flight_choice_continue_clicked"
+          }
+        }
+      },
+      "exercise_portal_rebooking_shop_page_loaded": {
+        "title": "exercise_portal_rebooking_shop_page_loaded",
+        "description": "Triggered when the rebooking flight-results page is loaded.",
+        "type": "object",
+        "required": [
+          "session_id",
+          "occurred_at",
+          "contract_id",
+          "type"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "description": "Date and time at which the event occurred, as a UTC RFC3339 formatted datetime.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "contract_id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "const": "exercise_portal_rebooking_shop_page_loaded"
+          }
+        }
+      },
+      "exercise_type": {
+        "title": "exercise_type",
+        "type": "string",
+        "enum": [
+          "rebook",
+          "payout"
+        ]
       },
       "exercise_url": {
         "title": "exercise_url",
@@ -5391,7 +5639,7 @@
           },
           "booking_references": {
             "$ref": "#/components/schemas/map_string",
-            "description": "Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references provided during contract creation."
+            "description": "Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references the partner supplied at purchase."
           },
           "booking_status": {
             "$ref": "#/components/schemas/booking_status"
@@ -5490,7 +5738,7 @@
           "flight_number": {
             "description": "The numeric portion of the flight number.",
             "examples": [
-              123
+              "123"
             ],
             "type": "string",
             "pattern": "[0-9]{1,4}"
@@ -5607,6 +5855,20 @@
       "ineligible": {
         "title": "ineligible",
         "description": "A rebook cannot start from this segment.",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "ineligible"
+          }
+        }
+      },
+      "ineligible1": {
+        "title": "ineligible",
+        "description": "The slice can't be exercised.",
         "type": "object",
         "required": [
           "type"
@@ -6561,6 +6823,24 @@
           }
         }
       },
+      "not_merchandisable": {
+        "title": "not_merchandisable",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "not_merchandisable"
+          }
+        }
+      },
       "not_provided": {
         "title": "not_provided",
         "description": "\n When partner can not pass any form of payment information.\n Not compatible with HTS as Merchant of Record.\n ",
@@ -6668,7 +6948,7 @@
       },
       "notification_preferences": {
         "title": "notification_preferences",
-        "description": "Consent for the PRIMARY BOOKER (the email_address / phone_number on this contact_info) to receive disruption notifications via SMS/push. Applies to the primary booker only: additional_recipients never receive SMS or push (they are email-only, notification-only). Captured per offer when the contract is created; does not persist across offers. Recording consent does not trigger delivery.",
+        "description": "Consent for the PRIMARY BOOKER (the email_address / phone_number on this contact_info) to receive disruption notifications via SMS/push. Applies to the primary booker only: additional_recipients never receive SMS or push (they are email-only, notification-only). Captured per offer at purchase; does not persist across offers. Recording consent does not trigger delivery.",
         "type": "object",
         "properties": {
           "sms": {
@@ -6678,6 +6958,60 @@
           "push": {
             "description": "Push consent for the primary booker. Omit = not specified, true = opt-in, false = declined.",
             "type": "boolean"
+          }
+        }
+      },
+      "offer_display_requested": {
+        "title": "offer_display_requested",
+        "description": "Triggered when a customer explicitly requests to view an offer.",
+        "type": "object",
+        "required": [
+          "session_id",
+          "occurred_at",
+          "offer_ids",
+          "trigger",
+          "type"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "description": "Date and time at which the event occurred, as a UTC RFC3339 formatted datetime.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "offer_ids": {
+            "description": "The offers that the customer is requesting to view.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "trigger": {
+            "$ref": "#/components/schemas/request_trigger"
+          },
+          "type": {
+            "type": "string",
+            "const": "offer_display_requested"
+          }
+        }
+      },
+      "offer_expired": {
+        "title": "offer_expired",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "offer_expired"
           }
         }
       },
@@ -6700,6 +7034,24 @@
         }
       },
       "offer_not_found1": {
+        "title": "offer_not_found",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "offer_not_found"
+          }
+        }
+      },
+      "offer_not_found2": {
         "title": "offer_not_found",
         "type": "object",
         "required": [
@@ -7794,7 +8146,7 @@
       },
       "rebook_eligibility": {
         "title": "rebook_eligibility",
-        "description": "Whether this segment is eligible for rebook, with the search criteria when it is.",
+        "description": "Whether a rebook can start from this segment, with the search criteria when it can.",
         "oneOf": [
           {
             "$ref": "#/components/schemas/eligible"
@@ -7808,23 +8160,6 @@
           "mapping": {
             "eligible": "#/components/schemas/eligible",
             "ineligible": "#/components/schemas/ineligible"
-          }
-        }
-      },
-      "rebook_eligibility_response": {
-        "title": "rebook_eligibility_response",
-        "type": "object",
-        "required": [
-          "slices"
-        ],
-        "properties": {
-          "slices": {
-            "description": "Slice-grouped eligibility for the contract's itinerary. Each slice carries its segments' eligibility for rebook.",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "$ref": "#/components/schemas/slice_eligibility"
-            }
           }
         }
       },
@@ -7970,6 +8305,33 @@
           }
         }
       },
+      "request_trigger": {
+        "title": "request_trigger",
+        "description": "What prompted the customer to request to view an offer.",
+        "type": "object",
+        "required": [
+          "page",
+          "entry_point"
+        ],
+        "properties": {
+          "page": {
+            "description": "The page where the request was triggered.",
+            "examples": [
+              "checkout"
+            ],
+            "type": "string",
+            "minLength": 1
+          },
+          "entry_point": {
+            "description": "The entry point of the flow where the request was triggered.",
+            "examples": [
+              "postbooking"
+            ],
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
       "reseller_controlled": {
         "title": "reseller_controlled",
         "type": "object",
@@ -8078,97 +8440,6 @@
             "items": {
               "$ref": "#/components/schemas/fare_detail"
             }
-          }
-        }
-      },
-      "segment_eligibility": {
-        "title": "segment_eligibility",
-        "type": "object",
-        "required": [
-          "id",
-          "origin_airport",
-          "destination_airport",
-          "departure_date_time",
-          "arrival_date_time",
-          "marketing_carrier_code",
-          "marketing_flight_number",
-          "cabin",
-          "rebook_eligibility"
-        ],
-        "properties": {
-          "id": {
-            "description": "Stable identifier for this segment within the contract's rebook eligibility. Echo it back as segment_id on the flight shop request to rebook this exact segment. Stable across eligibility calls for the same disruption.",
-            "examples": [
-              "seg_1"
-            ],
-            "type": "string"
-          },
-          "origin_airport": {
-            "description": "IATA code of the origin airport.",
-            "examples": [
-              "YUL"
-            ],
-            "type": "string",
-            "pattern": "[A-Z]{3}"
-          },
-          "destination_airport": {
-            "description": "IATA code of the destination airport.",
-            "examples": [
-              "YYZ"
-            ],
-            "type": "string",
-            "pattern": "[A-Z]{3}"
-          },
-          "departure_date_time": {
-            "description": "Scheduled local departure date and time in ISO Local Date Time format.",
-            "examples": [
-              "2024-06-15T14:30"
-            ],
-            "type": "string"
-          },
-          "arrival_date_time": {
-            "description": "Scheduled local arrival date and time in ISO Local Date Time format.",
-            "examples": [
-              "2024-06-15T16:00"
-            ],
-            "type": "string"
-          },
-          "marketing_carrier_code": {
-            "description": "IATA marketing carrier code.",
-            "examples": [
-              "AC"
-            ],
-            "type": "string",
-            "pattern": "[A-Z0-9]{2}"
-          },
-          "marketing_flight_number": {
-            "description": "Marketing flight number.",
-            "examples": [
-              123
-            ],
-            "type": "string",
-            "pattern": "[0-9]{1,4}"
-          },
-          "cabin": {
-            "$ref": "#/components/schemas/cabin",
-            "description": "Cabin class.",
-            "examples": [
-              "Economy"
-            ]
-          },
-          "reservation_booking_designator": {
-            "description": "Reservation Booking Designator (RBD) for this segment: the booking code the airline sold the seat under, one uppercase letter and an optional second letter or digit. Also known as booking class, booking code, class of service, or fare class (e.g. `Y`, `B`, `M`, `Q`, `N`, `J`, `F`, `E1`). Pass the code exactly as it appears on the ticket/PNR.",
-            "examples": [
-              "J"
-            ],
-            "type": "string",
-            "pattern": "^[A-Z][A-Z0-9]?$"
-          },
-          "rebook_eligibility": {
-            "$ref": "#/components/schemas/rebook_eligibility"
-          },
-          "disruption": {
-            "$ref": "#/components/schemas/disruption_reason"
           }
         }
       },
@@ -8334,7 +8605,7 @@
           "marketing_flight_number": {
             "description": "Marketing flight number.",
             "examples": [
-              123
+              "123"
             ],
             "type": "string",
             "pattern": "[0-9]{1,4}"
@@ -8350,7 +8621,7 @@
           "operating_flight_number": {
             "description": "Operating flight number, present when the flight is operated under a different number.",
             "examples": [
-              456
+              "456"
             ],
             "type": "string",
             "pattern": "[0-9]{1,4}"
@@ -8436,23 +8707,6 @@
           }
         }
       },
-      "slice_eligibility": {
-        "title": "slice_eligibility",
-        "type": "object",
-        "required": [
-          "segments"
-        ],
-        "properties": {
-          "segments": {
-            "description": "The ordered list of segments that make up this slice.",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "$ref": "#/components/schemas/segment_eligibility"
-            }
-          }
-        }
-      },
       "slice_segment": {
         "title": "slice_segment",
         "description": "A single flight segment.",
@@ -8523,7 +8777,7 @@
           "marketing_flight_number": {
             "description": "Marketing flight number.",
             "examples": [
-              123
+              "123"
             ],
             "type": "string",
             "pattern": "[0-9]{1,4}"
@@ -8683,6 +8937,14 @@
           "$ref": "#/components/schemas/contract_exercise_eligible_error"
         }
       },
+      "unprocessable_entity_create_merchandising_url_error": {
+        "title": "unprocessable_entity_create_merchandising_url_error",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/create_merchandising_url_error"
+        }
+      },
       "unprocessable_entity_create_offers_error": {
         "title": "unprocessable_entity_create_offers_error",
         "type": "array",
@@ -8753,14 +9015,6 @@
         "minItems": 1,
         "items": {
           "$ref": "#/components/schemas/dafar_flight_shop_error"
-        }
-      },
-      "unprocessable_entity_dafar_rebook_eligibility_error": {
-        "title": "unprocessable_entity_dafar_rebook_eligibility_error",
-        "type": "array",
-        "minItems": 1,
-        "items": {
-          "$ref": "#/components/schemas/dafar_rebook_eligibility_error"
         }
       },
       "unprocessable_entity_dafar_update_contact_info_error": {

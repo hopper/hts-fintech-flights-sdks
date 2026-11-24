@@ -64,29 +64,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
         Task<IGetContractsIdItinerariesItineraryIdApiResponse?> GetContractsIdItinerariesItineraryIdOrDefaultAsync(string id, string itineraryId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get Rebook Eligibility
-        /// </summary>
-        /// <remarks>
-        /// Check whether a contract&#39;s segments are eligible for rebook due to a disruption. Each rebook-eligible segment&#39;s rebook_eligibility carries search_criteria (nearby airports and the departure date window), so partners sourcing their own inventory can match HTS&#39;s search.
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">A unique identifier for a contract.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdRebookEligibilityApiResponse"/>&gt;</returns>
-        Task<IGetContractsIdRebookEligibilityApiResponse> GetContractsIdRebookEligibilityAsync(string id, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Get Rebook Eligibility
-        /// </summary>
-        /// <remarks>
-        /// Check whether a contract&#39;s segments are eligible for rebook due to a disruption. Each rebook-eligible segment&#39;s rebook_eligibility carries search_criteria (nearby airports and the departure date window), so partners sourcing their own inventory can match HTS&#39;s search.
-        /// </remarks>
-        /// <param name="id">A unique identifier for a contract.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdRebookEligibilityApiResponse"/>?&gt;</returns>
-        Task<IGetContractsIdRebookEligibilityApiResponse?> GetContractsIdRebookEligibilityOrDefaultAsync(string id, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
         /// Get Flight Booking
         /// </summary>
         /// <remarks>
@@ -131,6 +108,31 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdExerciseQuotesApiResponse"/>?&gt;</returns>
         Task<IPostContractsIdExerciseQuotesApiResponse?> PostContractsIdExerciseQuotesOrDefaultAsync(string id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create Flight Price Quote
+        /// </summary>
+        /// <remarks>
+        /// Create a price quote for a selected rebook itinerary from the contract&#39;s flight shop.
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdFlightPriceQuotesApiResponse"/>&gt;</returns>
+        Task<IPostContractsIdFlightPriceQuotesApiResponse> PostContractsIdFlightPriceQuotesAsync(string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create Flight Price Quote
+        /// </summary>
+        /// <remarks>
+        /// Create a price quote for a selected rebook itinerary from the contract&#39;s flight shop.
+        /// </remarks>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdFlightPriceQuotesApiResponse"/>?&gt;</returns>
+        Task<IPostContractsIdFlightPriceQuotesApiResponse?> PostContractsIdFlightPriceQuotesOrDefaultAsync(string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create Flight Shop
@@ -179,29 +181,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPostFlightBookingsApiResponse"/>?&gt;</returns>
         Task<IPostFlightBookingsApiResponse?> PostFlightBookingsOrDefaultAsync(CreateFlightBookingRequest createFlightBookingRequest, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Create Flight Price Quote
-        /// </summary>
-        /// <remarks>
-        /// Create a price quote for a selected rebook itinerary.
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IPostFlightPriceQuotesApiResponse"/>&gt;</returns>
-        Task<IPostFlightPriceQuotesApiResponse> PostFlightPriceQuotesAsync(CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Create Flight Price Quote
-        /// </summary>
-        /// <remarks>
-        /// Create a price quote for a selected rebook itinerary.
-        /// </remarks>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IPostFlightPriceQuotesApiResponse"/>?&gt;</returns>
-        Task<IPostFlightPriceQuotesApiResponse?> PostFlightPriceQuotesOrDefaultAsync(CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Fulfill DAFAR Exercise Quote
@@ -276,60 +255,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
     }
 
     /// <summary>
-    /// The <see cref="IGetContractsIdRebookEligibilityApiResponse"/>
-    /// </summary>
-    public interface IGetContractsIdRebookEligibilityApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, IOk<Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse?>, IBadRequest<List<Error>?>, IUnprocessableContent<List<DafarRebookEligibilityError>?>
-    {
-        /// <summary>
-        /// Returns true if the response is 200 Ok
-        /// </summary>
-        /// <returns></returns>
-        bool IsOk { get; }
-
-        /// <summary>
-        /// Returns true if the response is 400 BadRequest
-        /// </summary>
-        /// <returns></returns>
-        bool IsBadRequest { get; }
-
-        /// <summary>
-        /// Returns true if the response is 401 Unauthorized
-        /// </summary>
-        /// <returns></returns>
-        bool IsUnauthorized { get; }
-
-        /// <summary>
-        /// Returns true if the response is 403 Forbidden
-        /// </summary>
-        /// <returns></returns>
-        bool IsForbidden { get; }
-
-        /// <summary>
-        /// Returns true if the response is 404 NotFound
-        /// </summary>
-        /// <returns></returns>
-        bool IsNotFound { get; }
-
-        /// <summary>
-        /// Returns true if the response is 422 UnprocessableContent
-        /// </summary>
-        /// <returns></returns>
-        bool IsUnprocessableContent { get; }
-
-        /// <summary>
-        /// Returns true if the response is 499 CustomHttpStatusCode499
-        /// </summary>
-        /// <returns></returns>
-        bool IsCustomHttpStatusCode499 { get; }
-
-        /// <summary>
-        /// Returns true if the response is 500 InternalServerError
-        /// </summary>
-        /// <returns></returns>
-        bool IsInternalServerError { get; }
-    }
-
-    /// <summary>
     /// The <see cref="IGetFlightBookingsIdApiResponse"/>
     /// </summary>
     public interface IGetFlightBookingsIdApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, IOk<Hopper.Fintech.Flights.Dg.Model.FlightBooking?>, IBadRequest<List<Error>?>
@@ -381,6 +306,60 @@ namespace Hopper.Fintech.Flights.Dg.Api
     /// The <see cref="IPostContractsIdExerciseQuotesApiResponse"/>
     /// </summary>
     public interface IPostContractsIdExerciseQuotesApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, ICreated<Hopper.Fintech.Flights.Dg.Model.DafarExerciseQuote?>, IBadRequest<List<Error>?>, IUnprocessableContent<List<DafarCreateFlightsExerciseQuoteError>?>
+    {
+        /// <summary>
+        /// Returns true if the response is 201 Created
+        /// </summary>
+        /// <returns></returns>
+        bool IsCreated { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 422 UnprocessableContent
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnprocessableContent { get; }
+
+        /// <summary>
+        /// Returns true if the response is 499 CustomHttpStatusCode499
+        /// </summary>
+        /// <returns></returns>
+        bool IsCustomHttpStatusCode499 { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IPostContractsIdFlightPriceQuotesApiResponse"/>
+    /// </summary>
+    public interface IPostContractsIdFlightPriceQuotesApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, ICreated<Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote?>, IBadRequest<List<Error>?>, IUnprocessableContent<List<DafarFlightPriceQuoteError>?>
     {
         /// <summary>
         /// Returns true if the response is 201 Created
@@ -540,54 +519,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
     }
 
     /// <summary>
-    /// The <see cref="IPostFlightPriceQuotesApiResponse"/>
-    /// </summary>
-    public interface IPostFlightPriceQuotesApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, ICreated<Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote?>, IBadRequest<List<Error>?>, IUnprocessableContent<List<DafarFlightPriceQuoteError>?>
-    {
-        /// <summary>
-        /// Returns true if the response is 201 Created
-        /// </summary>
-        /// <returns></returns>
-        bool IsCreated { get; }
-
-        /// <summary>
-        /// Returns true if the response is 400 BadRequest
-        /// </summary>
-        /// <returns></returns>
-        bool IsBadRequest { get; }
-
-        /// <summary>
-        /// Returns true if the response is 401 Unauthorized
-        /// </summary>
-        /// <returns></returns>
-        bool IsUnauthorized { get; }
-
-        /// <summary>
-        /// Returns true if the response is 403 Forbidden
-        /// </summary>
-        /// <returns></returns>
-        bool IsForbidden { get; }
-
-        /// <summary>
-        /// Returns true if the response is 422 UnprocessableContent
-        /// </summary>
-        /// <returns></returns>
-        bool IsUnprocessableContent { get; }
-
-        /// <summary>
-        /// Returns true if the response is 499 CustomHttpStatusCode499
-        /// </summary>
-        /// <returns></returns>
-        bool IsCustomHttpStatusCode499 { get; }
-
-        /// <summary>
-        /// Returns true if the response is 500 InternalServerError
-        /// </summary>
-        /// <returns></returns>
-        bool IsInternalServerError { get; }
-    }
-
-    /// <summary>
     /// The <see cref="IPutExerciseQuotesIdFulfillApiResponse"/>
     /// </summary>
     public interface IPutExerciseQuotesIdFulfillApiResponse : Hopper.Fintech.Flights.Dg.Client.IApiResponse, IBadRequest<List<Error>?>
@@ -663,26 +594,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnGetContractsIdRebookEligibility;
-
-        /// <summary>
-        /// The event raised after an error querying the server
-        /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorGetContractsIdRebookEligibility;
-
-        internal void ExecuteOnGetContractsIdRebookEligibility(PartnerSelfServiceExerciseApi.GetContractsIdRebookEligibilityApiResponse apiResponse)
-        {
-            OnGetContractsIdRebookEligibility?.Invoke(this, new ApiResponseEventArgs(apiResponse));
-        }
-
-        internal void ExecuteOnErrorGetContractsIdRebookEligibility(Exception exception)
-        {
-            OnErrorGetContractsIdRebookEligibility?.Invoke(this, new ExceptionEventArgs(exception));
-        }
-
-        /// <summary>
-        /// The event raised after the server response
-        /// </summary>
         public event EventHandler<ApiResponseEventArgs>? OnGetFlightBookingsId;
 
         /// <summary>
@@ -723,6 +634,26 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnPostContractsIdFlightPriceQuotes;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorPostContractsIdFlightPriceQuotes;
+
+        internal void ExecuteOnPostContractsIdFlightPriceQuotes(PartnerSelfServiceExerciseApi.PostContractsIdFlightPriceQuotesApiResponse apiResponse)
+        {
+            OnPostContractsIdFlightPriceQuotes?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorPostContractsIdFlightPriceQuotes(Exception exception)
+        {
+            OnErrorPostContractsIdFlightPriceQuotes?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
         public event EventHandler<ApiResponseEventArgs>? OnPostContractsIdFlightShops;
 
         /// <summary>
@@ -758,26 +689,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
         internal void ExecuteOnErrorPostFlightBookings(Exception exception)
         {
             OnErrorPostFlightBookings?.Invoke(this, new ExceptionEventArgs(exception));
-        }
-
-        /// <summary>
-        /// The event raised after the server response
-        /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnPostFlightPriceQuotes;
-
-        /// <summary>
-        /// The event raised after an error querying the server
-        /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorPostFlightPriceQuotes;
-
-        internal void ExecuteOnPostFlightPriceQuotes(PartnerSelfServiceExerciseApi.PostFlightPriceQuotesApiResponse apiResponse)
-        {
-            OnPostFlightPriceQuotes?.Invoke(this, new ApiResponseEventArgs(apiResponse));
-        }
-
-        internal void ExecuteOnErrorPostFlightPriceQuotes(Exception exception)
-        {
-            OnErrorPostFlightPriceQuotes?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -1171,398 +1082,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// </summary>
             /// <returns></returns>
             public bool IsNotFound => 404 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 499 CustomHttpStatusCode499
-            /// </summary>
-            /// <returns></returns>
-            public bool IsCustomHttpStatusCode499 => 499 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 500 InternalServerError
-            /// </summary>
-            /// <returns></returns>
-            public bool IsInternalServerError => 500 == (int)StatusCode;
-
-            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
-            {
-                bool suppressDefaultLog = false;
-                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
-                if (!suppressDefaultLog)
-                    Logger.LogError(RestLogEvents.ApiDeserializationFailed, exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
-            }
-
-            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
-        }
-
-        partial void FormatGetContractsIdRebookEligibility(ref string id);
-
-        /// <summary>
-        /// Validates the request parameters
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        private void ValidateGetContractsIdRebookEligibility(string id)
-        {
-            if (id == null)
-                throw new ArgumentNullException(nameof(id));
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="id"></param>
-        private void AfterGetContractsIdRebookEligibilityDefaultImplementation(IGetContractsIdRebookEligibilityApiResponse apiResponseLocalVar, string id)
-        {
-            bool suppressDefaultLog = false;
-            AfterGetContractsIdRebookEligibility(ref suppressDefaultLog, apiResponseLocalVar, id);
-            if (!suppressDefaultLog)
-                Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="id"></param>
-        partial void AfterGetContractsIdRebookEligibility(ref bool suppressDefaultLog, IGetContractsIdRebookEligibilityApiResponse apiResponseLocalVar, string id);
-
-        /// <summary>
-        /// Logs exceptions that occur while retrieving the server response
-        /// </summary>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="id"></param>
-        private void OnErrorGetContractsIdRebookEligibilityDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id)
-        {
-            bool suppressDefaultLogLocalVar = false;
-            OnErrorGetContractsIdRebookEligibility(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, id);
-            if (!suppressDefaultLogLocalVar)
-                Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
-        }
-
-        /// <summary>
-        /// A partial method that gives developers a way to provide customized exception handling
-        /// </summary>
-        /// <param name="suppressDefaultLogLocalVar"></param>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="id"></param>
-        partial void OnErrorGetContractsIdRebookEligibility(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id);
-
-        /// <summary>
-        /// Get Rebook Eligibility Check whether a contract&#39;s segments are eligible for rebook due to a disruption. Each rebook-eligible segment&#39;s rebook_eligibility carries search_criteria (nearby airports and the departure date window), so partners sourcing their own inventory can match HTS&#39;s search.
-        /// </summary>
-        /// <param name="id">A unique identifier for a contract.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdRebookEligibilityApiResponse"/>&gt;</returns>
-        public async Task<IGetContractsIdRebookEligibilityApiResponse?> GetContractsIdRebookEligibilityOrDefaultAsync(string id, System.Threading.CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await GetContractsIdRebookEligibilityAsync(id, cancellationToken).ConfigureAwait(false);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Get Rebook Eligibility Check whether a contract&#39;s segments are eligible for rebook due to a disruption. Each rebook-eligible segment&#39;s rebook_eligibility carries search_criteria (nearby airports and the departure date window), so partners sourcing their own inventory can match HTS&#39;s search.
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">A unique identifier for a contract.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetContractsIdRebookEligibilityApiResponse"/>&gt;</returns>
-        public async Task<IGetContractsIdRebookEligibilityApiResponse> GetContractsIdRebookEligibilityAsync(string id, System.Threading.CancellationToken cancellationToken = default)
-        {
-            UriBuilder uriBuilderLocalVar = new UriBuilder();
-
-            try
-            {
-                ValidateGetContractsIdRebookEligibility(id);
-
-                FormatGetContractsIdRebookEligibility(ref id);
-
-                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
-                {
-                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
-                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
-                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/contracts/{id}/rebook_eligibility"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/contracts/{id}/rebook_eligibility");
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
-
-                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
-                    tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
-                    apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
-
-                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
-
-                    string[] acceptLocalVars = new string[] {
-                        "application/json"
-                    };
-
-                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
-
-                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
-
-                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
-
-                    DateTime requestedAtLocalVar = DateTime.UtcNow;
-
-                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
-                    {
-                        GetContractsIdRebookEligibilityApiResponse apiResponseLocalVar;
-
-                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
-                            default: {
-                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/contracts/{id}/rebook_eligibility", requestedAtLocalVar, _jsonSerializerOptions);
-
-                                break;
-                            }
-                        }
-
-                        AfterGetContractsIdRebookEligibilityDefaultImplementation(apiResponseLocalVar, id);
-
-                        Events.ExecuteOnGetContractsIdRebookEligibility(apiResponseLocalVar);
-
-                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
-                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
-                                tokenBaseLocalVar.BeginRateLimit();
-
-                        return apiResponseLocalVar;
-                    }
-                }
-            }
-            catch(Exception e)
-            {
-                OnErrorGetContractsIdRebookEligibilityDefaultImplementation(e, "/contracts/{id}/rebook_eligibility", uriBuilderLocalVar.Path, id);
-                Events.ExecuteOnErrorGetContractsIdRebookEligibility(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="GetContractsIdRebookEligibilityApiResponse"/>
-        /// </summary>
-        public partial class GetContractsIdRebookEligibilityApiResponse : Hopper.Fintech.Flights.Dg.Client.ApiResponse, IGetContractsIdRebookEligibilityApiResponse
-        {
-            /// <summary>
-            /// The logger
-            /// </summary>
-            public ILogger<PartnerSelfServiceExerciseApi> Logger { get; }
-
-            /// <summary>
-            /// The <see cref="GetContractsIdRebookEligibilityApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="rawContent"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public GetContractsIdRebookEligibilityApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            /// <summary>
-            /// The <see cref="GetContractsIdRebookEligibilityApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="contentStream"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public GetContractsIdRebookEligibilityApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
-
-            /// <summary>
-            /// Returns true if the response is 200 Ok
-            /// </summary>
-            /// <returns></returns>
-            public bool IsOk => 200 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 200 Ok
-            /// </summary>
-            /// <returns></returns>
-            public Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse? Ok()
-            {
-                bool suppressDefault = false;
-                Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse? result = null;
-                OnOk(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultOk();
-                return result;
-            }
-
-            private Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse? DefaultOk()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnOk(ref bool suppressDefault, ref Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse? result);
-
-            /// <summary>
-            /// Returns true if the response is 200 Ok and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)]out Hopper.Fintech.Flights.Dg.Model.RebookEligibilityResponse? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Ok();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public bool IsBadRequest => 400 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public List<Error>? BadRequest()
-            {
-                bool suppressDefault = false;
-                List<Error>? result = null;
-                OnBadRequest(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultBadRequest();
-                return result;
-            }
-
-            private List<Error>? DefaultBadRequest()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsBadRequest
-                    ? System.Text.Json.JsonSerializer.Deserialize<List<Error>>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnBadRequest(ref bool suppressDefault, ref List<Error>? result);
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryBadRequest([NotNullWhen(true)]out List<Error>? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = BadRequest();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 401 Unauthorized
-            /// </summary>
-            /// <returns></returns>
-            public bool IsUnauthorized => 401 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 403 Forbidden
-            /// </summary>
-            /// <returns></returns>
-            public bool IsForbidden => 403 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 404 NotFound
-            /// </summary>
-            /// <returns></returns>
-            public bool IsNotFound => 404 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 422 UnprocessableContent
-            /// </summary>
-            /// <returns></returns>
-            public bool IsUnprocessableContent => 422 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 422 UnprocessableContent
-            /// </summary>
-            /// <returns></returns>
-            public List<DafarRebookEligibilityError>? UnprocessableContent()
-            {
-                bool suppressDefault = false;
-                List<DafarRebookEligibilityError>? result = null;
-                OnUnprocessableContent(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultUnprocessableContent();
-                return result;
-            }
-
-            private List<DafarRebookEligibilityError>? DefaultUnprocessableContent()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsUnprocessableContent
-                    ? System.Text.Json.JsonSerializer.Deserialize<List<DafarRebookEligibilityError>>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnUnprocessableContent(ref bool suppressDefault, ref List<DafarRebookEligibilityError>? result);
-
-            /// <summary>
-            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryUnprocessableContent([NotNullWhen(true)]out List<DafarRebookEligibilityError>? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = UnprocessableContent();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
-                }
-
-                return result != null;
-            }
 
             /// <summary>
             /// Returns true if the response is 499 CustomHttpStatusCode499
@@ -2284,6 +1803,421 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryUnprocessableContent([NotNullWhen(true)]out List<DafarCreateFlightsExerciseQuoteError>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = UnprocessableContent();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 499 CustomHttpStatusCode499
+            /// </summary>
+            /// <returns></returns>
+            public bool IsCustomHttpStatusCode499 => 499 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(RestLogEvents.ApiDeserializationFailed, exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatPostContractsIdFlightPriceQuotes(ref string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        /// <returns></returns>
+        private void ValidatePostContractsIdFlightPriceQuotes(string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest)
+        {
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
+
+            if (createFlightPriceQuoteRequest == null)
+                throw new ArgumentNullException(nameof(createFlightPriceQuoteRequest));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        private void AfterPostContractsIdFlightPriceQuotesDefaultImplementation(IPostContractsIdFlightPriceQuotesApiResponse apiResponseLocalVar, string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest)
+        {
+            bool suppressDefaultLog = false;
+            AfterPostContractsIdFlightPriceQuotes(ref suppressDefaultLog, apiResponseLocalVar, id, createFlightPriceQuoteRequest);
+            if (!suppressDefaultLog)
+                Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        partial void AfterPostContractsIdFlightPriceQuotes(ref bool suppressDefaultLog, IPostContractsIdFlightPriceQuotesApiResponse apiResponseLocalVar, string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        private void OnErrorPostContractsIdFlightPriceQuotesDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorPostContractsIdFlightPriceQuotes(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, id, createFlightPriceQuoteRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="id"></param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        partial void OnErrorPostContractsIdFlightPriceQuotes(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest);
+
+        /// <summary>
+        /// Create Flight Price Quote Create a price quote for a selected rebook itinerary from the contract&#39;s flight shop.
+        /// </summary>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdFlightPriceQuotesApiResponse"/>&gt;</returns>
+        public async Task<IPostContractsIdFlightPriceQuotesApiResponse?> PostContractsIdFlightPriceQuotesOrDefaultAsync(string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await PostContractsIdFlightPriceQuotesAsync(id, createFlightPriceQuoteRequest, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Create Flight Price Quote Create a price quote for a selected rebook itinerary from the contract&#39;s flight shop.
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="createFlightPriceQuoteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdFlightPriceQuotesApiResponse"/>&gt;</returns>
+        public async Task<IPostContractsIdFlightPriceQuotesApiResponse> PostContractsIdFlightPriceQuotesAsync(string id, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidatePostContractsIdFlightPriceQuotes(id, createFlightPriceQuoteRequest);
+
+                FormatPostContractsIdFlightPriceQuotes(ref id, createFlightPriceQuoteRequest);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/contracts/{id}/flight_price_quotes"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/contracts/{id}/flight_price_quotes");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+
+                    httpRequestMessageLocalVar.Content = (createFlightPriceQuoteRequest as object) is Hopper.Fintech.Flights.Dg.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(createFlightPriceQuoteRequest, _jsonSerializerOptions));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
+                    tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
+                    apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
+
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    string[] contentTypes = new string[] {
+                        "application/json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        PostContractsIdFlightPriceQuotesApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/contracts/{id}/flight_price_quotes", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterPostContractsIdFlightPriceQuotesDefaultImplementation(apiResponseLocalVar, id, createFlightPriceQuoteRequest);
+
+                        Events.ExecuteOnPostContractsIdFlightPriceQuotes(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorPostContractsIdFlightPriceQuotesDefaultImplementation(e, "/contracts/{id}/flight_price_quotes", uriBuilderLocalVar.Path, id, createFlightPriceQuoteRequest);
+                Events.ExecuteOnErrorPostContractsIdFlightPriceQuotes(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="PostContractsIdFlightPriceQuotesApiResponse"/>
+        /// </summary>
+        public partial class PostContractsIdFlightPriceQuotesApiResponse : Hopper.Fintech.Flights.Dg.Client.ApiResponse, IPostContractsIdFlightPriceQuotesApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<PartnerSelfServiceExerciseApi> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="PostContractsIdFlightPriceQuotesApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PostContractsIdFlightPriceQuotesApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PostContractsIdFlightPriceQuotesApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PostContractsIdFlightPriceQuotesApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 201 Created
+            /// </summary>
+            /// <returns></returns>
+            public bool IsCreated => 201 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 201 Created
+            /// </summary>
+            /// <returns></returns>
+            public Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? Created()
+            {
+                bool suppressDefault = false;
+                Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? result = null;
+                OnCreated(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultCreated();
+                return result;
+            }
+
+            private Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? DefaultCreated()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsCreated
+                    ? System.Text.Json.JsonSerializer.Deserialize<Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnCreated(ref bool suppressDefault, ref Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? result);
+
+            /// <summary>
+            /// Returns true if the response is 201 Created and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryCreated([NotNullWhen(true)]out Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Created();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)201);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public List<Error>? BadRequest()
+            {
+                bool suppressDefault = false;
+                List<Error>? result = null;
+                OnBadRequest(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultBadRequest();
+                return result;
+            }
+
+            private List<Error>? DefaultBadRequest()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<Error>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnBadRequest(ref bool suppressDefault, ref List<Error>? result);
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out List<Error>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnprocessableContent => 422 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public List<DafarFlightPriceQuoteError>? UnprocessableContent()
+            {
+                bool suppressDefault = false;
+                List<DafarFlightPriceQuoteError>? result = null;
+                OnUnprocessableContent(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultUnprocessableContent();
+                return result;
+            }
+
+            private List<DafarFlightPriceQuoteError>? DefaultUnprocessableContent()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsUnprocessableContent
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<DafarFlightPriceQuoteError>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnUnprocessableContent(ref bool suppressDefault, ref List<DafarFlightPriceQuoteError>? result);
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnprocessableContent([NotNullWhen(true)]out List<DafarFlightPriceQuoteError>? result)
             {
                 result = null;
 
@@ -3103,404 +3037,6 @@ namespace Hopper.Fintech.Flights.Dg.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryUnprocessableContent([NotNullWhen(true)]out List<DafarFlightBookingError>? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = UnprocessableContent();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 499 CustomHttpStatusCode499
-            /// </summary>
-            /// <returns></returns>
-            public bool IsCustomHttpStatusCode499 => 499 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 500 InternalServerError
-            /// </summary>
-            /// <returns></returns>
-            public bool IsInternalServerError => 500 == (int)StatusCode;
-
-            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
-            {
-                bool suppressDefaultLog = false;
-                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
-                if (!suppressDefaultLog)
-                    Logger.LogError(RestLogEvents.ApiDeserializationFailed, exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
-            }
-
-            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
-        }
-
-        partial void FormatPostFlightPriceQuotes(CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest);
-
-        /// <summary>
-        /// Validates the request parameters
-        /// </summary>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        /// <returns></returns>
-        private void ValidatePostFlightPriceQuotes(CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest)
-        {
-            if (createFlightPriceQuoteRequest == null)
-                throw new ArgumentNullException(nameof(createFlightPriceQuoteRequest));
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        private void AfterPostFlightPriceQuotesDefaultImplementation(IPostFlightPriceQuotesApiResponse apiResponseLocalVar, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest)
-        {
-            bool suppressDefaultLog = false;
-            AfterPostFlightPriceQuotes(ref suppressDefaultLog, apiResponseLocalVar, createFlightPriceQuoteRequest);
-            if (!suppressDefaultLog)
-                Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        partial void AfterPostFlightPriceQuotes(ref bool suppressDefaultLog, IPostFlightPriceQuotesApiResponse apiResponseLocalVar, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest);
-
-        /// <summary>
-        /// Logs exceptions that occur while retrieving the server response
-        /// </summary>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        private void OnErrorPostFlightPriceQuotesDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest)
-        {
-            bool suppressDefaultLogLocalVar = false;
-            OnErrorPostFlightPriceQuotes(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, createFlightPriceQuoteRequest);
-            if (!suppressDefaultLogLocalVar)
-                Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
-        }
-
-        /// <summary>
-        /// A partial method that gives developers a way to provide customized exception handling
-        /// </summary>
-        /// <param name="suppressDefaultLogLocalVar"></param>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        partial void OnErrorPostFlightPriceQuotes(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest);
-
-        /// <summary>
-        /// Create Flight Price Quote Create a price quote for a selected rebook itinerary.
-        /// </summary>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IPostFlightPriceQuotesApiResponse"/>&gt;</returns>
-        public async Task<IPostFlightPriceQuotesApiResponse?> PostFlightPriceQuotesOrDefaultAsync(CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await PostFlightPriceQuotesAsync(createFlightPriceQuoteRequest, cancellationToken).ConfigureAwait(false);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Create Flight Price Quote Create a price quote for a selected rebook itinerary.
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createFlightPriceQuoteRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IPostFlightPriceQuotesApiResponse"/>&gt;</returns>
-        public async Task<IPostFlightPriceQuotesApiResponse> PostFlightPriceQuotesAsync(CreateFlightPriceQuoteRequest createFlightPriceQuoteRequest, System.Threading.CancellationToken cancellationToken = default)
-        {
-            UriBuilder uriBuilderLocalVar = new UriBuilder();
-
-            try
-            {
-                ValidatePostFlightPriceQuotes(createFlightPriceQuoteRequest);
-
-                FormatPostFlightPriceQuotes(createFlightPriceQuoteRequest);
-
-                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
-                {
-                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
-                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
-                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/flight_price_quotes"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/flight_price_quotes");
-
-                    httpRequestMessageLocalVar.Content = (createFlightPriceQuoteRequest as object) is Hopper.Fintech.Flights.Dg.Client.FileParameter fileParameterLocalVar
-                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
-                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(createFlightPriceQuoteRequest, _jsonSerializerOptions));
-
-                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
-                    tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
-                    apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
-
-                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
-
-                    string[] contentTypes = new string[] {
-                        "application/json"
-                    };
-
-                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
-
-                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
-                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
-
-                    string[] acceptLocalVars = new string[] {
-                        "application/json"
-                    };
-
-                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
-
-                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
-
-                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
-
-                    DateTime requestedAtLocalVar = DateTime.UtcNow;
-
-                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
-                    {
-                        PostFlightPriceQuotesApiResponse apiResponseLocalVar;
-
-                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
-                            default: {
-                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/flight_price_quotes", requestedAtLocalVar, _jsonSerializerOptions);
-
-                                break;
-                            }
-                        }
-
-                        AfterPostFlightPriceQuotesDefaultImplementation(apiResponseLocalVar, createFlightPriceQuoteRequest);
-
-                        Events.ExecuteOnPostFlightPriceQuotes(apiResponseLocalVar);
-
-                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
-                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
-                                tokenBaseLocalVar.BeginRateLimit();
-
-                        return apiResponseLocalVar;
-                    }
-                }
-            }
-            catch(Exception e)
-            {
-                OnErrorPostFlightPriceQuotesDefaultImplementation(e, "/flight_price_quotes", uriBuilderLocalVar.Path, createFlightPriceQuoteRequest);
-                Events.ExecuteOnErrorPostFlightPriceQuotes(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="PostFlightPriceQuotesApiResponse"/>
-        /// </summary>
-        public partial class PostFlightPriceQuotesApiResponse : Hopper.Fintech.Flights.Dg.Client.ApiResponse, IPostFlightPriceQuotesApiResponse
-        {
-            /// <summary>
-            /// The logger
-            /// </summary>
-            public ILogger<PartnerSelfServiceExerciseApi> Logger { get; }
-
-            /// <summary>
-            /// The <see cref="PostFlightPriceQuotesApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="rawContent"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public PostFlightPriceQuotesApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            /// <summary>
-            /// The <see cref="PostFlightPriceQuotesApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="contentStream"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public PostFlightPriceQuotesApiResponse(ILogger<PartnerSelfServiceExerciseApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
-
-            /// <summary>
-            /// Returns true if the response is 201 Created
-            /// </summary>
-            /// <returns></returns>
-            public bool IsCreated => 201 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 201 Created
-            /// </summary>
-            /// <returns></returns>
-            public Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? Created()
-            {
-                bool suppressDefault = false;
-                Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? result = null;
-                OnCreated(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultCreated();
-                return result;
-            }
-
-            private Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? DefaultCreated()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsCreated
-                    ? System.Text.Json.JsonSerializer.Deserialize<Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnCreated(ref bool suppressDefault, ref Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? result);
-
-            /// <summary>
-            /// Returns true if the response is 201 Created and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryCreated([NotNullWhen(true)]out Hopper.Fintech.Flights.Dg.Model.FlightPriceQuote? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Created();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)201);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public bool IsBadRequest => 400 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public List<Error>? BadRequest()
-            {
-                bool suppressDefault = false;
-                List<Error>? result = null;
-                OnBadRequest(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultBadRequest();
-                return result;
-            }
-
-            private List<Error>? DefaultBadRequest()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsBadRequest
-                    ? System.Text.Json.JsonSerializer.Deserialize<List<Error>>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnBadRequest(ref bool suppressDefault, ref List<Error>? result);
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryBadRequest([NotNullWhen(true)]out List<Error>? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = BadRequest();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 401 Unauthorized
-            /// </summary>
-            /// <returns></returns>
-            public bool IsUnauthorized => 401 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 403 Forbidden
-            /// </summary>
-            /// <returns></returns>
-            public bool IsForbidden => 403 == (int)StatusCode;
-
-            /// <summary>
-            /// Returns true if the response is 422 UnprocessableContent
-            /// </summary>
-            /// <returns></returns>
-            public bool IsUnprocessableContent => 422 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 422 UnprocessableContent
-            /// </summary>
-            /// <returns></returns>
-            public List<DafarFlightPriceQuoteError>? UnprocessableContent()
-            {
-                bool suppressDefault = false;
-                List<DafarFlightPriceQuoteError>? result = null;
-                OnUnprocessableContent(ref suppressDefault, ref result);
-                if (!suppressDefault)
-                    result = DefaultUnprocessableContent();
-                return result;
-            }
-
-            private List<DafarFlightPriceQuoteError>? DefaultUnprocessableContent()
-            {
-                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
-                return IsUnprocessableContent
-                    ? System.Text.Json.JsonSerializer.Deserialize<List<DafarFlightPriceQuoteError>>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            partial void OnUnprocessableContent(ref bool suppressDefault, ref List<DafarFlightPriceQuoteError>? result);
-
-            /// <summary>
-            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryUnprocessableContent([NotNullWhen(true)]out List<DafarFlightPriceQuoteError>? result)
             {
                 result = null;
 

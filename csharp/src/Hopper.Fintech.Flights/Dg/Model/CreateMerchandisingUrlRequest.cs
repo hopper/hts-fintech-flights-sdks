@@ -25,29 +25,29 @@ using Hopper.Fintech.Flights.Dg.Client;
 namespace Hopper.Fintech.Flights.Dg.Model
 {
     /// <summary>
-    /// SliceEligibility
+    /// CreateMerchandisingUrlRequest
     /// </summary>
-    public partial class SliceEligibility
+    public partial class CreateMerchandisingUrlRequest
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SliceEligibility" /> class.
+        /// Initializes a new instance of the <see cref="CreateMerchandisingUrlRequest" /> class.
         /// </summary>
-        /// <param name="segments">The ordered list of segments that make up this slice.</param>
+        /// <param name="offerIds">Offer ids from one Create Offers or Price Offers response.</param>
         [JsonConstructor]
-        public SliceEligibility(List<SegmentEligibility> segments)
+        public CreateMerchandisingUrlRequest(List<string> offerIds)
         {
-            Segments = segments;
+            OfferIds = offerIds;
             OnCreated();
         }
 
         partial void OnCreated();
 
         /// <summary>
-        /// The ordered list of segments that make up this slice.
+        /// Offer ids from one Create Offers or Price Offers response.
         /// </summary>
-        /// <value>The ordered list of segments that make up this slice.</value>
-        [JsonPropertyName("segments")]
-        public List<SegmentEligibility> Segments { get; set; }
+        /// <value>Offer ids from one Create Offers or Price Offers response.</value>
+        [JsonPropertyName("offer_ids")]
+        public List<string> OfferIds { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -62,8 +62,8 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SliceEligibility {\n");
-            sb.Append("  Segments: ").Append(Segments).Append("\n");
+            sb.Append("class CreateMerchandisingUrlRequest {\n");
+            sb.Append("  OfferIds: ").Append(OfferIds).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -71,29 +71,29 @@ namespace Hopper.Fintech.Flights.Dg.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="SliceEligibility" />
+    /// A Json converter for type <see cref="CreateMerchandisingUrlRequest" />
     /// </summary>
-    public partial class SliceEligibilityJsonConverter : JsonConverter<SliceEligibility>
+    public partial class CreateMerchandisingUrlRequestJsonConverter : JsonConverter<CreateMerchandisingUrlRequest>
     {
         partial void OnCreated();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SliceEligibilityJsonConverter" /> class.
+        /// Initializes a new instance of the <see cref="CreateMerchandisingUrlRequestJsonConverter" /> class.
         /// </summary>
-        public SliceEligibilityJsonConverter()
+        public CreateMerchandisingUrlRequestJsonConverter()
         {
             OnCreated();
         }
 
         /// <summary>
-        /// Deserializes json to <see cref="SliceEligibility" />
+        /// Deserializes json to <see cref="CreateMerchandisingUrlRequest" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override SliceEligibility Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override CreateMerchandisingUrlRequest Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -102,7 +102,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<List<SegmentEligibility>?> segments = default;
+            Option<List<string>?> offerIds = default;
 
             while (utf8JsonReader.Read())
             {
@@ -119,8 +119,8 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "segments":
-                            segments = new Option<List<SegmentEligibility>?>(JsonSerializer.Deserialize<List<SegmentEligibility>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                        case "offer_ids":
+                            offerIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;
@@ -128,39 +128,39 @@ namespace Hopper.Fintech.Flights.Dg.Model
                 }
             }
 
-            if (!segments.IsSet)
-                throw new JsonException("Property is required for class SliceEligibility: segments.");
+            if (!offerIds.IsSet)
+                throw new JsonException("Property is required for class CreateMerchandisingUrlRequest: offer_ids.");
 
-            if (segments.IsSet && segments.Value == null)
-                throw new JsonException("Property is not nullable for class SliceEligibility: segments.");
+            if (offerIds.IsSet && offerIds.Value == null)
+                throw new JsonException("Property is not nullable for class CreateMerchandisingUrlRequest: offer_ids.");
 
-            return new SliceEligibility(segments.Value!);
+            return new CreateMerchandisingUrlRequest(offerIds.Value!);
         }
 
         /// <summary>
-        /// Serializes a <see cref="SliceEligibility" />
+        /// Serializes a <see cref="CreateMerchandisingUrlRequest" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="sliceEligibility"></param>
+        /// <param name="createMerchandisingUrlRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public override void Write(Utf8JsonWriter writer, SliceEligibility sliceEligibility, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, CreateMerchandisingUrlRequest createMerchandisingUrlRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, sliceEligibility, jsonSerializerOptions);
+            WriteProperties(writer, createMerchandisingUrlRequest, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="SliceEligibility" />
+        /// Serializes the properties of <see cref="CreateMerchandisingUrlRequest" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="sliceEligibility"></param>
+        /// <param name="createMerchandisingUrlRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public void WriteProperties(Utf8JsonWriter writer, SliceEligibility sliceEligibility, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, CreateMerchandisingUrlRequest createMerchandisingUrlRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            writer.WritePropertyName("segments");
-            JsonSerializer.Serialize(writer, sliceEligibility.Segments, jsonSerializerOptions);
+            writer.WritePropertyName("offer_ids");
+            JsonSerializer.Serialize(writer, createMerchandisingUrlRequest.OfferIds, jsonSerializerOptions);
         }
     }
 }

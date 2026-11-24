@@ -45,10 +45,10 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// Create a new event for the provided session.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="varEvent"></param>
+        /// <param name="dafarCreateEvent"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPostEventsApiResponse"/>&gt;</returns>
-        Task<IPostEventsApiResponse> PostEventsAsync(Event varEvent, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPostEventsApiResponse> PostEventsAsync(DafarCreateEvent dafarCreateEvent, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create Event
@@ -56,10 +56,10 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <remarks>
         /// Create a new event for the provided session.
         /// </remarks>
-        /// <param name="varEvent"></param>
+        /// <param name="dafarCreateEvent"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPostEventsApiResponse"/>?&gt;</returns>
-        Task<IPostEventsApiResponse?> PostEventsOrDefaultAsync(Event varEvent, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPostEventsApiResponse?> PostEventsOrDefaultAsync(DafarCreateEvent dafarCreateEvent, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -171,28 +171,28 @@ namespace Hopper.Fintech.Flights.Dg.Api
             ApiKeyProvider = apiKeyProvider;
         }
 
-        partial void FormatPostEvents(Event varEvent);
+        partial void FormatPostEvents(DafarCreateEvent dafarCreateEvent);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
-        /// <param name="varEvent"></param>
+        /// <param name="dafarCreateEvent"></param>
         /// <returns></returns>
-        private void ValidatePostEvents(Event varEvent)
+        private void ValidatePostEvents(DafarCreateEvent dafarCreateEvent)
         {
-            if (varEvent == null)
-                throw new ArgumentNullException(nameof(varEvent));
+            if (dafarCreateEvent == null)
+                throw new ArgumentNullException(nameof(dafarCreateEvent));
         }
 
         /// <summary>
         /// Processes the server response
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
-        /// <param name="varEvent"></param>
-        private void AfterPostEventsDefaultImplementation(IPostEventsApiResponse apiResponseLocalVar, Event varEvent)
+        /// <param name="dafarCreateEvent"></param>
+        private void AfterPostEventsDefaultImplementation(IPostEventsApiResponse apiResponseLocalVar, DafarCreateEvent dafarCreateEvent)
         {
             bool suppressDefaultLog = false;
-            AfterPostEvents(ref suppressDefaultLog, apiResponseLocalVar, varEvent);
+            AfterPostEvents(ref suppressDefaultLog, apiResponseLocalVar, dafarCreateEvent);
             if (!suppressDefaultLog)
                 Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -202,8 +202,8 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// </summary>
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
-        /// <param name="varEvent"></param>
-        partial void AfterPostEvents(ref bool suppressDefaultLog, IPostEventsApiResponse apiResponseLocalVar, Event varEvent);
+        /// <param name="dafarCreateEvent"></param>
+        partial void AfterPostEvents(ref bool suppressDefaultLog, IPostEventsApiResponse apiResponseLocalVar, DafarCreateEvent dafarCreateEvent);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -211,11 +211,11 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <param name="exceptionLocalVar"></param>
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
-        /// <param name="varEvent"></param>
-        private void OnErrorPostEventsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Event varEvent)
+        /// <param name="dafarCreateEvent"></param>
+        private void OnErrorPostEventsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, DafarCreateEvent dafarCreateEvent)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorPostEvents(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, varEvent);
+            OnErrorPostEvents(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, dafarCreateEvent);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -227,20 +227,20 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// <param name="exceptionLocalVar"></param>
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
-        /// <param name="varEvent"></param>
-        partial void OnErrorPostEvents(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Event varEvent);
+        /// <param name="dafarCreateEvent"></param>
+        partial void OnErrorPostEvents(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, DafarCreateEvent dafarCreateEvent);
 
         /// <summary>
         /// Create Event Create a new event for the provided session.
         /// </summary>
-        /// <param name="varEvent"></param>
+        /// <param name="dafarCreateEvent"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPostEventsApiResponse"/>&gt;</returns>
-        public async Task<IPostEventsApiResponse?> PostEventsOrDefaultAsync(Event varEvent, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPostEventsApiResponse?> PostEventsOrDefaultAsync(DafarCreateEvent dafarCreateEvent, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await PostEventsAsync(varEvent, cancellationToken).ConfigureAwait(false);
+                return await PostEventsAsync(dafarCreateEvent, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -252,18 +252,18 @@ namespace Hopper.Fintech.Flights.Dg.Api
         /// Create Event Create a new event for the provided session.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="varEvent"></param>
+        /// <param name="dafarCreateEvent"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPostEventsApiResponse"/>&gt;</returns>
-        public async Task<IPostEventsApiResponse> PostEventsAsync(Event varEvent, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPostEventsApiResponse> PostEventsAsync(DafarCreateEvent dafarCreateEvent, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidatePostEvents(varEvent);
+                ValidatePostEvents(dafarCreateEvent);
 
-                FormatPostEvents(varEvent);
+                FormatPostEvents(dafarCreateEvent);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -274,9 +274,9 @@ namespace Hopper.Fintech.Flights.Dg.Api
                         ? "/events"
                         : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/events");
 
-                    httpRequestMessageLocalVar.Content = (varEvent as object) is Hopper.Fintech.Flights.Dg.Client.FileParameter fileParameterLocalVar
+                    httpRequestMessageLocalVar.Content = (dafarCreateEvent as object) is Hopper.Fintech.Flights.Dg.Client.FileParameter fileParameterLocalVar
                         ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
-                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(varEvent, _jsonSerializerOptions));
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(dafarCreateEvent, _jsonSerializerOptions));
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
@@ -320,7 +320,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
                             }
                         }
 
-                        AfterPostEventsDefaultImplementation(apiResponseLocalVar, varEvent);
+                        AfterPostEventsDefaultImplementation(apiResponseLocalVar, dafarCreateEvent);
 
                         Events.ExecuteOnPostEvents(apiResponseLocalVar);
 
@@ -334,7 +334,7 @@ namespace Hopper.Fintech.Flights.Dg.Api
             }
             catch(Exception e)
             {
-                OnErrorPostEventsDefaultImplementation(e, "/events", uriBuilderLocalVar.Path, varEvent);
+                OnErrorPostEventsDefaultImplementation(e, "/events", uriBuilderLocalVar.Path, dafarCreateEvent);
                 Events.ExecuteOnErrorPostEvents(e);
                 throw;
             }

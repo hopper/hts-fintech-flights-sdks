@@ -44,8 +44,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// <param name="exercises">Details of how this contract was exercised (payout and/or rebook). Always present as a list. Populated when exercised, empty otherwise.</param>
         /// <param name="userId">User ID in the partner system.</param>
         /// <param name="payout">payout</param>
+        /// <param name="itinerary">itinerary</param>
         [JsonConstructor]
-        public DafarContract(string id, Status status, ContractPrice price, EligibleDisruptions eligibleDisruptions, string rebookingAllowancePerPassenger, long windowMinutesBeforeDeparture, string currency, DateTime expiresAt, Dictionary<string, string> bookingReferences, List<DafarExercise> exercises, Option<string?> userId = default, Option<Payout?> payout = default)
+        public DafarContract(string id, Status status, ContractPrice price, EligibleDisruptions eligibleDisruptions, string rebookingAllowancePerPassenger, long windowMinutesBeforeDeparture, string currency, DateTime expiresAt, Dictionary<string, string> bookingReferences, List<DafarExercise> exercises, Option<string?> userId = default, Option<Payout?> payout = default, Option<ContractItinerary?> itinerary = default)
         {
             Id = id;
             Status = status;
@@ -59,6 +60,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
             Exercises = exercises;
             UserIdOption = userId;
             PayoutOption = payout;
+            ItineraryOption = itinerary;
             OnCreated();
         }
 
@@ -160,6 +162,19 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public Payout? Payout { get { return this.PayoutOption.Value; } set { this.PayoutOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Itinerary
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<ContractItinerary?> ItineraryOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Itinerary
+        /// </summary>
+        [JsonPropertyName("itinerary")]
+        public ContractItinerary? Itinerary { get { return this.ItineraryOption.Value; } set { this.ItineraryOption = new(value); } }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -185,6 +200,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
             sb.Append("  Exercises: ").Append(Exercises).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Payout: ").Append(Payout).Append("\n");
+            sb.Append("  Itinerary: ").Append(Itinerary).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -240,6 +256,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
             Option<List<DafarExercise>?> exercises = default;
             Option<string?> userId = default;
             Option<Payout?> payout = default;
+            Option<ContractItinerary?> itinerary = default;
 
             while (utf8JsonReader.Read())
             {
@@ -291,6 +308,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
                             break;
                         case "payout":
                             payout = new Option<Payout?>(JsonSerializer.Deserialize<Payout>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
+                        case "itinerary":
+                            itinerary = new Option<ContractItinerary?>(JsonSerializer.Deserialize<ContractItinerary>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;
@@ -364,7 +384,10 @@ namespace Hopper.Fintech.Flights.Dg.Model
             if (payout.IsSet && payout.Value == null)
                 throw new JsonException("Property is not nullable for class DafarContract: payout.");
 
-            return new DafarContract(id.Value!, status.Value!.Value!, price.Value!, eligibleDisruptions.Value!, rebookingAllowancePerPassenger.Value!, windowMinutesBeforeDeparture.Value!.Value!, currency.Value!, expiresAt.Value!.Value!, bookingReferences.Value!, exercises.Value!, userId, payout);
+            if (itinerary.IsSet && itinerary.Value == null)
+                throw new JsonException("Property is not nullable for class DafarContract: itinerary.");
+
+            return new DafarContract(id.Value!, status.Value!.Value!, price.Value!, eligibleDisruptions.Value!, rebookingAllowancePerPassenger.Value!, windowMinutesBeforeDeparture.Value!.Value!, currency.Value!, expiresAt.Value!.Value!, bookingReferences.Value!, exercises.Value!, userId, payout, itinerary);
         }
 
         /// <summary>
@@ -395,6 +418,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
             if (dafarContract.PayoutOption.IsSet && dafarContract.Payout == null)
                 throw new JsonException("Cannot write null property DafarContract.Payout to non-nullable JSON property 'payout'.");
 
+            if (dafarContract.ItineraryOption.IsSet && dafarContract.Itinerary == null)
+                throw new JsonException("Cannot write null property DafarContract.Itinerary to non-nullable JSON property 'itinerary'.");
+
             writer.WriteString("id", dafarContract.Id);
 
             var statusRawValue = StatusValueConverter.ToJsonValue(dafarContract.Status);
@@ -423,6 +449,11 @@ namespace Hopper.Fintech.Flights.Dg.Model
             {
                 writer.WritePropertyName("payout");
                 JsonSerializer.Serialize(writer, dafarContract.Payout, jsonSerializerOptions);
+            }
+            if (dafarContract.ItineraryOption.IsSet)
+            {
+                writer.WritePropertyName("itinerary");
+                JsonSerializer.Serialize(writer, dafarContract.Itinerary, jsonSerializerOptions);
             }
         }
     }

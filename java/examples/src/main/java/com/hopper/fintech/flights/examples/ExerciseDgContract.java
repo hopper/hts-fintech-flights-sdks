@@ -3,7 +3,6 @@ package com.hopper.fintech.flights.examples;
 import com.hopper.fintech.flights.dafar.model.DafarContract;
 import com.hopper.fintech.flights.dafar.model.DafarExerciseQuote;
 import com.hopper.fintech.flights.dafar.model.ExerciseUrl;
-import com.hopper.fintech.flights.dafar.model.RebookEligibilityResponse;
 import com.hopper.fintech.flights.sdk.FlightsDg;
 
 public final class ExerciseDgContract {
@@ -26,8 +25,7 @@ public final class ExerciseDgContract {
                 break;
             }
             case "eligibility": {
-                RebookEligibilityResponse eligibility = dg.partnerSelfServiceExercise().getContractsIdRebookEligibility(contractId).execute();
-                System.out.println(eligibility.toJson());
+                System.out.println(contract.getItinerary().toJson());
                 break;
             }
             case "refund": {

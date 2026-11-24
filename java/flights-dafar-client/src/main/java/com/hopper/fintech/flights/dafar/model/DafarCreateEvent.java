@@ -28,6 +28,9 @@ import com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageConf
 import com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageLoaded;
 import com.hopper.fintech.flights.dafar.model.ExercisePortalLandingContinueClicked;
 import com.hopper.fintech.flights.dafar.model.ExercisePortalLandingLoaded;
+import com.hopper.fintech.flights.dafar.model.ExercisePortalRebookingFlightChoiceContinueClicked;
+import com.hopper.fintech.flights.dafar.model.ExercisePortalRebookingShopPageLoaded;
+import com.hopper.fintech.flights.dafar.model.ExerciseType;
 import com.hopper.fintech.flights.dafar.model.FlightSearchLoaded;
 import com.hopper.fintech.flights.dafar.model.FlightSearchSubmitted;
 import com.hopper.fintech.flights.dafar.model.FlightSelected;
@@ -37,6 +40,8 @@ import com.hopper.fintech.flights.dafar.model.MerchandisingFaqClicked;
 import com.hopper.fintech.flights.dafar.model.MerchandisingOfferAttached;
 import com.hopper.fintech.flights.dafar.model.MerchandisingOfferDeclined;
 import com.hopper.fintech.flights.dafar.model.MerchandisingSdkLoaded;
+import com.hopper.fintech.flights.dafar.model.OfferDisplayRequested;
+import com.hopper.fintech.flights.dafar.model.RequestTrigger;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -79,15 +84,15 @@ import com.google.gson.JsonParseException;
 import com.hopper.fintech.flights.dafar.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
-public class Event extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(Event.class.getName());
+public class DafarCreateEvent extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(DafarCreateEvent.class.getName());
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
         @SuppressWarnings("unchecked")
         @Override
         public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-            if (!Event.class.isAssignableFrom(type.getRawType())) {
-                return null; // this class only serializes 'Event' and its subtypes
+            if (!DafarCreateEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DafarCreateEvent' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<BookingConfirmed> adapterBookingConfirmed = gson.getDelegateAdapter(this, TypeToken.get(BookingConfirmed.class));
@@ -98,6 +103,8 @@ public class Event extends AbstractOpenApiSchema {
             final TypeAdapter<ExercisePortalConfirmationPageLoaded> adapterExercisePortalConfirmationPageLoaded = gson.getDelegateAdapter(this, TypeToken.get(ExercisePortalConfirmationPageLoaded.class));
             final TypeAdapter<ExercisePortalLandingContinueClicked> adapterExercisePortalLandingContinueClicked = gson.getDelegateAdapter(this, TypeToken.get(ExercisePortalLandingContinueClicked.class));
             final TypeAdapter<ExercisePortalLandingLoaded> adapterExercisePortalLandingLoaded = gson.getDelegateAdapter(this, TypeToken.get(ExercisePortalLandingLoaded.class));
+            final TypeAdapter<ExercisePortalRebookingFlightChoiceContinueClicked> adapterExercisePortalRebookingFlightChoiceContinueClicked = gson.getDelegateAdapter(this, TypeToken.get(ExercisePortalRebookingFlightChoiceContinueClicked.class));
+            final TypeAdapter<ExercisePortalRebookingShopPageLoaded> adapterExercisePortalRebookingShopPageLoaded = gson.getDelegateAdapter(this, TypeToken.get(ExercisePortalRebookingShopPageLoaded.class));
             final TypeAdapter<FlightSearchLoaded> adapterFlightSearchLoaded = gson.getDelegateAdapter(this, TypeToken.get(FlightSearchLoaded.class));
             final TypeAdapter<FlightSearchSubmitted> adapterFlightSearchSubmitted = gson.getDelegateAdapter(this, TypeToken.get(FlightSearchSubmitted.class));
             final TypeAdapter<FlightSelected> adapterFlightSelected = gson.getDelegateAdapter(this, TypeToken.get(FlightSelected.class));
@@ -107,10 +114,11 @@ public class Event extends AbstractOpenApiSchema {
             final TypeAdapter<MerchandisingOfferAttached> adapterMerchandisingOfferAttached = gson.getDelegateAdapter(this, TypeToken.get(MerchandisingOfferAttached.class));
             final TypeAdapter<MerchandisingOfferDeclined> adapterMerchandisingOfferDeclined = gson.getDelegateAdapter(this, TypeToken.get(MerchandisingOfferDeclined.class));
             final TypeAdapter<MerchandisingSdkLoaded> adapterMerchandisingSdkLoaded = gson.getDelegateAdapter(this, TypeToken.get(MerchandisingSdkLoaded.class));
+            final TypeAdapter<OfferDisplayRequested> adapterOfferDisplayRequested = gson.getDelegateAdapter(this, TypeToken.get(OfferDisplayRequested.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<Event>() {
+            return (TypeAdapter<T>) new TypeAdapter<DafarCreateEvent>() {
                 @Override
-                public void write(JsonWriter out, Event value) throws IOException {
+                public void write(JsonWriter out, DafarCreateEvent value) throws IOException {
                     if (value == null || value.getActualInstance() == null) {
                         elementAdapter.write(out, null);
                         return;
@@ -161,6 +169,18 @@ public class Event extends AbstractOpenApiSchema {
                     // check if the actual instance is of the type `ExercisePortalLandingLoaded`
                     if (value.getActualInstance() instanceof ExercisePortalLandingLoaded) {
                         JsonElement element = adapterExercisePortalLandingLoaded.toJsonTree((ExercisePortalLandingLoaded)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `ExercisePortalRebookingFlightChoiceContinueClicked`
+                    if (value.getActualInstance() instanceof ExercisePortalRebookingFlightChoiceContinueClicked) {
+                        JsonElement element = adapterExercisePortalRebookingFlightChoiceContinueClicked.toJsonTree((ExercisePortalRebookingFlightChoiceContinueClicked)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `ExercisePortalRebookingShopPageLoaded`
+                    if (value.getActualInstance() instanceof ExercisePortalRebookingShopPageLoaded) {
+                        JsonElement element = adapterExercisePortalRebookingShopPageLoaded.toJsonTree((ExercisePortalRebookingShopPageLoaded)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
@@ -218,11 +238,17 @@ public class Event extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded");
+                    // check if the actual instance is of the type `OfferDisplayRequested`
+                    if (value.getActualInstance() instanceof OfferDisplayRequested) {
+                        JsonElement element = adapterOfferDisplayRequested.toJsonTree((OfferDisplayRequested)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, ExercisePortalRebookingFlightChoiceContinueClicked, ExercisePortalRebookingShopPageLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested");
                 }
 
                 @Override
-                public Event read(JsonReader in) throws IOException {
+                public DafarCreateEvent read(JsonReader in) throws IOException {
                     Object deserialized = null;
                     JsonElement jsonElement = elementAdapter.read(in);
 
@@ -325,6 +351,30 @@ public class Event extends AbstractOpenApiSchema {
                         // deserialization failed, continue
                         errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalLandingLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ExercisePortalLandingLoaded'", e);
+                    }
+                    // deserialize ExercisePortalRebookingFlightChoiceContinueClicked
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        ExercisePortalRebookingFlightChoiceContinueClicked.validateJsonElement(jsonElement);
+                        actualAdapter = adapterExercisePortalRebookingFlightChoiceContinueClicked;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'ExercisePortalRebookingFlightChoiceContinueClicked'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalRebookingFlightChoiceContinueClicked failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'ExercisePortalRebookingFlightChoiceContinueClicked'", e);
+                    }
+                    // deserialize ExercisePortalRebookingShopPageLoaded
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        ExercisePortalRebookingShopPageLoaded.validateJsonElement(jsonElement);
+                        actualAdapter = adapterExercisePortalRebookingShopPageLoaded;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'ExercisePortalRebookingShopPageLoaded'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalRebookingShopPageLoaded failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'ExercisePortalRebookingShopPageLoaded'", e);
                     }
                     // deserialize FlightSearchLoaded
                     try {
@@ -434,14 +484,26 @@ public class Event extends AbstractOpenApiSchema {
                         errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MerchandisingSdkLoaded'", e);
                     }
+                    // deserialize OfferDisplayRequested
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        OfferDisplayRequested.validateJsonElement(jsonElement);
+                        actualAdapter = adapterOfferDisplayRequested;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'OfferDisplayRequested'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferDisplayRequested failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'OfferDisplayRequested'", e);
+                    }
 
                     if (match == 1) {
-                        Event ret = new Event();
+                        DafarCreateEvent ret = new DafarCreateEvent();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     }
 
-                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Event: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for DafarCreateEvent: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -450,11 +512,11 @@ public class Event extends AbstractOpenApiSchema {
     // store a list of schema names defined in oneOf
     public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
-    public Event() {
+    public DafarCreateEvent() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public Event(Object o) {
+    public DafarCreateEvent(Object o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -468,6 +530,8 @@ public class Event extends AbstractOpenApiSchema {
         schemas.put("ExercisePortalConfirmationPageLoaded", ExercisePortalConfirmationPageLoaded.class);
         schemas.put("ExercisePortalLandingContinueClicked", ExercisePortalLandingContinueClicked.class);
         schemas.put("ExercisePortalLandingLoaded", ExercisePortalLandingLoaded.class);
+        schemas.put("ExercisePortalRebookingFlightChoiceContinueClicked", ExercisePortalRebookingFlightChoiceContinueClicked.class);
+        schemas.put("ExercisePortalRebookingShopPageLoaded", ExercisePortalRebookingShopPageLoaded.class);
         schemas.put("FlightSearchLoaded", FlightSearchLoaded.class);
         schemas.put("FlightSearchSubmitted", FlightSearchSubmitted.class);
         schemas.put("FlightSelected", FlightSelected.class);
@@ -477,17 +541,18 @@ public class Event extends AbstractOpenApiSchema {
         schemas.put("MerchandisingOfferAttached", MerchandisingOfferAttached.class);
         schemas.put("MerchandisingOfferDeclined", MerchandisingOfferDeclined.class);
         schemas.put("MerchandisingSdkLoaded", MerchandisingSdkLoaded.class);
+        schemas.put("OfferDisplayRequested", OfferDisplayRequested.class);
     }
 
     @Override
     public Map<String, Class<?>> getSchemas() {
-        return Event.schemas;
+        return DafarCreateEvent.schemas;
     }
 
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded
+     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, ExercisePortalRebookingFlightChoiceContinueClicked, ExercisePortalRebookingShopPageLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -529,6 +594,16 @@ public class Event extends AbstractOpenApiSchema {
         }
 
         if (instance instanceof ExercisePortalLandingLoaded) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof ExercisePortalRebookingFlightChoiceContinueClicked) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (instance instanceof ExercisePortalRebookingShopPageLoaded) {
             super.setActualInstance(instance);
             return;
         }
@@ -578,14 +653,19 @@ public class Event extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded");
+        if (instance instanceof OfferDisplayRequested) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, ExercisePortalRebookingFlightChoiceContinueClicked, ExercisePortalRebookingShopPageLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded
+     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, ExercisePortalRebookingFlightChoiceContinueClicked, ExercisePortalRebookingShopPageLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested
      *
-     * @return The actual instance (BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded)
+     * @return The actual instance (BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, ExercisePortalRebookingFlightChoiceContinueClicked, ExercisePortalRebookingShopPageLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -687,6 +767,30 @@ public class Event extends AbstractOpenApiSchema {
     @SuppressWarnings("unchecked")
     public ExercisePortalLandingLoaded getExercisePortalLandingLoaded() throws ClassCastException {
         return (ExercisePortalLandingLoaded)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `ExercisePortalRebookingFlightChoiceContinueClicked`. If the actual instance is not `ExercisePortalRebookingFlightChoiceContinueClicked`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ExercisePortalRebookingFlightChoiceContinueClicked`
+     * @throws ClassCastException if the instance is not `ExercisePortalRebookingFlightChoiceContinueClicked`
+     */
+    @SuppressWarnings("unchecked")
+    public ExercisePortalRebookingFlightChoiceContinueClicked getExercisePortalRebookingFlightChoiceContinueClicked() throws ClassCastException {
+        return (ExercisePortalRebookingFlightChoiceContinueClicked)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `ExercisePortalRebookingShopPageLoaded`. If the actual instance is not `ExercisePortalRebookingShopPageLoaded`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ExercisePortalRebookingShopPageLoaded`
+     * @throws ClassCastException if the instance is not `ExercisePortalRebookingShopPageLoaded`
+     */
+    @SuppressWarnings("unchecked")
+    public ExercisePortalRebookingShopPageLoaded getExercisePortalRebookingShopPageLoaded() throws ClassCastException {
+        return (ExercisePortalRebookingShopPageLoaded)super.getActualInstance();
     }
 
     /**
@@ -798,10 +902,22 @@ public class Event extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `OfferDisplayRequested`. If the actual instance is not `OfferDisplayRequested`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `OfferDisplayRequested`
+     * @throws ClassCastException if the instance is not `OfferDisplayRequested`
+     */
+    @SuppressWarnings("unchecked")
+    public OfferDisplayRequested getOfferDisplayRequested() throws ClassCastException {
+        return (OfferDisplayRequested)super.getActualInstance();
+    }
+
+    /**
      * Validates the JSON Element and throws an exception if issues found
      *
      * @param jsonElement JSON Element
-     * @throws IOException if the JSON Element is invalid with respect to Event
+     * @throws IOException if the JSON Element is invalid with respect to DafarCreateEvent
      */
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         // validate oneOf schemas one by one
@@ -869,6 +985,22 @@ public class Event extends AbstractOpenApiSchema {
             validCount++;
         } catch (Exception e) {
             errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalLandingLoaded failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with ExercisePortalRebookingFlightChoiceContinueClicked
+        try {
+            ExercisePortalRebookingFlightChoiceContinueClicked.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalRebookingFlightChoiceContinueClicked failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with ExercisePortalRebookingShopPageLoaded
+        try {
+            ExercisePortalRebookingShopPageLoaded.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ExercisePortalRebookingShopPageLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with FlightSearchLoaded
@@ -943,24 +1075,32 @@ public class Event extends AbstractOpenApiSchema {
             errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with OfferDisplayRequested
+        try {
+            OfferDisplayRequested.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferDisplayRequested failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         if (validCount != 1) {
-            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Event with oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for DafarCreateEvent with oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, ExercisePortalRebookingFlightChoiceContinueClicked, ExercisePortalRebookingShopPageLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 
     /**
-     * Create an instance of Event given an JSON string
+     * Create an instance of DafarCreateEvent given an JSON string
      *
      * @param jsonString JSON string
-     * @return An instance of Event
-     * @throws IOException if the JSON string is invalid with respect to Event
+     * @return An instance of DafarCreateEvent
+     * @throws IOException if the JSON string is invalid with respect to DafarCreateEvent
      */
-    public static Event fromJson(String jsonString) throws IOException {
-        return JSON.getGson().fromJson(jsonString, Event.class);
+    public static DafarCreateEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DafarCreateEvent.class);
     }
 
     /**
-     * Convert an instance of Event to an JSON string
+     * Convert an instance of DafarCreateEvent to an JSON string
      *
      * @return JSON string
      */

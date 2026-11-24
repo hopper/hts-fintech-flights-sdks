@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hopper.fintech.flights.dafar.model.ContractItinerary;
 import com.hopper.fintech.flights.dafar.model.ContractPrice;
 import com.hopper.fintech.flights.dafar.model.DafarExercise;
 import com.hopper.fintech.flights.dafar.model.EligibleDisruptions;
@@ -115,6 +116,11 @@ public class DafarContract {
   @SerializedName(SERIALIZED_NAME_BOOKING_REFERENCES)
   @javax.annotation.Nonnull
   private Map<String, String> bookingReferences;
+
+  public static final String SERIALIZED_NAME_ITINERARY = "itinerary";
+  @SerializedName(SERIALIZED_NAME_ITINERARY)
+  @javax.annotation.Nullable
+  private ContractItinerary itinerary;
 
   public static final String SERIALIZED_NAME_EXERCISES = "exercises";
   @SerializedName(SERIALIZED_NAME_EXERCISES)
@@ -342,6 +348,25 @@ public class DafarContract {
   }
 
 
+  public DafarContract itinerary(@javax.annotation.Nullable ContractItinerary itinerary) {
+    this.itinerary = itinerary;
+    return this;
+  }
+
+  /**
+   * Get itinerary
+   * @return itinerary
+   */
+  @javax.annotation.Nullable
+  public ContractItinerary getItinerary() {
+    return itinerary;
+  }
+
+  public void setItinerary(@javax.annotation.Nullable ContractItinerary itinerary) {
+    this.itinerary = itinerary;
+  }
+
+
   public DafarContract exercises(@javax.annotation.Nonnull List<DafarExercise> exercises) {
     this.exercises = exercises;
     return this;
@@ -434,13 +459,14 @@ public class DafarContract {
         Objects.equals(this.currency, dafarContract.currency) &&
         Objects.equals(this.expiresAt, dafarContract.expiresAt) &&
         Objects.equals(this.bookingReferences, dafarContract.bookingReferences) &&
+        Objects.equals(this.itinerary, dafarContract.itinerary) &&
         Objects.equals(this.exercises, dafarContract.exercises)&&
         Objects.equals(this.additionalProperties, dafarContract.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, status, price, eligibleDisruptions, payout, rebookingAllowancePerPassenger, windowMinutesBeforeDeparture, currency, expiresAt, bookingReferences, exercises, additionalProperties);
+    return Objects.hash(id, userId, status, price, eligibleDisruptions, payout, rebookingAllowancePerPassenger, windowMinutesBeforeDeparture, currency, expiresAt, bookingReferences, itinerary, exercises, additionalProperties);
   }
 
   @Override
@@ -458,6 +484,7 @@ public class DafarContract {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    bookingReferences: ").append(toIndentedString(bookingReferences)).append("\n");
+    sb.append("    itinerary: ").append(toIndentedString(itinerary)).append("\n");
     sb.append("    exercises: ").append(toIndentedString(exercises)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -478,7 +505,7 @@ public class DafarContract {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id", "user_id", "status", "price", "eligible_disruptions", "payout", "rebooking_allowance_per_passenger", "window_minutes_before_departure", "currency", "expires_at", "booking_references", "exercises"));
+    openapiFields = new HashSet<String>(Arrays.asList("id", "user_id", "status", "price", "eligible_disruptions", "payout", "rebooking_allowance_per_passenger", "window_minutes_before_departure", "currency", "expires_at", "booking_references", "itinerary", "exercises"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "status", "price", "eligible_disruptions", "rebooking_allowance_per_passenger", "window_minutes_before_departure", "currency", "expires_at", "booking_references", "exercises"));
@@ -525,6 +552,10 @@ public class DafarContract {
       }
       if (!jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      // validate the optional field `itinerary`
+      if (jsonObj.get("itinerary") != null && !jsonObj.get("itinerary").isJsonNull()) {
+        ContractItinerary.validateJsonElement(jsonObj.get("itinerary"));
       }
       if (jsonObj.get("exercises") != null) {
         if (!jsonObj.get("exercises").isJsonArray()) {

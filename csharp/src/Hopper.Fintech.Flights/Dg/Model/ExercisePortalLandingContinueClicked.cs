@@ -35,18 +35,26 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// <param name="sessionId">sessionId</param>
         /// <param name="occurredAt">Date and time at which the event occurred, as a UTC RFC3339 formatted datetime.</param>
         /// <param name="contractId">contractId</param>
+        /// <param name="exerciseType">exerciseType</param>
         /// <param name="type">type</param>
         [JsonConstructor]
-        public ExercisePortalLandingContinueClicked(string sessionId, DateTime occurredAt, string contractId, TypeEnum type)
+        public ExercisePortalLandingContinueClicked(string sessionId, DateTime occurredAt, string contractId, ExerciseType exerciseType, TypeEnum type)
         {
             SessionId = sessionId;
             OccurredAt = occurredAt;
             ContractId = contractId;
+            ExerciseType = exerciseType;
             Type = type;
             OnCreated();
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// Gets or Sets ExerciseType
+        /// </summary>
+        [JsonPropertyName("exercise_type")]
+        public ExerciseType ExerciseType { get; set; }
 
         /// <summary>
         /// Defines Type
@@ -142,6 +150,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
             sb.Append("  SessionId: ").Append(SessionId).Append("\n");
             sb.Append("  OccurredAt: ").Append(OccurredAt).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
+            sb.Append("  ExerciseType: ").Append(ExerciseType).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
@@ -189,6 +198,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
             Option<string?> sessionId = default;
             Option<DateTime?> occurredAt = default;
             Option<string?> contractId = default;
+            Option<ExerciseType?> exerciseType = default;
             Option<ExercisePortalLandingContinueClicked.TypeEnum?> type = default;
 
             while (utf8JsonReader.Read())
@@ -215,6 +225,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
                         case "contract_id":
                             contractId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
+                        case "exercise_type":
+                            exerciseType = new Option<ExerciseType?>(JsonSerializer.Deserialize<ExerciseType?>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         case "type":
                             string? typeRawValue = utf8JsonReader.GetString();
                             if (typeRawValue != null)
@@ -240,6 +253,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
             if (!contractId.IsSet)
                 throw new JsonException("Property is required for class ExercisePortalLandingContinueClicked: contract_id.");
 
+            if (!exerciseType.IsSet)
+                throw new JsonException("Property is required for class ExercisePortalLandingContinueClicked: exercise_type.");
+
             if (!type.IsSet)
                 throw new JsonException("Property is required for class ExercisePortalLandingContinueClicked: type.");
 
@@ -252,10 +268,13 @@ namespace Hopper.Fintech.Flights.Dg.Model
             if (contractId.IsSet && contractId.Value == null)
                 throw new JsonException("Property is not nullable for class ExercisePortalLandingContinueClicked: contract_id.");
 
+            if (exerciseType.IsSet && exerciseType.Value == null)
+                throw new JsonException("Property is not nullable for class ExercisePortalLandingContinueClicked: exercise_type.");
+
             if (type.IsSet && type.Value == null)
                 throw new JsonException("Property is not nullable for class ExercisePortalLandingContinueClicked: type.");
 
-            return new ExercisePortalLandingContinueClicked(sessionId.Value!, occurredAt.Value!.Value!, contractId.Value!, type.Value!.Value!);
+            return new ExercisePortalLandingContinueClicked(sessionId.Value!, occurredAt.Value!.Value!, contractId.Value!, exerciseType.Value!.Value!, type.Value!.Value!);
         }
 
         /// <summary>
@@ -285,6 +304,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
             writer.WriteString("occurred_at", exercisePortalLandingContinueClicked.OccurredAt.ToString(OccurredAtFormat));
 
             writer.WriteString("contract_id", exercisePortalLandingContinueClicked.ContractId);
+
+            var exerciseTypeRawValue = ExerciseTypeValueConverter.ToJsonValue(exercisePortalLandingContinueClicked.ExerciseType);
+            writer.WriteString("exercise_type", exerciseTypeRawValue);
 
             var typeRawValue = ExercisePortalLandingContinueClicked.TypeEnumToJsonValue(exercisePortalLandingContinueClicked.Type);
             writer.WriteString("type", typeRawValue);

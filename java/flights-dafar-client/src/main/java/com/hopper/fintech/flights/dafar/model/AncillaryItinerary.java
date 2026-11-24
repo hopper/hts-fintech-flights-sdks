@@ -115,7 +115,7 @@ public class AncillaryItinerary {
   }
 
   /**
-   * Ancillaries attached to the itinerary which will be covered by the product and their prices. In the case of a split itinerary the payout amount of these ancillaries will be evenly distributed amongst the passengers.
+   * Ancillaries attached to the itinerary that the product applies to, and their prices. In the case of a split itinerary the refund amount of these ancillaries will be evenly distributed amongst the passengers.
    * @return ancillaries
    */
   @javax.annotation.Nonnull

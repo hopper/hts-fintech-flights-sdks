@@ -33,7 +33,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// Initializes a new instance of the <see cref="AncillaryItinerary" /> class.
         /// </summary>
         /// <param name="slices">List of slices of the itinerary; 1 (one way), 2 (round trip), or up to 10 (multi-destination) slices are allowed</param>
-        /// <param name="ancillaries">Ancillaries attached to the itinerary which will be covered by the product and their prices. In the case of a split itinerary the payout amount of these ancillaries will be evenly distributed amongst the passengers.</param>
+        /// <param name="ancillaries">Ancillaries attached to the itinerary that the product applies to, and their prices. In the case of a split itinerary the refund amount of these ancillaries will be evenly distributed amongst the passengers.</param>
         /// <param name="passengers">List of passengers on the itinerary.</param>
         [JsonConstructor]
         public AncillaryItinerary(List<ItinerarySlice> slices, List<Ancillary> ancillaries, List<ItineraryPassenger> passengers)
@@ -54,9 +54,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public List<ItinerarySlice> Slices { get; set; }
 
         /// <summary>
-        /// Ancillaries attached to the itinerary which will be covered by the product and their prices. In the case of a split itinerary the payout amount of these ancillaries will be evenly distributed amongst the passengers.
+        /// Ancillaries attached to the itinerary that the product applies to, and their prices. In the case of a split itinerary the refund amount of these ancillaries will be evenly distributed amongst the passengers.
         /// </summary>
-        /// <value>Ancillaries attached to the itinerary which will be covered by the product and their prices. In the case of a split itinerary the payout amount of these ancillaries will be evenly distributed amongst the passengers.</value>
+        /// <value>Ancillaries attached to the itinerary that the product applies to, and their prices. In the case of a split itinerary the refund amount of these ancillaries will be evenly distributed amongst the passengers.</value>
         [JsonPropertyName("ancillaries")]
         public List<Ancillary> Ancillaries { get; set; }
 

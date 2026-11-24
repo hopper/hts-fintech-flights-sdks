@@ -194,10 +194,10 @@ namespace Hopper.Fintech.Flights.Dg.Client
                 return ContractNotConfirmed.CodeEnumToJsonValue(contractNotConfirmedCodeEnum);
             if (obj is ContractNotFound.CodeEnum contractNotFoundCodeEnum)
                 return ContractNotFound.CodeEnumToJsonValue(contractNotFoundCodeEnum);
-            if (obj is ContractVoided.CodeEnum contractVoidedCodeEnum)
-                return ContractVoided.CodeEnumToJsonValue(contractVoidedCodeEnum);
             if (obj is ContractVoidedWebhook.TypeEnum contractVoidedWebhookTypeEnum)
                 return ContractVoidedWebhook.TypeEnumToJsonValue(contractVoidedWebhookTypeEnum);
+            if (obj is CreateMerchandisingUrlError.CodeEnum createMerchandisingUrlErrorCodeEnum)
+                return CreateMerchandisingUrlError.CodeEnumToJsonValue(createMerchandisingUrlErrorCodeEnum);
             if (obj is CreateOffersError.CodeEnum createOffersErrorCodeEnum)
                 return CreateOffersError.CodeEnumToJsonValue(createOffersErrorCodeEnum);
             if (obj is DafarCancelContractError.CodeEnum dafarCancelContractErrorCodeEnum)
@@ -206,6 +206,8 @@ namespace Hopper.Fintech.Flights.Dg.Client
                 return DafarConfirmContractError.CodeEnumToJsonValue(dafarConfirmContractErrorCodeEnum);
             if (obj is DafarCreateDraftContractError.CodeEnum dafarCreateDraftContractErrorCodeEnum)
                 return DafarCreateDraftContractError.CodeEnumToJsonValue(dafarCreateDraftContractErrorCodeEnum);
+            if (obj is DafarCreateEvent.TypeEnum dafarCreateEventTypeEnum)
+                return DafarCreateEvent.TypeEnumToJsonValue(dafarCreateEventTypeEnum);
             if (obj is DafarCreateFlightsExerciseQuoteError.CodeEnum dafarCreateFlightsExerciseQuoteErrorCodeEnum)
                 return DafarCreateFlightsExerciseQuoteError.CodeEnumToJsonValue(dafarCreateFlightsExerciseQuoteErrorCodeEnum);
             if (obj is DafarExercise.TypeEnum dafarExerciseTypeEnum)
@@ -216,8 +218,6 @@ namespace Hopper.Fintech.Flights.Dg.Client
                 return DafarFlightPriceQuoteError.CodeEnumToJsonValue(dafarFlightPriceQuoteErrorCodeEnum);
             if (obj is DafarFlightShopError.CodeEnum dafarFlightShopErrorCodeEnum)
                 return DafarFlightShopError.CodeEnumToJsonValue(dafarFlightShopErrorCodeEnum);
-            if (obj is DafarRebookEligibilityError.CodeEnum dafarRebookEligibilityErrorCodeEnum)
-                return DafarRebookEligibilityError.CodeEnumToJsonValue(dafarRebookEligibilityErrorCodeEnum);
             if (obj is DafarUpdateContactInfoError.CodeEnum dafarUpdateContactInfoErrorCodeEnum)
                 return DafarUpdateContactInfoError.CodeEnumToJsonValue(dafarUpdateContactInfoErrorCodeEnum);
             if (obj is DafarVoidContractError.CodeEnum dafarVoidContractErrorCodeEnum)
@@ -236,16 +236,20 @@ namespace Hopper.Fintech.Flights.Dg.Client
                 return DisruptionReason.TypeEnumToJsonValue(disruptionReasonTypeEnum);
             if (obj is Eligible.TypeEnum eligibleTypeEnum)
                 return Eligible.TypeEnumToJsonValue(eligibleTypeEnum);
+            if (obj is Eligible1.TypeEnum eligible1TypeEnum)
+                return Eligible1.TypeEnumToJsonValue(eligible1TypeEnum);
             if (obj is EligibleReason.TypeEnum eligibleReasonTypeEnum)
                 return EligibleReason.TypeEnumToJsonValue(eligibleReasonTypeEnum);
             if (obj is EmailAddress.TypeEnum emailAddressTypeEnum)
                 return EmailAddress.TypeEnumToJsonValue(emailAddressTypeEnum);
             if (obj is EstimatedTimesUnchanged.CodeEnum estimatedTimesUnchangedCodeEnum)
                 return EstimatedTimesUnchanged.CodeEnumToJsonValue(estimatedTimesUnchangedCodeEnum);
-            if (obj is Event.TypeEnum eventTypeEnum)
-                return Event.TypeEnumToJsonValue(eventTypeEnum);
             if (obj is ExerciseContractRequest.TypeEnum exerciseContractRequestTypeEnum)
                 return ExerciseContractRequest.TypeEnumToJsonValue(exerciseContractRequestTypeEnum);
+            if (obj is ExerciseEligibility.TypeEnum exerciseEligibilityTypeEnum)
+                return ExerciseEligibility.TypeEnumToJsonValue(exerciseEligibilityTypeEnum);
+            if (obj is ExerciseOption exerciseOption)
+                return ExerciseOptionValueConverter.ToJsonValue(exerciseOption);
             if (obj is ExercisePortalCompletePageContinueClicked.TypeEnum exercisePortalCompletePageContinueClickedTypeEnum)
                 return ExercisePortalCompletePageContinueClicked.TypeEnumToJsonValue(exercisePortalCompletePageContinueClickedTypeEnum);
             if (obj is ExercisePortalCompletePageLoaded.TypeEnum exercisePortalCompletePageLoadedTypeEnum)
@@ -260,6 +264,12 @@ namespace Hopper.Fintech.Flights.Dg.Client
                 return ExercisePortalLandingContinueClicked.TypeEnumToJsonValue(exercisePortalLandingContinueClickedTypeEnum);
             if (obj is ExercisePortalLandingLoaded.TypeEnum exercisePortalLandingLoadedTypeEnum)
                 return ExercisePortalLandingLoaded.TypeEnumToJsonValue(exercisePortalLandingLoadedTypeEnum);
+            if (obj is ExercisePortalRebookingFlightChoiceContinueClicked.TypeEnum exercisePortalRebookingFlightChoiceContinueClickedTypeEnum)
+                return ExercisePortalRebookingFlightChoiceContinueClicked.TypeEnumToJsonValue(exercisePortalRebookingFlightChoiceContinueClickedTypeEnum);
+            if (obj is ExercisePortalRebookingShopPageLoaded.TypeEnum exercisePortalRebookingShopPageLoadedTypeEnum)
+                return ExercisePortalRebookingShopPageLoaded.TypeEnumToJsonValue(exercisePortalRebookingShopPageLoadedTypeEnum);
+            if (obj is ExerciseType exerciseType)
+                return ExerciseTypeValueConverter.ToJsonValue(exerciseType);
             if (obj is Failed.TypeEnum failedTypeEnum)
                 return Failed.TypeEnumToJsonValue(failedTypeEnum);
             if (obj is FareDetail.TypeEnum fareDetailTypeEnum)
@@ -356,6 +366,8 @@ namespace Hopper.Fintech.Flights.Dg.Client
                 return NotAllowed.TypeEnumToJsonValue(notAllowedTypeEnum);
             if (obj is NotAvailable.TypeEnum notAvailableTypeEnum)
                 return NotAvailable.TypeEnumToJsonValue(notAvailableTypeEnum);
+            if (obj is NotMerchandisable.CodeEnum notMerchandisableCodeEnum)
+                return NotMerchandisable.CodeEnumToJsonValue(notMerchandisableCodeEnum);
             if (obj is NotProvided.TypeEnum notProvidedTypeEnum)
                 return NotProvided.TypeEnumToJsonValue(notProvidedTypeEnum);
             if (obj is NotProvided1.TypeEnum notProvided1TypeEnum)
@@ -364,6 +376,10 @@ namespace Hopper.Fintech.Flights.Dg.Client
                 return NotProvided2.TypeEnumToJsonValue(notProvided2TypeEnum);
             if (obj is NotPurchased.TypeEnum notPurchasedTypeEnum)
                 return NotPurchased.TypeEnumToJsonValue(notPurchasedTypeEnum);
+            if (obj is OfferDisplayRequested.TypeEnum offerDisplayRequestedTypeEnum)
+                return OfferDisplayRequested.TypeEnumToJsonValue(offerDisplayRequestedTypeEnum);
+            if (obj is OfferExpired.CodeEnum offerExpiredCodeEnum)
+                return OfferExpired.CodeEnumToJsonValue(offerExpiredCodeEnum);
             if (obj is OfferNotFound.CodeEnum offerNotFoundCodeEnum)
                 return OfferNotFound.CodeEnumToJsonValue(offerNotFoundCodeEnum);
             if (obj is OnlineBookingTool.TypeEnum onlineBookingToolTypeEnum)

@@ -50,10 +50,10 @@ import java.util.Set;
 import com.hopper.fintech.flights.dafar.JSON;
 
 /**
- * SegmentEligibility
+ * ContractItinerarySegment
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
-public class SegmentEligibility {
+public class ContractItinerarySegment {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nonnull
@@ -79,6 +79,16 @@ public class SegmentEligibility {
   @javax.annotation.Nonnull
   private String arrivalDateTime;
 
+  public static final String SERIALIZED_NAME_CABIN = "cabin";
+  @SerializedName(SERIALIZED_NAME_CABIN)
+  @javax.annotation.Nonnull
+  private Cabin cabin;
+
+  public static final String SERIALIZED_NAME_RESERVATION_BOOKING_DESIGNATOR = "reservation_booking_designator";
+  @SerializedName(SERIALIZED_NAME_RESERVATION_BOOKING_DESIGNATOR)
+  @javax.annotation.Nullable
+  private String reservationBookingDesignator;
+
   public static final String SERIALIZED_NAME_MARKETING_CARRIER_CODE = "marketing_carrier_code";
   @SerializedName(SERIALIZED_NAME_MARKETING_CARRIER_CODE)
   @javax.annotation.Nonnull
@@ -89,15 +99,15 @@ public class SegmentEligibility {
   @javax.annotation.Nonnull
   private String marketingFlightNumber;
 
-  public static final String SERIALIZED_NAME_CABIN = "cabin";
-  @SerializedName(SERIALIZED_NAME_CABIN)
-  @javax.annotation.Nonnull
-  private Cabin cabin;
-
-  public static final String SERIALIZED_NAME_RESERVATION_BOOKING_DESIGNATOR = "reservation_booking_designator";
-  @SerializedName(SERIALIZED_NAME_RESERVATION_BOOKING_DESIGNATOR)
+  public static final String SERIALIZED_NAME_OPERATING_CARRIER_CODE = "operating_carrier_code";
+  @SerializedName(SERIALIZED_NAME_OPERATING_CARRIER_CODE)
   @javax.annotation.Nullable
-  private String reservationBookingDesignator;
+  private String operatingCarrierCode;
+
+  public static final String SERIALIZED_NAME_OPERATING_FLIGHT_NUMBER = "operating_flight_number";
+  @SerializedName(SERIALIZED_NAME_OPERATING_FLIGHT_NUMBER)
+  @javax.annotation.Nullable
+  private String operatingFlightNumber;
 
   public static final String SERIALIZED_NAME_REBOOK_ELIGIBILITY = "rebook_eligibility";
   @SerializedName(SERIALIZED_NAME_REBOOK_ELIGIBILITY)
@@ -109,16 +119,16 @@ public class SegmentEligibility {
   @javax.annotation.Nullable
   private DisruptionReason disruption;
 
-  public SegmentEligibility() {
+  public ContractItinerarySegment() {
   }
 
-  public SegmentEligibility id(@javax.annotation.Nonnull String id) {
+  public ContractItinerarySegment id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
 
   /**
-   * Stable identifier for this segment within the contract&#39;s rebook eligibility. Echo it back as segment_id on the flight shop request to rebook this exact segment. Stable across eligibility calls for the same disruption.
+   * Base64-encoded string of \&quot;&lt;slice_index&gt;:&lt;segment_index&gt;\&quot;, both zero-based. The encoding is padded, so some ids end in &#x60;&#x3D;&#x60;; treat the id as an opaque string.
    * @return id
    */
   @javax.annotation.Nonnull
@@ -131,13 +141,13 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility originAirport(@javax.annotation.Nonnull String originAirport) {
+  public ContractItinerarySegment originAirport(@javax.annotation.Nonnull String originAirport) {
     this.originAirport = originAirport;
     return this;
   }
 
   /**
-   * IATA code of the origin airport.
+   * IATA airport code of origin.
    * @return originAirport
    */
   @javax.annotation.Nonnull
@@ -150,13 +160,13 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility destinationAirport(@javax.annotation.Nonnull String destinationAirport) {
+  public ContractItinerarySegment destinationAirport(@javax.annotation.Nonnull String destinationAirport) {
     this.destinationAirport = destinationAirport;
     return this;
   }
 
   /**
-   * IATA code of the destination airport.
+   * IATA airport code of destination.
    * @return destinationAirport
    */
   @javax.annotation.Nonnull
@@ -169,13 +179,13 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility departureDateTime(@javax.annotation.Nonnull String departureDateTime) {
+  public ContractItinerarySegment departureDateTime(@javax.annotation.Nonnull String departureDateTime) {
     this.departureDateTime = departureDateTime;
     return this;
   }
 
   /**
-   * Scheduled local departure date and time in ISO Local Date Time format.
+   * Local date and time of departure, in ISO 8601 format.
    * @return departureDateTime
    */
   @javax.annotation.Nonnull
@@ -188,13 +198,13 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility arrivalDateTime(@javax.annotation.Nonnull String arrivalDateTime) {
+  public ContractItinerarySegment arrivalDateTime(@javax.annotation.Nonnull String arrivalDateTime) {
     this.arrivalDateTime = arrivalDateTime;
     return this;
   }
 
   /**
-   * Scheduled local arrival date and time in ISO Local Date Time format.
+   * Local date and time of arrival, in ISO 8601 format.
    * @return arrivalDateTime
    */
   @javax.annotation.Nonnull
@@ -207,51 +217,13 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility marketingCarrierCode(@javax.annotation.Nonnull String marketingCarrierCode) {
-    this.marketingCarrierCode = marketingCarrierCode;
-    return this;
-  }
-
-  /**
-   * IATA marketing carrier code.
-   * @return marketingCarrierCode
-   */
-  @javax.annotation.Nonnull
-  public String getMarketingCarrierCode() {
-    return marketingCarrierCode;
-  }
-
-  public void setMarketingCarrierCode(@javax.annotation.Nonnull String marketingCarrierCode) {
-    this.marketingCarrierCode = marketingCarrierCode;
-  }
-
-
-  public SegmentEligibility marketingFlightNumber(@javax.annotation.Nonnull String marketingFlightNumber) {
-    this.marketingFlightNumber = marketingFlightNumber;
-    return this;
-  }
-
-  /**
-   * Marketing flight number.
-   * @return marketingFlightNumber
-   */
-  @javax.annotation.Nonnull
-  public String getMarketingFlightNumber() {
-    return marketingFlightNumber;
-  }
-
-  public void setMarketingFlightNumber(@javax.annotation.Nonnull String marketingFlightNumber) {
-    this.marketingFlightNumber = marketingFlightNumber;
-  }
-
-
-  public SegmentEligibility cabin(@javax.annotation.Nonnull Cabin cabin) {
+  public ContractItinerarySegment cabin(@javax.annotation.Nonnull Cabin cabin) {
     this.cabin = cabin;
     return this;
   }
 
   /**
-   * Cabin class.
+   * Cabin of the segment.
    * @return cabin
    */
   @javax.annotation.Nonnull
@@ -264,7 +236,7 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility reservationBookingDesignator(@javax.annotation.Nullable String reservationBookingDesignator) {
+  public ContractItinerarySegment reservationBookingDesignator(@javax.annotation.Nullable String reservationBookingDesignator) {
     this.reservationBookingDesignator = reservationBookingDesignator;
     return this;
   }
@@ -283,7 +255,83 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility rebookEligibility(@javax.annotation.Nonnull RebookEligibility rebookEligibility) {
+  public ContractItinerarySegment marketingCarrierCode(@javax.annotation.Nonnull String marketingCarrierCode) {
+    this.marketingCarrierCode = marketingCarrierCode;
+    return this;
+  }
+
+  /**
+   * IATA airline code of the marketing carrier for this segment.
+   * @return marketingCarrierCode
+   */
+  @javax.annotation.Nonnull
+  public String getMarketingCarrierCode() {
+    return marketingCarrierCode;
+  }
+
+  public void setMarketingCarrierCode(@javax.annotation.Nonnull String marketingCarrierCode) {
+    this.marketingCarrierCode = marketingCarrierCode;
+  }
+
+
+  public ContractItinerarySegment marketingFlightNumber(@javax.annotation.Nonnull String marketingFlightNumber) {
+    this.marketingFlightNumber = marketingFlightNumber;
+    return this;
+  }
+
+  /**
+   * Flight number for the marketing carrier.
+   * @return marketingFlightNumber
+   */
+  @javax.annotation.Nonnull
+  public String getMarketingFlightNumber() {
+    return marketingFlightNumber;
+  }
+
+  public void setMarketingFlightNumber(@javax.annotation.Nonnull String marketingFlightNumber) {
+    this.marketingFlightNumber = marketingFlightNumber;
+  }
+
+
+  public ContractItinerarySegment operatingCarrierCode(@javax.annotation.Nullable String operatingCarrierCode) {
+    this.operatingCarrierCode = operatingCarrierCode;
+    return this;
+  }
+
+  /**
+   * IATA airline code of the operating carrier for this segment. Assumed to be the same as marketing_carrier_code if not set.
+   * @return operatingCarrierCode
+   */
+  @javax.annotation.Nullable
+  public String getOperatingCarrierCode() {
+    return operatingCarrierCode;
+  }
+
+  public void setOperatingCarrierCode(@javax.annotation.Nullable String operatingCarrierCode) {
+    this.operatingCarrierCode = operatingCarrierCode;
+  }
+
+
+  public ContractItinerarySegment operatingFlightNumber(@javax.annotation.Nullable String operatingFlightNumber) {
+    this.operatingFlightNumber = operatingFlightNumber;
+    return this;
+  }
+
+  /**
+   * Flight number for the operating carrier. Assumed to be the same as marketing_flight_number if not set.
+   * @return operatingFlightNumber
+   */
+  @javax.annotation.Nullable
+  public String getOperatingFlightNumber() {
+    return operatingFlightNumber;
+  }
+
+  public void setOperatingFlightNumber(@javax.annotation.Nullable String operatingFlightNumber) {
+    this.operatingFlightNumber = operatingFlightNumber;
+  }
+
+
+  public ContractItinerarySegment rebookEligibility(@javax.annotation.Nonnull RebookEligibility rebookEligibility) {
     this.rebookEligibility = rebookEligibility;
     return this;
   }
@@ -302,7 +350,7 @@ public class SegmentEligibility {
   }
 
 
-  public SegmentEligibility disruption(@javax.annotation.Nullable DisruptionReason disruption) {
+  public ContractItinerarySegment disruption(@javax.annotation.Nullable DisruptionReason disruption) {
     this.disruption = disruption;
     return this;
   }
@@ -333,9 +381,9 @@ public class SegmentEligibility {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SegmentEligibility instance itself
+   * @return the ContractItinerarySegment instance itself
    */
-  public SegmentEligibility putAdditionalProperty(String key, Object value) {
+  public ContractItinerarySegment putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -374,39 +422,43 @@ public class SegmentEligibility {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SegmentEligibility segmentEligibility = (SegmentEligibility) o;
-    return Objects.equals(this.id, segmentEligibility.id) &&
-        Objects.equals(this.originAirport, segmentEligibility.originAirport) &&
-        Objects.equals(this.destinationAirport, segmentEligibility.destinationAirport) &&
-        Objects.equals(this.departureDateTime, segmentEligibility.departureDateTime) &&
-        Objects.equals(this.arrivalDateTime, segmentEligibility.arrivalDateTime) &&
-        Objects.equals(this.marketingCarrierCode, segmentEligibility.marketingCarrierCode) &&
-        Objects.equals(this.marketingFlightNumber, segmentEligibility.marketingFlightNumber) &&
-        Objects.equals(this.cabin, segmentEligibility.cabin) &&
-        Objects.equals(this.reservationBookingDesignator, segmentEligibility.reservationBookingDesignator) &&
-        Objects.equals(this.rebookEligibility, segmentEligibility.rebookEligibility) &&
-        Objects.equals(this.disruption, segmentEligibility.disruption)&&
-        Objects.equals(this.additionalProperties, segmentEligibility.additionalProperties);
+    ContractItinerarySegment contractItinerarySegment = (ContractItinerarySegment) o;
+    return Objects.equals(this.id, contractItinerarySegment.id) &&
+        Objects.equals(this.originAirport, contractItinerarySegment.originAirport) &&
+        Objects.equals(this.destinationAirport, contractItinerarySegment.destinationAirport) &&
+        Objects.equals(this.departureDateTime, contractItinerarySegment.departureDateTime) &&
+        Objects.equals(this.arrivalDateTime, contractItinerarySegment.arrivalDateTime) &&
+        Objects.equals(this.cabin, contractItinerarySegment.cabin) &&
+        Objects.equals(this.reservationBookingDesignator, contractItinerarySegment.reservationBookingDesignator) &&
+        Objects.equals(this.marketingCarrierCode, contractItinerarySegment.marketingCarrierCode) &&
+        Objects.equals(this.marketingFlightNumber, contractItinerarySegment.marketingFlightNumber) &&
+        Objects.equals(this.operatingCarrierCode, contractItinerarySegment.operatingCarrierCode) &&
+        Objects.equals(this.operatingFlightNumber, contractItinerarySegment.operatingFlightNumber) &&
+        Objects.equals(this.rebookEligibility, contractItinerarySegment.rebookEligibility) &&
+        Objects.equals(this.disruption, contractItinerarySegment.disruption)&&
+        Objects.equals(this.additionalProperties, contractItinerarySegment.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, originAirport, destinationAirport, departureDateTime, arrivalDateTime, marketingCarrierCode, marketingFlightNumber, cabin, reservationBookingDesignator, rebookEligibility, disruption, additionalProperties);
+    return Objects.hash(id, originAirport, destinationAirport, departureDateTime, arrivalDateTime, cabin, reservationBookingDesignator, marketingCarrierCode, marketingFlightNumber, operatingCarrierCode, operatingFlightNumber, rebookEligibility, disruption, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SegmentEligibility {\n");
+    sb.append("class ContractItinerarySegment {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    originAirport: ").append(toIndentedString(originAirport)).append("\n");
     sb.append("    destinationAirport: ").append(toIndentedString(destinationAirport)).append("\n");
     sb.append("    departureDateTime: ").append(toIndentedString(departureDateTime)).append("\n");
     sb.append("    arrivalDateTime: ").append(toIndentedString(arrivalDateTime)).append("\n");
-    sb.append("    marketingCarrierCode: ").append(toIndentedString(marketingCarrierCode)).append("\n");
-    sb.append("    marketingFlightNumber: ").append(toIndentedString(marketingFlightNumber)).append("\n");
     sb.append("    cabin: ").append(toIndentedString(cabin)).append("\n");
     sb.append("    reservationBookingDesignator: ").append(toIndentedString(reservationBookingDesignator)).append("\n");
+    sb.append("    marketingCarrierCode: ").append(toIndentedString(marketingCarrierCode)).append("\n");
+    sb.append("    marketingFlightNumber: ").append(toIndentedString(marketingFlightNumber)).append("\n");
+    sb.append("    operatingCarrierCode: ").append(toIndentedString(operatingCarrierCode)).append("\n");
+    sb.append("    operatingFlightNumber: ").append(toIndentedString(operatingFlightNumber)).append("\n");
     sb.append("    rebookEligibility: ").append(toIndentedString(rebookEligibility)).append("\n");
     sb.append("    disruption: ").append(toIndentedString(disruption)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -428,27 +480,27 @@ public class SegmentEligibility {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id", "origin_airport", "destination_airport", "departure_date_time", "arrival_date_time", "marketing_carrier_code", "marketing_flight_number", "cabin", "reservation_booking_designator", "rebook_eligibility", "disruption"));
+    openapiFields = new HashSet<String>(Arrays.asList("id", "origin_airport", "destination_airport", "departure_date_time", "arrival_date_time", "cabin", "reservation_booking_designator", "marketing_carrier_code", "marketing_flight_number", "operating_carrier_code", "operating_flight_number", "rebook_eligibility", "disruption"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "origin_airport", "destination_airport", "departure_date_time", "arrival_date_time", "marketing_carrier_code", "marketing_flight_number", "cabin", "rebook_eligibility"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "origin_airport", "destination_airport", "departure_date_time", "arrival_date_time", "cabin", "marketing_carrier_code", "marketing_flight_number", "rebook_eligibility"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SegmentEligibility
+   * @throws IOException if the JSON Element is invalid with respect to ContractItinerarySegment
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!SegmentEligibility.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SegmentEligibility is not found in the empty JSON string", SegmentEligibility.openapiRequiredFields.toString()));
+        if (!ContractItinerarySegment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ContractItinerarySegment is not found in the empty JSON string", ContractItinerarySegment.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SegmentEligibility.openapiRequiredFields) {
+      for (String requiredField : ContractItinerarySegment.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -469,16 +521,22 @@ public class SegmentEligibility {
       if (!jsonObj.get("arrival_date_time").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `arrival_date_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("arrival_date_time").toString()));
       }
+      // validate the required field `cabin`
+      Cabin.validateJsonElement(jsonObj.get("cabin"));
+      if ((jsonObj.get("reservation_booking_designator") != null && !jsonObj.get("reservation_booking_designator").isJsonNull()) && !jsonObj.get("reservation_booking_designator").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `reservation_booking_designator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reservation_booking_designator").toString()));
+      }
       if (!jsonObj.get("marketing_carrier_code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `marketing_carrier_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("marketing_carrier_code").toString()));
       }
       if (!jsonObj.get("marketing_flight_number").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `marketing_flight_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("marketing_flight_number").toString()));
       }
-      // validate the required field `cabin`
-      Cabin.validateJsonElement(jsonObj.get("cabin"));
-      if ((jsonObj.get("reservation_booking_designator") != null && !jsonObj.get("reservation_booking_designator").isJsonNull()) && !jsonObj.get("reservation_booking_designator").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `reservation_booking_designator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reservation_booking_designator").toString()));
+      if ((jsonObj.get("operating_carrier_code") != null && !jsonObj.get("operating_carrier_code").isJsonNull()) && !jsonObj.get("operating_carrier_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `operating_carrier_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_carrier_code").toString()));
+      }
+      if ((jsonObj.get("operating_flight_number") != null && !jsonObj.get("operating_flight_number").isJsonNull()) && !jsonObj.get("operating_flight_number").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `operating_flight_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operating_flight_number").toString()));
       }
       // validate the required field `rebook_eligibility`
       RebookEligibility.validateJsonElement(jsonObj.get("rebook_eligibility"));
@@ -492,16 +550,16 @@ public class SegmentEligibility {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SegmentEligibility.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SegmentEligibility' and its subtypes
+       if (!ContractItinerarySegment.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ContractItinerarySegment' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SegmentEligibility> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SegmentEligibility.class));
+       final TypeAdapter<ContractItinerarySegment> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ContractItinerarySegment.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SegmentEligibility>() {
+       return (TypeAdapter<T>) new TypeAdapter<ContractItinerarySegment>() {
            @Override
-           public void write(JsonWriter out, SegmentEligibility value) throws IOException {
+           public void write(JsonWriter out, ContractItinerarySegment value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -531,12 +589,12 @@ public class SegmentEligibility {
            }
 
            @Override
-           public SegmentEligibility read(JsonReader in) throws IOException {
+           public ContractItinerarySegment read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             SegmentEligibility instance = thisAdapter.fromJsonTree(jsonObj);
+             ContractItinerarySegment instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -563,18 +621,18 @@ public class SegmentEligibility {
   }
 
   /**
-   * Create an instance of SegmentEligibility given an JSON string
+   * Create an instance of ContractItinerarySegment given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of SegmentEligibility
-   * @throws IOException if the JSON string is invalid with respect to SegmentEligibility
+   * @return An instance of ContractItinerarySegment
+   * @throws IOException if the JSON string is invalid with respect to ContractItinerarySegment
    */
-  public static SegmentEligibility fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SegmentEligibility.class);
+  public static ContractItinerarySegment fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ContractItinerarySegment.class);
   }
 
   /**
-   * Convert an instance of SegmentEligibility to an JSON string
+   * Convert an instance of ContractItinerarySegment to an JSON string
    *
    * @return JSON string
    */

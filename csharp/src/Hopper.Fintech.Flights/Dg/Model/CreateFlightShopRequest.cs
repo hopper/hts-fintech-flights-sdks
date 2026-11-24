@@ -32,7 +32,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateFlightShopRequest" /> class.
         /// </summary>
-        /// <param name="segmentId">The segment to rebook, identified by the id returned in the rebook eligibility response (slices[].segments[].id). Must reference a rebook-eligible segment on this contract; HTS derives the search origin/destination and date window from that segment.</param>
+        /// <param name="segmentId">The segment to rebook, identified by its id in Get Contract&#39;s itinerary (itinerary.slices[].segments[].id). Must reference a rebook-eligible segment of this purchase; HTS derives the search origin/destination and date window from that segment.</param>
         /// <param name="checkedBags">Whether the customer has checked bags. If true, additional departure time filtering is applied to allow the customer enough time to retrieve their checked bags before the rebooked flight.</param>
         /// <param name="inventorySource">inventorySource</param>
         [JsonConstructor]
@@ -47,9 +47,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
         partial void OnCreated();
 
         /// <summary>
-        /// The segment to rebook, identified by the id returned in the rebook eligibility response (slices[].segments[].id). Must reference a rebook-eligible segment on this contract; HTS derives the search origin/destination and date window from that segment.
+        /// The segment to rebook, identified by its id in Get Contract&#39;s itinerary (itinerary.slices[].segments[].id). Must reference a rebook-eligible segment of this purchase; HTS derives the search origin/destination and date window from that segment.
         /// </summary>
-        /// <value>The segment to rebook, identified by the id returned in the rebook eligibility response (slices[].segments[].id). Must reference a rebook-eligible segment on this contract; HTS derives the search origin/destination and date window from that segment.</value>
+        /// <value>The segment to rebook, identified by its id in Get Contract&#39;s itinerary (itinerary.slices[].segments[].id). Must reference a rebook-eligible segment of this purchase; HTS derives the search origin/destination and date window from that segment.</value>
         [JsonPropertyName("segment_id")]
         public string SegmentId { get; set; }
 

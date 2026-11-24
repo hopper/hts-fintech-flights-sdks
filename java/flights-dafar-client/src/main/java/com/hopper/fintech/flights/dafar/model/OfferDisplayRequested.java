@@ -19,8 +19,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hopper.fintech.flights.dafar.model.RequestTrigger;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,25 +51,40 @@ import java.util.Set;
 import com.hopper.fintech.flights.dafar.JSON;
 
 /**
- * ContractVoided
+ * Triggered when a customer explicitly requests to view an offer.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
-public class ContractVoided {
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+public class OfferDisplayRequested {
+  public static final String SERIALIZED_NAME_SESSION_ID = "session_id";
+  @SerializedName(SERIALIZED_NAME_SESSION_ID)
   @javax.annotation.Nonnull
-  private String message;
+  private String sessionId;
+
+  public static final String SERIALIZED_NAME_OCCURRED_AT = "occurred_at";
+  @SerializedName(SERIALIZED_NAME_OCCURRED_AT)
+  @javax.annotation.Nonnull
+  private OffsetDateTime occurredAt;
+
+  public static final String SERIALIZED_NAME_OFFER_IDS = "offer_ids";
+  @SerializedName(SERIALIZED_NAME_OFFER_IDS)
+  @javax.annotation.Nonnull
+  private List<String> offerIds;
+
+  public static final String SERIALIZED_NAME_TRIGGER = "trigger";
+  @SerializedName(SERIALIZED_NAME_TRIGGER)
+  @javax.annotation.Nonnull
+  private RequestTrigger trigger;
 
   /**
-   * Gets or Sets code
+   * Gets or Sets type
    */
-  @JsonAdapter(CodeEnum.Adapter.class)
-  public enum CodeEnum {
-    CONTRACT_VOIDED("contract_voided");
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    OFFER_DISPLAY_REQUESTED("offer_display_requested");
 
     private String value;
 
-    CodeEnum(String value) {
+    TypeEnum(String value) {
       this.value = value;
     }
 
@@ -78,8 +97,8 @@ public class ContractVoided {
       return String.valueOf(value);
     }
 
-    public static CodeEnum fromValue(String value) {
-      for (CodeEnum b : CodeEnum.values()) {
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -87,68 +106,133 @@ public class ContractVoided {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<CodeEnum> {
+    public static class Adapter extends TypeAdapter<TypeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final CodeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public CodeEnum read(final JsonReader jsonReader) throws IOException {
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return CodeEnum.fromValue(value);
+        return TypeEnum.fromValue(value);
       }
     }
 
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       String value = jsonElement.getAsString();
-      CodeEnum.fromValue(value);
+      TypeEnum.fromValue(value);
     }
   }
 
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nonnull
-  private CodeEnum code;
+  private TypeEnum type;
 
-  public ContractVoided() {
+  public OfferDisplayRequested() {
   }
 
-  public ContractVoided message(@javax.annotation.Nonnull String message) {
-    this.message = message;
+  public OfferDisplayRequested sessionId(@javax.annotation.Nonnull String sessionId) {
+    this.sessionId = sessionId;
     return this;
   }
 
   /**
-   * A human-readable message describing the error
-   * @return message
+   * Get sessionId
+   * @return sessionId
    */
   @javax.annotation.Nonnull
-  public String getMessage() {
-    return message;
+  public String getSessionId() {
+    return sessionId;
   }
 
-  public void setMessage(@javax.annotation.Nonnull String message) {
-    this.message = message;
+  public void setSessionId(@javax.annotation.Nonnull String sessionId) {
+    this.sessionId = sessionId;
   }
 
 
-  public ContractVoided code(@javax.annotation.Nonnull CodeEnum code) {
-    this.code = code;
+  public OfferDisplayRequested occurredAt(@javax.annotation.Nonnull OffsetDateTime occurredAt) {
+    this.occurredAt = occurredAt;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * Date and time at which the event occurred, as a UTC RFC3339 formatted datetime.
+   * @return occurredAt
    */
   @javax.annotation.Nonnull
-  public CodeEnum getCode() {
-    return code;
+  public OffsetDateTime getOccurredAt() {
+    return occurredAt;
   }
 
-  public void setCode(@javax.annotation.Nonnull CodeEnum code) {
-    this.code = code;
+  public void setOccurredAt(@javax.annotation.Nonnull OffsetDateTime occurredAt) {
+    this.occurredAt = occurredAt;
+  }
+
+
+  public OfferDisplayRequested offerIds(@javax.annotation.Nonnull List<String> offerIds) {
+    this.offerIds = offerIds;
+    return this;
+  }
+
+  public OfferDisplayRequested addOfferIdsItem(String offerIdsItem) {
+    if (this.offerIds == null) {
+      this.offerIds = new ArrayList<>();
+    }
+    this.offerIds.add(offerIdsItem);
+    return this;
+  }
+
+  /**
+   * The offers that the customer is requesting to view.
+   * @return offerIds
+   */
+  @javax.annotation.Nonnull
+  public List<String> getOfferIds() {
+    return offerIds;
+  }
+
+  public void setOfferIds(@javax.annotation.Nonnull List<String> offerIds) {
+    this.offerIds = offerIds;
+  }
+
+
+  public OfferDisplayRequested trigger(@javax.annotation.Nonnull RequestTrigger trigger) {
+    this.trigger = trigger;
+    return this;
+  }
+
+  /**
+   * Get trigger
+   * @return trigger
+   */
+  @javax.annotation.Nonnull
+  public RequestTrigger getTrigger() {
+    return trigger;
+  }
+
+  public void setTrigger(@javax.annotation.Nonnull RequestTrigger trigger) {
+    this.trigger = trigger;
+  }
+
+
+  public OfferDisplayRequested type(@javax.annotation.Nonnull TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(@javax.annotation.Nonnull TypeEnum type) {
+    this.type = type;
   }
 
   /**
@@ -164,9 +248,9 @@ public class ContractVoided {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ContractVoided instance itself
+   * @return the OfferDisplayRequested instance itself
    */
-  public ContractVoided putAdditionalProperty(String key, Object value) {
+  public OfferDisplayRequested putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -205,23 +289,29 @@ public class ContractVoided {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ContractVoided contractVoided = (ContractVoided) o;
-    return Objects.equals(this.message, contractVoided.message) &&
-        Objects.equals(this.code, contractVoided.code)&&
-        Objects.equals(this.additionalProperties, contractVoided.additionalProperties);
+    OfferDisplayRequested offerDisplayRequested = (OfferDisplayRequested) o;
+    return Objects.equals(this.sessionId, offerDisplayRequested.sessionId) &&
+        Objects.equals(this.occurredAt, offerDisplayRequested.occurredAt) &&
+        Objects.equals(this.offerIds, offerDisplayRequested.offerIds) &&
+        Objects.equals(this.trigger, offerDisplayRequested.trigger) &&
+        Objects.equals(this.type, offerDisplayRequested.type)&&
+        Objects.equals(this.additionalProperties, offerDisplayRequested.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, code, additionalProperties);
+    return Objects.hash(sessionId, occurredAt, offerIds, trigger, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ContractVoided {\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("class OfferDisplayRequested {\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
+    sb.append("    occurredAt: ").append(toIndentedString(occurredAt)).append("\n");
+    sb.append("    offerIds: ").append(toIndentedString(offerIds)).append("\n");
+    sb.append("    trigger: ").append(toIndentedString(trigger)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -241,56 +331,64 @@ public class ContractVoided {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("message", "code"));
+    openapiFields = new HashSet<String>(Arrays.asList("session_id", "occurred_at", "offer_ids", "trigger", "type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("message", "code"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("session_id", "occurred_at", "offer_ids", "trigger", "type"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ContractVoided
+   * @throws IOException if the JSON Element is invalid with respect to OfferDisplayRequested
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ContractVoided.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ContractVoided is not found in the empty JSON string", ContractVoided.openapiRequiredFields.toString()));
+        if (!OfferDisplayRequested.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OfferDisplayRequested is not found in the empty JSON string", OfferDisplayRequested.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ContractVoided.openapiRequiredFields) {
+      for (String requiredField : OfferDisplayRequested.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if (!jsonObj.get("session_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `session_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("session_id").toString()));
       }
-      if (!jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      // ensure the required json array is present
+      if (jsonObj.get("offer_ids") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("offer_ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `offer_ids` to be an array in the JSON string but got `%s`", jsonObj.get("offer_ids").toString()));
       }
-      // validate the required field `code`
-      CodeEnum.validateJsonElement(jsonObj.get("code"));
+      // validate the required field `trigger`
+      RequestTrigger.validateJsonElement(jsonObj.get("trigger"));
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the required field `type`
+      TypeEnum.validateJsonElement(jsonObj.get("type"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ContractVoided.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ContractVoided' and its subtypes
+       if (!OfferDisplayRequested.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OfferDisplayRequested' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ContractVoided> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ContractVoided.class));
+       final TypeAdapter<OfferDisplayRequested> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OfferDisplayRequested.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ContractVoided>() {
+       return (TypeAdapter<T>) new TypeAdapter<OfferDisplayRequested>() {
            @Override
-           public void write(JsonWriter out, ContractVoided value) throws IOException {
+           public void write(JsonWriter out, OfferDisplayRequested value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -320,12 +418,12 @@ public class ContractVoided {
            }
 
            @Override
-           public ContractVoided read(JsonReader in) throws IOException {
+           public OfferDisplayRequested read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             ContractVoided instance = thisAdapter.fromJsonTree(jsonObj);
+             OfferDisplayRequested instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -352,18 +450,18 @@ public class ContractVoided {
   }
 
   /**
-   * Create an instance of ContractVoided given an JSON string
+   * Create an instance of OfferDisplayRequested given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ContractVoided
-   * @throws IOException if the JSON string is invalid with respect to ContractVoided
+   * @return An instance of OfferDisplayRequested
+   * @throws IOException if the JSON string is invalid with respect to OfferDisplayRequested
    */
-  public static ContractVoided fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ContractVoided.class);
+  public static OfferDisplayRequested fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OfferDisplayRequested.class);
   }
 
   /**
-   * Convert an instance of ContractVoided to an JSON string
+   * Convert an instance of OfferDisplayRequested to an JSON string
    *
    * @return JSON string
    */

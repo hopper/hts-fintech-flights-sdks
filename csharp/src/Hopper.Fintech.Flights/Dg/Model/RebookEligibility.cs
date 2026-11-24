@@ -25,7 +25,7 @@ using Hopper.Fintech.Flights.Dg.Client;
 namespace Hopper.Fintech.Flights.Dg.Model
 {
     /// <summary>
-    /// Whether this segment is eligible for rebook, with the search criteria when it is.
+    /// Whether a rebook can start from this segment, with the search criteria when it can.
     /// </summary>
     public partial class RebookEligibility
     {

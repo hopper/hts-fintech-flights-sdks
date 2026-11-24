@@ -76,7 +76,7 @@ public class CreateFlightShopRequest {
   }
 
   /**
-   * The segment to rebook, identified by the id returned in the rebook eligibility response (slices[].segments[].id). Must reference a rebook-eligible segment on this contract; HTS derives the search origin/destination and date window from that segment.
+   * The segment to rebook, identified by its id in Get Contract&#39;s itinerary (itinerary.slices[].segments[].id). Must reference a rebook-eligible segment of this purchase; HTS derives the search origin/destination and date window from that segment.
    * @return segmentId
    */
   @javax.annotation.Nonnull

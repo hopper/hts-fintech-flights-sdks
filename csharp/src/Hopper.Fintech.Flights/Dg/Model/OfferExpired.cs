@@ -25,17 +25,17 @@ using Hopper.Fintech.Flights.Dg.Client;
 namespace Hopper.Fintech.Flights.Dg.Model
 {
     /// <summary>
-    /// ContractVoided
+    /// OfferExpired
     /// </summary>
-    public partial class ContractVoided
+    public partial class OfferExpired
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContractVoided" /> class.
+        /// Initializes a new instance of the <see cref="OfferExpired" /> class.
         /// </summary>
         /// <param name="message">A human-readable message describing the error</param>
         /// <param name="code">code</param>
         [JsonConstructor]
-        public ContractVoided(string message, CodeEnum code)
+        public OfferExpired(string message, CodeEnum code)
         {
             Message = message;
             Code = code;
@@ -50,9 +50,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public enum CodeEnum
         {
             /// <summary>
-            /// Enum ContractVoided for value: contract_voided
+            /// Enum OfferExpired for value: offer_expired
             /// </summary>
-            ContractVoided = 1
+            OfferExpired = 1
         }
 
         /// <summary>
@@ -63,8 +63,8 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// <exception cref="NotImplementedException"></exception>
         public static CodeEnum CodeEnumFromString(string value)
         {
-            if (value.Equals("contract_voided"))
-                return CodeEnum.ContractVoided;
+            if (value.Equals("offer_expired"))
+                return CodeEnum.OfferExpired;
 
             throw new NotImplementedException($"Could not convert value to type CodeEnum: '{value}'");
         }
@@ -76,8 +76,8 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// <returns></returns>
         public static CodeEnum? CodeEnumFromStringOrDefault(string value)
         {
-            if (value.Equals("contract_voided"))
-                return CodeEnum.ContractVoided;
+            if (value.Equals("offer_expired"))
+                return CodeEnum.OfferExpired;
 
             return null;
         }
@@ -90,8 +90,8 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// <exception cref="NotImplementedException"></exception>
         public static string CodeEnumToJsonValue(CodeEnum value)
         {
-            if (value == CodeEnum.ContractVoided)
-                return "contract_voided";
+            if (value == CodeEnum.OfferExpired)
+                return "offer_expired";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }
@@ -122,7 +122,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ContractVoided {\n");
+            sb.Append("class OfferExpired {\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -132,29 +132,29 @@ namespace Hopper.Fintech.Flights.Dg.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="ContractVoided" />
+    /// A Json converter for type <see cref="OfferExpired" />
     /// </summary>
-    public partial class ContractVoidedJsonConverter : JsonConverter<ContractVoided>
+    public partial class OfferExpiredJsonConverter : JsonConverter<OfferExpired>
     {
         partial void OnCreated();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContractVoidedJsonConverter" /> class.
+        /// Initializes a new instance of the <see cref="OfferExpiredJsonConverter" /> class.
         /// </summary>
-        public ContractVoidedJsonConverter()
+        public OfferExpiredJsonConverter()
         {
             OnCreated();
         }
 
         /// <summary>
-        /// Deserializes json to <see cref="ContractVoided" />
+        /// Deserializes json to <see cref="OfferExpired" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override ContractVoided Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override OfferExpired Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -164,7 +164,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<string?> message = default;
-            Option<ContractVoided.CodeEnum?> code = default;
+            Option<OfferExpired.CodeEnum?> code = default;
 
             while (utf8JsonReader.Read())
             {
@@ -188,10 +188,10 @@ namespace Hopper.Fintech.Flights.Dg.Model
                             string? codeRawValue = utf8JsonReader.GetString();
                             if (codeRawValue != null)
                             {
-                                ContractVoided.CodeEnum? codeValue = ContractVoided.CodeEnumFromStringOrDefault(codeRawValue);
+                                OfferExpired.CodeEnum? codeValue = OfferExpired.CodeEnumFromStringOrDefault(codeRawValue);
                                 if (codeValue == null)
                                     throw new JsonException();
-                                code = new Option<ContractVoided.CodeEnum?>(codeValue);
+                                code = new Option<OfferExpired.CodeEnum?>(codeValue);
                             }
                             break;
                         default:
@@ -201,45 +201,45 @@ namespace Hopper.Fintech.Flights.Dg.Model
             }
 
             if (!message.IsSet)
-                throw new JsonException("Property is required for class ContractVoided: message.");
+                throw new JsonException("Property is required for class OfferExpired: message.");
 
             if (!code.IsSet)
-                throw new JsonException("Property is required for class ContractVoided: code.");
+                throw new JsonException("Property is required for class OfferExpired: code.");
 
             if (message.IsSet && message.Value == null)
-                throw new JsonException("Property is not nullable for class ContractVoided: message.");
+                throw new JsonException("Property is not nullable for class OfferExpired: message.");
 
             if (code.IsSet && code.Value == null)
-                throw new JsonException("Property is not nullable for class ContractVoided: code.");
+                throw new JsonException("Property is not nullable for class OfferExpired: code.");
 
-            return new ContractVoided(message.Value!, code.Value!.Value!);
+            return new OfferExpired(message.Value!, code.Value!.Value!);
         }
 
         /// <summary>
-        /// Serializes a <see cref="ContractVoided" />
+        /// Serializes a <see cref="OfferExpired" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="contractVoided"></param>
+        /// <param name="offerExpired"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public override void Write(Utf8JsonWriter writer, ContractVoided contractVoided, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, OfferExpired offerExpired, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, contractVoided, jsonSerializerOptions);
+            WriteProperties(writer, offerExpired, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="ContractVoided" />
+        /// Serializes the properties of <see cref="OfferExpired" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="contractVoided"></param>
+        /// <param name="offerExpired"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public void WriteProperties(Utf8JsonWriter writer, ContractVoided contractVoided, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, OfferExpired offerExpired, JsonSerializerOptions jsonSerializerOptions)
         {
-            writer.WriteString("message", contractVoided.Message);
+            writer.WriteString("message", offerExpired.Message);
 
-            var codeRawValue = ContractVoided.CodeEnumToJsonValue(contractVoided.Code);
+            var codeRawValue = OfferExpired.CodeEnumToJsonValue(offerExpired.Code);
             writer.WriteString("code", codeRawValue);
         }
     }

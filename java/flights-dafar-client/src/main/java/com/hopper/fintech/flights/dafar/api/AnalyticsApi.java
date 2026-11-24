@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hopper.fintech.flights.dafar.model.DafarCreateEvent;
 import com.hopper.fintech.flights.dafar.model.Error;
-import com.hopper.fintech.flights.dafar.model.Event;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,7 +73,7 @@ public class AnalyticsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call postEventsCall(@javax.annotation.Nonnull Event event, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEventsCall(@javax.annotation.Nonnull DafarCreateEvent dafarCreateEvent, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -87,7 +87,7 @@ public class AnalyticsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = event;
+        Object localVarPostBody = dafarCreateEvent;
 
         // create path and map variables
         String localVarPath = "/events";
@@ -119,35 +119,35 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEventsValidateBeforeCall(@javax.annotation.Nonnull Event event, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'event' is set
-        if (event == null) {
-            throw new ApiException("Missing the required parameter 'event' when calling postEvents(Async)");
+    private okhttp3.Call postEventsValidateBeforeCall(@javax.annotation.Nonnull DafarCreateEvent dafarCreateEvent, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dafarCreateEvent' is set
+        if (dafarCreateEvent == null) {
+            throw new ApiException("Missing the required parameter 'dafarCreateEvent' when calling postEvents(Async)");
         }
 
-        return postEventsCall(event, _callback);
+        return postEventsCall(dafarCreateEvent, _callback);
 
     }
 
 
-    private ApiResponse<Void> postEventsWithHttpInfo(@javax.annotation.Nonnull Event event) throws ApiException {
-        okhttp3.Call localVarCall = postEventsValidateBeforeCall(event, null);
+    private ApiResponse<Void> postEventsWithHttpInfo(@javax.annotation.Nonnull DafarCreateEvent dafarCreateEvent) throws ApiException {
+        okhttp3.Call localVarCall = postEventsValidateBeforeCall(dafarCreateEvent, null);
         return localVarApiClient.execute(localVarCall);
     }
 
-    private okhttp3.Call postEventsAsync(@javax.annotation.Nonnull Event event, final ApiCallback<Void> _callback) throws ApiException {
+    private okhttp3.Call postEventsAsync(@javax.annotation.Nonnull DafarCreateEvent dafarCreateEvent, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEventsValidateBeforeCall(event, _callback);
+        okhttp3.Call localVarCall = postEventsValidateBeforeCall(dafarCreateEvent, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 
     public class APIpostEventsRequest {
         @javax.annotation.Nonnull
-        private final Event event;
+        private final DafarCreateEvent dafarCreateEvent;
 
-        private APIpostEventsRequest(@javax.annotation.Nonnull Event event) {
-            this.event = event;
+        private APIpostEventsRequest(@javax.annotation.Nonnull DafarCreateEvent dafarCreateEvent) {
+            this.dafarCreateEvent = dafarCreateEvent;
         }
 
         /**
@@ -168,7 +168,7 @@ public class AnalyticsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return postEventsCall(event, _callback);
+            return postEventsCall(dafarCreateEvent, _callback);
         }
 
         /**
@@ -187,7 +187,7 @@ public class AnalyticsApi {
          </table>
          */
         public void execute() throws ApiException {
-            postEventsWithHttpInfo(event);
+            postEventsWithHttpInfo(dafarCreateEvent);
         }
 
         /**
@@ -207,7 +207,7 @@ public class AnalyticsApi {
          </table>
          */
         public ApiResponse<Void> executeWithHttpInfo() throws ApiException {
-            return postEventsWithHttpInfo(event);
+            return postEventsWithHttpInfo(dafarCreateEvent);
         }
 
         /**
@@ -228,14 +228,14 @@ public class AnalyticsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Void> _callback) throws ApiException {
-            return postEventsAsync(event, _callback);
+            return postEventsAsync(dafarCreateEvent, _callback);
         }
     }
 
     /**
      * Create Event
      * Create a new event for the provided session.
-     * @param event  (required)
+     * @param dafarCreateEvent  (required)
      * @return APIpostEventsRequest
      * @http.response.details
      <table border="1">
@@ -249,7 +249,7 @@ public class AnalyticsApi {
         <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
      </table>
      */
-    public APIpostEventsRequest postEvents(@javax.annotation.Nonnull Event event) {
-        return new APIpostEventsRequest(event);
+    public APIpostEventsRequest postEvents(@javax.annotation.Nonnull DafarCreateEvent dafarCreateEvent) {
+        return new APIpostEventsRequest(dafarCreateEvent);
     }
 }

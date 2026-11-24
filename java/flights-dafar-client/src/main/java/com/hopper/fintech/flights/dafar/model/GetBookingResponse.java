@@ -150,7 +150,7 @@ public class GetBookingResponse {
   }
 
   /**
-   * Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references provided during contract creation.
+   * Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references the partner supplied at purchase.
    * @return bookingReferences
    */
   @javax.annotation.Nonnull

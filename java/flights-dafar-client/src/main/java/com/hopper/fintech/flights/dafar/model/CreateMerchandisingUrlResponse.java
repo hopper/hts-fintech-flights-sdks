@@ -19,11 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hopper.fintech.flights.dafar.model.SliceEligibility;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,42 +47,34 @@ import java.util.Set;
 import com.hopper.fintech.flights.dafar.JSON;
 
 /**
- * RebookEligibilityResponse
+ * Response containing a merchandising URL for the given offers.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
-public class RebookEligibilityResponse {
-  public static final String SERIALIZED_NAME_SLICES = "slices";
-  @SerializedName(SERIALIZED_NAME_SLICES)
+public class CreateMerchandisingUrlResponse {
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
   @javax.annotation.Nonnull
-  private List<SliceEligibility> slices;
+  private String url;
 
-  public RebookEligibilityResponse() {
+  public CreateMerchandisingUrlResponse() {
   }
 
-  public RebookEligibilityResponse slices(@javax.annotation.Nonnull List<SliceEligibility> slices) {
-    this.slices = slices;
-    return this;
-  }
-
-  public RebookEligibilityResponse addSlicesItem(SliceEligibility slicesItem) {
-    if (this.slices == null) {
-      this.slices = new ArrayList<>();
-    }
-    this.slices.add(slicesItem);
+  public CreateMerchandisingUrlResponse url(@javax.annotation.Nonnull String url) {
+    this.url = url;
     return this;
   }
 
   /**
-   * Slice-grouped eligibility for the contract&#39;s itinerary. Each slice carries its segments&#39; eligibility for rebook.
-   * @return slices
+   * A merchandising URL for those offers.
+   * @return url
    */
   @javax.annotation.Nonnull
-  public List<SliceEligibility> getSlices() {
-    return slices;
+  public String getUrl() {
+    return url;
   }
 
-  public void setSlices(@javax.annotation.Nonnull List<SliceEligibility> slices) {
-    this.slices = slices;
+  public void setUrl(@javax.annotation.Nonnull String url) {
+    this.url = url;
   }
 
   /**
@@ -101,9 +90,9 @@ public class RebookEligibilityResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the RebookEligibilityResponse instance itself
+   * @return the CreateMerchandisingUrlResponse instance itself
    */
-  public RebookEligibilityResponse putAdditionalProperty(String key, Object value) {
+  public CreateMerchandisingUrlResponse putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -142,21 +131,21 @@ public class RebookEligibilityResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RebookEligibilityResponse rebookEligibilityResponse = (RebookEligibilityResponse) o;
-    return Objects.equals(this.slices, rebookEligibilityResponse.slices)&&
-        Objects.equals(this.additionalProperties, rebookEligibilityResponse.additionalProperties);
+    CreateMerchandisingUrlResponse createMerchandisingUrlResponse = (CreateMerchandisingUrlResponse) o;
+    return Objects.equals(this.url, createMerchandisingUrlResponse.url)&&
+        Objects.equals(this.additionalProperties, createMerchandisingUrlResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(slices, additionalProperties);
+    return Objects.hash(url, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RebookEligibilityResponse {\n");
-    sb.append("    slices: ").append(toIndentedString(slices)).append("\n");
+    sb.append("class CreateMerchandisingUrlResponse {\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -176,41 +165,34 @@ public class RebookEligibilityResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("slices"));
+    openapiFields = new HashSet<String>(Arrays.asList("url"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("slices"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("url"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RebookEligibilityResponse
+   * @throws IOException if the JSON Element is invalid with respect to CreateMerchandisingUrlResponse
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RebookEligibilityResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in RebookEligibilityResponse is not found in the empty JSON string", RebookEligibilityResponse.openapiRequiredFields.toString()));
+        if (!CreateMerchandisingUrlResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CreateMerchandisingUrlResponse is not found in the empty JSON string", CreateMerchandisingUrlResponse.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RebookEligibilityResponse.openapiRequiredFields) {
+      for (String requiredField : CreateMerchandisingUrlResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("slices") != null) {
-        if (!jsonObj.get("slices").isJsonArray()) {
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `slices` to be an array in the JSON string but got `%s`", jsonObj.get("slices").toString()));
-        }
-        JsonArray jsonArrayslices = jsonObj.getAsJsonArray("slices");
-        // validate the required field `slices` (array)
-        for (int i = 0; i < jsonArrayslices.size(); i++) {
-          SliceEligibility.validateJsonElement(jsonArrayslices.get(i));
-        }
+      if (!jsonObj.get("url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
   }
 
@@ -218,16 +200,16 @@ public class RebookEligibilityResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RebookEligibilityResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RebookEligibilityResponse' and its subtypes
+       if (!CreateMerchandisingUrlResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateMerchandisingUrlResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RebookEligibilityResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RebookEligibilityResponse.class));
+       final TypeAdapter<CreateMerchandisingUrlResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateMerchandisingUrlResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RebookEligibilityResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<CreateMerchandisingUrlResponse>() {
            @Override
-           public void write(JsonWriter out, RebookEligibilityResponse value) throws IOException {
+           public void write(JsonWriter out, CreateMerchandisingUrlResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -257,12 +239,12 @@ public class RebookEligibilityResponse {
            }
 
            @Override
-           public RebookEligibilityResponse read(JsonReader in) throws IOException {
+           public CreateMerchandisingUrlResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             RebookEligibilityResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             CreateMerchandisingUrlResponse instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -289,18 +271,18 @@ public class RebookEligibilityResponse {
   }
 
   /**
-   * Create an instance of RebookEligibilityResponse given an JSON string
+   * Create an instance of CreateMerchandisingUrlResponse given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of RebookEligibilityResponse
-   * @throws IOException if the JSON string is invalid with respect to RebookEligibilityResponse
+   * @return An instance of CreateMerchandisingUrlResponse
+   * @throws IOException if the JSON string is invalid with respect to CreateMerchandisingUrlResponse
    */
-  public static RebookEligibilityResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RebookEligibilityResponse.class);
+  public static CreateMerchandisingUrlResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateMerchandisingUrlResponse.class);
   }
 
   /**
-   * Convert an instance of RebookEligibilityResponse to an JSON string
+   * Convert an instance of CreateMerchandisingUrlResponse to an JSON string
    *
    * @return JSON string
    */

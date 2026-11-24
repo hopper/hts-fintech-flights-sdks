@@ -25,7 +25,7 @@ using Hopper.Fintech.Flights.Dg.Client;
 namespace Hopper.Fintech.Flights.Dg.Model
 {
     /// <summary>
-    /// The disruption experienced by the segment, if any has occurred.
+    /// The disruption on this segment. Absent when the segment has not been disrupted.
     /// </summary>
     public partial class DisruptionReason
     {

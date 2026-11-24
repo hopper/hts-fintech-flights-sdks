@@ -27,6 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlError;
+import com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlRequest;
+import com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlResponse;
 import com.hopper.fintech.flights.dafar.model.CreateOffersError;
 import com.hopper.fintech.flights.dafar.model.CreateOffersRequest;
 import com.hopper.fintech.flights.dafar.model.DafarOffer;
@@ -267,6 +270,194 @@ public class OfferMerchandisingApi {
      */
     public APIgetOffersIdRequest getOffersId(@javax.annotation.Nonnull String id) {
         return new APIgetOffersIdRequest(id);
+    }
+    private okhttp3.Call postMerchandisingUrlsCall(@javax.annotation.Nonnull CreateMerchandisingUrlRequest createMerchandisingUrlRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createMerchandisingUrlRequest;
+
+        // create path and map variables
+        String localVarPath = "/merchandising_urls";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PartnerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postMerchandisingUrlsValidateBeforeCall(@javax.annotation.Nonnull CreateMerchandisingUrlRequest createMerchandisingUrlRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createMerchandisingUrlRequest' is set
+        if (createMerchandisingUrlRequest == null) {
+            throw new ApiException("Missing the required parameter 'createMerchandisingUrlRequest' when calling postMerchandisingUrls(Async)");
+        }
+
+        return postMerchandisingUrlsCall(createMerchandisingUrlRequest, _callback);
+
+    }
+
+
+    private ApiResponse<CreateMerchandisingUrlResponse> postMerchandisingUrlsWithHttpInfo(@javax.annotation.Nonnull CreateMerchandisingUrlRequest createMerchandisingUrlRequest) throws ApiException {
+        okhttp3.Call localVarCall = postMerchandisingUrlsValidateBeforeCall(createMerchandisingUrlRequest, null);
+        Type localVarReturnType = new TypeToken<CreateMerchandisingUrlResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call postMerchandisingUrlsAsync(@javax.annotation.Nonnull CreateMerchandisingUrlRequest createMerchandisingUrlRequest, final ApiCallback<CreateMerchandisingUrlResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postMerchandisingUrlsValidateBeforeCall(createMerchandisingUrlRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateMerchandisingUrlResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpostMerchandisingUrlsRequest {
+        @javax.annotation.Nonnull
+        private final CreateMerchandisingUrlRequest createMerchandisingUrlRequest;
+
+        private APIpostMerchandisingUrlsRequest(@javax.annotation.Nonnull CreateMerchandisingUrlRequest createMerchandisingUrlRequest) {
+            this.createMerchandisingUrlRequest = createMerchandisingUrlRequest;
+        }
+
+        /**
+         * Build call for postMerchandisingUrls
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The merchandising URL </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postMerchandisingUrlsCall(createMerchandisingUrlRequest, _callback);
+        }
+
+        /**
+         * Execute postMerchandisingUrls request
+         * @return CreateMerchandisingUrlResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The merchandising URL </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public CreateMerchandisingUrlResponse execute() throws ApiException {
+            ApiResponse<CreateMerchandisingUrlResponse> localVarResp = postMerchandisingUrlsWithHttpInfo(createMerchandisingUrlRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postMerchandisingUrls request with HTTP info returned
+         * @return ApiResponse&lt;CreateMerchandisingUrlResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The merchandising URL </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CreateMerchandisingUrlResponse> executeWithHttpInfo() throws ApiException {
+            return postMerchandisingUrlsWithHttpInfo(createMerchandisingUrlRequest);
+        }
+
+        /**
+         * Execute postMerchandisingUrls request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The merchandising URL </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CreateMerchandisingUrlResponse> _callback) throws ApiException {
+            return postMerchandisingUrlsAsync(createMerchandisingUrlRequest, _callback);
+        }
+    }
+
+    /**
+     * Create Merchandising URL
+     * Create a merchandising URL for offers a partner already has. The offer ids must come from one Create Offers or Price Offers response.
+     * @param createMerchandisingUrlRequest  (required)
+     * @return APIpostMerchandisingUrlsRequest
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The merchandising URL </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpostMerchandisingUrlsRequest postMerchandisingUrls(@javax.annotation.Nonnull CreateMerchandisingUrlRequest createMerchandisingUrlRequest) {
+        return new APIpostMerchandisingUrlsRequest(createMerchandisingUrlRequest);
     }
     private okhttp3.Call postOffersCall(@javax.annotation.Nonnull CreateOffersRequest createOffersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;

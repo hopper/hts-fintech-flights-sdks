@@ -25,29 +25,38 @@ using Hopper.Fintech.Flights.Dg.Client;
 namespace Hopper.Fintech.Flights.Dg.Model
 {
     /// <summary>
-    /// RebookEligibilityResponse
+    /// What prompted the customer to request to view an offer.
     /// </summary>
-    public partial class RebookEligibilityResponse
+    public partial class RequestTrigger
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RebookEligibilityResponse" /> class.
+        /// Initializes a new instance of the <see cref="RequestTrigger" /> class.
         /// </summary>
-        /// <param name="slices">Slice-grouped eligibility for the contract&#39;s itinerary. Each slice carries its segments&#39; eligibility for rebook.</param>
+        /// <param name="page">The page where the request was triggered.</param>
+        /// <param name="entryPoint">The entry point of the flow where the request was triggered.</param>
         [JsonConstructor]
-        public RebookEligibilityResponse(List<SliceEligibility> slices)
+        public RequestTrigger(string page, string entryPoint)
         {
-            Slices = slices;
+            Page = page;
+            EntryPoint = entryPoint;
             OnCreated();
         }
 
         partial void OnCreated();
 
         /// <summary>
-        /// Slice-grouped eligibility for the contract&#39;s itinerary. Each slice carries its segments&#39; eligibility for rebook.
+        /// The page where the request was triggered.
         /// </summary>
-        /// <value>Slice-grouped eligibility for the contract&#39;s itinerary. Each slice carries its segments&#39; eligibility for rebook.</value>
-        [JsonPropertyName("slices")]
-        public List<SliceEligibility> Slices { get; set; }
+        /// <value>The page where the request was triggered.</value>
+        [JsonPropertyName("page")]
+        public string Page { get; set; }
+
+        /// <summary>
+        /// The entry point of the flow where the request was triggered.
+        /// </summary>
+        /// <value>The entry point of the flow where the request was triggered.</value>
+        [JsonPropertyName("entry_point")]
+        public string EntryPoint { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -62,8 +71,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RebookEligibilityResponse {\n");
-            sb.Append("  Slices: ").Append(Slices).Append("\n");
+            sb.Append("class RequestTrigger {\n");
+            sb.Append("  Page: ").Append(Page).Append("\n");
+            sb.Append("  EntryPoint: ").Append(EntryPoint).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -71,29 +81,29 @@ namespace Hopper.Fintech.Flights.Dg.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="RebookEligibilityResponse" />
+    /// A Json converter for type <see cref="RequestTrigger" />
     /// </summary>
-    public partial class RebookEligibilityResponseJsonConverter : JsonConverter<RebookEligibilityResponse>
+    public partial class RequestTriggerJsonConverter : JsonConverter<RequestTrigger>
     {
         partial void OnCreated();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RebookEligibilityResponseJsonConverter" /> class.
+        /// Initializes a new instance of the <see cref="RequestTriggerJsonConverter" /> class.
         /// </summary>
-        public RebookEligibilityResponseJsonConverter()
+        public RequestTriggerJsonConverter()
         {
             OnCreated();
         }
 
         /// <summary>
-        /// Deserializes json to <see cref="RebookEligibilityResponse" />
+        /// Deserializes json to <see cref="RequestTrigger" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override RebookEligibilityResponse Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override RequestTrigger Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -102,7 +112,8 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<List<SliceEligibility>?> slices = default;
+            Option<string?> page = default;
+            Option<string?> entryPoint = default;
 
             while (utf8JsonReader.Read())
             {
@@ -119,8 +130,11 @@ namespace Hopper.Fintech.Flights.Dg.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "slices":
-                            slices = new Option<List<SliceEligibility>?>(JsonSerializer.Deserialize<List<SliceEligibility>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                        case "page":
+                            page = new Option<string?>(utf8JsonReader.GetString()!);
+                            break;
+                        case "entry_point":
+                            entryPoint = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         default:
                             break;
@@ -128,39 +142,46 @@ namespace Hopper.Fintech.Flights.Dg.Model
                 }
             }
 
-            if (!slices.IsSet)
-                throw new JsonException("Property is required for class RebookEligibilityResponse: slices.");
+            if (!page.IsSet)
+                throw new JsonException("Property is required for class RequestTrigger: page.");
 
-            if (slices.IsSet && slices.Value == null)
-                throw new JsonException("Property is not nullable for class RebookEligibilityResponse: slices.");
+            if (!entryPoint.IsSet)
+                throw new JsonException("Property is required for class RequestTrigger: entry_point.");
 
-            return new RebookEligibilityResponse(slices.Value!);
+            if (page.IsSet && page.Value == null)
+                throw new JsonException("Property is not nullable for class RequestTrigger: page.");
+
+            if (entryPoint.IsSet && entryPoint.Value == null)
+                throw new JsonException("Property is not nullable for class RequestTrigger: entry_point.");
+
+            return new RequestTrigger(page.Value!, entryPoint.Value!);
         }
 
         /// <summary>
-        /// Serializes a <see cref="RebookEligibilityResponse" />
+        /// Serializes a <see cref="RequestTrigger" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="rebookEligibilityResponse"></param>
+        /// <param name="requestTrigger"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public override void Write(Utf8JsonWriter writer, RebookEligibilityResponse rebookEligibilityResponse, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, RequestTrigger requestTrigger, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, rebookEligibilityResponse, jsonSerializerOptions);
+            WriteProperties(writer, requestTrigger, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="RebookEligibilityResponse" />
+        /// Serializes the properties of <see cref="RequestTrigger" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="rebookEligibilityResponse"></param>
+        /// <param name="requestTrigger"></param>
         /// <param name="jsonSerializerOptions"></param>
-        public void WriteProperties(Utf8JsonWriter writer, RebookEligibilityResponse rebookEligibilityResponse, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, RequestTrigger requestTrigger, JsonSerializerOptions jsonSerializerOptions)
         {
-            writer.WritePropertyName("slices");
-            JsonSerializer.Serialize(writer, rebookEligibilityResponse.Slices, jsonSerializerOptions);
+            writer.WriteString("page", requestTrigger.Page);
+
+            writer.WriteString("entry_point", requestTrigger.EntryPoint);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Hopper.Fintech.Flights.Dg.Model
         /// </summary>
         /// <param name="currency">ISO 4217 currency code for all monetary amounts in the response.</param>
         /// <param name="itinerary">itinerary</param>
-        /// <param name="bookingReferences">Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references provided during contract creation.</param>
+        /// <param name="bookingReferences">Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references the partner supplied at purchase.</param>
         /// <param name="bookingStatus">bookingStatus</param>
         /// <param name="voidPolicy">voidPolicy</param>
         /// <param name="createdAt">ISO 8601 timestamp of when the booking was originally created.</param>
@@ -74,9 +74,9 @@ namespace Hopper.Fintech.Flights.Dg.Model
         public Itinerary Itinerary { get; set; }
 
         /// <summary>
-        /// Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references provided during contract creation.
+        /// Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references the partner supplied at purchase.
         /// </summary>
-        /// <value>Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references provided during contract creation.</value>
+        /// <value>Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references the partner supplied at purchase.</value>
         [JsonPropertyName("booking_references")]
         public Dictionary<string, string> BookingReferences { get; set; }
 

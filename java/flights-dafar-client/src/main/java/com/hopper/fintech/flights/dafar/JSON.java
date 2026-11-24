@@ -89,6 +89,18 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
+                .registerTypeSelector(com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlError.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlError>() {
+                    @Override
+                    public Class<? extends com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlError> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("not_merchandisable", com.hopper.fintech.flights.dafar.model.NotMerchandisable.class);
+                        classByDiscriminatorValue.put("offer_expired", com.hopper.fintech.flights.dafar.model.OfferExpired.class);
+                        classByDiscriminatorValue.put("offer_not_found", com.hopper.fintech.flights.dafar.model.OfferNotFound.class);
+                        classByDiscriminatorValue.put("create_merchandising_url_error", com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlError.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "code"));
+                    }
+          })
                 .registerTypeSelector(com.hopper.fintech.flights.dafar.model.CreateOffersError.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.CreateOffersError>() {
                     @Override
                     public Class<? extends com.hopper.fintech.flights.dafar.model.CreateOffersError> getClassForElement(JsonElement readElement) {
@@ -137,6 +149,35 @@ public class JSON {
                         classByDiscriminatorValue.put("dafar_create_draft_contract_error", com.hopper.fintech.flights.dafar.model.DafarCreateDraftContractError.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "code"));
+                    }
+          })
+                .registerTypeSelector(com.hopper.fintech.flights.dafar.model.DafarCreateEvent.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.DafarCreateEvent>() {
+                    @Override
+                    public Class<? extends com.hopper.fintech.flights.dafar.model.DafarCreateEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("booking_confirmed", com.hopper.fintech.flights.dafar.model.BookingConfirmed.class);
+                        classByDiscriminatorValue.put("exercise_portal_complete_page_continue_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalCompletePageContinueClicked.class);
+                        classByDiscriminatorValue.put("exercise_portal_complete_page_loaded", com.hopper.fintech.flights.dafar.model.ExercisePortalCompletePageLoaded.class);
+                        classByDiscriminatorValue.put("exercise_portal_confirmation_page_back_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageBackClicked.class);
+                        classByDiscriminatorValue.put("exercise_portal_confirmation_page_confirm_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageConfirmClicked.class);
+                        classByDiscriminatorValue.put("exercise_portal_confirmation_page_loaded", com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageLoaded.class);
+                        classByDiscriminatorValue.put("exercise_portal_landing_continue_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalLandingContinueClicked.class);
+                        classByDiscriminatorValue.put("exercise_portal_landing_loaded", com.hopper.fintech.flights.dafar.model.ExercisePortalLandingLoaded.class);
+                        classByDiscriminatorValue.put("exercise_portal_rebooking_flight_choice_continue_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalRebookingFlightChoiceContinueClicked.class);
+                        classByDiscriminatorValue.put("exercise_portal_rebooking_shop_page_loaded", com.hopper.fintech.flights.dafar.model.ExercisePortalRebookingShopPageLoaded.class);
+                        classByDiscriminatorValue.put("flight_search_loaded", com.hopper.fintech.flights.dafar.model.FlightSearchLoaded.class);
+                        classByDiscriminatorValue.put("flight_search_submitted", com.hopper.fintech.flights.dafar.model.FlightSearchSubmitted.class);
+                        classByDiscriminatorValue.put("flight_selected", com.hopper.fintech.flights.dafar.model.FlightSelected.class);
+                        classByDiscriminatorValue.put("flight_submitted_for_offer", com.hopper.fintech.flights.dafar.model.FlightSubmittedForOffer.class);
+                        classByDiscriminatorValue.put("merchandising_displayed", com.hopper.fintech.flights.dafar.model.MerchandisingDisplayed.class);
+                        classByDiscriminatorValue.put("merchandising_faq_clicked", com.hopper.fintech.flights.dafar.model.MerchandisingFaqClicked.class);
+                        classByDiscriminatorValue.put("merchandising_offer_attached", com.hopper.fintech.flights.dafar.model.MerchandisingOfferAttached.class);
+                        classByDiscriminatorValue.put("merchandising_offer_declined", com.hopper.fintech.flights.dafar.model.MerchandisingOfferDeclined.class);
+                        classByDiscriminatorValue.put("merchandising_sdk_loaded", com.hopper.fintech.flights.dafar.model.MerchandisingSdkLoaded.class);
+                        classByDiscriminatorValue.put("offer_display_requested", com.hopper.fintech.flights.dafar.model.OfferDisplayRequested.class);
+                        classByDiscriminatorValue.put("dafar_create_event", com.hopper.fintech.flights.dafar.model.DafarCreateEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
                     }
           })
                 .registerTypeSelector(com.hopper.fintech.flights.dafar.model.DafarCreateFlightsExerciseQuoteError.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.DafarCreateFlightsExerciseQuoteError>() {
@@ -196,20 +237,6 @@ public class JSON {
                         classByDiscriminatorValue.put("partner_inventory_not_enabled", com.hopper.fintech.flights.dafar.model.PartnerInventoryNotEnabled.class);
                         classByDiscriminatorValue.put("segment_not_in_contract", com.hopper.fintech.flights.dafar.model.SegmentNotInContract.class);
                         classByDiscriminatorValue.put("dafar_flight_shop_error", com.hopper.fintech.flights.dafar.model.DafarFlightShopError.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "code"));
-                    }
-          })
-                .registerTypeSelector(com.hopper.fintech.flights.dafar.model.DafarRebookEligibilityError.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.DafarRebookEligibilityError>() {
-                    @Override
-                    public Class<? extends com.hopper.fintech.flights.dafar.model.DafarRebookEligibilityError> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("contract_already_exercised", com.hopper.fintech.flights.dafar.model.ContractAlreadyExercised.class);
-                        classByDiscriminatorValue.put("contract_expired", com.hopper.fintech.flights.dafar.model.ContractExpired.class);
-                        classByDiscriminatorValue.put("contract_not_confirmed", com.hopper.fintech.flights.dafar.model.ContractNotConfirmed.class);
-                        classByDiscriminatorValue.put("contract_not_found", com.hopper.fintech.flights.dafar.model.ContractNotFound.class);
-                        classByDiscriminatorValue.put("contract_voided", com.hopper.fintech.flights.dafar.model.ContractVoided.class);
-                        classByDiscriminatorValue.put("dafar_rebook_eligibility_error", com.hopper.fintech.flights.dafar.model.DafarRebookEligibilityError.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "code"));
                     }
@@ -285,32 +312,6 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
-                .registerTypeSelector(com.hopper.fintech.flights.dafar.model.Event.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.Event>() {
-                    @Override
-                    public Class<? extends com.hopper.fintech.flights.dafar.model.Event> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("booking_confirmed", com.hopper.fintech.flights.dafar.model.BookingConfirmed.class);
-                        classByDiscriminatorValue.put("exercise_portal_complete_page_continue_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalCompletePageContinueClicked.class);
-                        classByDiscriminatorValue.put("exercise_portal_complete_page_loaded", com.hopper.fintech.flights.dafar.model.ExercisePortalCompletePageLoaded.class);
-                        classByDiscriminatorValue.put("exercise_portal_confirmation_page_back_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageBackClicked.class);
-                        classByDiscriminatorValue.put("exercise_portal_confirmation_page_confirm_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageConfirmClicked.class);
-                        classByDiscriminatorValue.put("exercise_portal_confirmation_page_loaded", com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageLoaded.class);
-                        classByDiscriminatorValue.put("exercise_portal_landing_continue_clicked", com.hopper.fintech.flights.dafar.model.ExercisePortalLandingContinueClicked.class);
-                        classByDiscriminatorValue.put("exercise_portal_landing_loaded", com.hopper.fintech.flights.dafar.model.ExercisePortalLandingLoaded.class);
-                        classByDiscriminatorValue.put("flight_search_loaded", com.hopper.fintech.flights.dafar.model.FlightSearchLoaded.class);
-                        classByDiscriminatorValue.put("flight_search_submitted", com.hopper.fintech.flights.dafar.model.FlightSearchSubmitted.class);
-                        classByDiscriminatorValue.put("flight_selected", com.hopper.fintech.flights.dafar.model.FlightSelected.class);
-                        classByDiscriminatorValue.put("flight_submitted_for_offer", com.hopper.fintech.flights.dafar.model.FlightSubmittedForOffer.class);
-                        classByDiscriminatorValue.put("merchandising_displayed", com.hopper.fintech.flights.dafar.model.MerchandisingDisplayed.class);
-                        classByDiscriminatorValue.put("merchandising_faq_clicked", com.hopper.fintech.flights.dafar.model.MerchandisingFaqClicked.class);
-                        classByDiscriminatorValue.put("merchandising_offer_attached", com.hopper.fintech.flights.dafar.model.MerchandisingOfferAttached.class);
-                        classByDiscriminatorValue.put("merchandising_offer_declined", com.hopper.fintech.flights.dafar.model.MerchandisingOfferDeclined.class);
-                        classByDiscriminatorValue.put("merchandising_sdk_loaded", com.hopper.fintech.flights.dafar.model.MerchandisingSdkLoaded.class);
-                        classByDiscriminatorValue.put("event", com.hopper.fintech.flights.dafar.model.Event.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
                 .registerTypeSelector(com.hopper.fintech.flights.dafar.model.ExerciseContractRequest.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.ExerciseContractRequest>() {
                     @Override
                     public Class<? extends com.hopper.fintech.flights.dafar.model.ExerciseContractRequest> getClassForElement(JsonElement readElement) {
@@ -318,6 +319,17 @@ public class JSON {
                         classByDiscriminatorValue.put("payout", com.hopper.fintech.flights.dafar.model.Payout2.class);
                         classByDiscriminatorValue.put("rebooking", com.hopper.fintech.flights.dafar.model.Rebooking.class);
                         classByDiscriminatorValue.put("exercise_contract_request", com.hopper.fintech.flights.dafar.model.ExerciseContractRequest.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "type"));
+                    }
+          })
+                .registerTypeSelector(com.hopper.fintech.flights.dafar.model.ExerciseEligibility.class, new TypeSelector<com.hopper.fintech.flights.dafar.model.ExerciseEligibility>() {
+                    @Override
+                    public Class<? extends com.hopper.fintech.flights.dafar.model.ExerciseEligibility> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("eligible", com.hopper.fintech.flights.dafar.model.Eligible1.class);
+                        classByDiscriminatorValue.put("ineligible", com.hopper.fintech.flights.dafar.model.Ineligible.class);
+                        classByDiscriminatorValue.put("exercise_eligibility", com.hopper.fintech.flights.dafar.model.ExerciseEligibility.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
                     }
@@ -661,16 +673,21 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractExpired.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractExpiredWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractExpiredWebhookData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractItinerary.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractItinerarySegment.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractItinerarySlice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractNotConfirmed.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractNotFound.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractPrice.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractVoided.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractVoidedWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ContractVoidedWebhookData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateDraftContractRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateFlightBookingRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateFlightPriceQuoteRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateFlightShopRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateMerchandisingUrlResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateOffersError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.CreateOffersRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarCancelContractError.CustomTypeAdapterFactory());
@@ -679,6 +696,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarContractStatusHistory.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarContractStatusHistoryEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarCreateDraftContractError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarCreateEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarCreateFlightsExerciseQuoteError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarExercise.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarExerciseQuote.CustomTypeAdapterFactory());
@@ -686,7 +704,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarFlightPriceQuoteError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarFlightShopError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarOffer.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarRebookEligibilityError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarUpdateContactInfoError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DafarVoidContractError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DateWindow.CustomTypeAdapterFactory());
@@ -698,13 +715,14 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DisruptionEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.DisruptionReason.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Eligible.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Eligible1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.EligibleDisruptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.EligibleReason.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.EmailAddress.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Error.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.EstimatedTimesUnchanged.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Event.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExerciseContractRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExerciseEligibility.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalCompletePageContinueClicked.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalCompletePageLoaded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageBackClicked.CustomTypeAdapterFactory());
@@ -712,6 +730,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalConfirmationPageLoaded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalLandingContinueClicked.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalLandingLoaded.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalRebookingFlightChoiceContinueClicked.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExercisePortalRebookingShopPageLoaded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ExerciseUrl.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Failed.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Fare.CustomTypeAdapterFactory());
@@ -778,11 +798,14 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NonRefundableDiscounts.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotAllowed.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotAvailable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotMerchandisable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotProvided.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotProvided1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotProvided2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotPurchased.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.NotificationPreferences.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.OfferDisplayRequested.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.OfferExpired.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.OfferNotFound.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.OfferPrice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.OffersEligible.CustomTypeAdapterFactory());
@@ -828,18 +851,17 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Reason1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Rebook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.RebookEligibility.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.RebookEligibilityResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Rebooking.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.RefundAmountMoreThanOutstandingBalance.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Refundable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.RefundablePayment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ReportedDisruption.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.RequestTrigger.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ResellerControlled.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SearchContractsRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SearchContractsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SearchCriteria.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Segment.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SegmentEligibility.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SegmentNotInContract.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SessionNotFound.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ShopExpired.CustomTypeAdapterFactory());
@@ -849,7 +871,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.ShoppedSlice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Slice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Slice1.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SliceEligibility.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.SliceSegment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.Status1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.dafar.model.StatusUpdate.CustomTypeAdapterFactory());
