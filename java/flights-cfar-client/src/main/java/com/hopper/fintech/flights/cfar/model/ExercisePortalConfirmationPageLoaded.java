@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hopper.fintech.flights.cfar.model.ExerciseType;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
@@ -66,6 +67,11 @@ public class ExercisePortalConfirmationPageLoaded {
   @SerializedName(SERIALIZED_NAME_CONTRACT_ID)
   @javax.annotation.Nonnull
   private String contractId;
+
+  public static final String SERIALIZED_NAME_EXERCISE_TYPE = "exercise_type";
+  @SerializedName(SERIALIZED_NAME_EXERCISE_TYPE)
+  @javax.annotation.Nullable
+  private ExerciseType exerciseType;
 
   /**
    * Gets or Sets type
@@ -182,6 +188,25 @@ public class ExercisePortalConfirmationPageLoaded {
   }
 
 
+  public ExercisePortalConfirmationPageLoaded exerciseType(@javax.annotation.Nullable ExerciseType exerciseType) {
+    this.exerciseType = exerciseType;
+    return this;
+  }
+
+  /**
+   * Get exerciseType
+   * @return exerciseType
+   */
+  @javax.annotation.Nullable
+  public ExerciseType getExerciseType() {
+    return exerciseType;
+  }
+
+  public void setExerciseType(@javax.annotation.Nullable ExerciseType exerciseType) {
+    this.exerciseType = exerciseType;
+  }
+
+
   public ExercisePortalConfirmationPageLoaded type(@javax.annotation.Nonnull TypeEnum type) {
     this.type = type;
     return this;
@@ -258,13 +283,14 @@ public class ExercisePortalConfirmationPageLoaded {
     return Objects.equals(this.sessionId, exercisePortalConfirmationPageLoaded.sessionId) &&
         Objects.equals(this.occurredAt, exercisePortalConfirmationPageLoaded.occurredAt) &&
         Objects.equals(this.contractId, exercisePortalConfirmationPageLoaded.contractId) &&
+        Objects.equals(this.exerciseType, exercisePortalConfirmationPageLoaded.exerciseType) &&
         Objects.equals(this.type, exercisePortalConfirmationPageLoaded.type)&&
         Objects.equals(this.additionalProperties, exercisePortalConfirmationPageLoaded.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sessionId, occurredAt, contractId, type, additionalProperties);
+    return Objects.hash(sessionId, occurredAt, contractId, exerciseType, type, additionalProperties);
   }
 
   @Override
@@ -274,6 +300,7 @@ public class ExercisePortalConfirmationPageLoaded {
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    occurredAt: ").append(toIndentedString(occurredAt)).append("\n");
     sb.append("    contractId: ").append(toIndentedString(contractId)).append("\n");
+    sb.append("    exerciseType: ").append(toIndentedString(exerciseType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -294,7 +321,7 @@ public class ExercisePortalConfirmationPageLoaded {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("session_id", "occurred_at", "contract_id", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("session_id", "occurred_at", "contract_id", "exercise_type", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("session_id", "occurred_at", "contract_id", "type"));
@@ -325,6 +352,10 @@ public class ExercisePortalConfirmationPageLoaded {
       }
       if (!jsonObj.get("contract_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `contract_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contract_id").toString()));
+      }
+      // validate the optional field `exercise_type`
+      if (jsonObj.get("exercise_type") != null && !jsonObj.get("exercise_type").isJsonNull()) {
+        ExerciseType.validateJsonElement(jsonObj.get("exercise_type"));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

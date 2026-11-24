@@ -199,6 +199,16 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             OnCreated();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Event" /> class.
+        /// </summary>
+        /// <param name="offerDisplayRequested"></param>
+        public Event(OfferDisplayRequested offerDisplayRequested)
+        {
+            OfferDisplayRequested = offerDisplayRequested;
+            OnCreated();
+        }
+
         partial void OnCreated();
 
         /// <summary>
@@ -289,7 +299,12 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             /// <summary>
             /// Enum MerchandisingSdkLoaded for value: merchandising_sdk_loaded
             /// </summary>
-            MerchandisingSdkLoaded = 17
+            MerchandisingSdkLoaded = 17,
+
+            /// <summary>
+            /// Enum OfferDisplayRequested for value: offer_display_requested
+            /// </summary>
+            OfferDisplayRequested = 18
         }
 
         /// <summary>
@@ -350,6 +365,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
 
             if (value.Equals("merchandising_sdk_loaded"))
                 return TypeEnum.MerchandisingSdkLoaded;
+
+            if (value.Equals("offer_display_requested"))
+                return TypeEnum.OfferDisplayRequested;
 
             throw new NotImplementedException($"Could not convert value to type TypeEnum: '{value}'");
         }
@@ -412,6 +430,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             if (value.Equals("merchandising_sdk_loaded"))
                 return TypeEnum.MerchandisingSdkLoaded;
 
+            if (value.Equals("offer_display_requested"))
+                return TypeEnum.OfferDisplayRequested;
+
             return null;
         }
 
@@ -473,6 +494,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
 
             if (value == TypeEnum.MerchandisingSdkLoaded)
                 return "merchandising_sdk_loaded";
+
+            if (value == TypeEnum.OfferDisplayRequested)
+                return "offer_display_requested";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }
@@ -563,6 +587,11 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         public MerchandisingSdkLoaded? MerchandisingSdkLoaded { get; set; }
 
         /// <summary>
+        /// Gets or Sets OfferDisplayRequested
+        /// </summary>
+        public OfferDisplayRequested? OfferDisplayRequested { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -633,6 +662,7 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             MerchandisingOfferAttached? merchandisingOfferAttached = null;
             MerchandisingOfferDeclined? merchandisingOfferDeclined = null;
             MerchandisingSdkLoaded? merchandisingSdkLoaded = null;
+            OfferDisplayRequested? offerDisplayRequested = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -735,6 +765,11 @@ namespace Hopper.Fintech.Flights.Cfar.Model
                             Utf8JsonReader utf8JsonReaderMerchandisingSdkLoaded = utf8JsonReader;
                             merchandisingSdkLoaded = JsonSerializer.Deserialize<MerchandisingSdkLoaded>(ref utf8JsonReaderMerchandisingSdkLoaded, jsonSerializerOptions);
                         }
+                        if (discriminator?.Equals("offer_display_requested") ?? false)
+                        {
+                            Utf8JsonReader utf8JsonReaderOfferDisplayRequested = utf8JsonReader;
+                            offerDisplayRequested = JsonSerializer.Deserialize<OfferDisplayRequested>(ref utf8JsonReaderOfferDisplayRequested, jsonSerializerOptions);
+                        }
                     }
                 }
             }
@@ -826,6 +861,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
 
             if (merchandisingSdkLoaded != null)
                 return new Event(merchandisingSdkLoaded);
+
+            if (offerDisplayRequested != null)
+                return new Event(offerDisplayRequested);
 
             throw new JsonException();
         }
@@ -940,6 +978,12 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             {
                 MerchandisingSdkLoadedJsonConverter merchandisingSdkLoadedJsonConverter = (MerchandisingSdkLoadedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.MerchandisingSdkLoaded.GetType()));
                 merchandisingSdkLoadedJsonConverter.WriteProperties(writer, varEvent.MerchandisingSdkLoaded, jsonSerializerOptions);
+            }
+
+            if (varEvent.OfferDisplayRequested != null)
+            {
+                OfferDisplayRequestedJsonConverter offerDisplayRequestedJsonConverter = (OfferDisplayRequestedJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(varEvent.OfferDisplayRequested.GetType()));
+                offerDisplayRequestedJsonConverter.WriteProperties(writer, varEvent.OfferDisplayRequested, jsonSerializerOptions);
             }
 
             WriteProperties(writer, varEvent, jsonSerializerOptions);

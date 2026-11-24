@@ -25,7 +25,7 @@ using Hopper.Fintech.Flights.Cfar.Client;
 namespace Hopper.Fintech.Flights.Cfar.Model
 {
     /// <summary>
-    /// Consent for the PRIMARY BOOKER (the email_address / phone_number on this contact_info) to receive disruption notifications via SMS/push. Applies to the primary booker only: additional_recipients never receive SMS or push (they are email-only, notification-only). Captured per offer when the contract is created; does not persist across offers. Recording consent does not trigger delivery.
+    /// Consent for the PRIMARY BOOKER (the email_address / phone_number on this contact_info) to receive disruption notifications via SMS/push. Applies to the primary booker only: additional_recipients never receive SMS or push (they are email-only, notification-only). Captured per offer at purchase; does not persist across offers. Recording consent does not trigger delivery.
     /// </summary>
     public partial class NotificationPreferences
     {

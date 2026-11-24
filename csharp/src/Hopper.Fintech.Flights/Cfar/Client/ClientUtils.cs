@@ -188,18 +188,28 @@ namespace Hopper.Fintech.Flights.Cfar.Client
                 return Channel.TypeEnumToJsonValue(channelTypeEnum);
             if (obj is Chargeback.TypeEnum chargebackTypeEnum)
                 return Chargeback.TypeEnumToJsonValue(chargebackTypeEnum);
+            if (obj is ContractCanceled.CodeEnum contractCanceledCodeEnum)
+                return ContractCanceled.CodeEnumToJsonValue(contractCanceledCodeEnum);
             if (obj is ContractCanceledWebhook.TypeEnum contractCanceledWebhookTypeEnum)
                 return ContractCanceledWebhook.TypeEnumToJsonValue(contractCanceledWebhookTypeEnum);
             if (obj is ContractConfirmedWebhook.TypeEnum contractConfirmedWebhookTypeEnum)
                 return ContractConfirmedWebhook.TypeEnumToJsonValue(contractConfirmedWebhookTypeEnum);
             if (obj is ContractDraftedWebhook.TypeEnum contractDraftedWebhookTypeEnum)
                 return ContractDraftedWebhook.TypeEnumToJsonValue(contractDraftedWebhookTypeEnum);
+            if (obj is ContractExercised.CodeEnum contractExercisedCodeEnum)
+                return ContractExercised.CodeEnumToJsonValue(contractExercisedCodeEnum);
             if (obj is ContractExercisedWebhook.TypeEnum contractExercisedWebhookTypeEnum)
                 return ContractExercisedWebhook.TypeEnumToJsonValue(contractExercisedWebhookTypeEnum);
             if (obj is ContractExpired.CodeEnum contractExpiredCodeEnum)
                 return ContractExpired.CodeEnumToJsonValue(contractExpiredCodeEnum);
+            if (obj is ContractNotPurchased.CodeEnum contractNotPurchasedCodeEnum)
+                return ContractNotPurchased.CodeEnumToJsonValue(contractNotPurchasedCodeEnum);
+            if (obj is ContractVoided.CodeEnum contractVoidedCodeEnum)
+                return ContractVoided.CodeEnumToJsonValue(contractVoidedCodeEnum);
             if (obj is ContractVoidedWebhook.TypeEnum contractVoidedWebhookTypeEnum)
                 return ContractVoidedWebhook.TypeEnumToJsonValue(contractVoidedWebhookTypeEnum);
+            if (obj is CreateMerchandisingUrlError.CodeEnum createMerchandisingUrlErrorCodeEnum)
+                return CreateMerchandisingUrlError.CodeEnumToJsonValue(createMerchandisingUrlErrorCodeEnum);
             if (obj is CreateOffersError.CodeEnum createOffersErrorCodeEnum)
                 return CreateOffersError.CodeEnumToJsonValue(createOffersErrorCodeEnum);
             if (obj is CreateSyntheticFaresError.CodeEnum createSyntheticFaresErrorCodeEnum)
@@ -228,6 +238,10 @@ namespace Hopper.Fintech.Flights.Cfar.Client
                 return ExercisePortalLandingContinueClicked.TypeEnumToJsonValue(exercisePortalLandingContinueClickedTypeEnum);
             if (obj is ExercisePortalLandingLoaded.TypeEnum exercisePortalLandingLoadedTypeEnum)
                 return ExercisePortalLandingLoaded.TypeEnumToJsonValue(exercisePortalLandingLoadedTypeEnum);
+            if (obj is ExerciseType exerciseType)
+                return ExerciseTypeValueConverter.ToJsonValue(exerciseType);
+            if (obj is Expired.CodeEnum expiredCodeEnum)
+                return Expired.CodeEnumToJsonValue(expiredCodeEnum);
             if (obj is Fee.TypeEnum feeTypeEnum)
                 return Fee.TypeEnumToJsonValue(feeTypeEnum);
             if (obj is Field.TypeEnum fieldTypeEnum)
@@ -302,6 +316,8 @@ namespace Hopper.Fintech.Flights.Cfar.Client
                 return NotAllowed.TypeEnumToJsonValue(notAllowedTypeEnum);
             if (obj is NotAvailable.TypeEnum notAvailableTypeEnum)
                 return NotAvailable.TypeEnumToJsonValue(notAvailableTypeEnum);
+            if (obj is NotMerchandisable.CodeEnum notMerchandisableCodeEnum)
+                return NotMerchandisable.CodeEnumToJsonValue(notMerchandisableCodeEnum);
             if (obj is NotProvided.TypeEnum notProvidedTypeEnum)
                 return NotProvided.TypeEnumToJsonValue(notProvidedTypeEnum);
             if (obj is NotProvided1.TypeEnum notProvided1TypeEnum)
@@ -310,6 +326,8 @@ namespace Hopper.Fintech.Flights.Cfar.Client
                 return NotProvided2.TypeEnumToJsonValue(notProvided2TypeEnum);
             if (obj is NotPurchased.TypeEnum notPurchasedTypeEnum)
                 return NotPurchased.TypeEnumToJsonValue(notPurchasedTypeEnum);
+            if (obj is OfferDisplayRequested.TypeEnum offerDisplayRequestedTypeEnum)
+                return OfferDisplayRequested.TypeEnumToJsonValue(offerDisplayRequestedTypeEnum);
             if (obj is OfferExpired.CodeEnum offerExpiredCodeEnum)
                 return OfferExpired.CodeEnumToJsonValue(offerExpiredCodeEnum);
             if (obj is OfferNotFound.CodeEnum offerNotFoundCodeEnum)
@@ -382,6 +400,8 @@ namespace Hopper.Fintech.Flights.Cfar.Client
                 return ProvidedPayment.TypeEnumToJsonValue(providedPaymentTypeEnum);
             if (obj is ProvidedRefundablePayment.TypeEnum providedRefundablePaymentTypeEnum)
                 return ProvidedRefundablePayment.TypeEnumToJsonValue(providedRefundablePaymentTypeEnum);
+            if (obj is PurchasePaymentsNotOnContract.CodeEnum purchasePaymentsNotOnContractCodeEnum)
+                return PurchasePaymentsNotOnContract.CodeEnumToJsonValue(purchasePaymentsNotOnContractCodeEnum);
             if (obj is Reason.TypeEnum reasonTypeEnum)
                 return Reason.TypeEnumToJsonValue(reasonTypeEnum);
             if (obj is Reason1.TypeEnum reason1TypeEnum)
@@ -406,6 +426,8 @@ namespace Hopper.Fintech.Flights.Cfar.Client
                 return TransactionTypeValueConverter.ToJsonValue(transactionType);
             if (obj is Trip.TypeEnum tripTypeEnum)
                 return Trip.TypeEnumToJsonValue(tripTypeEnum);
+            if (obj is UserPayoutsError.CodeEnum userPayoutsErrorCodeEnum)
+                return UserPayoutsError.CodeEnumToJsonValue(userPayoutsErrorCodeEnum);
             if (obj is Venmo.TypeEnum venmoTypeEnum)
                 return Venmo.TypeEnumToJsonValue(venmoTypeEnum);
             if (obj is VerificationStatus verificationStatus)

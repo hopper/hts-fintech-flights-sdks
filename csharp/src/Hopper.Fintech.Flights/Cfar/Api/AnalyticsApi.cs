@@ -42,7 +42,7 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         /// Create Event
         /// </summary>
         /// <remarks>
-        /// Create a new event for the provided session.
+        /// Create a new event for the provided session. When exercise_type is omitted on an event that supports it, this endpoint stores payout and preserves an explicit value.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="varEvent"></param>
@@ -54,7 +54,7 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         /// Create Event
         /// </summary>
         /// <remarks>
-        /// Create a new event for the provided session.
+        /// Create a new event for the provided session. When exercise_type is omitted on an event that supports it, this endpoint stores payout and preserves an explicit value.
         /// </remarks>
         /// <param name="varEvent"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -231,7 +231,7 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         partial void OnErrorPostEvents(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Event varEvent);
 
         /// <summary>
-        /// Create Event Create a new event for the provided session.
+        /// Create Event Create a new event for the provided session. When exercise_type is omitted on an event that supports it, this endpoint stores payout and preserves an explicit value.
         /// </summary>
         /// <param name="varEvent"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -249,7 +249,7 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         }
 
         /// <summary>
-        /// Create Event Create a new event for the provided session.
+        /// Create Event Create a new event for the provided session. When exercise_type is omitted on an event that supports it, this endpoint stores payout and preserves an explicit value.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="varEvent"></param>

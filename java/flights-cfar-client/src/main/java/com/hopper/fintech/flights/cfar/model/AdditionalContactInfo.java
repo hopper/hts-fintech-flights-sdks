@@ -48,7 +48,7 @@ import java.util.Set;
 import com.hopper.fintech.flights.cfar.JSON;
 
 /**
- * An additional recipient to notify about this contract, such as flight disruption alerts, reminders, and exercise confirmations. Additional recipients receive notifications only; they are never used for sign-in, one-time passcodes, or receipts.
+ * An additional recipient to notify about this purchase, such as flight disruption alerts, reminders, and exercise confirmations. Additional recipients receive notifications only; they are never used for sign-in, one-time passcodes, or receipts.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class AdditionalContactInfo {

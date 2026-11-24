@@ -15,7 +15,7 @@
     },
     {
       "name": "Partner Manual Exercise",
-      "description": "For cases where self-service tooling is not functioning properly, either due to a disruption that was not automatically identified by HTS, or an exercise that needs to occur outside of our tooling (like a payout to a different payment method than used for purchase, or a rebooking that was done directly with the GDS)."
+      "description": "For cases where self-service tooling is not functioning properly, either due to a disruption that was not automatically identified by HTS, or an exercise that needs to occur outside of our tooling (like a refund to a different payment method than used for purchase, or a rebooking that was done directly with the GDS)."
     },
     {
       "name": "HTS Self-Service Exercise",
@@ -401,6 +401,78 @@
         ]
       }
     },
+    "/merchandising_urls": {
+      "post": {
+        "tags": [
+          "Offer & Merchandising"
+        ],
+        "summary": "Create Merchandising URL",
+        "description": "Create a merchandising URL for offers a partner already has. The offer ids must come from one Create Offers or Price Offers response.",
+        "operationId": "postMerchandising_urls",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create_merchandising_url_request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The merchandising URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/create_merchandising_url_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Syntactic errors were encountered while handling the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The client could not be authenticated"
+          },
+          "403": {
+            "description": "The authenticated client does not have permission to call this endpoint"
+          },
+          "422": {
+            "description": "Semantic errors were encountered while handling the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/unprocessable_entity_create_merchandising_url_error"
+                }
+              }
+            }
+          },
+          "499": {
+            "description": "The client cancelled the request"
+          },
+          "500": {
+            "description": "The server encountered an internal error"
+          }
+        },
+        "security": [
+          {
+            "PartnerAuth": []
+          }
+        ]
+      }
+    },
     "/contracts": {
       "post": {
         "tags": [
@@ -616,6 +688,82 @@
           },
           "404": {
             "description": "The requested resource could not be found"
+          },
+          "499": {
+            "description": "The client cancelled the request"
+          },
+          "500": {
+            "description": "The server encountered an internal error"
+          }
+        },
+        "security": [
+          {
+            "PartnerAuth": []
+          }
+        ]
+      }
+    },
+    "/contracts/{id}/user_projected_payouts": {
+      "post": {
+        "tags": [
+          "Contract Management"
+        ],
+        "summary": "Get User Projected Payouts",
+        "description": "\nReturns the projected payout a user would receive if they exercised CFAR on this contract, for each\npayout option, broken down by how they would be refunded. Read-only; does not create an exercise quote.\n\nThe projection uses the same payout calculation as the exercise quote. Where the contract carries a\ncancellation penalty, the payout is capped at that penalty, as it is when exercising. The projection is\nreturned even while the booking is within the void window.\n\nReturns 422 if the contract is not in a state that can be exercised (already exercised, voided, cancelled,\nexpired or not purchased); the body carries the specific reason.\n",
+        "operationId": "postContractsIdUser_projected_payouts",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique identifier for a contract.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The projected payout breakdown, by payout option",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/user_payouts_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Syntactic errors were encountered while handling the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The client could not be authenticated"
+          },
+          "403": {
+            "description": "The authenticated client does not have permission to call this endpoint"
+          },
+          "404": {
+            "description": "The requested resource could not be found"
+          },
+          "422": {
+            "description": "Semantic errors were encountered while handling the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/unprocessable_entity_user_payouts_error"
+                }
+              }
+            }
           },
           "499": {
             "description": "The client cancelled the request"
@@ -1157,7 +1305,7 @@
           "Analytics"
         ],
         "summary": "Create Event",
-        "description": "Create a new event for the provided session.",
+        "description": "Create a new event for the provided session. When exercise_type is omitted on an event that supports it, this endpoint stores payout and preserves an explicit value.",
         "operationId": "postEvents",
         "requestBody": {
           "content": {
@@ -1212,7 +1360,7 @@
           "Partner Endpoints"
         ],
         "summary": "Get Booking",
-        "description": "Called by HTS to retrieve the current state of a flight booking from the partner system.\n\nHTS provides the booking references stored on the contract as query parameters. These references\nare partner-defined key/value pairs (e.g. record locator, order ID) established during contract creation.\n\nThe recommended response includes:\n- **Booking status** \u2014 the current status of the booking (e.g. confirmed, cancelled, voided, pending, checked_in, no_show). Partners may use their own status values; HTS will accept and translate them.\n- **Itinerary** \u2014 flight slices with segments (origin, destination, departure/arrival times, carrier, flight number, cabin), fare brand, passengers with per-passenger fare amounts, and ancillaries\n- **Currency** \u2014 ISO 4217 currency code for all monetary amounts\n- **Booking references** \u2014 the same key/value pairs used to identify the booking\n- **Void eligibility** \u2014 whether the booking can still be voided (allowed, not_allowed, or allowed_until with an ISO 8601 timestamp)\n- **Payment transactions** \u2014 amounts, timestamps, transaction types (credit/debit), and payment methods\n- **Created at** \u2014 ISO 8601 timestamp of when the booking was originally created\n\nPartner implementations may vary in structure and fields returned. HTS is designed to handle\nthese variations gracefully.",
+        "description": "Called by HTS to retrieve the current state of a flight booking from the partner system.\n\nHTS provides the booking references stored on the contract as query parameters. These references\nare partner-defined key/value pairs (e.g. record locator, order ID) established during contract creation.\n\nThe recommended response includes:\n- **Booking status** \u2014 the current status of the booking (e.g. confirmed, cancelled, voided, pending, checked_in, no_show). Partners may use their own status values; HTS will accept and translate them.\n- **Itinerary** \u2014 flight slices with segments (origin, destination, departure/arrival times, carrier, flight number, cabin), fare brand, passengers with per-passenger fare amounts, and ancillaries\n- **Currency** \u2014 ISO 4217 currency code for all monetary amounts\n- **Booking references** \u2014 the same key/value pairs used to identify the booking\n- **Void eligibility** \u2014 whether the booking can still be voided (allowed, not_allowed, or allowed_until with an ISO 8601 timestamp)\n- **Payment transactions** \u2014 amounts, timestamps, transaction types (`user_charge`/`user_refund`), and payment methods\n- **Created at** \u2014 ISO 8601 timestamp of when the booking was originally created\n\nPartner implementations may vary in structure and fields returned. HTS is designed to handle\nthese variations gracefully.",
         "operationId": "get_booking",
         "responses": {
           "200": {
@@ -1537,7 +1685,7 @@
     "schemas": {
       "additional_contact_info": {
         "title": "additional_contact_info",
-        "description": "An additional recipient to notify about this contract, such as flight disruption alerts, reminders, and exercise confirmations. Additional recipients receive notifications only; they are never used for sign-in, one-time passcodes, or receipts.",
+        "description": "An additional recipient to notify about this purchase, such as flight disruption alerts, reminders, and exercise confirmations. Additional recipients receive notifications only; they are never used for sign-in, one-time passcodes, or receipts.",
         "type": "object",
         "properties": {
           "email_address": {
@@ -1745,7 +1893,7 @@
             "exclusiveMinimum": 0
           },
           "code": {
-            "description": "Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code => ancillary type, and whether the ancillary is covered or not, is configured on the HTS side. It's important to use the same value as in the PNR/Order since it's used by HTS for various flow, e.g. validating and updating the payout amount of a CFAR or DAFAR contract.",
+            "description": "Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code => ancillary type, and whether the product applies to the ancillary, is configured on the HTS side. It's important to use the same value as in the PNR/Order since it's used by HTS for various flow, e.g. validating and updating a CFAR or DAFAR refund amount.",
             "type": "string",
             "minLength": 1
           }
@@ -1793,7 +1941,7 @@
             }
           },
           "ancillaries": {
-            "description": "Ancillaries attached to the itinerary which will be covered by the product and their prices. In the case of a split itinerary the payout amount of these ancillaries will be evenly distributed amongst the passengers.",
+            "description": "Ancillaries attached to the itinerary that the product applies to, and their prices. In the case of a split itinerary the refund amount of these ancillaries will be evenly distributed amongst the passengers.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ancillary"
@@ -2243,10 +2391,10 @@
             "$ref": "#/components/schemas/invalid_itinerary_price"
           },
           {
-            "$ref": "#/components/schemas/offer_expired"
+            "$ref": "#/components/schemas/offer_expired1"
           },
           {
-            "$ref": "#/components/schemas/offer_not_found1"
+            "$ref": "#/components/schemas/offer_not_found2"
           },
           {
             "$ref": "#/components/schemas/offer_not_priced"
@@ -2268,8 +2416,8 @@
             "idempotency_key_reused": "#/components/schemas/idempotency_key_reused",
             "invalid_email": "#/components/schemas/invalid_email",
             "invalid_itinerary_price": "#/components/schemas/invalid_itinerary_price",
-            "offer_expired": "#/components/schemas/offer_expired",
-            "offer_not_found": "#/components/schemas/offer_not_found1",
+            "offer_expired": "#/components/schemas/offer_expired1",
+            "offer_not_found": "#/components/schemas/offer_not_found2",
             "offer_not_priced": "#/components/schemas/offer_not_priced",
             "order_already_exists": "#/components/schemas/order_already_exists",
             "payment_authorization_failure": "#/components/schemas/payment_authorization_failure",
@@ -2570,6 +2718,24 @@
           }
         }
       },
+      "contract_canceled": {
+        "title": "contract_canceled",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "contract_canceled"
+          }
+        }
+      },
       "contract_canceled_webhook": {
         "title": "contract_canceled_webhook",
         "description": "Webhook sent when a CFAR contract is canceled.",
@@ -2708,6 +2874,24 @@
           }
         }
       },
+      "contract_exercised": {
+        "title": "contract_exercised",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "contract_exercised"
+          }
+        }
+      },
       "contract_exercised_webhook": {
         "title": "contract_exercised_webhook",
         "description": "Webhook sent when a customer has successfully exercised their CFAR contract.",
@@ -2776,6 +2960,24 @@
           }
         }
       },
+      "contract_not_purchased": {
+        "title": "contract_not_purchased",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "contract_not_purchased"
+          }
+        }
+      },
       "contract_price": {
         "title": "contract_price",
         "description": "The price breakdown of the product.",
@@ -2807,6 +3009,24 @@
             "items": {
               "$ref": "#/components/schemas/tax"
             }
+          }
+        }
+      },
+      "contract_voided": {
+        "title": "contract_voided",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "contract_voided"
           }
         }
       },
@@ -2928,6 +3148,60 @@
             "examples": [
               "33bb4eb2-2937-4bd3-97b1-7796206712f0"
             ],
+            "type": "string"
+          }
+        }
+      },
+      "create_merchandising_url_error": {
+        "title": "create_merchandising_url_error",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/not_merchandisable"
+          },
+          {
+            "$ref": "#/components/schemas/offer_expired"
+          },
+          {
+            "$ref": "#/components/schemas/offer_not_found1"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "code",
+          "mapping": {
+            "not_merchandisable": "#/components/schemas/not_merchandisable",
+            "offer_expired": "#/components/schemas/offer_expired",
+            "offer_not_found": "#/components/schemas/offer_not_found1"
+          }
+        }
+      },
+      "create_merchandising_url_request": {
+        "title": "create_merchandising_url_request",
+        "type": "object",
+        "required": [
+          "offer_ids"
+        ],
+        "properties": {
+          "offer_ids": {
+            "description": "Offer ids from one Create Offers or Price Offers response.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "description": "Unique ID for an offer.",
+              "type": "string"
+            }
+          }
+        }
+      },
+      "create_merchandising_url_response": {
+        "title": "create_merchandising_url_response",
+        "description": "Response containing a merchandising URL for the given offers.",
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "description": "A merchandising URL for those offers.",
             "type": "string"
           }
         }
@@ -3227,6 +3501,9 @@
           },
           {
             "$ref": "#/components/schemas/merchandising_sdk_loaded"
+          },
+          {
+            "$ref": "#/components/schemas/offer_display_requested"
           }
         ],
         "discriminator": {
@@ -3248,7 +3525,8 @@
             "merchandising_faq_clicked": "#/components/schemas/merchandising_faq_clicked",
             "merchandising_offer_attached": "#/components/schemas/merchandising_offer_attached",
             "merchandising_offer_declined": "#/components/schemas/merchandising_offer_declined",
-            "merchandising_sdk_loaded": "#/components/schemas/merchandising_sdk_loaded"
+            "merchandising_sdk_loaded": "#/components/schemas/merchandising_sdk_loaded",
+            "offer_display_requested": "#/components/schemas/offer_display_requested"
           }
         }
       },
@@ -3320,6 +3598,9 @@
           "contract_id": {
             "type": "string"
           },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
+          },
           "type": {
             "type": "string",
             "const": "exercise_portal_complete_page_loaded"
@@ -3347,6 +3628,9 @@
           },
           "contract_id": {
             "type": "string"
+          },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
           },
           "type": {
             "type": "string",
@@ -3376,6 +3660,9 @@
           "contract_id": {
             "type": "string"
           },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
+          },
           "type": {
             "type": "string",
             "const": "exercise_portal_confirmation_page_confirm_clicked"
@@ -3404,6 +3691,9 @@
           "contract_id": {
             "type": "string"
           },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
+          },
           "type": {
             "type": "string",
             "const": "exercise_portal_confirmation_page_loaded"
@@ -3431,6 +3721,9 @@
           },
           "contract_id": {
             "type": "string"
+          },
+          "exercise_type": {
+            "$ref": "#/components/schemas/exercise_type"
           },
           "type": {
             "type": "string",
@@ -3466,6 +3759,14 @@
           }
         }
       },
+      "exercise_type": {
+        "title": "exercise_type",
+        "type": "string",
+        "enum": [
+          "rebook",
+          "payout"
+        ]
+      },
       "exercise_url": {
         "title": "exercise_url",
         "type": "object",
@@ -3475,6 +3776,24 @@
         "properties": {
           "exercise_url": {
             "type": "string"
+          }
+        }
+      },
+      "expired": {
+        "title": "expired",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "expired"
           }
         }
       },
@@ -3836,7 +4155,7 @@
           },
           "booking_references": {
             "$ref": "#/components/schemas/map_string",
-            "description": "Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references provided during contract creation."
+            "description": "Partner-defined key/value pairs used to identify the booking (e.g. record locator, order ID). These must match the references the partner supplied at purchase."
           },
           "booking_status": {
             "$ref": "#/components/schemas/booking_status"
@@ -4806,6 +5125,24 @@
           }
         }
       },
+      "not_merchandisable": {
+        "title": "not_merchandisable",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "not_merchandisable"
+          }
+        }
+      },
       "not_provided": {
         "title": "not_provided",
         "description": "\n When partner can not pass any form of payment information.\n Not compatible with HTS as Merchant of Record.\n ",
@@ -4913,7 +5250,7 @@
       },
       "notification_preferences": {
         "title": "notification_preferences",
-        "description": "Consent for the PRIMARY BOOKER (the email_address / phone_number on this contact_info) to receive disruption notifications via SMS/push. Applies to the primary booker only: additional_recipients never receive SMS or push (they are email-only, notification-only). Captured per offer when the contract is created; does not persist across offers. Recording consent does not trigger delivery.",
+        "description": "Consent for the PRIMARY BOOKER (the email_address / phone_number on this contact_info) to receive disruption notifications via SMS/push. Applies to the primary booker only: additional_recipients never receive SMS or push (they are email-only, notification-only). Captured per offer at purchase; does not persist across offers. Recording consent does not trigger delivery.",
         "type": "object",
         "properties": {
           "sms": {
@@ -4926,7 +5263,61 @@
           }
         }
       },
+      "offer_display_requested": {
+        "title": "offer_display_requested",
+        "description": "Triggered when a customer explicitly requests to view an offer.",
+        "type": "object",
+        "required": [
+          "session_id",
+          "occurred_at",
+          "offer_ids",
+          "trigger",
+          "type"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string"
+          },
+          "occurred_at": {
+            "description": "Date and time at which the event occurred, as a UTC RFC3339 formatted datetime.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "offer_ids": {
+            "description": "The offers that the customer is requesting to view.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "trigger": {
+            "$ref": "#/components/schemas/request_trigger"
+          },
+          "type": {
+            "type": "string",
+            "const": "offer_display_requested"
+          }
+        }
+      },
       "offer_expired": {
+        "title": "offer_expired",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "offer_expired"
+          }
+        }
+      },
+      "offer_expired1": {
         "title": "offer_expired",
         "type": "object",
         "required": [
@@ -4963,6 +5354,24 @@
         }
       },
       "offer_not_found1": {
+        "title": "offer_not_found",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "offer_not_found"
+          }
+        }
+      },
+      "offer_not_found2": {
         "title": "offer_not_found",
         "type": "object",
         "required": [
@@ -5982,6 +6391,24 @@
           }
         }
       },
+      "purchase_payments_not_on_contract": {
+        "title": "purchase_payments_not_on_contract",
+        "type": "object",
+        "required": [
+          "message",
+          "code"
+        ],
+        "properties": {
+          "message": {
+            "description": "A human-readable message describing the error",
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "const": "purchase_payments_not_on_contract"
+          }
+        }
+      },
       "reason": {
         "title": "reason",
         "description": "Explanation for why this void occurred.",
@@ -6084,6 +6511,33 @@
             "not_provided": "#/components/schemas/not_provided2",
             "payment_card": "#/components/schemas/payment_card",
             "reseller_controlled": "#/components/schemas/reseller_controlled"
+          }
+        }
+      },
+      "request_trigger": {
+        "title": "request_trigger",
+        "description": "What prompted the customer to request to view an offer.",
+        "type": "object",
+        "required": [
+          "page",
+          "entry_point"
+        ],
+        "properties": {
+          "page": {
+            "description": "The page where the request was triggered.",
+            "examples": [
+              "checkout"
+            ],
+            "type": "string",
+            "minLength": 1
+          },
+          "entry_point": {
+            "description": "The entry point of the flow where the request was triggered.",
+            "examples": [
+              "postbooking"
+            ],
+            "type": "string",
+            "minLength": 1
           }
         }
       },
@@ -6337,7 +6791,7 @@
           "marketing_flight_number": {
             "description": "Marketing flight number.",
             "examples": [
-              123
+              "123"
             ],
             "type": "string",
             "pattern": "[0-9]{1,4}"
@@ -6603,6 +7057,14 @@
           "$ref": "#/components/schemas/cfar_void_contract_error"
         }
       },
+      "unprocessable_entity_create_merchandising_url_error": {
+        "title": "unprocessable_entity_create_merchandising_url_error",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/create_merchandising_url_error"
+        }
+      },
       "unprocessable_entity_create_offers_error": {
         "title": "unprocessable_entity_create_offers_error",
         "type": "array",
@@ -6625,6 +7087,99 @@
         "minItems": 1,
         "items": {
           "$ref": "#/components/schemas/price_offers_error"
+        }
+      },
+      "unprocessable_entity_user_payouts_error": {
+        "title": "unprocessable_entity_user_payouts_error",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/components/schemas/user_payouts_error"
+        }
+      },
+      "user_payout_option": {
+        "title": "user_payout_option",
+        "type": "object",
+        "required": [
+          "total_payout_amount",
+          "payouts"
+        ],
+        "properties": {
+          "total_payout_amount": {
+            "description": "The total amount the user would be paid out under this option. Sum of all `payouts` amounts.",
+            "examples": [
+              "173.24"
+            ],
+            "type": "string",
+            "minimum": 0
+          },
+          "payouts": {
+            "description": "The list of payouts which would be issued for this payout option.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/cfar_exercise_payout"
+            }
+          }
+        }
+      },
+      "user_payouts_error": {
+        "title": "user_payouts_error",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/contract_canceled"
+          },
+          {
+            "$ref": "#/components/schemas/contract_exercised"
+          },
+          {
+            "$ref": "#/components/schemas/contract_not_purchased"
+          },
+          {
+            "$ref": "#/components/schemas/contract_voided"
+          },
+          {
+            "$ref": "#/components/schemas/expired"
+          },
+          {
+            "$ref": "#/components/schemas/purchase_payments_not_on_contract"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "code",
+          "mapping": {
+            "contract_canceled": "#/components/schemas/contract_canceled",
+            "contract_exercised": "#/components/schemas/contract_exercised",
+            "contract_not_purchased": "#/components/schemas/contract_not_purchased",
+            "contract_voided": "#/components/schemas/contract_voided",
+            "expired": "#/components/schemas/expired",
+            "purchase_payments_not_on_contract": "#/components/schemas/purchase_payments_not_on_contract"
+          }
+        }
+      },
+      "user_payouts_response": {
+        "title": "user_payouts_response",
+        "type": "object",
+        "required": [
+          "currency",
+          "payout_options"
+        ],
+        "properties": {
+          "currency": {
+            "description": "The currency all payout amounts are in.",
+            "examples": [
+              "USD"
+            ],
+            "type": "string"
+          },
+          "payout_options": {
+            "description": "\n Options detailing the different ways the user could be paid out if they exercised CFAR, mirroring the\n `payout_options` of an exercise quote.\n    ",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/user_payout_option"
+            }
+          }
         }
       },
       "venmo": {

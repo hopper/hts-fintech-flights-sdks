@@ -87,6 +87,29 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         Task<IPostContractsApiResponse?> PostContractsOrDefaultAsync(Guid idempotencyKey, CreateDraftContractRequest createDraftContractRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Get User Projected Payouts
+        /// </summary>
+        /// <remarks>
+        ///  Returns the projected payout a user would receive if they exercised CFAR on this contract, for each payout option, broken down by how they would be refunded. Read-only; does not create an exercise quote.  The projection uses the same payout calculation as the exercise quote. Where the contract carries a cancellation penalty, the payout is capped at that penalty, as it is when exercising. The projection is returned even while the booking is within the void window.  Returns 422 if the contract is not in a state that can be exercised (already exercised, voided, cancelled, expired or not purchased); the body carries the specific reason. 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdUserProjectedPayoutsApiResponse"/>&gt;</returns>
+        Task<IPostContractsIdUserProjectedPayoutsApiResponse> PostContractsIdUserProjectedPayoutsAsync(string id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get User Projected Payouts
+        /// </summary>
+        /// <remarks>
+        ///  Returns the projected payout a user would receive if they exercised CFAR on this contract, for each payout option, broken down by how they would be refunded. Read-only; does not create an exercise quote.  The projection uses the same payout calculation as the exercise quote. Where the contract carries a cancellation penalty, the payout is capped at that penalty, as it is when exercising. The projection is returned even while the booking is within the void window.  Returns 422 if the contract is not in a state that can be exercised (already exercised, voided, cancelled, expired or not purchased); the body carries the specific reason. 
+        /// </remarks>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdUserProjectedPayoutsApiResponse"/>?&gt;</returns>
+        Task<IPostContractsIdUserProjectedPayoutsApiResponse?> PostContractsIdUserProjectedPayoutsOrDefaultAsync(string id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Search Contracts
         /// </summary>
         /// <remarks>
@@ -261,6 +284,60 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         /// </summary>
         /// <returns></returns>
         bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 422 UnprocessableContent
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnprocessableContent { get; }
+
+        /// <summary>
+        /// Returns true if the response is 499 CustomHttpStatusCode499
+        /// </summary>
+        /// <returns></returns>
+        bool IsCustomHttpStatusCode499 { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IPostContractsIdUserProjectedPayoutsApiResponse"/>
+    /// </summary>
+    public interface IPostContractsIdUserProjectedPayoutsApiResponse : Hopper.Fintech.Flights.Cfar.Client.IApiResponse, IOk<Hopper.Fintech.Flights.Cfar.Model.UserPayoutsResponse?>, IBadRequest<List<Error>?>, IUnprocessableContent<List<UserPayoutsError>?>
+    {
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
 
         /// <summary>
         /// Returns true if the response is 422 UnprocessableContent
@@ -528,6 +605,26 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         internal void ExecuteOnErrorPostContracts(Exception exception)
         {
             OnErrorPostContracts?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnPostContractsIdUserProjectedPayouts;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorPostContractsIdUserProjectedPayouts;
+
+        internal void ExecuteOnPostContractsIdUserProjectedPayouts(ContractManagementApi.PostContractsIdUserProjectedPayoutsApiResponse apiResponse)
+        {
+            OnPostContractsIdUserProjectedPayouts?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorPostContractsIdUserProjectedPayouts(Exception exception)
+        {
+            OnErrorPostContractsIdUserProjectedPayouts?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -1371,6 +1468,398 @@ namespace Hopper.Fintech.Flights.Cfar.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryUnprocessableContent([NotNullWhen(true)]out List<CfarCreateDraftContractError>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = UnprocessableContent();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 499 CustomHttpStatusCode499
+            /// </summary>
+            /// <returns></returns>
+            public bool IsCustomHttpStatusCode499 => 499 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(RestLogEvents.ApiDeserializationFailed, exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatPostContractsIdUserProjectedPayouts(ref string id);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private void ValidatePostContractsIdUserProjectedPayouts(string id)
+        {
+            if (id == null)
+                throw new ArgumentNullException(nameof(id));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="id"></param>
+        private void AfterPostContractsIdUserProjectedPayoutsDefaultImplementation(IPostContractsIdUserProjectedPayoutsApiResponse apiResponseLocalVar, string id)
+        {
+            bool suppressDefaultLog = false;
+            AfterPostContractsIdUserProjectedPayouts(ref suppressDefaultLog, apiResponseLocalVar, id);
+            if (!suppressDefaultLog)
+                Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="id"></param>
+        partial void AfterPostContractsIdUserProjectedPayouts(ref bool suppressDefaultLog, IPostContractsIdUserProjectedPayoutsApiResponse apiResponseLocalVar, string id);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="id"></param>
+        private void OnErrorPostContractsIdUserProjectedPayoutsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorPostContractsIdUserProjectedPayouts(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, id);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="id"></param>
+        partial void OnErrorPostContractsIdUserProjectedPayouts(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string id);
+
+        /// <summary>
+        /// Get User Projected Payouts  Returns the projected payout a user would receive if they exercised CFAR on this contract, for each payout option, broken down by how they would be refunded. Read-only; does not create an exercise quote.  The projection uses the same payout calculation as the exercise quote. Where the contract carries a cancellation penalty, the payout is capped at that penalty, as it is when exercising. The projection is returned even while the booking is within the void window.  Returns 422 if the contract is not in a state that can be exercised (already exercised, voided, cancelled, expired or not purchased); the body carries the specific reason. 
+        /// </summary>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdUserProjectedPayoutsApiResponse"/>&gt;</returns>
+        public async Task<IPostContractsIdUserProjectedPayoutsApiResponse?> PostContractsIdUserProjectedPayoutsOrDefaultAsync(string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await PostContractsIdUserProjectedPayoutsAsync(id, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get User Projected Payouts  Returns the projected payout a user would receive if they exercised CFAR on this contract, for each payout option, broken down by how they would be refunded. Read-only; does not create an exercise quote.  The projection uses the same payout calculation as the exercise quote. Where the contract carries a cancellation penalty, the payout is capped at that penalty, as it is when exercising. The projection is returned even while the booking is within the void window.  Returns 422 if the contract is not in a state that can be exercised (already exercised, voided, cancelled, expired or not purchased); the body carries the specific reason. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">A unique identifier for a contract.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostContractsIdUserProjectedPayoutsApiResponse"/>&gt;</returns>
+        public async Task<IPostContractsIdUserProjectedPayoutsApiResponse> PostContractsIdUserProjectedPayoutsAsync(string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidatePostContractsIdUserProjectedPayouts(id);
+
+                FormatPostContractsIdUserProjectedPayouts(ref id);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/contracts/{id}/user_projected_payouts"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/contracts/{id}/user_projected_payouts");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
+                    tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
+                    apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
+
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        PostContractsIdUserProjectedPayoutsApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/contracts/{id}/user_projected_payouts", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterPostContractsIdUserProjectedPayoutsDefaultImplementation(apiResponseLocalVar, id);
+
+                        Events.ExecuteOnPostContractsIdUserProjectedPayouts(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorPostContractsIdUserProjectedPayoutsDefaultImplementation(e, "/contracts/{id}/user_projected_payouts", uriBuilderLocalVar.Path, id);
+                Events.ExecuteOnErrorPostContractsIdUserProjectedPayouts(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="PostContractsIdUserProjectedPayoutsApiResponse"/>
+        /// </summary>
+        public partial class PostContractsIdUserProjectedPayoutsApiResponse : Hopper.Fintech.Flights.Cfar.Client.ApiResponse, IPostContractsIdUserProjectedPayoutsApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<ContractManagementApi> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="PostContractsIdUserProjectedPayoutsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PostContractsIdUserProjectedPayoutsApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PostContractsIdUserProjectedPayoutsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PostContractsIdUserProjectedPayoutsApiResponse(ILogger<ContractManagementApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public Hopper.Fintech.Flights.Cfar.Model.UserPayoutsResponse? Ok()
+            {
+                bool suppressDefault = false;
+                Hopper.Fintech.Flights.Cfar.Model.UserPayoutsResponse? result = null;
+                OnOk(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultOk();
+                return result;
+            }
+
+            private Hopper.Fintech.Flights.Cfar.Model.UserPayoutsResponse? DefaultOk()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<Hopper.Fintech.Flights.Cfar.Model.UserPayoutsResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnOk(ref bool suppressDefault, ref Hopper.Fintech.Flights.Cfar.Model.UserPayoutsResponse? result);
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out Hopper.Fintech.Flights.Cfar.Model.UserPayoutsResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public List<Error>? BadRequest()
+            {
+                bool suppressDefault = false;
+                List<Error>? result = null;
+                OnBadRequest(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultBadRequest();
+                return result;
+            }
+
+            private List<Error>? DefaultBadRequest()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<Error>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnBadRequest(ref bool suppressDefault, ref List<Error>? result);
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out List<Error>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnprocessableContent => 422 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public List<UserPayoutsError>? UnprocessableContent()
+            {
+                bool suppressDefault = false;
+                List<UserPayoutsError>? result = null;
+                OnUnprocessableContent(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultUnprocessableContent();
+                return result;
+            }
+
+            private List<UserPayoutsError>? DefaultUnprocessableContent()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsUnprocessableContent
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<UserPayoutsError>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnUnprocessableContent(ref bool suppressDefault, ref List<UserPayoutsError>? result);
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnprocessableContent([NotNullWhen(true)]out List<UserPayoutsError>? result)
             {
                 result = null;
 

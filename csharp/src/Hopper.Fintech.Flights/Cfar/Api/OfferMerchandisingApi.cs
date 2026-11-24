@@ -62,6 +62,29 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         Task<IGetOffersIdApiResponse?> GetOffersIdOrDefaultAsync(string id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Create Merchandising URL
+        /// </summary>
+        /// <remarks>
+        /// Create a merchandising URL for offers a partner already has. The offer ids must come from one Create Offers or Price Offers response.
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostMerchandisingUrlsApiResponse"/>&gt;</returns>
+        Task<IPostMerchandisingUrlsApiResponse> PostMerchandisingUrlsAsync(CreateMerchandisingUrlRequest createMerchandisingUrlRequest, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create Merchandising URL
+        /// </summary>
+        /// <remarks>
+        /// Create a merchandising URL for offers a partner already has. The offer ids must come from one Create Offers or Price Offers response.
+        /// </remarks>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostMerchandisingUrlsApiResponse"/>?&gt;</returns>
+        Task<IPostMerchandisingUrlsApiResponse?> PostMerchandisingUrlsOrDefaultAsync(CreateMerchandisingUrlRequest createMerchandisingUrlRequest, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Create Offers
         /// </summary>
         /// <remarks>
@@ -188,6 +211,54 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         /// </summary>
         /// <returns></returns>
         bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 499 CustomHttpStatusCode499
+        /// </summary>
+        /// <returns></returns>
+        bool IsCustomHttpStatusCode499 { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IPostMerchandisingUrlsApiResponse"/>
+    /// </summary>
+    public interface IPostMerchandisingUrlsApiResponse : Hopper.Fintech.Flights.Cfar.Client.IApiResponse, ICreated<Hopper.Fintech.Flights.Cfar.Model.CreateMerchandisingUrlResponse?>, IBadRequest<List<Error>?>, IUnprocessableContent<List<CreateMerchandisingUrlError>?>
+    {
+        /// <summary>
+        /// Returns true if the response is 201 Created
+        /// </summary>
+        /// <returns></returns>
+        bool IsCreated { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 422 UnprocessableContent
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnprocessableContent { get; }
 
         /// <summary>
         /// Returns true if the response is 499 CustomHttpStatusCode499
@@ -435,6 +506,26 @@ namespace Hopper.Fintech.Flights.Cfar.Api
         internal void ExecuteOnErrorGetOffersId(Exception exception)
         {
             OnErrorGetOffersId?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnPostMerchandisingUrls;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorPostMerchandisingUrls;
+
+        internal void ExecuteOnPostMerchandisingUrls(OfferMerchandisingApi.PostMerchandisingUrlsApiResponse apiResponse)
+        {
+            OnPostMerchandisingUrls?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorPostMerchandisingUrls(Exception exception)
+        {
+            OnErrorPostMerchandisingUrls?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -877,6 +968,404 @@ namespace Hopper.Fintech.Flights.Cfar.Api
             /// </summary>
             /// <returns></returns>
             public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 499 CustomHttpStatusCode499
+            /// </summary>
+            /// <returns></returns>
+            public bool IsCustomHttpStatusCode499 => 499 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(RestLogEvents.ApiDeserializationFailed, exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatPostMerchandisingUrls(CreateMerchandisingUrlRequest createMerchandisingUrlRequest);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        /// <returns></returns>
+        private void ValidatePostMerchandisingUrls(CreateMerchandisingUrlRequest createMerchandisingUrlRequest)
+        {
+            if (createMerchandisingUrlRequest == null)
+                throw new ArgumentNullException(nameof(createMerchandisingUrlRequest));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        private void AfterPostMerchandisingUrlsDefaultImplementation(IPostMerchandisingUrlsApiResponse apiResponseLocalVar, CreateMerchandisingUrlRequest createMerchandisingUrlRequest)
+        {
+            bool suppressDefaultLog = false;
+            AfterPostMerchandisingUrls(ref suppressDefaultLog, apiResponseLocalVar, createMerchandisingUrlRequest);
+            if (!suppressDefaultLog)
+                Logger.LogInformation(RestLogEvents.ApiRequestCompleted, "{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        partial void AfterPostMerchandisingUrls(ref bool suppressDefaultLog, IPostMerchandisingUrlsApiResponse apiResponseLocalVar, CreateMerchandisingUrlRequest createMerchandisingUrlRequest);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        private void OnErrorPostMerchandisingUrlsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, CreateMerchandisingUrlRequest createMerchandisingUrlRequest)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorPostMerchandisingUrls(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, createMerchandisingUrlRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(RestLogEvents.ApiRequestFailed, exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        partial void OnErrorPostMerchandisingUrls(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, CreateMerchandisingUrlRequest createMerchandisingUrlRequest);
+
+        /// <summary>
+        /// Create Merchandising URL Create a merchandising URL for offers a partner already has. The offer ids must come from one Create Offers or Price Offers response.
+        /// </summary>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostMerchandisingUrlsApiResponse"/>&gt;</returns>
+        public async Task<IPostMerchandisingUrlsApiResponse?> PostMerchandisingUrlsOrDefaultAsync(CreateMerchandisingUrlRequest createMerchandisingUrlRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await PostMerchandisingUrlsAsync(createMerchandisingUrlRequest, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Create Merchandising URL Create a merchandising URL for offers a partner already has. The offer ids must come from one Create Offers or Price Offers response.
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMerchandisingUrlRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IPostMerchandisingUrlsApiResponse"/>&gt;</returns>
+        public async Task<IPostMerchandisingUrlsApiResponse> PostMerchandisingUrlsAsync(CreateMerchandisingUrlRequest createMerchandisingUrlRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidatePostMerchandisingUrls(createMerchandisingUrlRequest);
+
+                FormatPostMerchandisingUrls(createMerchandisingUrlRequest);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/merchandising_urls"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/merchandising_urls");
+
+                    httpRequestMessageLocalVar.Content = (createMerchandisingUrlRequest as object) is Hopper.Fintech.Flights.Cfar.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(createMerchandisingUrlRequest, _jsonSerializerOptions));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    ApiKeyToken apiKeyTokenLocalVar1 = (ApiKeyToken) await ApiKeyProvider.GetAsync("X-Api-Key", cancellationToken).ConfigureAwait(false);
+                    tokenBaseLocalVars.Add(apiKeyTokenLocalVar1);
+                    apiKeyTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar);
+
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    string[] contentTypes = new string[] {
+                        "application/json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        PostMerchandisingUrlsApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(Logger, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/merchandising_urls", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterPostMerchandisingUrlsDefaultImplementation(apiResponseLocalVar, createMerchandisingUrlRequest);
+
+                        Events.ExecuteOnPostMerchandisingUrls(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorPostMerchandisingUrlsDefaultImplementation(e, "/merchandising_urls", uriBuilderLocalVar.Path, createMerchandisingUrlRequest);
+                Events.ExecuteOnErrorPostMerchandisingUrls(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="PostMerchandisingUrlsApiResponse"/>
+        /// </summary>
+        public partial class PostMerchandisingUrlsApiResponse : Hopper.Fintech.Flights.Cfar.Client.ApiResponse, IPostMerchandisingUrlsApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<OfferMerchandisingApi> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="PostMerchandisingUrlsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PostMerchandisingUrlsApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PostMerchandisingUrlsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PostMerchandisingUrlsApiResponse(ILogger<OfferMerchandisingApi> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 201 Created
+            /// </summary>
+            /// <returns></returns>
+            public bool IsCreated => 201 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 201 Created
+            /// </summary>
+            /// <returns></returns>
+            public Hopper.Fintech.Flights.Cfar.Model.CreateMerchandisingUrlResponse? Created()
+            {
+                bool suppressDefault = false;
+                Hopper.Fintech.Flights.Cfar.Model.CreateMerchandisingUrlResponse? result = null;
+                OnCreated(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultCreated();
+                return result;
+            }
+
+            private Hopper.Fintech.Flights.Cfar.Model.CreateMerchandisingUrlResponse? DefaultCreated()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsCreated
+                    ? System.Text.Json.JsonSerializer.Deserialize<Hopper.Fintech.Flights.Cfar.Model.CreateMerchandisingUrlResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnCreated(ref bool suppressDefault, ref Hopper.Fintech.Flights.Cfar.Model.CreateMerchandisingUrlResponse? result);
+
+            /// <summary>
+            /// Returns true if the response is 201 Created and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryCreated([NotNullWhen(true)]out Hopper.Fintech.Flights.Cfar.Model.CreateMerchandisingUrlResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Created();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)201);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public List<Error>? BadRequest()
+            {
+                bool suppressDefault = false;
+                List<Error>? result = null;
+                OnBadRequest(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultBadRequest();
+                return result;
+            }
+
+            private List<Error>? DefaultBadRequest()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<Error>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnBadRequest(ref bool suppressDefault, ref List<Error>? result);
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out List<Error>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnprocessableContent => 422 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 422 UnprocessableContent
+            /// </summary>
+            /// <returns></returns>
+            public List<CreateMerchandisingUrlError>? UnprocessableContent()
+            {
+                bool suppressDefault = false;
+                List<CreateMerchandisingUrlError>? result = null;
+                OnUnprocessableContent(ref suppressDefault, ref result);
+                if (!suppressDefault)
+                    result = DefaultUnprocessableContent();
+                return result;
+            }
+
+            private List<CreateMerchandisingUrlError>? DefaultUnprocessableContent()
+            {
+                // NOTICE: Consider this AsModel template deprecated. Implement the appropriate partial method instead
+                return IsUnprocessableContent
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<CreateMerchandisingUrlError>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            partial void OnUnprocessableContent(ref bool suppressDefault, ref List<CreateMerchandisingUrlError>? result);
+
+            /// <summary>
+            /// Returns true if the response is 422 UnprocessableContent and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnprocessableContent([NotNullWhen(true)]out List<CreateMerchandisingUrlError>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = UnprocessableContent();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)422);
+                }
+
+                return result != null;
+            }
 
             /// <summary>
             /// Returns true if the response is 499 CustomHttpStatusCode499

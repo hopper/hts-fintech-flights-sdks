@@ -39,6 +39,8 @@ import com.hopper.fintech.flights.cfar.model.Error;
 import com.hopper.fintech.flights.cfar.model.SearchContractsRequest;
 import com.hopper.fintech.flights.cfar.model.SearchContractsResponse;
 import java.util.UUID;
+import com.hopper.fintech.flights.cfar.model.UserPayoutsError;
+import com.hopper.fintech.flights.cfar.model.UserPayoutsResponse;
 import com.hopper.fintech.flights.cfar.model.VoidContractRequest;
 
 import java.lang.reflect.Type;
@@ -473,6 +475,199 @@ public class ContractManagementApi {
      */
     public APIpostContractsRequest postContracts(@javax.annotation.Nonnull UUID idempotencyKey, @javax.annotation.Nonnull CreateDraftContractRequest createDraftContractRequest) {
         return new APIpostContractsRequest(idempotencyKey, createDraftContractRequest);
+    }
+    private okhttp3.Call postContractsIdUserProjectedPayoutsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/contracts/{id}/user_projected_payouts"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PartnerAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postContractsIdUserProjectedPayoutsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postContractsIdUserProjectedPayouts(Async)");
+        }
+
+        return postContractsIdUserProjectedPayoutsCall(id, _callback);
+
+    }
+
+
+    private ApiResponse<UserPayoutsResponse> postContractsIdUserProjectedPayoutsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postContractsIdUserProjectedPayoutsValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<UserPayoutsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call postContractsIdUserProjectedPayoutsAsync(@javax.annotation.Nonnull String id, final ApiCallback<UserPayoutsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postContractsIdUserProjectedPayoutsValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<UserPayoutsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpostContractsIdUserProjectedPayoutsRequest {
+        @javax.annotation.Nonnull
+        private final String id;
+
+        private APIpostContractsIdUserProjectedPayoutsRequest(@javax.annotation.Nonnull String id) {
+            this.id = id;
+        }
+
+        /**
+         * Build call for postContractsIdUserProjectedPayouts
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The projected payout breakdown, by payout option </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postContractsIdUserProjectedPayoutsCall(id, _callback);
+        }
+
+        /**
+         * Execute postContractsIdUserProjectedPayouts request
+         * @return UserPayoutsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The projected payout breakdown, by payout option </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public UserPayoutsResponse execute() throws ApiException {
+            ApiResponse<UserPayoutsResponse> localVarResp = postContractsIdUserProjectedPayoutsWithHttpInfo(id);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute postContractsIdUserProjectedPayouts request with HTTP info returned
+         * @return ApiResponse&lt;UserPayoutsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The projected payout breakdown, by payout option </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UserPayoutsResponse> executeWithHttpInfo() throws ApiException {
+            return postContractsIdUserProjectedPayoutsWithHttpInfo(id);
+        }
+
+        /**
+         * Execute postContractsIdUserProjectedPayouts request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table border="1">
+       <caption>Response Details</caption>
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The projected payout breakdown, by payout option </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+            <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+            <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UserPayoutsResponse> _callback) throws ApiException {
+            return postContractsIdUserProjectedPayoutsAsync(id, _callback);
+        }
+    }
+
+    /**
+     * Get User Projected Payouts
+     *  Returns the projected payout a user would receive if they exercised CFAR on this contract, for each payout option, broken down by how they would be refunded. Read-only; does not create an exercise quote.  The projection uses the same payout calculation as the exercise quote. Where the contract carries a cancellation penalty, the payout is capped at that penalty, as it is when exercising. The projection is returned even while the booking is within the void window.  Returns 422 if the contract is not in a state that can be exercised (already exercised, voided, cancelled, expired or not purchased); the body carries the specific reason. 
+     * @param id A unique identifier for a contract. (required)
+     * @return APIpostContractsIdUserProjectedPayoutsRequest
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The projected payout breakdown, by payout option </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Syntactic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The client could not be authenticated </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The authenticated client does not have permission to call this endpoint </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> The requested resource could not be found </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Semantic errors were encountered while handling the request </td><td>  -  </td></tr>
+        <tr><td> 499 </td><td> The client cancelled the request </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> The server encountered an internal error </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpostContractsIdUserProjectedPayoutsRequest postContractsIdUserProjectedPayouts(@javax.annotation.Nonnull String id) {
+        return new APIpostContractsIdUserProjectedPayoutsRequest(id);
     }
     private okhttp3.Call postContractsSearchCall(@javax.annotation.Nonnull SearchContractsRequest searchContractsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;

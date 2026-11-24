@@ -234,7 +234,7 @@ public class AnalyticsApi {
 
     /**
      * Create Event
-     * Create a new event for the provided session.
+     * Create a new event for the provided session. When exercise_type is omitted on an event that supports it, this endpoint stores payout and preserves an explicit value.
      * @param event  (required)
      * @return APIpostEventsRequest
      * @http.response.details

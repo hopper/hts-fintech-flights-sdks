@@ -36,13 +36,15 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         /// <param name="occurredAt">Date and time at which the event occurred, as a UTC RFC3339 formatted datetime.</param>
         /// <param name="contractId">contractId</param>
         /// <param name="type">type</param>
+        /// <param name="exerciseType">exerciseType</param>
         [JsonConstructor]
-        public ExercisePortalConfirmationPageLoaded(string sessionId, DateTime occurredAt, string contractId, TypeEnum type)
+        public ExercisePortalConfirmationPageLoaded(string sessionId, DateTime occurredAt, string contractId, TypeEnum type, Option<ExerciseType?> exerciseType = default)
         {
             SessionId = sessionId;
             OccurredAt = occurredAt;
             ContractId = contractId;
             Type = type;
+            ExerciseTypeOption = exerciseType;
             OnCreated();
         }
 
@@ -107,6 +109,19 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         public TypeEnum Type { get; set; }
 
         /// <summary>
+        /// Used to track the state of ExerciseType
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<ExerciseType?> ExerciseTypeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets ExerciseType
+        /// </summary>
+        [JsonPropertyName("exercise_type")]
+        public ExerciseType? ExerciseType { get { return this.ExerciseTypeOption.Value; } set { this.ExerciseTypeOption = new(value); } }
+
+        /// <summary>
         /// Gets or Sets SessionId
         /// </summary>
         [JsonPropertyName("session_id")]
@@ -143,6 +158,7 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             sb.Append("  OccurredAt: ").Append(OccurredAt).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  ExerciseType: ").Append(ExerciseType).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -190,6 +206,7 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             Option<DateTime?> occurredAt = default;
             Option<string?> contractId = default;
             Option<ExercisePortalConfirmationPageLoaded.TypeEnum?> type = default;
+            Option<ExerciseType?> exerciseType = default;
 
             while (utf8JsonReader.Read())
             {
@@ -225,6 +242,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
                                 type = new Option<ExercisePortalConfirmationPageLoaded.TypeEnum?>(typeValue);
                             }
                             break;
+                        case "exercise_type":
+                            exerciseType = new Option<ExerciseType?>(JsonSerializer.Deserialize<ExerciseType?>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -255,7 +275,10 @@ namespace Hopper.Fintech.Flights.Cfar.Model
             if (type.IsSet && type.Value == null)
                 throw new JsonException("Property is not nullable for class ExercisePortalConfirmationPageLoaded: type.");
 
-            return new ExercisePortalConfirmationPageLoaded(sessionId.Value!, occurredAt.Value!.Value!, contractId.Value!, type.Value!.Value!);
+            if (exerciseType.IsSet && exerciseType.Value == null)
+                throw new JsonException("Property is not nullable for class ExercisePortalConfirmationPageLoaded: exercise_type.");
+
+            return new ExercisePortalConfirmationPageLoaded(sessionId.Value!, occurredAt.Value!.Value!, contractId.Value!, type.Value!.Value!, exerciseType);
         }
 
         /// <summary>
@@ -280,6 +303,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         /// <param name="jsonSerializerOptions"></param>
         public void WriteProperties(Utf8JsonWriter writer, ExercisePortalConfirmationPageLoaded exercisePortalConfirmationPageLoaded, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (exercisePortalConfirmationPageLoaded.ExerciseTypeOption.IsSet && exercisePortalConfirmationPageLoaded.ExerciseType == null)
+                throw new JsonException("Cannot write null property ExercisePortalConfirmationPageLoaded.ExerciseType to non-nullable JSON property 'exercise_type'.");
+
             writer.WriteString("session_id", exercisePortalConfirmationPageLoaded.SessionId);
 
             writer.WriteString("occurred_at", exercisePortalConfirmationPageLoaded.OccurredAt.ToString(OccurredAtFormat));
@@ -288,6 +314,11 @@ namespace Hopper.Fintech.Flights.Cfar.Model
 
             var typeRawValue = ExercisePortalConfirmationPageLoaded.TypeEnumToJsonValue(exercisePortalConfirmationPageLoaded.Type);
             writer.WriteString("type", typeRawValue);
+            if (exercisePortalConfirmationPageLoaded.ExerciseTypeOption.IsSet)
+            {
+                var exerciseTypeRawValue = ExerciseTypeValueConverter.ToJsonValue(exercisePortalConfirmationPageLoaded.ExerciseType!.Value);
+                writer.WriteString("exercise_type", exerciseTypeRawValue);
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ import com.hopper.fintech.flights.cfar.model.ExercisePortalConfirmationPageConfi
 import com.hopper.fintech.flights.cfar.model.ExercisePortalConfirmationPageLoaded;
 import com.hopper.fintech.flights.cfar.model.ExercisePortalLandingContinueClicked;
 import com.hopper.fintech.flights.cfar.model.ExercisePortalLandingLoaded;
+import com.hopper.fintech.flights.cfar.model.ExerciseType;
 import com.hopper.fintech.flights.cfar.model.FlightSearchLoaded;
 import com.hopper.fintech.flights.cfar.model.FlightSearchSubmitted;
 import com.hopper.fintech.flights.cfar.model.FlightSelected;
@@ -37,6 +38,8 @@ import com.hopper.fintech.flights.cfar.model.MerchandisingFaqClicked;
 import com.hopper.fintech.flights.cfar.model.MerchandisingOfferAttached;
 import com.hopper.fintech.flights.cfar.model.MerchandisingOfferDeclined;
 import com.hopper.fintech.flights.cfar.model.MerchandisingSdkLoaded;
+import com.hopper.fintech.flights.cfar.model.OfferDisplayRequested;
+import com.hopper.fintech.flights.cfar.model.RequestTrigger;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -107,6 +110,7 @@ public class Event extends AbstractOpenApiSchema {
             final TypeAdapter<MerchandisingOfferAttached> adapterMerchandisingOfferAttached = gson.getDelegateAdapter(this, TypeToken.get(MerchandisingOfferAttached.class));
             final TypeAdapter<MerchandisingOfferDeclined> adapterMerchandisingOfferDeclined = gson.getDelegateAdapter(this, TypeToken.get(MerchandisingOfferDeclined.class));
             final TypeAdapter<MerchandisingSdkLoaded> adapterMerchandisingSdkLoaded = gson.getDelegateAdapter(this, TypeToken.get(MerchandisingSdkLoaded.class));
+            final TypeAdapter<OfferDisplayRequested> adapterOfferDisplayRequested = gson.getDelegateAdapter(this, TypeToken.get(OfferDisplayRequested.class));
 
             return (TypeAdapter<T>) new TypeAdapter<Event>() {
                 @Override
@@ -218,7 +222,13 @@ public class Event extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded");
+                    // check if the actual instance is of the type `OfferDisplayRequested`
+                    if (value.getActualInstance() instanceof OfferDisplayRequested) {
+                        JsonElement element = adapterOfferDisplayRequested.toJsonTree((OfferDisplayRequested)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested");
                 }
 
                 @Override
@@ -434,6 +444,18 @@ public class Event extends AbstractOpenApiSchema {
                         errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MerchandisingSdkLoaded'", e);
                     }
+                    // deserialize OfferDisplayRequested
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        OfferDisplayRequested.validateJsonElement(jsonElement);
+                        actualAdapter = adapterOfferDisplayRequested;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'OfferDisplayRequested'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferDisplayRequested failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'OfferDisplayRequested'", e);
+                    }
 
                     if (match == 1) {
                         Event ret = new Event();
@@ -477,6 +499,7 @@ public class Event extends AbstractOpenApiSchema {
         schemas.put("MerchandisingOfferAttached", MerchandisingOfferAttached.class);
         schemas.put("MerchandisingOfferDeclined", MerchandisingOfferDeclined.class);
         schemas.put("MerchandisingSdkLoaded", MerchandisingSdkLoaded.class);
+        schemas.put("OfferDisplayRequested", OfferDisplayRequested.class);
     }
 
     @Override
@@ -487,7 +510,7 @@ public class Event extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded
+     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -578,14 +601,19 @@ public class Event extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded");
+        if (instance instanceof OfferDisplayRequested) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded
+     * BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested
      *
-     * @return The actual instance (BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded)
+     * @return The actual instance (BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -798,6 +826,18 @@ public class Event extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `OfferDisplayRequested`. If the actual instance is not `OfferDisplayRequested`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `OfferDisplayRequested`
+     * @throws ClassCastException if the instance is not `OfferDisplayRequested`
+     */
+    @SuppressWarnings("unchecked")
+    public OfferDisplayRequested getOfferDisplayRequested() throws ClassCastException {
+        return (OfferDisplayRequested)super.getActualInstance();
+    }
+
+    /**
      * Validates the JSON Element and throws an exception if issues found
      *
      * @param jsonElement JSON Element
@@ -943,8 +983,16 @@ public class Event extends AbstractOpenApiSchema {
             errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MerchandisingSdkLoaded failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with OfferDisplayRequested
+        try {
+            OfferDisplayRequested.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for OfferDisplayRequested failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         if (validCount != 1) {
-            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Event with oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for Event with oneOf schemas: BookingConfirmed, ExercisePortalCompletePageContinueClicked, ExercisePortalCompletePageLoaded, ExercisePortalConfirmationPageBackClicked, ExercisePortalConfirmationPageConfirmClicked, ExercisePortalConfirmationPageLoaded, ExercisePortalLandingContinueClicked, ExercisePortalLandingLoaded, FlightSearchLoaded, FlightSearchSubmitted, FlightSelected, FlightSubmittedForOffer, MerchandisingDisplayed, MerchandisingFaqClicked, MerchandisingOfferAttached, MerchandisingOfferDeclined, MerchandisingSdkLoaded, OfferDisplayRequested. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

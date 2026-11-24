@@ -33,7 +33,7 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         /// Initializes a new instance of the <see cref="Ancillary" /> class.
         /// </summary>
         /// <param name="amount">Total price of the ancillary.</param>
-        /// <param name="code">Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the ancillary is covered or not, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating the payout amount of a CFAR or DAFAR contract.</param>
+        /// <param name="code">Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the product applies to the ancillary, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating a CFAR or DAFAR refund amount.</param>
         [JsonConstructor]
         public Ancillary(string amount, string code)
         {
@@ -52,9 +52,9 @@ namespace Hopper.Fintech.Flights.Cfar.Model
         public string Amount { get; set; }
 
         /// <summary>
-        /// Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the ancillary is covered or not, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating the payout amount of a CFAR or DAFAR contract.
+        /// Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the product applies to the ancillary, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating a CFAR or DAFAR refund amount.
         /// </summary>
-        /// <value>Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the ancillary is covered or not, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating the payout amount of a CFAR or DAFAR contract.</value>
+        /// <value>Code of the ancillary in the PNR/Order, e.g. the SSR code XBAG for an extra checked baggage. The mapping table of code &#x3D;&gt; ancillary type, and whether the product applies to the ancillary, is configured on the HTS side. It&#39;s important to use the same value as in the PNR/Order since it&#39;s used by HTS for various flow, e.g. validating and updating a CFAR or DAFAR refund amount.</value>
         [JsonPropertyName("code")]
         public string Code { get; set; }
 

@@ -182,6 +182,18 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
+                .registerTypeSelector(com.hopper.fintech.flights.cfar.model.CreateMerchandisingUrlError.class, new TypeSelector<com.hopper.fintech.flights.cfar.model.CreateMerchandisingUrlError>() {
+                    @Override
+                    public Class<? extends com.hopper.fintech.flights.cfar.model.CreateMerchandisingUrlError> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("not_merchandisable", com.hopper.fintech.flights.cfar.model.NotMerchandisable.class);
+                        classByDiscriminatorValue.put("offer_expired", com.hopper.fintech.flights.cfar.model.OfferExpired.class);
+                        classByDiscriminatorValue.put("offer_not_found", com.hopper.fintech.flights.cfar.model.OfferNotFound.class);
+                        classByDiscriminatorValue.put("create_merchandising_url_error", com.hopper.fintech.flights.cfar.model.CreateMerchandisingUrlError.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "code"));
+                    }
+          })
                 .registerTypeSelector(com.hopper.fintech.flights.cfar.model.CreateOffersError.class, new TypeSelector<com.hopper.fintech.flights.cfar.model.CreateOffersError>() {
                     @Override
                     public Class<? extends com.hopper.fintech.flights.cfar.model.CreateOffersError> getClassForElement(JsonElement readElement) {
@@ -238,6 +250,7 @@ public class JSON {
                         classByDiscriminatorValue.put("merchandising_offer_attached", com.hopper.fintech.flights.cfar.model.MerchandisingOfferAttached.class);
                         classByDiscriminatorValue.put("merchandising_offer_declined", com.hopper.fintech.flights.cfar.model.MerchandisingOfferDeclined.class);
                         classByDiscriminatorValue.put("merchandising_sdk_loaded", com.hopper.fintech.flights.cfar.model.MerchandisingSdkLoaded.class);
+                        classByDiscriminatorValue.put("offer_display_requested", com.hopper.fintech.flights.cfar.model.OfferDisplayRequested.class);
                         classByDiscriminatorValue.put("event", com.hopper.fintech.flights.cfar.model.Event.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
@@ -431,6 +444,21 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "type"));
                     }
           })
+                .registerTypeSelector(com.hopper.fintech.flights.cfar.model.UserPayoutsError.class, new TypeSelector<com.hopper.fintech.flights.cfar.model.UserPayoutsError>() {
+                    @Override
+                    public Class<? extends com.hopper.fintech.flights.cfar.model.UserPayoutsError> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("contract_canceled", com.hopper.fintech.flights.cfar.model.ContractCanceled.class);
+                        classByDiscriminatorValue.put("contract_exercised", com.hopper.fintech.flights.cfar.model.ContractExercised.class);
+                        classByDiscriminatorValue.put("contract_not_purchased", com.hopper.fintech.flights.cfar.model.ContractNotPurchased.class);
+                        classByDiscriminatorValue.put("contract_voided", com.hopper.fintech.flights.cfar.model.ContractVoided.class);
+                        classByDiscriminatorValue.put("expired", com.hopper.fintech.flights.cfar.model.Expired.class);
+                        classByDiscriminatorValue.put("purchase_payments_not_on_contract", com.hopper.fintech.flights.cfar.model.PurchasePaymentsNotOnContract.class);
+                        classByDiscriminatorValue.put("user_payouts_error", com.hopper.fintech.flights.cfar.model.UserPayoutsError.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "code"));
+                    }
+          })
                 .registerTypeSelector(com.hopper.fintech.flights.cfar.model.VoidPolicy.class, new TypeSelector<com.hopper.fintech.flights.cfar.model.VoidPolicy>() {
                     @Override
                     public Class<? extends com.hopper.fintech.flights.cfar.model.VoidPolicy> getClassForElement(JsonElement readElement) {
@@ -530,20 +558,27 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Chargeback.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ConfirmContractRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContactInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractCanceled.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractCanceledWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractCanceledWebhookData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractConfirmedWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractConfirmedWebhookData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractDraftedWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractDraftedWebhookData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractExercised.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractExercisedWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractExercisedWebhookData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractExpired.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractNotPurchased.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractPrice.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractVoided.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractVoidedWebhook.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ContractVoidedWebhookData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateCfarExerciseQuoteRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateDraftContractRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateMerchandisingUrlError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateMerchandisingUrlRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateMerchandisingUrlResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateOffersError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateOffersRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.CreateSyntheticFaresError.CustomTypeAdapterFactory());
@@ -562,6 +597,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ExercisePortalLandingContinueClicked.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ExercisePortalLandingLoaded.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ExerciseUrl.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Expired.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Fare.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.FareAmountModification.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.FareRules.CustomTypeAdapterFactory());
@@ -609,11 +645,13 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NonRefundableDiscounts.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotAllowed.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotAvailable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotMerchandisable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotProvided.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotProvided1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotProvided2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotPurchased.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.NotificationPreferences.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.OfferDisplayRequested.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.OfferExpired.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.OfferNotFound.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.OfferNotPriced.CustomTypeAdapterFactory());
@@ -656,10 +694,12 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Provided1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ProvidedPayment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ProvidedRefundablePayment.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.PurchasePaymentsNotOnContract.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Reason.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Reason1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Refundable.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.RefundablePayment.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.RequestTrigger.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.ResellerControlled.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.RoundTrip.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.SearchContractsRequest.CustomTypeAdapterFactory());
@@ -675,6 +715,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Tax.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Token.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Trip.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.UserPayoutOption.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.UserPayoutsError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.UserPayoutsResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.Venmo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.VoidContractRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hopper.fintech.flights.cfar.model.VoidPolicy.CustomTypeAdapterFactory());
